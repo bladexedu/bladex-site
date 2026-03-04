@@ -27,6 +27,7 @@ const AuthenticatedApp = () => {
     );
   }
 
+    //If user is not registered, show error message
   // Handle authentication errors
   if (authError) {
     if (authError.type === 'user_not_registered') {
