@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { supabase } from '@/api/supabaseclient';
+import { supabase } from '@/api/supabaseClient';
 import { ExternalLink } from 'lucide-react';
 import ConsultantCard from '@/components/consultants/ConsultantCard';
 import ConsultantFilters from '@/components/consultants/ConsultantFilters';
