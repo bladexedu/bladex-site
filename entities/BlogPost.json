@@ -1,0 +1,48 @@
+{
+    "name": "BlogPost",
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "description": "Post title"
+      },
+      "slug": {
+        "type": "string",
+        "description": "URL-friendly identifier"
+      },
+      "excerpt": {
+        "type": "string",
+        "description": "Short intro text"
+      },
+      "content": {
+        "type": "string",
+        "description": "Full post content in markdown"
+      },
+      "featured_image": {
+        "type": "string",
+        "description": "Main image URL"
+      },
+      "category": {
+        "type": "string",
+        "enum": [
+          "news",
+          "events",
+          "stories",
+          "updates"
+        ],
+        "default": "news"
+      },
+      "is_published": {
+        "type": "boolean",
+        "default": true
+      },
+      "published_date": {
+        "type": "string",
+        "format": "date"
+      }
+    },
+    "required": [
+      "title",
+      "excerpt"
+    ]
+  }

@@ -1,0 +1,48 @@
+{
+    "name": "Program",
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "description": "Program name"
+      },
+      "slug": {
+        "type": "string",
+        "description": "URL-friendly identifier"
+      },
+      "short_description": {
+        "type": "string",
+        "description": "Brief overview for cards"
+      },
+      "full_description": {
+        "type": "string",
+        "description": "Detailed program description"
+      },
+      "icon": {
+        "type": "string",
+        "description": "Icon name from Lucide"
+      },
+      "image_url": {
+        "type": "string",
+        "description": "Featured image"
+      },
+      "features": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Key features or benefits"
+      },
+      "is_active": {
+        "type": "boolean",
+        "default": true
+      },
+      "order": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "title",
+      "short_description"
+    ]
+  }

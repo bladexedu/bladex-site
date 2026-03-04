@@ -1,0 +1,66 @@
+{
+    "name": "Consultant",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "Full name"
+      },
+      "role": {
+        "type": "string",
+        "description": "Title or specialty"
+      },
+      "bio": {
+        "type": "string",
+        "description": "Short personal intro"
+      },
+      "photo_url": {
+        "type": "string",
+        "description": "Profile photo URL"
+      },
+      "booking_url": {
+        "type": "string",
+        "description": "Personal Calendly or booking link"
+      },
+      "education": {
+        "type": "string",
+        "description": "e.g. BSc Computer Science, University of Toronto"
+      },
+      "current_country": {
+        "type": "string",
+        "description": "Country they are currently based in"
+      },
+      "interests": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Personal interests e.g. Photography, Coding, Travel"
+      },
+      "can_help_with": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "What they can help students with e.g. Canada Applications, SOP Writing"
+      },
+      "languages": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Languages spoken"
+      },
+      "is_active": {
+        "type": "boolean",
+        "default": true
+      },
+      "order": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "name",
+      "role"
+    ]
+  }

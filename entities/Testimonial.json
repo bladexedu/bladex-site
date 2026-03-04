@@ -1,0 +1,30 @@
+{
+    "name": "Testimonial",
+    "type": "object",
+    "properties": {
+      "quote": {
+        "type": "string",
+        "description": "Testimonial text"
+      },
+      "author_name": {
+        "type": "string",
+        "description": "Person's name"
+      },
+      "author_role": {
+        "type": "string",
+        "description": "Their role or relationship"
+      },
+      "author_image": {
+        "type": "string",
+        "description": "Photo URL"
+      },
+      "is_featured": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "required": [
+      "quote",
+      "author_name"
+    ]
+  }

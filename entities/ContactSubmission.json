@@ -1,0 +1,43 @@
+{
+    "name": "ContactSubmission",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "phone": {
+        "type": "string"
+      },
+      "message": {
+        "type": "string"
+      },
+      "inquiry_type": {
+        "type": "string",
+        "enum": [
+          "general",
+          "volunteer",
+          "donate",
+          "partnership"
+        ],
+        "default": "general"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "new",
+          "contacted",
+          "resolved"
+        ],
+        "default": "new"
+      }
+    },
+    "required": [
+      "name",
+      "email",
+      "message"
+    ]
+  }
