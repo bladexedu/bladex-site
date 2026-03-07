@@ -79,7 +79,7 @@ export default function ConsultantCard({ consultant: c, index }) {
               {/* Education */}
               {c.education && (() => {
                 // Parse "University — Degree" or "University, Degree" format
-                const parts = c.education.split(/\s*[—–]\s*|\s*,\s(?=[A-Z])/);
+                const parts = c.education.split(/\s*[—–]\s*|\n|\s*,\s(?=[A-Z])/);
                 const university = parts[0]?.trim();
                 const degree = parts.slice(1).join(', ').trim();
                 return (
