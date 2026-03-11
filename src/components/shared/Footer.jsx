@@ -57,11 +57,11 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3 text-slate-400">
                 <Facebook className="w-4 h-4 text-blue-400 flex-shrink-0" />
-                <a href="https://www.facebook.com/share/p/1GrFGYZw4a/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">Facebook Page</a>
+                <a href="https://www.facebook.com/share/p/1GrFGYZw4a/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">BladeX Education Facebook</a>
               </li>
               <li className="flex items-center gap-3 text-slate-400">
                 <Youtube className="w-4 h-4 text-red-400 flex-shrink-0" />
-                <a href="http://www.youtube.com/@Bladex-edu" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors">YouTube Channel</a>
+                <a href="http://www.youtube.com/@Bladex-edu" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors">BladeX Education YouTube</a>
               </li>
             </ul>
           </div>
