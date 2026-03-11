@@ -12,7 +12,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <img
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a2245d77b294d2ae3abe8f/21ad5cda7_Logo.jpg"
+                src="/bladeX_logo_original-removebg-preview.png"
                 alt="BladeX Education"
                 className="h-10 w-auto object-contain"
               />
