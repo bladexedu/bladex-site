@@ -44,7 +44,7 @@ export default function TestimonialsSection() {
               transition={{ delay: i * 0.1 }}
               className="bg-slate-50 rounded-2xl p-7 relative"
             >
-              <Quote className="w-8 h-8 text-blue-200 absolute top-5 right-5" />
+              <Quote className="w-5 h-5 text-blue-200 absolute top-5 right-5" />
               <p className="text-slate-700 leading-relaxed mb-6 text-sm">"{q.quote}"</p>
               <div>
                 <p className="font-semibold text-slate-900 text-sm">{q.author_name}</p>
