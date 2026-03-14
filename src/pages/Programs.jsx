@@ -8,11 +8,11 @@ const consulting = {
   tagline: 'Clarity, direction, and a plan that fits you.',
   description: "A private, personalized session where we listen to your situation, explore your interests, and help you make confident, informed decisions about studying abroad.",
   areas: [
-    { icon: BookOpen, label: 'Major Exploration', detail: 'Business, Computer Science, Medicine, Engineering, and more' },
-    { icon: Globe, label: 'Country Selection', detail: 'US, Canada, UK, Thailand, Singapore, and others' },
-    { icon: Map, label: 'University Direction', detail: 'Finding the right fit for your goals and budget' },
-    { icon: FileText, label: 'Application Planning', detail: 'Timeline and step-by-step preparation' },
-    { icon: FileText, label: 'Document Review', detail: 'SOP, CV, and essential application materials' },
+    { icon: CheckCircle2, label: 'Major Exploration', detail: 'Business, Computer Science, Medicine, Engineering, and more' },
+    { icon: CheckCircle2, label: 'Country Selection', detail: 'US, Canada, UK, Thailand, Singapore, and others' },
+    { icon: CheckCircle2, label: 'University Direction', detail: 'Finding the right fit for your goals and budget' },
+    { icon: CheckCircle2, label: 'Application Planning', detail: 'Timeline and step-by-step preparation' },
+    { icon: CheckCircle2, label: 'Document Review', detail: 'SOP, CV, and essential application materials' },
   ],
   note: 'Sessions are booked directly with your chosen consultant — at a time that works for both of you.',
   free: true,
@@ -20,17 +20,33 @@ const consulting = {
 
 const mentorship = {
   icon: Users,
-  title: 'Mentorship & Student Support',
-  tagline: 'We stay with you as you move forward.',
-  description: "Studying abroad is a long journey, and it's easy to feel alone in the process. Our mentorship program pairs you with a mentor who has navigated this path — someone who genuinely cares and keeps you on track.",
+  title: 'Mentorship Program',
+  tagline: 'Continuous partnership, through your academic journey.',
+  description: "A continuous partnership where we guide you through every step of your academic journey. Rather than a single consultation, we work closely with you over multiple sessions to navigate the entire application process.",
   areas: [
-    { icon: CheckCircle2, label: 'Ongoing Check-ins', detail: 'Regular touchpoints to monitor your progress' },
-    { icon: CheckCircle2, label: 'Goal Setting', detail: 'Define clear milestones for your journey' },
-    { icon: CheckCircle2, label: 'Emotional Support', detail: 'A safe space to ask questions and share concerns' },
-    { icon: CheckCircle2, label: 'Progress Tracking', detail: 'Stay accountable and focused' },
-    { icon: CheckCircle2, label: 'Community Connection', detail: 'Connect with other Myanmar students abroad' },
+    { icon: CheckCircle2, label: 'Ongoing Check-ins', detail: 'Regular meetings to answer your questions and plan your next steps' },
+    { icon: CheckCircle2, label: 'Application Assistance', detail: 'Step-by-step help with preparing and submitting your university applications' },
+    { icon: CheckCircle2, label: 'Offer Support', detail: 'Guidance on reviewing, choosing, and accepting your university admission offers' },
+    { icon: CheckCircle2, label: 'Goal Setting & Progress Tracking', detail: 'Keeping your application deadlines organized and moving forward' },
+    { icon: CheckCircle2, label: 'Community Connection', detail: 'Access to a network of peers and mentors who have successfully navigated the process' },
   ],
-  note: 'Mentorship is ongoing — not a one-time meeting.',
+  note: 'We work closely with you over multiple sessions to navigate the entire application process, keeping you on track until you successfully secure your university offer.',
+  free: true,
+};
+
+const guidance = {
+  icon: Map,
+  title: 'Career Guidance Program',
+  tagline: 'Consultation for your future career path.',
+  description: "Whether you feel overwhelmed by having too many interests or are completely unsure of which direction to take, our mentors and consultants are here to listen. Using their professional experience and knowledge, they will provide tailored advice to help you find your best fit. 🔍",
+  areas: [
+    { icon: CheckCircle2, label: 'Career Path Exploration', detail: 'Discover multiple career options aligned with your interests' },
+    { icon: CheckCircle2, label: 'Professional Trajectory Planning', detail: 'Map out a strategic plan for your professional future' },
+    { icon: CheckCircle2, label: 'Tailored Advice', detail: 'Personalized recommendations based on your unique situation' },
+    { icon: CheckCircle2, label: 'Industry Insights', detail: 'Learn from professionals with real-world experience' },
+    { icon: CheckCircle2, label: 'Direction Finding', detail: 'Clarity when you are overwhelmed or unsure of which path to take' },
+  ],
+  note: 'While similar in format to our One-on-One Consulting, this program focuses specifically on your career and professional trajectory rather than just academics.',
   free: true,
 };
 
@@ -109,6 +125,7 @@ export default function Programs() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32">
           <ProgramCard program={consulting} reverse={false} />
           <ProgramCard program={mentorship} reverse={true} />
+          <ProgramCard program={guidance} reverse={false} />
         </div>
       </section>
 
