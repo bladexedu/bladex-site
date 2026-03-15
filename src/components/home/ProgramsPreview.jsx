@@ -77,7 +77,6 @@ export default function ProgramsPreview() {
                   <p className="text-slate-600 text-sm leading-relaxed">{prog.description}</p>
                 </div>
                 <div className="px-8 py-6">
-                  <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-3">What's included</p>
                   <ul className="space-y-2">
                     {prog.highlights.map((h, j) => (
                       <li key={j} className="flex items-center gap-2 text-sm text-slate-700">
