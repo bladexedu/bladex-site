@@ -179,7 +179,7 @@ export default function Programs() {
                 We strategically align your career ambitions with the right university programs. Our expertise covers a wide spectrum of competitive disciplines, including Business, Computer Science, Software Engineering, Data Science, Medicine, Biochemistry, and many more.
               </p>
               <div className="flex flex-wrap gap-2">
-                {['Business', 'Computer Science', 'Software Engineering', 'Data Science', 'Medicine', 'Biochemistry'].map((m) => (
+                {['Business', 'Computer Science', 'Software Engineering', 'Data Science', 'Medicine', 'Biochemistry', 'and more...'].map((m) => (
                   <span key={m} className="text-xs bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-full font-medium">{m}</span>
                 ))}
               </div>
