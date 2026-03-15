@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { Users, MessageCircle, ArrowRight } from 'lucide-react';
+import { Users, MessageCircle, Map, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const programs = [
@@ -9,23 +9,32 @@ const programs = [
     icon: MessageCircle,
     label: 'Program 1',
     title: 'One-on-One Consulting',
-    description: "A personalized session where we listen to your situation, explore your options, and help you create a plan — from major selection to country and university direction.",
+    description: "A private, personalized session where we listen to your situation, explore your interests, and help you make confident, informed decisions about studying abroad.",
     highlights: ['Major Exploration', 'Country Selection', 'University Direction', 'Application Planning', 'Document Review (SOP, CV)'],
     color: 'blue',
   },
   {
     icon: Users,
     label: 'Program 2',
-    title: 'Mentorship & Student Support',
-    description: "Ongoing guidance and encouragement from someone who has been through the process. We stay with you as you move forward, answering questions and keeping you on track.",
-    highlights: ['Ongoing Check-ins', 'Emotional Support', 'Goal Setting', 'Progress Tracking', 'Community Connection'],
+    title: 'Mentorship Program',
+    description: "A continuous partnership where we guide you through every step of your academic journey — from application to offer acceptance.",
+    highlights: ['Ongoing Check-ins', 'Application Assistance', 'Offer Support', 'Goal Setting & Progress Tracking', 'Community Connection'],
     color: 'indigo',
+  },
+  {
+    icon: Map,
+    label: 'Program 3',
+    title: 'Career Guidance Program',
+    description: "Choosing a major is only the beginning. We help you connect your academic path to real-world opportunities — so you graduate with direction, not just a degree.",
+    highlights: ['Career Path Exploration', 'Industry Insights', 'Internship & Co-op Strategy', 'Resume & LinkedIn Review', 'Long-term Roadmapping'],
+    color: 'emerald',
   },
 ];
 
 const colorMap = {
   blue: { bg: 'bg-blue-50', icon: 'bg-blue-100 text-blue-600', badge: 'bg-blue-600', dot: 'bg-blue-500' },
   indigo: { bg: 'bg-indigo-50', icon: 'bg-indigo-100 text-indigo-600', badge: 'bg-indigo-600', dot: 'bg-indigo-500' },
+  emerald: { bg: 'bg-emerald-50', icon: 'bg-emerald-100 text-emerald-600', badge: 'bg-emerald-600', dot: 'bg-emerald-500' },
 };
 
 export default function ProgramsPreview() {
@@ -43,7 +52,7 @@ export default function ProgramsPreview() {
           <p className="text-slate-500 max-w-xl mx-auto">We offer high-quality, complimentary guidance tailored to your goals. Explore our core services and take the first step toward your study abroad journey today.</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {programs.map((prog, i) => {
             const c = colorMap[prog.color];
             return (
