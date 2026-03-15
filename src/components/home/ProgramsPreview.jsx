@@ -62,9 +62,9 @@ export default function ProgramsPreview() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15 }}
-                className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300"
+                className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col"
               >
-                <div className={`${c.bg} px-8 pt-8 pb-6`}>
+                <div className={`${c.bg} px-8 pt-8 pb-6 flex-grow`}>
                   <div className="flex items-center gap-3 mb-4">
                     <div className={`w-12 h-12 ${c.icon} rounded-xl flex items-center justify-center`}>
                       <prog.icon className="w-6 h-6" />
