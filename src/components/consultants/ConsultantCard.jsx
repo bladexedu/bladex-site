@@ -46,11 +46,11 @@ export default function ConsultantCard({ consultant: c, index }) {
       {/* Quick tags — can_help_with preview */}
       {c.can_help_with?.length > 0 && (
         <div className="px-6 pb-4 flex flex-wrap gap-2">
-          {c.can_help_with.slice(0, 3).map((tag, i) => (
+          {c.can_help_with.filter(t => !t.startsWith('degree:')).slice(0, 3).map((tag, i) => (
             <span key={i} className="text-xs bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full font-medium">{tag}</span>
           ))}
-          {c.can_help_with.length > 3 && (
-            <span className="text-xs bg-slate-100 text-slate-500 px-2.5 py-1 rounded-full">+{c.can_help_with.length - 3} more</span>
+          {c.can_help_with.filter(t => !t.startsWith('degree:')).length > 3 && (
+            <span className="text-xs bg-slate-100 text-slate-500 px-2.5 py-1 rounded-full">+{c.can_help_with.filter(t => !t.startsWith('degree:')).length - 3} more</span>
           )}
         </div>
       )}
@@ -105,7 +105,7 @@ export default function ConsultantCard({ consultant: c, index }) {
                   <div>
                     <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Can Help With</p>
                     <div className="flex flex-wrap gap-2">
-                      {c.can_help_with.map((h, i) => (
+                      {c.can_help_with.filter(h => !h.startsWith('degree:')).map((h, i) => (
                         <span key={i} className="text-xs bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full font-medium">{h}</span>
                       ))}
                     </div>

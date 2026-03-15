@@ -21,7 +21,7 @@ const AREA_MAP = {
 };
 
 const DEGREE_TAG_MAP = {
-  "Undergraduate / Bachelor's": 'degree:undergraduate',
+  "Undergraduate": 'degree:undergraduate',
   "Master's": 'degree:masters',
   'PhD': 'degree:phd',
   'Pre-University / High School': 'degree:highschool',
