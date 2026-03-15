@@ -158,7 +158,7 @@ export default function Programs() {
                 We guide students toward top-tier educational hubs worldwide. Whether you are looking to study in the US, Canada, or the UK, or exploring diverse academic opportunities across Europe and Asia, we help you find the destination that fits your goals.
               </p>
               <div className="flex flex-wrap gap-2">
-                {['United States', 'Canada', 'United Kingdom', 'Europe', 'Asia', 'Australia'].map((d) => (
+                {['United States', 'Canada', 'United Kingdom', 'France', 'Hungary', 'Italy', 'Japan', 'South Korea', 'Australia', 'and more...'].map((d) => (
                   <span key={d} className="text-xs bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full font-medium">{d}</span>
                 ))}
               </div>
