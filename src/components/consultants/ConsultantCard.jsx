@@ -18,7 +18,7 @@ export default function ConsultantCard({ consultant: c, index }) {
         {/* Avatar */}
         <div className="w-16 h-16 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-800 to-slate-900 flex-shrink-0 flex items-center justify-center">
           {c.photo_url ? (
-            <img src={c.photo_url} alt={c.name} className="w-full h-full object-cover object-top" />
+            <img src={c.photo_url} alt={c.name} className="w-full h-full object-cover object-[center_10%]" />
           ) : (
             <User className="w-8 h-8 text-blue-300" />
           )}
