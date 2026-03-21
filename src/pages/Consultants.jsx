@@ -32,21 +32,22 @@ function matchesFilters(consultant, filters) {
 
   if (degree !== 'all') {
     const tag = DEGREE_TAG_MAP[degree];
-    const canHelp = (consultant.can_help_with || []);
-    if (!canHelp.includes(tag)) return false;
+    const areaHelp = (consultant.area_of_expertise || []);
+    if (!areaHelp.includes(tag)) return false;
   }
 
   if (destination !== 'all') {
     const keywords = DESTINATION_MAP[destination] || [];
-    const country = (consultant.current_country || '').toLowerCase();
-    const canHelp = (consultant.can_help_with || []).join(' ').toLowerCase();
-    if (!keywords.some(k => country.includes(k) || canHelp.includes(k))) return false;
+    const region = (consultant.region || '').toLowerCase();
+    const country = (consultant.country_of_expertise || '').toLowerCase();
+    if (!keywords.some(k => region.includes(k) || country.includes(k))) return false;
   }
 
   if (area !== 'all') {
-    const canHelp = (consultant.can_help_with || []).join(' ').toLowerCase();
+    const areaHelp = (consultant.area_of_expertise || []).join(' ').toLowerCase();
+    const majorHelp = (consultant.major_subject_expertise || []).join(' ').toLowerCase();
     const keywords = AREA_MAP[area] || [];
-    if (!keywords.some(k => canHelp.includes(k))) return false;
+    if (!keywords.some(k => areaHelp.includes(k) || majorHelp.includes(k))) return false;
   }
 
   return true;

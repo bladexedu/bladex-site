@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, GraduationCap, Heart, Lightbulb, Globe, MapPin, ChevronDown, User } from 'lucide-react';
+import { ExternalLink, GraduationCap, Lightbulb, MapPin, ChevronDown, User, BookOpen } from 'lucide-react';
 
 export default function ConsultantCard({ consultant: c, index }) {
   const [expanded, setExpanded] = useState(false);
@@ -28,9 +28,9 @@ export default function ConsultantCard({ consultant: c, index }) {
         <div className="flex-1 min-w-0">
           <h3 className="text-base font-bold text-slate-900 leading-tight">{c.name}</h3>
           <p className="text-blue-600 text-sm font-medium mt-0.5">{c.role}</p>
-          {c.current_country && (
+          {c.country_of_expertise && (
             <p className="text-slate-400 text-xs mt-1 flex items-center gap-1">
-              <MapPin className="w-3 h-3" /> {c.current_country}
+              <MapPin className="w-3 h-3" /> {c.country_of_expertise}
             </p>
           )}
         </div>
@@ -43,14 +43,14 @@ export default function ConsultantCard({ consultant: c, index }) {
         </div>
       )}
 
-      {/* Quick tags — can_help_with preview */}
-      {c.can_help_with?.length > 0 && (
+      {/* Quick tags — area_of_expertise preview */}
+      {c.area_of_expertise?.length > 0 && (
         <div className="px-6 pb-4 flex flex-wrap gap-2">
-          {c.can_help_with.filter(t => !t.startsWith('degree:')).slice(0, 3).map((tag, i) => (
+          {c.area_of_expertise.slice(0, 3).map((tag, i) => (
             <span key={i} className="text-xs bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full font-medium">{tag}</span>
           ))}
-          {c.can_help_with.filter(t => !t.startsWith('degree:')).length > 3 && (
-            <span className="text-xs bg-slate-100 text-slate-500 px-2.5 py-1 rounded-full">+{c.can_help_with.filter(t => !t.startsWith('degree:')).length - 3} more</span>
+          {c.area_of_expertise.length > 3 && (
+            <span className="text-xs bg-slate-100 text-slate-500 px-2.5 py-1 rounded-full">+{c.area_of_expertise.length - 3} more</span>
           )}
         </div>
       )}
@@ -76,28 +76,21 @@ export default function ConsultantCard({ consultant: c, index }) {
           >
             <div className="px-6 pb-6 space-y-5 border-t border-slate-100 pt-5">
 
-              {/* Education */}
-              {c.education && (() => {
-                // Parse "University — Degree" or "University, Degree" format
-                const parts = c.education.split(/\s*[—–]\s*|\n|\s*,\s(?=[A-Z])/);
-                const university = parts[0]?.trim();
-                const degree = parts.slice(1).join(', ').trim();
-                return (
-                  <div className="bg-indigo-50 border border-indigo-100 rounded-2xl p-4 flex gap-3 items-start">
-                    <div className="w-8 h-8 bg-indigo-100 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <GraduationCap className="w-4 h-4 text-indigo-600" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-1">Education</p>
-                      <p className="text-sm text-indigo-900 font-bold leading-snug">{university}</p>
-                      {degree && <p className="text-sm text-indigo-700 font-normal leading-snug mt-0.5">{degree}</p>}
-                    </div>
+              {/* Current Studies */}
+              {c.current_studies && (
+                <div className="bg-indigo-50 border border-indigo-100 rounded-2xl p-4 flex gap-3 items-start">
+                  <div className="w-8 h-8 bg-indigo-100 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <GraduationCap className="w-4 h-4 text-indigo-600" />
                   </div>
-                );
-              })()}
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-1">Current Studies</p>
+                    <p className="text-sm text-indigo-900 leading-snug">{c.current_studies}</p>
+                  </div>
+                </div>
+              )}
 
-              {/* Can help with */}
-              {c.can_help_with?.length > 0 && (
+              {/* Area of Expertise */}
+              {c.area_of_expertise?.length > 0 && (
                 <div className="flex gap-3">
                   <div className="w-8 h-8 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0">
                     <Lightbulb className="w-4 h-4 text-blue-600" />
@@ -105,7 +98,7 @@ export default function ConsultantCard({ consultant: c, index }) {
                   <div>
                     <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Can Help With</p>
                     <div className="flex flex-wrap gap-2">
-                      {c.can_help_with.filter(h => !h.startsWith('degree:')).map((h, i) => (
+                      {c.area_of_expertise.map((h, i) => (
                         <span key={i} className="text-xs bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full font-medium">{h}</span>
                       ))}
                     </div>
@@ -113,32 +106,19 @@ export default function ConsultantCard({ consultant: c, index }) {
                 </div>
               )}
 
-              {/* Interests */}
-              {c.interests?.length > 0 && (
+              {/* Major / Subject Expertise */}
+              {c.major_subject_expertise?.length > 0 && (
                 <div className="flex gap-3">
-                  <div className="w-8 h-8 bg-rose-50 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Heart className="w-4 h-4 text-rose-500" />
+                  <div className="w-8 h-8 bg-violet-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <BookOpen className="w-4 h-4 text-violet-600" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Interests</p>
+                    <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Subject Expertise</p>
                     <div className="flex flex-wrap gap-2">
-                      {c.interests.map((t, i) => (
-                        <span key={i} className="text-xs bg-rose-50 text-rose-600 px-2.5 py-1 rounded-full">{t}</span>
+                      {c.major_subject_expertise.map((s, i) => (
+                        <span key={i} className="text-xs bg-violet-50 text-violet-700 px-2.5 py-1 rounded-full">{s}</span>
                       ))}
                     </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Languages */}
-              {c.languages?.length > 0 && (
-                <div className="flex gap-3">
-                  <div className="w-8 h-8 bg-green-50 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Globe className="w-4 h-4 text-green-600" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Languages</p>
-                    <p className="text-sm text-slate-700">{c.languages.join(' · ')}</p>
                   </div>
                 </div>
               )}
