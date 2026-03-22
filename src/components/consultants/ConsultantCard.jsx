@@ -114,7 +114,7 @@ export default function ConsultantCard({ consultant: c, index }) {
                     <Lightbulb className="w-4 h-4 text-blue-600" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Can Help With</p>
+                    <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Area of Expertise</p>
                     <div className="flex flex-wrap gap-2">
                       {c.area_of_expertise.map((h, i) => (
                         <span key={i} className="text-xs bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full font-medium">{h}</span>
@@ -131,7 +131,7 @@ export default function ConsultantCard({ consultant: c, index }) {
                     <BookOpen className="w-4 h-4 text-violet-600" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Subject Expertise</p>
+                    <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Major/Subject Expertise</p>
                     <div className="flex flex-wrap gap-2">
                       {c.major_subject_expertise.map((s, i) => (
                         <span key={i} className="text-xs bg-violet-50 text-violet-700 px-2.5 py-1 rounded-full">{s}</span>
