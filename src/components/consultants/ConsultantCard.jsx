@@ -98,13 +98,13 @@ export default function ConsultantCard({ consultant: c, index }) {
 
               {/* Country of Expertise */}
               {c.country_of_expertise && (
-                <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex gap-3 items-start">
-                  <div className="w-8 h-8 bg-slate-100 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <MapPin className="w-4 h-4 text-slate-600" />
+                <div className="bg-sky-50 border border-sky-100 rounded-2xl p-4 flex gap-3 items-start">
+                  <div className="w-8 h-8 bg-sky-100 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <MapPin className="w-4 h-4 text-sky-600" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1">Country of Expertise</p>
-                    <p className="text-sm text-slate-700 leading-snug">{c.country_of_expertise}</p>
+                    <p className="text-xs font-bold uppercase tracking-widest text-sky-400 mb-1">Country of Expertise</p>
+                    <p className="text-sm text-sky-900 leading-snug">{c.country_of_expertise}</p>
                   </div>
                 </div>
               )}
