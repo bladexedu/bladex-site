@@ -28,11 +28,6 @@ export default function ConsultantCard({ consultant: c, index }) {
         <div className="flex-1 min-w-0">
           <h3 className="text-base font-bold text-slate-900 leading-tight">{c.name}</h3>
           <p className="text-blue-600 text-sm font-medium mt-0.5">{c.role}</p>
-          {c.country_of_expertise && (
-            <p className="text-slate-400 text-xs mt-1 flex items-center gap-1">
-              <MapPin className="w-3 h-3" /> {c.country_of_expertise}
-            </p>
-          )}
         </div>
       </div>
 
