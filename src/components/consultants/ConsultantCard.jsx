@@ -38,17 +38,6 @@ export default function ConsultantCard({ consultant: c, index }) {
         </div>
       )}
 
-      {/* Quick tags — area_of_expertise preview */}
-      {c.area_of_expertise?.length > 0 && (
-        <div className="px-6 pb-4 flex flex-wrap gap-2">
-          {c.area_of_expertise.slice(0, 3).map((tag, i) => (
-            <span key={i} className="text-xs bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full font-medium">{tag}</span>
-          ))}
-          {c.area_of_expertise.length > 3 && (
-            <span className="text-xs bg-slate-100 text-slate-500 px-2.5 py-1 rounded-full">+{c.area_of_expertise.length - 3} more</span>
-          )}
-        </div>
-      )}
 
       {/* Expand toggle */}
       <button
