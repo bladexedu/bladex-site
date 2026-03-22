@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, GraduationCap, Lightbulb, MapPin, ChevronDown, User, BookOpen } from 'lucide-react';
 
-const BIO_LIMIT = 300;
+const BIO_LIMIT = 320;
 
 export default function ConsultantCard({ consultant: c, index }) {
   const [expanded, setExpanded] = useState(false);
@@ -43,7 +43,7 @@ export default function ConsultantCard({ consultant: c, index }) {
           {c.bio.length > BIO_LIMIT && (
             <button
               onClick={() => setBioExpanded(!bioExpanded)}
-              className="text-xs text-blue-500 hover:text-blue-700 font-medium mt-1"
+              className="text-xs text-slate-400 hover:text-blue-600 font-semibold mt-1"
             >
               {bioExpanded ? 'Show less' : 'See more'}
             </button>
