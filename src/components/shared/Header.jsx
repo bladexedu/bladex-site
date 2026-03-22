@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -9,6 +9,15 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleBookMeeting = () => {
+    if (location.pathname === createPageUrl('Consultants')) {
+      document.getElementById('consultants-grid')?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate(createPageUrl('Consultants'));
+    }
+  };
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 20);
@@ -61,12 +70,10 @@ export default function Header() {
 
             {/* CTA */}
             <div className="hidden md:block">
-              <Link to={createPageUrl('Consultants')}>
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-5 py-2 text-sm font-semibold">
-                  Book a Meeting
-                </Button>
-              </Link>
-                  </div>
+              <Button onClick={handleBookMeeting} className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-5 py-2 text-sm font-semibold">
+                Book a Meeting
+              </Button>
+            </div>
 
                   {/* Mobile Toggle */}
             <button
@@ -106,11 +113,9 @@ export default function Header() {
                     {link.name}
                   </Link>
                 ))}
-                <Link to={createPageUrl('Consultants')}>
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-full mt-4">
-                    Book a Meeting
-                  </Button>
-                </Link>
+                <Button onClick={handleBookMeeting} className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-full mt-4">
+                  Book a Meeting
+                </Button>
               </div>
             </motion.div>
           </motion.div>

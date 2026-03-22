@@ -90,7 +90,7 @@ export default function Consultants() {
       </section>
 
       {/* Grid */}
-      <section className="py-20">
+      <section id="consultants-grid" className="py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {!loading && consultants.length > 0 && (
             <ConsultantFilters filters={filters} onChange={setFilters} />
