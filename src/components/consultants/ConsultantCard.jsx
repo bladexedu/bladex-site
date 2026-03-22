@@ -98,13 +98,13 @@ export default function ConsultantCard({ consultant: c, index }) {
 
               {/* Country of Expertise */}
               {c.country_of_expertise && (
-                <div className="bg-sky-50 border border-sky-100 rounded-2xl p-4 flex gap-3 items-start">
-                  <div className="w-8 h-8 bg-sky-100 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <MapPin className="w-4 h-4 text-sky-600" />
+                <div className="bg-indigo-50 border border-indigo-100 rounded-2xl p-4 flex gap-3 items-start">
+                  <div className="w-8 h-8 bg-indigo-100 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <MapPin className="w-4 h-4 text-indigo-600" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-sky-400 mb-1">Country of Expertise</p>
-                    <p className="text-sm text-sky-900 leading-snug">{c.country_of_expertise}</p>
+                    <p className="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-1">Country of Expertise</p>
+                    <p className="text-sm text-indigo-900 leading-snug">{c.country_of_expertise}</p>
                   </div>
                 </div>
               )}
@@ -129,14 +129,14 @@ export default function ConsultantCard({ consultant: c, index }) {
               {/* Major / Subject Expertise */}
               {c.major_subject_expertise?.length > 0 && (
                 <div className="flex gap-3">
-                  <div className="w-8 h-8 bg-violet-50 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <BookOpen className="w-4 h-4 text-violet-600" />
+                  <div className="w-8 h-8 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <BookOpen className="w-4 h-4 text-blue-600" />
                   </div>
                   <div>
                     <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Major/Subject Expertise</p>
                     <div className="flex flex-wrap gap-2">
                       {c.major_subject_expertise.map((s, i) => (
-                        <span key={i} className="text-xs bg-violet-50 text-violet-700 px-2.5 py-1 rounded-full">{s}</span>
+                        <span key={i} className="text-xs bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full">{s}</span>
                       ))}
                     </div>
                   </div>
