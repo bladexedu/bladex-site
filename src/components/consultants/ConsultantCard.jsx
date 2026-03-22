@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, GraduationCap, Lightbulb, MapPin, ChevronDown, User, BookOpen } from 'lucide-react';
 
-const BIO_LIMIT = 120;
+const BIO_LIMIT = 300;
 
 export default function ConsultantCard({ consultant: c, index }) {
   const [expanded, setExpanded] = useState(false);
