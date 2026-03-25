@@ -6,9 +6,16 @@ import ConsultantCard from '@/components/consultants/ConsultantCard';
 import ConsultantFilters from '@/components/consultants/ConsultantFilters';
 
 const DESTINATION_MAP = {
-  'North America': ['canada', 'usa', 'us', 'united states', 'california', 'north america'],
-  'Europe': ['europe', 'germany', 'france', 'netherlands', 'italy', 'uk', 'united kingdom'],
-  'Asia': ['asia', 'singapore', 'japan', 'china'],
+  'North America': ['canada', 'usa', 'us', 'united states'],
+  // covers Nyan, Nang, Wutt, Cherry, Wai Phyo, Hnaine
+
+  'Europe': ['europe', 'germany', 'france', 'netherlands', 'italy',
+             'uk', 'united kingdom', 'hungary'],
+  // added: hungary (Yati)
+
+  'Asia': ['asia', 'singapore', 'japan', 'korea', 'thailand',
+           'malaysia', 'hong kong'],
+  // added: korea (Thuta), thailand (Nyan), malaysia (Shin Lin Let), hong kong (Wai Phyo)
 };
 
 const AREA_MAP = {
