@@ -7,8 +7,7 @@ import ConsultantFilters from '@/components/consultants/ConsultantFilters';
 
 const DESTINATION_MAP = {
   'North America': ['canada', 'usa', 'us', 'united states', 'california', 'north america'],
-  'UK': ['uk', 'united kingdom'],
-  'Europe': ['europe', 'germany', 'france', 'netherlands'],
+  'Europe': ['europe', 'germany', 'france', 'netherlands', 'italy', 'uk', 'united kingdom'],
   'Asia': ['asia', 'singapore', 'japan', 'china'],
 };
 
