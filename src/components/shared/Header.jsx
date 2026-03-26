@@ -57,6 +57,7 @@ export default function Header() {
                 <Link
                   key={link.page}
                   to={createPageUrl(link.page)}
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                   className={`text-sm font-medium transition-colors ${
                     isActive(link.page)
                       ? isScrolled ? 'text-blue-600' : 'text-blue-300'
