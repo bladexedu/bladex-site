@@ -27,10 +27,10 @@ const AREA_MAP = {
 };
 
 const DEGREE_TAG_MAP = {
-  "Undergraduate": 'degree:undergraduate',
-  "Master's": 'degree:masters',
-  'PhD': 'degree:phd',
-  'Pre-University / High School': 'degree:highschool',
+  "Undergraduate": ['bachelor', 'college', 'college admission', 'university admission', 'pre-med'],
+  "Master's": ['master', 'graduate school'],
+  'PhD': ['phd', 'graduate school', 'research proposal', 'dphil'],
+  'Pre-University / High School': ['highschool', 'high school', 'uwc', 'foundation', 'a-level'],
 };
 
 function matchesFilters(consultant, filters) {
