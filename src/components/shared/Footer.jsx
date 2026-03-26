@@ -34,15 +34,15 @@ export default function Footer() {
                 { name: 'Social Media', page: 'Social' },
               ].map((l) => (
                 <li key={l.page}>
-                  <Link to={createPageUrl(l.page)} className="text-slate-400 hover:text-blue-400 transition-colors">
+                  <Link to={createPageUrl(l.page)} onClick={() => window.scrollTo(0, 0)} className="text-slate-400 hover:text-blue-400 transition-colors">
                     {l.name}
                   </Link>
                 </li>
               ))}
               <li>
-                <a href="https://calendly.com/bladexedu/advising-session" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-1">
-                  Book a Meeting <ExternalLink className="w-3 h-3" />
-                </a>
+                <Link to={createPageUrl('Consultants')} className="text-slate-400 hover:text-blue-400 transition-colors">
+                  Book a Meeting
+                </Link>
               </li>
             </ul>
           </div>
