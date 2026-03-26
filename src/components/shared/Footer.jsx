@@ -34,7 +34,7 @@ export default function Footer() {
                 { name: 'Social Media', page: 'Social' },
               ].map((l) => (
                 <li key={l.page}>
-                  <Link to={createPageUrl(l.page)} onClick={() => window.scrollTo(0, 0)} className="text-slate-400 hover:text-blue-400 transition-colors">
+                  <Link to={createPageUrl(l.page)} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-slate-400 hover:text-blue-400 transition-colors">
                     {l.name}
                   </Link>
                 </li>
