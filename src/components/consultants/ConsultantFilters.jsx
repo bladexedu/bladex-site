@@ -10,7 +10,7 @@ const filterGroups = [
   {
     key: 'destination',
     label: 'Destination',
-    options: ['North America', 'UK', 'Europe', 'Asia'],
+    options: ['North America', 'Europe', 'Asia'],
   },
   {
     key: 'area',
