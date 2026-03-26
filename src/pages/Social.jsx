@@ -7,7 +7,7 @@ const channels = [
     platform: 'Facebook',
     handle: 'BladeX Education',
     description: 'Follow us on Facebook for updates, tips, student stories, and announcements about our programs and launch.',
-    url: 'https://www.facebook.com/share/p/1GrFGYZw4a/',
+    url: 'https://www.facebook.com/profile.php?id=100064021474119',
     icon: Facebook,
     color: { bg: 'bg-blue-600', light: 'bg-blue-50', text: 'text-blue-600', border: 'border-blue-100' },
     cta: 'Follow on Facebook',
