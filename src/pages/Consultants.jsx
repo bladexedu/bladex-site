@@ -42,6 +42,9 @@ const AREA_MAP = {
     'arts', 'humanities', 'social', 'literature', 'history',
     'philosophy', 'linguistics', 'language', 'french', 'fle'
   ],
+  'High School Diploma': [
+    'diploma'
+  ],
 };
 
 const DEGREE_TAG_MAP = {

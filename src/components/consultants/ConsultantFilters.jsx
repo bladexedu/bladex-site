@@ -15,7 +15,7 @@ const filterGroups = [
   {
     key: 'area',
     label: 'Area of Study',
-    options: ['Medicine & Sciences', 'Engineering', 'Business & Management', 'Computer Science & IT', 'Arts & Humanities'],
+    options: ['Medicine & Sciences', 'Engineering', 'Business & Management', 'Computer Science & IT', 'Arts & Humanities', 'High School Diploma'],
   },
 ];
 
