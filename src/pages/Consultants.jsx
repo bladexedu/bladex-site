@@ -37,9 +37,10 @@ function matchesFilters(consultant, filters) {
   const { degree, destination, area } = filters;
 
   if (degree !== 'all') {
-    const tag = DEGREE_TAG_MAP[degree];
-    const areaHelp = (consultant.area_of_expertise || []);
-    if (!areaHelp.includes(tag)) return false;
+    const keywords = DEGREE_TAG_MAP[degree] || [];
+    const areaHelp = (consultant.area_of_expertise || []).join(' ').toLowerCase();
+    const majorHelp = (consultant.major_subject_expertise || []).join(' ').toLowerCase();
+    if (!keywords.some(k => areaHelp.includes(k) || majorHelp.includes(k))) return false;
   }
 
   if (destination !== 'all') {
