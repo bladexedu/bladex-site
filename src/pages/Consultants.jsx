@@ -19,11 +19,31 @@ const DESTINATION_MAP = {
 };
 
 const AREA_MAP = {
-  'Medicine & Sciences': ['medicine', 'biochemistry', 'science', 'biology', 'chemistry', 'health', 'biotech', 'stem'],
-  'Engineering': ['engineering', 'mechanical', 'electrical', 'civil', 'chemical engineering'],
-  'Business & Management': ['business', 'management', 'commerce', 'mba', 'analytics', 'bcom', 'btm'],
-  'Computer Science & IT': ['computer', 'software', 'cs', 'it', 'data science', 'tech', 'information technology'],
-  'Arts & Humanities': ['arts', 'humanities', 'social', 'literature', 'history', 'philosophy'],
+  'Medicine & Sciences': [
+    'medicine', 'biochemistry', 'science', 'biology', 'chemistry',
+    'health', 'biotech', 'stem', 'medical', 'molecular',
+    'genetics', 'immunology', 'cell', 'research',
+    'environmental science', 'pre-med'
+  ],
+  'Engineering': [
+    'engineering', 'mechanical', 'electrical', 'civil',
+    'chemical engineering', 'biomedical', 'sustainable energy',
+    'materials science', 'energy', 'environmental', 'systems'
+  ],
+  'Business & Management': [
+    'business', 'management', 'commerce', 'mba', 'analytics',
+    'bcom', 'btm'
+  ],
+  'Computer Science & IT': [
+    'computer', 'software', 'cs', 'it', 'data science', 'tech',
+    'information technology', 'computer science', 'data-related',
+    'technology'
+  ],
+  'Arts & Humanities': [
+    'arts', 'humanities', 'social', 'literature', 'history',
+    'philosophy', 'linguistics', 'language', 'french', 'fle',
+    'curriculum'
+  ],
 };
 
 const DEGREE_TAG_MAP = {
