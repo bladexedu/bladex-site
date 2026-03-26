@@ -20,29 +20,27 @@ const DESTINATION_MAP = {
 
 const AREA_MAP = {
   'Medicine & Sciences': [
-    'medicine', 'biochemistry', 'science', 'biology', 'chemistry',
+    'medicine', 'biochemistry', 'biology', 'chemistry',
     'health', 'biotech', 'stem', 'medical', 'molecular',
-    'genetics', 'immunology', 'cell', 'research',
-    'environmental science', 'pre-med'
+    'genetics', 'immunology', 'cell', 'pre-med',
+    'environmental science'
   ],
   'Engineering': [
     'engineering', 'mechanical', 'electrical', 'civil',
     'chemical engineering', 'biomedical', 'sustainable energy',
-    'materials science', 'energy', 'environmental', 'systems'
+    'materials science', 'energy', 'systems engineering'
   ],
   'Business & Management': [
     'business', 'management', 'commerce', 'mba', 'analytics',
     'bcom', 'btm'
   ],
   'Computer Science & IT': [
-    'computer', 'software', 'cs', 'it', 'data science', 'tech',
-    'information technology', 'computer science', 'data-related',
-    'technology'
+    'computer science', 'software', 'data science',
+    'information technology', 'data-related'
   ],
   'Arts & Humanities': [
     'arts', 'humanities', 'social', 'literature', 'history',
-    'philosophy', 'linguistics', 'language', 'french', 'fle',
-    'curriculum'
+    'philosophy', 'linguistics', 'language', 'french', 'fle'
   ],
 };
 
