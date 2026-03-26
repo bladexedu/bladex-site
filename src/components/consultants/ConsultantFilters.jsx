@@ -35,7 +35,7 @@ export default function ConsultantFilters({ filters, onChange, count }) {
         {/* Dropdowns */}
         {filterGroups.map((group) => (
           <div key={group.key} className="flex flex-col gap-1 min-w-[120px]">
-            <label className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">
+            <label className="text-[10px] font-semibold uppercase tracking-widest text-slate-600">
               {group.label}
             </label>
             <div className="relative">
