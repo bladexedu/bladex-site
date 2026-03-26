@@ -120,9 +120,6 @@ export default function Consultants() {
       {/* Grid */}
       <section id="consultants-grid" className="py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          {!loading && consultants.length > 0 && (
-            <ConsultantFilters filters={filters} onChange={setFilters} />
-          )}
           {loading ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[1, 2, 3, 4, 5, 6].map(i => (
@@ -138,17 +135,22 @@ export default function Consultants() {
             </motion.div>
           ) : (() => {
             const filtered = consultants.filter(c => matchesFilters(c, filters));
-            return filtered.length === 0 ? (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16">
-                <p className="text-slate-500 text-lg">No consultants match the selected filters.</p>
-                <button onClick={() => setFilters({ degree: 'all', destination: 'all', area: 'all' })} className="mt-4 text-blue-600 hover:underline text-sm font-medium">Clear filters</button>
-              </motion.div>
-            ) : (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filtered.map((c, i) => (
-                  <ConsultantCard key={c.id} consultant={c} index={i} />
-                ))}
-              </div>
+            return (
+              <>
+                <ConsultantFilters filters={filters} onChange={setFilters} count={filtered.length} />
+                {filtered.length === 0 ? (
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16">
+                    <p className="text-slate-500 text-lg">No consultants match the selected filters.</p>
+                    <button onClick={() => setFilters({ degree: 'all', destination: 'all', area: 'all' })} className="mt-4 text-blue-600 hover:underline text-sm font-medium">Clear filters</button>
+                  </motion.div>
+                ) : (
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {filtered.map((c, i) => (
+                      <ConsultantCard key={c.id} consultant={c} index={i} />
+                    ))}
+                  </div>
+                )}
+              </>
             );
           })()}
         </div>
