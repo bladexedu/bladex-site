@@ -130,12 +130,18 @@ export default function Social() {
                 <span className="text-blue-600 font-semibold text-xs uppercase tracking-widest">Facebook</span>
                 <h2 className="text-2xl font-bold text-slate-900 mt-1">Latest from BladeX</h2>
               </div>
-              <div className="bg-slate-50 border border-slate-200 rounded-3xl flex items-center justify-center text-slate-400 text-sm font-medium" style={{ minHeight: '480px' }}>
-                <div className="text-center">
-                  <Facebook className="w-10 h-10 mx-auto mb-3 text-slate-300" />
-                  <p className="text-slate-400 font-medium">Facebook Feed</p>
-                  <p className="text-slate-300 text-xs mt-1">Live feed coming soon</p>
-                </div>
+              <div className="rounded-3xl overflow-hidden border border-slate-200">
+                <div
+                  className="fb-page"
+                  data-href="https://www.facebook.com/profile.php?id=100064021474119"
+                  data-tabs="timeline"
+                  data-width=""
+                  data-height="480"
+                  data-small-header="false"
+                  data-adapt-container-width="true"
+                  data-hide-cover="false"
+                  data-show-facepile="true"
+                />
               </div>
             </div>
 
