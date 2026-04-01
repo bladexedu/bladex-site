@@ -65,13 +65,13 @@ export default function About() {
 
       {/* Hero */}
       <section className="relative pt-36 pb-32 bg-slate-900 overflow-hidden">
-        <div className="absolute inset-0 opacity-10"
-          style={{ backgroundImage: 'radial-gradient(circle, #3b82f6 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+        <div className="absolute inset-0"
+          style={{ backgroundImage: 'radial-gradient(circle, rgba(59,130,246,0.35) 1.5px, transparent 1.5px)', backgroundSize: '36px 36px', animation: 'grid-pan 8s linear infinite' }} />
         <div className="absolute top-10 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-indigo-600/20 rounded-full blur-3xl" />
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <motion.div initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.35, ease: 'easeOut' }}>
             <span className="inline-block text-blue-400 font-semibold text-xs uppercase tracking-widest bg-blue-500/10 border border-blue-500/20 px-4 py-1.5 rounded-full mb-5">About BladeX Education</span>
             <h1 className="text-5xl md:text-6xl font-bold text-white mt-2 mb-6 leading-tight">
               We Walk With You,<br />
@@ -83,9 +83,9 @@ export default function About() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
             className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14"
           >
             {stats.map((s, i) => (
@@ -96,25 +96,23 @@ export default function About() {
             ))}
           </motion.div>
         </div>
-      </section>
 
-      {/* Image Banner */}
-      <section className="h-72 overflow-hidden">
-        <img
-          src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69a2245d77b294d2ae3abe8f/de878602c_image.png"
-          alt="Snowy mountain peaks panorama"
-          className="w-full h-full object-cover object-center"
-          style={{ display: 'block' }}
-        />
+        {/* Wave → white */}
+        <div className="absolute bottom-0 left-0 w-full pointer-events-none">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
+            <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="white" />
+          </svg>
+        </div>
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-24">
+      <section className="relative py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.92 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
             className="text-center mb-14"
           >
             <span className="text-blue-600 font-semibold text-xs uppercase tracking-widest">Our Purpose</span>
@@ -123,9 +121,10 @@ export default function About() {
 
           <div className="grid lg:grid-cols-2 gap-8">
             <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.92 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.35, ease: 'easeOut' }}
               className="relative bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl p-10 text-white overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-2xl" />
@@ -141,9 +140,10 @@ export default function About() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 24 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.92 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.35, ease: 'easeOut' }}
               className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-10 text-white overflow-hidden"
             >
               <div className="absolute bottom-0 left-0 w-48 h-48 bg-indigo-600/20 rounded-full blur-2xl" />
@@ -159,15 +159,23 @@ export default function About() {
             </motion.div>
           </div>
         </div>
+
+        {/* Wave → slate-50 */}
+        <div className="absolute bottom-0 left-0 w-full pointer-events-none">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
+            <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#f8fafc" />
+          </svg>
+        </div>
       </section>
 
       {/* What We Focus On */}
-      <section className="py-24 bg-slate-50">
+      <section className="relative py-24 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.92 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
             className="text-center mb-14"
           >
             <span className="text-blue-600 font-semibold text-xs uppercase tracking-widest">Our Approach</span>
@@ -181,10 +189,10 @@ export default function About() {
               return (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, scale: 0.92 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.12 }}
+                  transition={{ duration: 0.35, ease: 'easeOut' }}
                   className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 border border-slate-100"
                 >
                   <div className={`w-14 h-14 ${c.icon} rounded-2xl flex items-center justify-center mb-6`}>
@@ -198,15 +206,23 @@ export default function About() {
             })}
           </div>
         </div>
+
+        {/* Wave → white */}
+        <div className="absolute bottom-0 left-0 w-full pointer-events-none">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
+            <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="white" />
+          </svg>
+        </div>
       </section>
 
       {/* Our Process */}
-      <section className="py-24 bg-white">
+      <section className="relative py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.92 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
             className="text-center mb-14"
           >
             <span className="text-blue-600 font-semibold text-xs uppercase tracking-widest">How It Works</span>
@@ -223,10 +239,10 @@ export default function About() {
               return (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, scale: 0.92 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.15 }}
+                  transition={{ duration: 0.35, ease: 'easeOut' }}
                   className="relative flex flex-col items-center text-center"
                 >
                   <div className="relative z-10 w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-200">
@@ -240,15 +256,22 @@ export default function About() {
             })}
           </div>
         </div>
+
+        {/* Wave → slate-900 */}
+        <div className="absolute bottom-0 left-0 w-full pointer-events-none">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
+            <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#0f172a" />
+          </svg>
+        </div>
       </section>
 
       {/* CTA */}
       <section className="py-24 bg-slate-900 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10"
-          style={{ backgroundImage: 'radial-gradient(circle, #3b82f6 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+        <div className="absolute inset-0"
+          style={{ backgroundImage: 'radial-gradient(circle, rgba(59,130,246,0.35) 1.5px, transparent 1.5px)', backgroundSize: '36px 36px', animation: 'grid-pan 8s linear infinite' }} />
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl" />
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <motion.div initial={{ opacity: 0, scale: 0.92 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.35, ease: 'easeOut' }}>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Let's Take the First Step Together</h2>
             <p className="text-slate-400 text-lg mb-8 leading-relaxed">Schedule a one-on-one session with our consultants and get the guidance you need for your study abroad journey.</p>
 

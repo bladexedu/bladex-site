@@ -39,12 +39,13 @@ const colorMap = {
 
 export default function ProgramsPreview() {
   return (
-    <section className="py-24 bg-slate-50">
+    <section className="relative py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.92 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.35, ease: 'easeOut' }}
           className="text-center mb-14"
         >
           <span className="text-blue-600 font-semibold text-xs uppercase tracking-widest">What We Offer</span>
@@ -58,10 +59,10 @@ export default function ProgramsPreview() {
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.92 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
+                transition={{ duration: 0.35, ease: 'easeOut' }}
                 className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col"
               >
                 <div className={`${c.bg} px-8 pt-8 pb-6 flex-grow`}>
@@ -92,9 +93,10 @@ export default function ProgramsPreview() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, scale: 0.92 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.35, ease: 'easeOut' }}
           className="text-center mt-10"
         >
           <Link to={createPageUrl('Programs')}>
@@ -103,6 +105,13 @@ export default function ProgramsPreview() {
             </button>
           </Link>
         </motion.div>
+      </div>
+
+      {/* Wave transition → white */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none pointer-events-none">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
+          <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="white" />
+        </svg>
       </div>
     </section>
   );

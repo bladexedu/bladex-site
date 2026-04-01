@@ -82,7 +82,16 @@
     @apply border-border outline-ring/50;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @keyframes grid-pan {
+    0% { background-position: 0px 0px; }
+    100% { background-position: 36px 36px; }
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
   }
 }

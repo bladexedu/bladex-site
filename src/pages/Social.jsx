@@ -52,9 +52,9 @@ export default function Social() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="relative pt-32 pb-20 bg-slate-900 overflow-hidden">
-        <div className="absolute inset-0 opacity-10"
-          style={{ backgroundImage: 'radial-gradient(circle, #3b82f6 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+      <section className="relative pt-32 pb-28 bg-slate-900 overflow-hidden">
+        <div className="absolute inset-0"
+          style={{ backgroundImage: 'radial-gradient(circle, rgba(59,130,246,0.35) 1.5px, transparent 1.5px)', backgroundSize: '36px 36px', animation: 'grid-pan 8s linear infinite' }} />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>
             <span className="text-blue-400 font-semibold text-xs uppercase tracking-widest">Stay Connected</span>
@@ -64,10 +64,17 @@ export default function Social() {
             </p>
           </motion.div>
         </div>
+
+        {/* Wave → white */}
+        <div className="absolute bottom-0 left-0 w-full pointer-events-none">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
+            <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="white" />
+          </svg>
+        </div>
       </section>
 
       {/* Channels */}
-      <section className="py-24">
+      <section className="relative py-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8">
             {channels.map((ch, i) => {
@@ -75,10 +82,10 @@ export default function Social() {
               return (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, scale: 0.92 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
+                  transition={{ duration: 0.35, ease: 'easeOut' }}
                   className={`bg-white border ${ch.color.border} rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300`}
                 >
                   {/* Header bar */}
@@ -119,6 +126,13 @@ export default function Social() {
               );
             })}
           </div>
+        </div>
+
+        {/* Wave → slate-50 */}
+        <div className="absolute bottom-0 left-0 w-full pointer-events-none">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
+            <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#f8fafc" />
+          </svg>
         </div>
       </section>
 

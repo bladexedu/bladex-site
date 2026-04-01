@@ -25,14 +25,15 @@ const pillars = [
 
 export default function AboutPreview() {
   return (
-    <section className="py-24 bg-white">
+    <section className="relative py-24 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Text */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.92 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
           >
             <span className="text-blue-600 font-semibold text-xs uppercase tracking-widest">Who We Are</span>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-3 mb-5 leading-snug">
@@ -53,9 +54,10 @@ export default function AboutPreview() {
 
           {/* Pillars + photo */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.92 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
             className="space-y-5"
           >
             <div className="rounded-2xl overflow-hidden h-48 mb-2">
@@ -68,10 +70,10 @@ export default function AboutPreview() {
             {pillars.map((p, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.92 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ duration: 0.35, ease: 'easeOut' }}
                 className="flex gap-5 bg-slate-50 rounded-2xl p-5"
               >
                 <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -85,6 +87,13 @@ export default function AboutPreview() {
             ))}
           </motion.div>
         </div>
+      </div>
+
+      {/* Wave transition → slate-50 */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none pointer-events-none">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
+          <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#f8fafc" />
+        </svg>
       </div>
     </section>
   );

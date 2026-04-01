@@ -7,20 +7,50 @@ import { motion } from 'framer-motion';
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-slate-900">
-      {/* Background */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&q=80"
-          alt="Students studying"
-          className="w-full h-full object-cover opacity-25"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-900/90 to-blue-950/80" />
-      </div>
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#060b18]">
+      {/* Animated styles */}
+      <style>{`
+        @keyframes blob-drift {
+          0%, 100% { transform: translate(-50%, -50%) scale(1); }
+          33% { transform: translate(-40%, -60%) scale(1.1); }
+          66% { transform: translate(-60%, -45%) scale(0.95); }
+        }
+        @keyframes blob-drift-2 {
+          0%, 100% { transform: translate(0%, 0%) scale(1); }
+          33% { transform: translate(8%, -10%) scale(1.08); }
+          66% { transform: translate(-5%, 8%) scale(0.96); }
+        }
+        @keyframes grid-pan {
+          0% { background-position: 0px 0px; }
+          100% { background-position: 36px 36px; }
+        }
+      `}</style>
 
-      {/* Subtle grid overlay */}
-      <div className="absolute inset-0 z-0 opacity-10"
-        style={{ backgroundImage: 'radial-gradient(circle, #3b82f6 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+      {/* Geometric dot grid background */}
+      <div className="absolute inset-0 z-0">
+        {/* Slowly panning dot grid */}
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(circle, rgba(59,130,246,0.35) 1.5px, transparent 1.5px)',
+          backgroundSize: '36px 36px',
+          animation: 'grid-pan 8s linear infinite',
+        }} />
+        {/* Vignette to fade dots at edges */}
+        <div className="absolute inset-0" style={{
+          background: 'radial-gradient(ellipse 70% 70% at 50% 50%, transparent 40%, #0f172a 100%)',
+        }} />
+        {/* Primary drifting glow blob */}
+        <div className="absolute top-1/2 left-1/4 w-[600px] h-[400px] rounded-full blur-3xl opacity-20"
+          style={{
+            background: 'radial-gradient(ellipse, #3b82f6, #1d4ed8)',
+            animation: 'blob-drift 10s ease-in-out infinite',
+          }} />
+        {/* Secondary accent blob */}
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[300px] rounded-full blur-3xl opacity-10"
+          style={{
+            background: 'radial-gradient(ellipse, #6366f1, #0ea5e9)',
+            animation: 'blob-drift-2 13s ease-in-out infinite',
+          }} />
+      </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
         <div className="max-w-2xl">
@@ -84,6 +114,13 @@ export default function HeroSection() {
             ))}
           </motion.div>
         </div>
+      </div>
+
+      {/* Wave transition → white */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none pointer-events-none">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
+          <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="white" />
+        </svg>
       </div>
     </section>
   );

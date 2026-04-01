@@ -88,6 +88,7 @@ export default function Consultants() {
 
   useEffect(() => {
     const fetchConsultants = async () => {
+      if (!supabase) { setLoading(false); return; }
       const { data } = await supabase
         .from('consultants')
         .select('*')
@@ -103,9 +104,9 @@ export default function Consultants() {
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Hero */}
-      <section className="relative pt-32 pb-20 bg-slate-900 overflow-hidden">
-        <div className="absolute inset-0 opacity-10"
-          style={{ backgroundImage: 'radial-gradient(circle, #3b82f6 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+      <section className="relative pt-32 pb-28 bg-slate-900 overflow-hidden">
+        <div className="absolute inset-0"
+          style={{ backgroundImage: 'radial-gradient(circle, rgba(59,130,246,0.35) 1.5px, transparent 1.5px)', backgroundSize: '36px 36px', animation: 'grid-pan 8s linear infinite' }} />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>
             <span className="text-blue-400 font-semibold text-xs uppercase tracking-widest">Meet the Team</span>
@@ -115,10 +116,17 @@ export default function Consultants() {
             </p>
           </motion.div>
         </div>
+
+        {/* Wave → slate-50 */}
+        <div className="absolute bottom-0 left-0 w-full pointer-events-none">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
+            <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#f8fafc" />
+          </svg>
+        </div>
       </section>
 
       {/* Grid */}
-      <section id="consultants-grid" className="py-20">
+      <section id="consultants-grid" className="relative py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {loading ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -154,10 +162,17 @@ export default function Consultants() {
             );
           })()}
         </div>
+
+        {/* Wave → white */}
+        <div className="absolute bottom-0 left-0 w-full pointer-events-none">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
+            <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="white" />
+          </svg>
+        </div>
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-16 bg-white border-t border-slate-100">
+      <section className="py-16 bg-white">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-2xl font-bold text-slate-900 mb-3">Ready to get started?</h2>
           <p className="text-slate-500 mb-4">Browse the profiles above and book directly with the consultant that feels right for you.</p>

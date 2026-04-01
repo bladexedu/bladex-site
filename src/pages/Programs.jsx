@@ -54,9 +54,10 @@ function ProgramCard({ program, reverse }) {
   const Icon = program.icon;
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, scale: 0.92 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
+      transition={{ duration: 0.35, ease: 'easeOut' }}
       className={`grid lg:grid-cols-2 gap-12 items-center ${reverse ? 'lg:grid-flow-dense' : ''}`}
     >
       {/* Image / Visual side */}
@@ -106,11 +107,11 @@ export default function Programs() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="relative pt-32 pb-20 bg-slate-900 overflow-hidden">
-        <div className="absolute inset-0 opacity-10"
-          style={{ backgroundImage: 'radial-gradient(circle, #3b82f6 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+      <section className="relative pt-32 pb-28 bg-slate-900 overflow-hidden">
+        <div className="absolute inset-0"
+          style={{ backgroundImage: 'radial-gradient(circle, rgba(59,130,246,0.35) 1.5px, transparent 1.5px)', backgroundSize: '36px 36px', animation: 'grid-pan 8s linear infinite' }} />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>
+          <motion.div initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.35, ease: 'easeOut' }}>
             <span className="text-blue-400 font-semibold text-xs uppercase tracking-widest">Our Services</span>
             <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-5">Programs & Services</h1>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
@@ -118,24 +119,39 @@ export default function Programs() {
             </p>
           </motion.div>
         </div>
+
+        {/* Wave → white */}
+        <div className="absolute bottom-0 left-0 w-full pointer-events-none">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
+            <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="white" />
+          </svg>
+        </div>
       </section>
 
       {/* Programs */}
-      <section className="py-24">
+      <section className="relative py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32">
           <ProgramCard program={consulting} reverse={false} />
           <ProgramCard program={mentorship} reverse={true} />
           <ProgramCard program={guidance} reverse={false} />
         </div>
+
+        {/* Wave → slate-50 */}
+        <div className="absolute bottom-0 left-0 w-full pointer-events-none">
+          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
+            <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#f8fafc" />
+          </svg>
+        </div>
       </section>
 
       {/* Global Destinations & Fields of Study */}
-      <section className="py-24 bg-slate-50">
+      <section className="relative py-24 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.92 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
             className="text-center mb-14"
           >
             <span className="text-blue-600 font-semibold text-xs uppercase tracking-widest">Where We Can Take You</span>
@@ -145,9 +161,10 @@ export default function Programs() {
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Destinations */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.92 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.35, ease: 'easeOut' }}
               className="bg-white rounded-3xl p-10 border border-slate-100 shadow-sm"
             >
               <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
@@ -166,9 +183,10 @@ export default function Programs() {
 
             {/* Academic Majors */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.92 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.35, ease: 'easeOut' }}
               className="bg-white rounded-3xl p-10 border border-slate-100 shadow-sm"
             >
               <div className="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center mb-6">
