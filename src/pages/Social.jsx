@@ -6,43 +6,43 @@ const channels = [
   {
     platform: 'Facebook',
     handle: 'BladeX Education',
-    description: 'Follow us on Facebook for updates, tips, student stories, and announcements about our programs and launch.',
+    description: 'Updates, tips, student stories, and program announcements.',
     url: 'https://www.facebook.com/profile.php?id=100064021474119',
     icon: Facebook,
     color: { bg: 'bg-blue-600', light: 'bg-blue-50', text: 'text-blue-600', border: 'border-blue-100' },
-    cta: 'Follow on Facebook',
+    cta: 'Facebook',
     badge: 'Facebook Page',
   },
   {
     platform: 'YouTube',
     handle: 'BladeX Education',
-    description: 'Subscribe to our YouTube channel for in-depth guidance videos, country breakdowns, Q&As, and student journeys.',
+    description: 'Guidance videos, country breakdowns, Q&As, and student journeys.',
     url: 'http://www.youtube.com/@Bladex-edu',
     icon: Youtube,
     color: { bg: 'bg-red-600', light: 'bg-red-50', text: 'text-red-600', border: 'border-red-100' },
-    cta: 'Subscribe on YouTube',
+    cta: 'YouTube',
     badge: 'YouTube Channel',
     comingSoon: false,
   },
   {
     platform: 'Telegram',
     handle: '@bladexedu',
-    description: 'Join our Telegram channel for instant updates, important application deadline reminders, and direct announcements regarding our study abroad programs.',
+    description: 'Instant updates, deadline reminders, and study abroad announcements.',
     url: 'https://t.me/bladexedu',
     icon: Send,
     color: { bg: 'bg-cyan-500', light: 'bg-cyan-50', text: 'text-cyan-600', border: 'border-cyan-100' },
-    cta: 'Join on Telegram',
+    cta: 'Telegram',
     badge: 'Telegram Channel',
     comingSoon: false,
   },
   {
     platform: 'LinkedIn',
     handle: 'BladeX Education',
-    description: 'Connect with us on our professional network for industry insights, company milestones, and strategic advice on building your global career pathway.',
+    description: 'Industry insights, company milestones, and global career advice.',
     url: 'https://www.linkedin.com/company/bladex-education/',
     icon: Linkedin,
     color: { bg: 'bg-[#0A66C2]', light: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-100' },
-    cta: 'Follow on LinkedIn',
+    cta: 'LinkedIn',
     badge: 'Company Page',
     comingSoon: false,
   },
@@ -73,58 +73,72 @@ export default function Social() {
         </div>
       </section>
 
-      {/* Channels */}
+      {/* Channels + Feed */}
       <section className="relative py-24">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-8">
-            {channels.map((ch, i) => {
-              const Icon = ch.icon;
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.92 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.35, ease: 'easeOut' }}
-                  className={`bg-white border ${ch.color.border} rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300`}
-                >
-                  {/* Header bar */}
-                  <div className={`${ch.color.bg} px-8 py-10 text-white`}>
-                    <div className="flex items-center justify-between mb-4">
-                      <Icon className="w-12 h-12 opacity-90" />
-                      <span className="text-xs font-bold uppercase tracking-widest bg-white/20 px-3 py-1 rounded-full">
-                        {ch.badge}
-                      </span>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-10 items-start">
+
+            {/* Left — compact social cards */}
+            <div className="flex flex-col gap-4 lg:w-[38%] w-full">
+              <div className="mb-2">
+                <span className="text-blue-600 font-semibold text-xs uppercase tracking-widest">Our Channels</span>
+                <h2 className="text-2xl font-bold text-slate-900 mt-1">Find Us Online</h2>
+              </div>
+              {channels.map((ch, i) => {
+                const Icon = ch.icon;
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -16 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, ease: 'easeOut', delay: i * 0.07 }}
+                    className="bg-[#f7f6f3] border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 flex items-center gap-4 px-5 py-4"
+                  >
+                    <div className={`${ch.color.bg} w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0`}>
+                      <Icon className="w-5 h-5 text-white" />
                     </div>
-                    <h2 className="text-2xl font-bold">{ch.platform}</h2>
-                    <p className="text-white/70 text-sm mt-1">{ch.handle}</p>
-                  </div>
-
-                  {/* Body */}
-                  <div className="px-8 py-8">
-                    <p className="text-slate-600 leading-relaxed mb-6 text-sm">{ch.description}</p>
-
+                    <div className="flex-1 min-w-0">
+                      <p className="font-bold text-slate-900 text-sm leading-tight">{ch.platform}</p>
+                      <p className="text-slate-400 text-xs mt-0.5 mb-1">{ch.handle}</p>
+                      <p className="text-slate-600 text-[11px] leading-relaxed">{ch.description}</p>
+                    </div>
                     {ch.comingSoon ? (
-                      <div className={`${ch.color.light} ${ch.color.text} rounded-xl px-5 py-3 text-sm font-semibold flex items-center gap-2`}>
-                        <Bell className="w-4 h-4" />
-                        Channel launching soon — check back!
+                      <div className={`${ch.color.light} ${ch.color.text} rounded-lg px-3 py-1.5 text-xs font-semibold flex items-center gap-1.5 flex-shrink-0`}>
+                        <Bell className="w-3 h-3" />
+                        Soon
                       </div>
                     ) : (
                       <a
                         href={ch.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`${ch.color.bg} hover:opacity-90 text-white font-semibold w-full flex items-center justify-center gap-2 py-3 rounded-xl transition-opacity text-sm`}
+                        className={`${ch.color.bg} hover:opacity-90 text-white font-semibold flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-opacity text-xs flex-shrink-0`}
                       >
-                        <ThumbsUp className="w-4 h-4" />
                         {ch.cta}
                         <ExternalLink className="w-3 h-3" />
                       </a>
                     )}
-                  </div>
-                </motion.div>
-              );
-            })}
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Right — Facebook feed placeholder */}
+            <div className="lg:w-[62%] w-full">
+              <div className="mb-2">
+                <span className="text-blue-600 font-semibold text-xs uppercase tracking-widest">Facebook</span>
+                <h2 className="text-2xl font-bold text-slate-900 mt-1">Latest from BladeX</h2>
+              </div>
+              <div className="bg-slate-50 border border-slate-200 rounded-3xl flex items-center justify-center text-slate-400 text-sm font-medium" style={{ minHeight: '480px' }}>
+                <div className="text-center">
+                  <Facebook className="w-10 h-10 mx-auto mb-3 text-slate-300" />
+                  <p className="text-slate-400 font-medium">Facebook Feed</p>
+                  <p className="text-slate-300 text-xs mt-1">Live feed coming soon</p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -137,7 +151,7 @@ export default function Social() {
       </section>
 
       {/* Why follow section */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Why Follow Us?</h2>
