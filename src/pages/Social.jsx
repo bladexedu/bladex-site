@@ -130,17 +130,18 @@ export default function Social() {
                 <span className="text-blue-600 font-semibold text-xs uppercase tracking-widest">Facebook</span>
                 <h2 className="text-2xl font-bold text-slate-900 mt-1">Latest from BladeX</h2>
               </div>
-              <div className="rounded-3xl overflow-hidden border border-slate-200">
+              <div className="rounded-3xl overflow-hidden border border-slate-200 w-full" style={{ minHeight: '480px' }}>
                 <div
-                  className="fb-page"
+                  className="fb-page w-full"
                   data-href="https://www.facebook.com/profile.php?id=100064021474119"
                   data-tabs="timeline"
-                  data-width=""
+                  data-width="700"
                   data-height="480"
                   data-small-header="false"
                   data-adapt-container-width="true"
                   data-hide-cover="false"
                   data-show-facepile="true"
+                  style={{ width: '100%' }}
                 />
               </div>
             </div>
