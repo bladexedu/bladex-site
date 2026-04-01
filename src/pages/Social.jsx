@@ -79,7 +79,7 @@ export default function Social() {
           <div className="flex flex-col lg:flex-row gap-10 items-start">
 
             {/* Left — compact social cards */}
-            <div className="flex flex-col gap-4 lg:w-[38%] w-full">
+            <div className="flex flex-col gap-4 flex-1 w-full">
               <div className="mb-2">
                 <span className="text-blue-600 font-semibold text-xs uppercase tracking-widest">Our Channels</span>
                 <h2 className="text-2xl font-bold text-slate-900 mt-1">Find Us Online</h2>
@@ -124,24 +124,22 @@ export default function Social() {
               })}
             </div>
 
-            {/* Right — Facebook feed placeholder */}
-            <div className="lg:w-[62%] w-full">
+            {/* Right — Facebook feed */}
+            <div className="w-full lg:w-[500px] flex-shrink-0">
               <div className="mb-2">
                 <span className="text-blue-600 font-semibold text-xs uppercase tracking-widest">Facebook</span>
                 <h2 className="text-2xl font-bold text-slate-900 mt-1">Latest from BladeX</h2>
               </div>
-              <div className="rounded-3xl overflow-hidden border border-slate-200 w-full" style={{ minHeight: '480px' }}>
-                <div
-                  className="fb-page w-full"
-                  data-href="https://www.facebook.com/profile.php?id=100064021474119"
-                  data-tabs="timeline"
-                  data-width="700"
-                  data-height="480"
-                  data-small-header="false"
-                  data-adapt-container-width="true"
-                  data-hide-cover="false"
-                  data-show-facepile="true"
-                  style={{ width: '100%' }}
+              <div className="rounded-3xl overflow-hidden border border-slate-200 w-full" style={{ minHeight: '500px' }}>
+                <iframe
+                  src={`https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100064021474119&tabs=timeline&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=920970834041656`}
+                  width="100%"
+                  height="500"
+                  style={{ border: 'none', overflow: 'hidden', display: 'block' }}
+                  scrolling="no"
+                  frameBorder="0"
+                  allowFullScreen
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                 />
               </div>
             </div>
