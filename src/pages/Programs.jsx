@@ -139,7 +139,7 @@ export default function Programs() {
       </section>
 
       {/* Global Destinations & Fields of Study */}
-      <section className="relative py-24 bg-[#f7f6f3]">
+      <section className="relative py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.92 }}
