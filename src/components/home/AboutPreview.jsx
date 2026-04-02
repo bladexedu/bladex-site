@@ -89,12 +89,6 @@ export default function AboutPreview() {
         </div>
       </div>
 
-      {/* Wave transition → slate-50 */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none pointer-events-none">
-        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
-          <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#f8fafc" />
-        </svg>
-      </div>
     </section>
   );
 }

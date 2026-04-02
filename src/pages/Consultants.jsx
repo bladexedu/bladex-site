@@ -117,12 +117,6 @@ export default function Consultants() {
           </motion.div>
         </div>
 
-        {/* Wave → slate-50 */}
-        <div className="absolute bottom-0 left-0 w-full pointer-events-none">
-          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
-            <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#f8fafc" />
-          </svg>
-        </div>
       </section>
 
       {/* Grid */}
@@ -163,12 +157,6 @@ export default function Consultants() {
           })()}
         </div>
 
-        {/* Wave → white */}
-        <div className="absolute bottom-0 left-0 w-full pointer-events-none">
-          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
-            <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="white" />
-          </svg>
-        </div>
       </section>
 
       {/* Bottom CTA */}

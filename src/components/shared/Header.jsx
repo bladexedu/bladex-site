@@ -58,20 +58,29 @@ export default function Header() {
                   key={link.page}
                   to={createPageUrl(link.page)}
                   onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                  className={`text-sm font-medium transition-colors ${
+                  className={`text-sm font-medium transition-all duration-200 relative group ${
                     isActive(link.page)
                       ? isScrolled ? 'text-blue-600' : 'text-blue-300'
                       : isScrolled ? 'text-slate-600 hover:text-slate-900' : 'text-white/80 hover:text-white'
                   }`}
                 >
                   {link.name}
+                  <span className={`absolute -bottom-0.5 left-0 h-[2px] rounded-full transition-all duration-200 bg-current ${isActive(link.page) ? 'w-full' : 'w-0 group-hover:w-full'}`} />
                 </Link>
               ))}
             </nav>
 
             {/* CTA */}
             <div className="hidden md:block">
-              <Button onClick={handleBookMeeting} className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-5 py-2 text-sm font-semibold">
+              <Button
+                onClick={handleBookMeeting}
+                className="relative text-white rounded-full px-5 py-2 text-sm font-bold flex items-center gap-1.5 hover:scale-105 transition-transform duration-200 shadow-lg shadow-blue-800/40"
+                style={{
+                  background: 'linear-gradient(270deg, #1e3a8a, #1d4ed8, #2563eb, #1e40af, #1e3a8a)',
+                  backgroundSize: '300% 300%',
+                  animation: 'btn-gradient 4s ease infinite',
+                }}
+              >
                 Book a Meeting
               </Button>
             </div>

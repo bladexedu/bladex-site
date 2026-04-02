@@ -24,9 +24,9 @@ export default function Footer() {
       {/* Top accent line */}
       <div className="h-px w-full bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
 
-      {/* Dot grid */}
-      <div className="absolute inset-0 opacity-[0.04]"
-        style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+      {/* Animated dot grid */}
+      <div className="absolute inset-0"
+        style={{ backgroundImage: 'radial-gradient(circle, rgba(59,130,246,0.35) 1.5px, transparent 1.5px)', backgroundSize: '36px 36px', animation: 'grid-pan 8s linear infinite' }} />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
         <div className="grid md:grid-cols-3 gap-12">

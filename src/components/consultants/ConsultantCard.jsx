@@ -5,9 +5,28 @@ import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 
 const BIO_LIMIT = 120;
 
+const LOCATION_MAP = {
+  'nyan':      'Canada',
+  'nang':      'United States',
+  'wutt':      'United States',
+  'cherry':    'United States',
+  'thuta':     'South Korea',
+  'win':       'Japan',
+  'yati':      'Hungary',
+  'shin lin':  'United Kingdom',
+  'ei myat':   'Italy',
+  'shin thant':'Canada',
+  'may':       'France',
+  'wai phyo':  'United States',
+  'hnaine':    'United Kingdom',
+};
+
 export default function ConsultantCard({ consultant: c, index }) {
   const firstName = c.name.split(' ')[0];
   const initials = c.name.split(' ').map(n => n[0]).slice(0, 2).join('');
+  const location = Object.entries(LOCATION_MAP).find(([key]) =>
+    c.name.toLowerCase().includes(key)
+  )?.[1];
 
   return (
     <motion.div
@@ -55,6 +74,9 @@ export default function ConsultantCard({ consultant: c, index }) {
         </div>
         <h3 className="relative text-base font-bold text-white leading-tight">{c.name}</h3>
         <p className="relative text-blue-400 text-sm font-semibold mt-1">{c.role}</p>
+        {location && (
+          <p className="relative text-[#f7f6f3]/80 text-xs mt-1.5">📍 {location}</p>
+        )}
       </div>
 
       {/* Bio preview */}

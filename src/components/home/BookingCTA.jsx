@@ -6,9 +6,7 @@ import { createPageUrl } from '@/utils';
 
 export default function BookingCTA() {
   return (
-    <section className="py-24 bg-slate-900 relative overflow-hidden">
-      <div className="absolute inset-0"
-        style={{ backgroundImage: 'radial-gradient(circle, rgba(59,130,246,0.35) 1.5px, transparent 1.5px)', backgroundSize: '36px 36px', animation: 'grid-pan 8s linear infinite' }} />
+    <section className="py-24 bg-white relative overflow-hidden">
       <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.92 }}
@@ -16,16 +14,16 @@ export default function BookingCTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.35, ease: 'easeOut' }}
         >
-          <div className="w-16 h-16 bg-blue-600/20 border border-blue-500/30 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <CalendarCheck className="w-8 h-8 text-blue-400" />
+          <div className="w-16 h-16 bg-blue-100 border border-blue-200 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <CalendarCheck className="w-8 h-8 text-blue-600" />
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
             Ready to Take the First Step?
           </h2>
-          <p className="text-slate-400 text-lg mb-3 leading-relaxed">
+          <p className="text-slate-600 text-lg mb-3 leading-relaxed">
             Our consultants are ready to help you navigate your study abroad journey. Whether you're just starting or need clarity, we're here for you.
           </p>
-          <p className="text-slate-500 text-sm mb-10">
+          <p className="text-slate-400 text-sm mb-10">
             No commitment. Just a conversation to help you move forward.
           </p>
           <Link

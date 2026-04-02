@@ -160,12 +160,146 @@ export default function About() {
           </div>
         </div>
 
-        {/* Wave → slate-50 */}
-        <div className="absolute bottom-0 left-0 w-full pointer-events-none">
-          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
-            <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#f8fafc" />
-          </svg>
+      </section>
+
+      {/* Our Leadership Team */}
+      <section className="relative py-24 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
+            className="text-center mb-14"
+          >
+            <span className="text-blue-600 font-semibold text-xs uppercase tracking-widest">The People Behind BladeX</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-3">Our Leadership Team</h2>          </motion.div>
+
+          {/* Leadership cards */}
+          <div className="grid md:grid-cols-3 gap-6 mb-14">
+            {[
+              {
+                initials: 'NLK',
+                name: 'Nyan Lin Kyaw',
+                role: 'Founder & Lead Education Consultant',
+                degree: 'Honours Bachelor of Commerce, Business Technology Management',
+                university: 'University of Ottawa',
+                note: 'Driving the organization\'s strategy, marketing initiatives, and long-term vision.',
+                gradient: 'from-blue-500 to-indigo-600',
+                photo: 'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/public/consultant-photos/1.jpg',
+                location: 'Canada',
+              },
+              {
+                initials: 'NSN',
+                name: 'Nang Sayoon Noi',
+                role: 'Co-Founder & Operations Lead',
+                degree: 'Bachelor of Science in Biochemistry (Chemistry Honors)',
+                university: 'Sacramento State University',
+                note: 'Overseeing the organizational structure, internal communications, and seamless day-to-day operations.',
+                gradient: 'from-emerald-500 to-teal-600',
+                photo: 'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/public/consultant-photos/2.jpg',
+                location: 'United States',
+              },
+              {
+                initials: 'KT',
+                name: 'Khun Thurein',
+                role: 'Technical Operations Lead',
+                degree: 'Bachelor of Computer Science',
+                university: 'Carleton University',
+                note: 'Managing technical infrastructure, platform development, and digital systems for BladeX.',
+                gradient: 'from-slate-600 to-slate-800',
+                photo: 'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/sign/Team/ktr.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84ZWY5ZjAzNS00OWY3LTQ4MDUtYmRmZi02N2IxYzU3NWY5ZmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJUZWFtL2t0ci5qcGciLCJpYXQiOjE3NzUxNjg5MzIsImV4cCI6MjA5MDUyODkzMn0.d3OZOvYByl1VJDYs5aayrs6_3gD6Eu370-egVFqTo3A',
+                location: 'Canada',
+              },
+            ].map((p, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.92 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35, ease: 'easeOut', delay: i * 0.07 }}
+                className="bg-slate-900 border border-slate-700/50 rounded-3xl overflow-hidden shadow-md flex flex-col"
+              >
+                {/* Top — dark with photo */}
+                <div className="relative px-6 pt-8 pb-6 flex flex-col items-center text-center overflow-hidden">
+                  <div className="absolute -top-6 -left-6 w-32 h-32 rounded-full blur-2xl opacity-50" style={{ background: '#3b82f6' }} />
+                  <div className="absolute -bottom-4 -right-4 w-28 h-28 rounded-full blur-2xl opacity-40" style={{ background: '#6366f1' }} />
+                  <div className="absolute top-4 right-8 w-20 h-20 rounded-full blur-xl opacity-30" style={{ background: '#0ea5e9' }} />
+                  <div className="absolute inset-0 bg-slate-900/50 backdrop-blur-md" />
+                  {[
+                    { top: '10%', left: '8%',  size: 3, delay: 0 },
+                    { top: '20%', left: '80%', size: 2, delay: 0.5 },
+                    { top: '55%', left: '15%', size: 2, delay: 1.0 },
+                    { top: '70%', left: '70%', size: 3, delay: 1.5 },
+                    { top: '30%', left: '55%', size: 2, delay: 0.8 },
+                    { top: '80%', left: '35%', size: 2, delay: 0.3 },
+                    { top: '15%', left: '42%', size: 2, delay: 1.2 },
+                    { top: '65%', left: '88%', size: 3, delay: 0.6 },
+                    { top: '85%', left: '12%', size: 2, delay: 1.8 },
+                    { top: '40%', left: '92%', size: 2, delay: 0.9 },
+                  ].map((dot, di) => (
+                    <motion.div key={di}
+                      className="absolute rounded-full bg-blue-500/50 pointer-events-none"
+                      style={{ top: dot.top, left: dot.left, width: dot.size, height: dot.size }}
+                      animate={{ opacity: [0.2, 1, 0.2], scale: [0.8, 1.4, 0.8] }}
+                      transition={{ duration: 3, repeat: Infinity, delay: dot.delay, ease: 'easeInOut' }}
+                    />
+                  ))}
+                  <div className="relative w-20 h-20 rounded-2xl overflow-hidden bg-white/60 backdrop-blur-sm flex items-center justify-center mb-4 ring-2 ring-slate-800/40 shadow-lg">
+                    {p.photo
+                      ? <img src={p.photo} alt={p.name} className="w-full h-full object-cover object-[center_10%]" />
+                      : <span className={`text-lg font-bold bg-gradient-to-br ${p.gradient} bg-clip-text text-transparent`}>{p.initials}</span>
+                    }
+                  </div>
+                  <h3 className="relative text-base font-bold text-white leading-tight">{p.name}</h3>
+                  <p className="relative text-blue-400 text-xs font-semibold mt-1">{p.role}</p>
+                  <p className="relative text-[#f7f6f3]/80 text-xs mt-1.5">📍 {p.location}</p>
+                </div>
+
+                {/* Bottom — beige */}
+                <div className="px-6 py-5 bg-[#f7f6f3] flex-1 flex flex-col gap-4">
+                  <div>
+                    <p className="text-slate-800 font-bold text-sm leading-snug">{p.degree}</p>
+                    <p className="text-blue-500 text-xs mt-1 font-medium">{p.university}</p>
+                  </div>
+                  <div>
+                    <p className="text-slate-600 text-xs leading-relaxed">{p.note}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Team members */}
+          <div className="text-center mb-8">
+            <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Meet Our Team Members</span>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+            {[
+              { name: 'Myat Min Htet', role: 'Research & Analytics Intern' },
+              { name: 'Thin Thiri San', role: 'Research & Insight Intern' },
+              { name: 'Myint Zu Linn', role: 'Content & Social Media Intern' },
+              { name: 'Chaw Ei Ei Thu', role: 'Content & Social Media Intern' },
+              { name: 'Htun Htun', role: 'Creative Design & Video Editing Intern' },
+            ].map((m, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.92 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35, ease: 'easeOut', delay: i * 0.06 }}
+                className="bg-white rounded-2xl p-5 text-center shadow-sm border border-slate-100"
+              >
+                <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-3">
+                  <span className="text-blue-600 font-bold text-sm">{m.name[0]}</span>
+                </div>
+                <p className="font-bold text-slate-900 text-sm leading-tight">{m.name}</p>
+                <p className="text-blue-500 text-xs mt-1 leading-snug font-medium">{m.role}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
+
       </section>
 
       {/* What We Focus On */}
@@ -207,12 +341,6 @@ export default function About() {
           </div>
         </div>
 
-        {/* Wave → white */}
-        <div className="absolute bottom-0 left-0 w-full pointer-events-none">
-          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
-            <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="white" />
-          </svg>
-        </div>
       </section>
 
       {/* Our Process */}
@@ -257,24 +385,14 @@ export default function About() {
           </div>
         </div>
 
-        {/* Wave → slate-900 */}
-        <div className="absolute bottom-0 left-0 w-full pointer-events-none">
-          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
-            <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#0f172a" />
-          </svg>
-        </div>
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-slate-900 relative overflow-hidden">
-        <div className="absolute inset-0"
-          style={{ backgroundImage: 'radial-gradient(circle, rgba(59,130,246,0.35) 1.5px, transparent 1.5px)', backgroundSize: '36px 36px', animation: 'grid-pan 8s linear infinite' }} />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl" />
+      <section className="py-24 bg-white relative overflow-hidden">
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.92 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.35, ease: 'easeOut' }}>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Let's Take the First Step Together</h2>
-            <p className="text-slate-400 text-lg mb-8 leading-relaxed">Schedule a one-on-one session with our consultants and get the guidance you need for your study abroad journey.</p>
-
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Let's Take the First Step Together</h2>
+            <p className="text-slate-600 text-lg mb-8 leading-relaxed">Schedule a one-on-one session with our consultants and get the guidance you need for your study abroad journey.</p>
           </motion.div>
         </div>
       </section>

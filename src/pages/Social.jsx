@@ -130,12 +130,12 @@ export default function Social() {
                 <span className="text-blue-600 font-semibold text-xs uppercase tracking-widest">Facebook</span>
                 <h2 className="text-2xl font-bold text-slate-900 mt-1">Latest from BladeX</h2>
               </div>
-              <div className="rounded-3xl overflow-hidden border border-slate-200 w-full" style={{ minHeight: '700px' }}>
+              <div style={{ overflow: 'hidden', height: '640px' }}>
                 <iframe
-                  src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100064021474119&tabs=timeline&width=500&height=700&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=false&appId=920970834041656"
+                  src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100064021474119&tabs=timeline&width=500&height=800&small_header=true&adapt_container_width=false&hide_cover=true&show_facepile=false&appId=920970834041656"
                   width="500"
-                  height="700"
-                  style={{ border: 'none', overflow: 'hidden', display: 'block', width: '100%' }}
+                  height="800"
+                  style={{ border: 'none', display: 'block', marginTop: '-70px' }}
                   scrolling="no"
                   frameBorder="0"
                   allowFullScreen
@@ -147,12 +147,6 @@ export default function Social() {
           </div>
         </div>
 
-        {/* Wave → slate-50 */}
-        <div className="absolute bottom-0 left-0 w-full pointer-events-none">
-          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
-            <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#f8fafc" />
-          </svg>
-        </div>
       </section>
 
       {/* Why follow section */}
