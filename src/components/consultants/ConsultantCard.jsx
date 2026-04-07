@@ -19,6 +19,8 @@ const LOCATION_MAP = {
   'may':       'France',
   'wai phyo':  'United States',
   'hnaine':    'United Kingdom',
+  'jimmy':     'Poland',
+  'thomas':    'Canada',
 };
 
 export default function ConsultantCard({ consultant: c, index }) {
