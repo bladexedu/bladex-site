@@ -276,7 +276,7 @@ export default function About() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
             {[
-              { name: 'Myat Min Htet', role: 'Research & Analytics Intern' },
+              { name: 'Myat Min Htet', role: 'Operations & Analytics Associate' },
               { name: 'Thin Thiri San', role: 'Research & Insight Intern' },
               { name: 'Myint Zu Linn', role: 'Content & Social Media Intern' },
               { name: 'Chaw Ei Ei Thu', role: 'Content & Social Media Intern' },
