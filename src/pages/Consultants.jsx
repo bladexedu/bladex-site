@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { supabase } from '@/api/supabaseClient';
-import { ExternalLink } from 'lucide-react';
+import { X, ArrowLeft } from 'lucide-react';
 import ConsultantCard from '@/components/consultants/ConsultantCard';
 import ConsultantFilters from '@/components/consultants/ConsultantFilters';
+import imgAsia from '@/assests/region-asia.jpg';
+import imgNorthAmerica from '@/assests/region-north-america.jpg';
+import imgUnitedKingdom from '@/assests/region-united-kingdom.jpg';
+import imgEurope from '@/assests/region-europe.jpg';
 
 const DESTINATION_MAP = {
   'North America': ['canada', 'usa', 'us', 'united states'],
@@ -12,6 +16,8 @@ const DESTINATION_MAP = {
   'Europe': ['europe', 'germany', 'france', 'netherlands', 'italy',
              'uk', 'united kingdom', 'hungary'],
   // added: hungary (Yati)
+
+  'United Kingdom': ['uk', 'united kingdom'],
 
   'Asia': ['asia', 'singapore', 'japan', 'korea', 'thailand',
            'malaysia', 'hong kong'],
@@ -54,6 +60,13 @@ const DEGREE_TAG_MAP = {
   'Pre-University / High School': ['highschool', 'high school', 'uwc', 'foundation', 'a-level'],
 };
 
+const REGIONS = [
+  { key: 'North America', label: 'North America', subtitle: 'Canada · USA', img: imgNorthAmerica },
+  { key: 'Europe', label: 'Europe', subtitle: 'Germany · France · Netherlands · more', img: imgEurope },
+  { key: 'United Kingdom', label: 'United Kingdom', subtitle: 'UK universities', img: imgUnitedKingdom },
+  { key: 'Asia', label: 'Asia', subtitle: 'Singapore · Japan · Korea · more', img: imgAsia },
+];
+
 function matchesFilters(consultant, filters) {
   const { degree, destination, area } = filters;
 
@@ -85,6 +98,8 @@ export default function Consultants() {
   const [consultants, setConsultants] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({ degree: 'all', destination: 'all', area: 'all' });
+  const [showRegionPicker, setShowRegionPicker] = useState(true);
+  const [selectedRegion, setSelectedRegion] = useState(null);
 
   useEffect(() => {
     const fetchConsultants = async () => {
@@ -101,6 +116,129 @@ export default function Consultants() {
     fetchConsultants();
   }, []);
 
+  const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
+
+  const handleRegionClick = (regionKey) => {
+    setConsultants(prev => shuffle(prev));
+    setSelectedRegion(regionKey);
+    setFilters({ degree: 'all', destination: regionKey, area: 'all' });
+    setShowRegionPicker(false);
+  };
+
+  const handleBrowseAll = () => {
+    setConsultants(prev => shuffle(prev));
+    setSelectedRegion(null);
+    setFilters({ degree: 'all', destination: 'all', area: 'all' });
+    setShowRegionPicker(false);
+  };
+
+  const handleClearRegion = () => {
+    setSelectedRegion(null);
+    setFilters(prev => ({ ...prev, destination: 'all' }));
+  };
+
+  const handleBackToRegions = () => {
+    setShowRegionPicker(true);
+    setSelectedRegion(null);
+    setFilters({ degree: 'all', destination: 'all', area: 'all' });
+  };
+
+  if (showRegionPicker) {
+    return (
+      <div className="min-h-screen bg-slate-50">
+        {/* Hero — kept intact */}
+        <section className="relative pt-32 pb-28 bg-slate-900 overflow-hidden">
+          <div className="absolute inset-0"
+            style={{ backgroundImage: 'radial-gradient(circle, rgba(59,130,246,0.35) 1.5px, transparent 1.5px)', backgroundSize: '36px 36px', animation: 'grid-pan 8s linear infinite' }} />
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>
+              <span className="text-blue-400 font-semibold text-xs uppercase tracking-widest">Meet the Team</span>
+              <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-5">Our Consultants</h1>
+              <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+                Every consultant at BladeX Education has been through the study-abroad journey themselves. Browse their profiles and book directly with who feels right for you.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Region picker */}
+        <section className="py-20 px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="w-full flex flex-col items-center"
+          >
+            {/* Label */}
+            <p className="text-slate-500 text-xs font-semibold uppercase tracking-[0.2em] mb-10">
+              Where are you looking to study?
+            </p>
+
+            {/* 2×2 region card grid */}
+            <div className="grid grid-cols-2 gap-4 w-full max-w-[640px]">
+              {REGIONS.map((region, i) => (
+                <motion.button
+                  key={region.key}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 * i, duration: 0.35 }}
+                  onClick={() => handleRegionClick(region.key)}
+                  className="group relative flex flex-col items-start justify-between rounded-xl p-5 h-[160px] text-left overflow-hidden transition-transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+                >
+                  {/* Background image */}
+                  <span
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                    style={{ backgroundImage: `url(${region.img})` }}
+                    aria-hidden
+                  />
+                  {/* Dark overlay */}
+                  <span className="absolute inset-0 bg-black/45 group-hover:bg-black/35 transition-colors" aria-hidden />
+
+                  {/* Content */}
+                  <span className="relative flex flex-col gap-0.5">
+                    <span className="text-white text-lg font-semibold leading-snug drop-shadow">{region.label}</span>
+                    <span
+                      className="text-xs font-medium bg-clip-text text-transparent"
+                      style={{
+                        backgroundImage: 'linear-gradient(270deg, #ffffff, #9ca3af, #d1d5db, #6b7280, #ffffff)',
+                        backgroundSize: '300% 300%',
+                        animation: 'btn-gradient 4s ease infinite',
+                      }}
+                    >{region.subtitle}</span>
+                  </span>
+                  <span
+                    className="relative inline-flex items-center gap-1.5 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-lg shadow-blue-800/40"
+                    style={{
+                      background: 'linear-gradient(270deg, #1e3a8a, #1d4ed8, #2563eb, #1e40af, #1e3a8a)',
+                      backgroundSize: '300% 300%',
+                      animation: 'btn-gradient 4s ease infinite',
+                    }}
+                  >
+                    Book Now
+                    <svg className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M3 8h10M9 4l4 4-4 4"/>
+                    </svg>
+                  </span>
+                </motion.button>
+              ))}
+            </div>
+
+            {/* Browse all link */}
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              onClick={handleBrowseAll}
+              className="mt-10 text-slate-400 hover:text-slate-700 text-sm transition-colors underline underline-offset-4"
+            >
+              Browse all consultants →
+            </motion.button>
+          </motion.div>
+        </section>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Hero */}
@@ -116,7 +254,6 @@ export default function Consultants() {
             </p>
           </motion.div>
         </div>
-
       </section>
 
       {/* Grid */}
@@ -139,7 +276,30 @@ export default function Consultants() {
             const filtered = consultants.filter(c => matchesFilters(c, filters));
             return (
               <>
-                <ConsultantFilters filters={filters} onChange={setFilters} count={filtered.length} />
+                {/* Back + region chip */}
+                <div className="flex flex-wrap items-center gap-3 mb-4">
+                  <button
+                    onClick={handleBackToRegions}
+                    className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-blue-600 transition-colors"
+                  >
+                    <ArrowLeft className="w-3.5 h-3.5" />
+                    Back
+                  </button>
+                  {selectedRegion && (
+                    <span className="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-700 text-xs font-medium px-3 py-1 rounded-full">
+                      <span>📍 {selectedRegion}</span>
+                      <button
+                        onClick={handleClearRegion}
+                        className="ml-0.5 hover:text-blue-900 transition-colors"
+                        aria-label="Clear region filter"
+                      >
+                        <X className="w-3 h-3" />
+                      </button>
+                    </span>
+                  )}
+                </div>
+
+                <ConsultantFilters filters={filters} onChange={setFilters} count={filtered.length} hideDestination={!!selectedRegion} />
                 {filtered.length === 0 ? (
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16">
                     <p className="text-slate-500 text-lg">No consultants match the selected filters.</p>
@@ -156,7 +316,6 @@ export default function Consultants() {
             );
           })()}
         </div>
-
       </section>
 
       {/* Bottom CTA */}

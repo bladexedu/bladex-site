@@ -85,7 +85,7 @@ export default function Header() {
               </Button>
             </div>
 
-                  {/* Mobile Toggle */}
+            {/* Mobile Toggle */}
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
               className={`md:hidden p-2 ${isScrolled ? 'text-slate-900' : 'text-white'}`}

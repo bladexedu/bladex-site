@@ -277,7 +277,7 @@ export default function About() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
             {[
               { name: 'Myat Min Htet', role: 'Operations & Analytics Associate' },
-              { name: 'Thin Thiri San', role: 'Research & Insight Intern' },
+              { name: 'Thin Thiri San', role: 'Market Research & Operations Associate' },
               { name: 'Myint Zu Linn', role: 'Content & Social Media Intern' },
               { name: 'Chaw Ei Ei Thu', role: 'Content & Social Media Intern' },
               { name: 'Htun Htun', role: 'Creative Design & Video Editing Intern' },
