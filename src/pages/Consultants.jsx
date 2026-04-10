@@ -14,13 +14,13 @@ const DESTINATION_MAP = {
   // covers Nyan, Nang, Wutt, Cherry, Wai Phyo, Hnaine
 
   'Europe': ['europe', 'germany', 'france', 'netherlands', 'italy',
-             'uk', 'united kingdom', 'hungary', 'poland'],
+             'hungary', 'poland'],
   // added: hungary (Yati)
 
   'United Kingdom': ['uk', 'united kingdom'],
 
   'Asia': ['asia', 'singapore', 'japan', 'korea', 'thailand',
-           'malaysia', 'hong kong'],
+           'malaysia', 'hong kong', 'india'],
   // added: korea (Thuta), thailand (Nyan), malaysia (Shin Lin Let), hong kong (Wai Phyo)
 };
 

@@ -241,7 +241,12 @@ export default function ConsultantCard({ consultant: c, index }) {
           href={c.booking_url || 'https://calendly.com/bladexedu/advising-session'}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 flex items-center justify-center gap-1.5 text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-xl border-2 border-blue-600 hover:border-blue-700 transition-all duration-200"
+          className="flex-1 flex items-center justify-center gap-1.5 text-sm font-bold text-white py-2.5 rounded-xl shadow-lg shadow-blue-800/40 hover:scale-105 transition-transform duration-200"
+          style={{
+            background: 'linear-gradient(270deg, #1e3a8a, #1d4ed8, #2563eb, #1e40af, #1e3a8a)',
+            backgroundSize: '300% 300%',
+            animation: 'btn-gradient 4s ease infinite',
+          }}
         >
           Book
           <ExternalLink className="w-3.5 h-3.5" />
