@@ -62,8 +62,8 @@ const DEGREE_TAG_MAP = {
 
 const REGIONS = [
   { key: 'North America', label: 'North America', subtitle: 'Canada · USA', img: imgNorthAmerica },
-  { key: 'Europe', label: 'Europe', subtitle: 'Germany · France · Netherlands · more', img: imgEurope },
-  { key: 'United Kingdom', label: 'United Kingdom', subtitle: 'UK universities', img: imgUnitedKingdom },
+  { key: 'Europe', label: 'Europe', subtitle: 'Germany · France · Italy · more', img: imgEurope },
+  { key: 'United Kingdom', label: 'United Kingdom', subtitle: 'England · Ireland · more', img: imgUnitedKingdom },
   { key: 'Asia', label: 'Asia', subtitle: 'Singapore · Japan · Korea · more', img: imgAsia },
 ];
 
