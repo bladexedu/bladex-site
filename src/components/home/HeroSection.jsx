@@ -87,16 +87,26 @@ export default function HeroSection() {
             className="flex flex-wrap gap-4"
           >
             <Link to={createPageUrl('Consultants')}>
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-5 text-base rounded-full font-semibold">
+              <button className="group inline-flex items-center text-white px-8 py-2.5 text-base rounded-full font-bold shadow-lg shadow-blue-800/40 hover:scale-105 transition-transform duration-200"
+                style={{
+                  background: 'linear-gradient(270deg, #1e3a8a, #1d4ed8, #2563eb, #1e40af, #1e3a8a)',
+                  backgroundSize: '300% 300%',
+                  animation: 'btn-gradient 4s ease infinite',
+                }}>
                 Meet Our Consultants
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
+                <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+              </button>
             </Link>
             <Link to={createPageUrl('Programs')}>
-              <Button size="lg" variant="outline" className="border-slate-400 text-slate-200 bg-slate-400/20 hover:bg-slate-300/30 px-8 py-5 text-base rounded-full">
+              <button className="group inline-flex items-center text-white px-8 py-2.5 text-base rounded-full font-bold shadow-lg shadow-blue-800/40 hover:scale-105 transition-transform duration-200 border-0"
+                style={{
+                  background: 'linear-gradient(270deg, #1e3a8a, #1d4ed8, #2563eb, #1e40af, #1e3a8a)',
+                  backgroundSize: '300% 300%',
+                  animation: 'btn-gradient 4s ease infinite',
+                }}>
                 Our Programs
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
+                <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+              </button>
             </Link>
           </motion.div>
 

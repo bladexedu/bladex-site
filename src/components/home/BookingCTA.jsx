@@ -28,10 +28,15 @@ export default function BookingCTA() {
           </p>
           <Link
             to={createPageUrl('Consultants')}
-            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-full text-base transition-colors"
+            className="group inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-full text-base shadow-lg shadow-blue-800/40 hover:scale-105 transition-transform duration-200"
+            style={{
+              background: 'linear-gradient(270deg, #1e3a8a, #1d4ed8, #2563eb, #1e40af, #1e3a8a)',
+              backgroundSize: '300% 300%',
+              animation: 'btn-gradient 4s ease infinite',
+            }}
           >
             Meet Our Consultants
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
           </Link>
         </motion.div>
       </div>

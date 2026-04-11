@@ -46,9 +46,14 @@ export default function AboutPreview() {
               We believe every student deserves access to high-tier guidance, regardless of their background. Our consultants provide the objective insights and mentorship you need to move forward with confidence.
             </p>
             <Link to={createPageUrl('About')}>
-              <Button variant="outline" className="rounded-full border-slate-300 hover:border-blue-600 hover:text-blue-600 transition-colors">
-                Learn More About Us <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
+              <button className="group inline-flex items-center rounded-full px-5 py-2.5 font-bold text-white shadow-lg shadow-teal-800/40 hover:scale-105 transition-transform duration-200"
+                style={{
+                  background: 'linear-gradient(270deg, #134e4a, #0f766e, #14b8a6, #0d9488, #134e4a)',
+                  backgroundSize: '300% 300%',
+                  animation: 'btn-gradient 4s ease infinite',
+                }}>
+                Learn More About Us <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+              </button>
             </Link>
           </motion.div>
 
