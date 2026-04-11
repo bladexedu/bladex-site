@@ -21,6 +21,8 @@ const LOCATION_MAP = {
   'hnaine':    'United Kingdom',
   'jimmy':     'Poland',
   'thomas':    'Canada',
+  'arkar':     'Germany',
+  'kyi pyar':  'United Kingdom',
 };
 
 export default function ConsultantCard({ consultant: c, index }) {
