@@ -1,0 +1,214 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e6]:
+      - link "BladeX Education" [ref=e7] [cursor=pointer]:
+        - /url: /Home
+        - img "BladeX Education" [ref=e8]
+      - button "📅 Book Now!" [ref=e9] [cursor=pointer]:
+        - generic [ref=e10]: 📅
+        - generic [ref=e11]: Book Now!
+      - button [ref=e12] [cursor=pointer]:
+        - img [ref=e13]
+  - main [ref=e14]:
+    - generic [ref=e15]:
+      - generic [ref=e16]:
+        - generic [ref=e23]:
+          - generic [ref=e25]: BladeX Educational Consulting & Mentorship
+          - heading "Find Your Path. Study Abroad With Confidence." [level=1] [ref=e26]:
+            - text: Find Your Path.
+            - text: Study Abroad
+            - text: With Confidence.
+          - paragraph [ref=e27]: Welcome to BladeX Education. We provide strategic educational advisory for students navigating their international academic journey. Our goal is to help you find clarity, direction, and a pathway that perfectly aligns with your ambitions.
+          - generic [ref=e28]:
+            - link "Meet Our Consultants" [ref=e29] [cursor=pointer]:
+              - /url: /Consultants
+              - button "Meet Our Consultants" [ref=e30]:
+                - text: Meet Our Consultants
+                - img
+            - link "Our Programs" [ref=e31] [cursor=pointer]:
+              - /url: /Programs
+              - button "Our Programs" [ref=e32]:
+                - text: Our Programs
+                - img
+          - generic [ref=e33]:
+            - generic [ref=e34]: One-on-One Mentorship
+            - generic [ref=e35]: Study Abroad Guidance
+            - generic [ref=e36]: Career Pathways
+            - generic [ref=e37]: No Visa Processing
+        - generic:
+          - img
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - text: Who We Are
+          - heading "More than a consultancy. We are your strategic partners." [level=2] [ref=e42]:
+            - text: More than a consultancy.
+            - text: We are your strategic partners.
+          - paragraph [ref=e43]:
+            - text: BladeX Education is a dedicated advisory platform for
+            - strong [ref=e44]: Myanmar students who aspire to study abroad
+            - text: . Rather than just focusing on paperwork, we take the time to sit with you, understand your unique story, and help you build a strategic roadmap for your future.
+          - paragraph [ref=e45]: We believe every student deserves access to high-tier guidance, regardless of their background. Our consultants provide the objective insights and mentorship you need to move forward with confidence.
+          - link "Learn More About Us" [ref=e46] [cursor=pointer]:
+            - /url: /About
+            - button "Learn More About Us" [ref=e47]:
+              - text: Learn More About Us
+              - img
+        - generic [ref=e48]:
+          - img "Students collaborating" [ref=e50]
+          - generic [ref=e51]:
+            - img [ref=e53]
+            - generic [ref=e56]:
+              - heading "Strategic Academic Direction" [level=3] [ref=e57]
+              - paragraph [ref=e58]: We offer targeted support to students who feel uncertain about their future trajectory, delivering clarity and a strategic plan to move forward with confidence.
+          - generic [ref=e59]:
+            - img [ref=e61]
+            - generic [ref=e63]:
+              - heading "Personalized Counselling" [level=3] [ref=e64]
+              - paragraph [ref=e65]: We explore your interests, goals, and circumstances to help you choose the right country and university — confidently.
+          - generic [ref=e66]:
+            - img [ref=e68]
+            - generic [ref=e71]:
+              - heading "Study-to-Career Pathway" [level=3] [ref=e72]
+              - paragraph [ref=e73]: We help you choose subjects that align with real career opportunities abroad, building a strong foundation.
+      - generic [ref=e75]:
+        - generic [ref=e76]:
+          - text: What We Offer
+          - heading "Our Complimentary Programs" [level=2] [ref=e77]
+          - paragraph [ref=e78]: We offer high-quality, complimentary guidance tailored to your goals. Explore our core services and take the first step toward your study abroad journey today.
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - generic [ref=e81]:
+              - generic [ref=e82]:
+                - img [ref=e84]
+                - generic [ref=e86]: Program 1
+              - heading "One-on-One Consulting" [level=3] [ref=e87]
+              - paragraph [ref=e88]: A private, personalized session where we listen to your situation, explore your interests, and help you make confident, informed decisions about studying abroad.
+            - list [ref=e90]:
+              - listitem [ref=e91]: Major Exploration
+              - listitem [ref=e93]: Country Selection
+              - listitem [ref=e95]: University Direction
+              - listitem [ref=e97]: Application Planning
+              - listitem [ref=e99]: Document Review (SOP, CV)
+          - generic [ref=e101]:
+            - generic [ref=e102]:
+              - generic [ref=e103]:
+                - img [ref=e105]
+                - generic [ref=e110]: Program 2
+              - heading "Mentorship Program" [level=3] [ref=e111]
+              - paragraph [ref=e112]: A continuous partnership where we guide you through every step of your academic journey — from application to offer acceptance.
+            - list [ref=e114]:
+              - listitem [ref=e115]: Ongoing Check-ins
+              - listitem [ref=e117]: Application Assistance
+              - listitem [ref=e119]: Offer Support
+              - listitem [ref=e121]: Goal Setting & Progress Tracking
+              - listitem [ref=e123]: Community Connection
+          - generic [ref=e125]:
+            - generic [ref=e126]:
+              - generic [ref=e127]:
+                - img [ref=e129]
+                - generic [ref=e131]: Program 3
+              - heading "Career Guidance Program" [level=3] [ref=e132]
+              - paragraph [ref=e133]: Choosing a major is only the beginning. We help you connect your academic path to real-world opportunities — so you graduate with direction, not just a degree.
+            - list [ref=e135]:
+              - listitem [ref=e136]: Career Path Exploration
+              - listitem [ref=e138]: Industry Insights
+              - listitem [ref=e140]: Internship & Co-op Strategy
+              - listitem [ref=e142]: Resume & LinkedIn Review
+              - listitem [ref=e144]: Long-term Roadmapping
+        - link "See full program details" [ref=e147] [cursor=pointer]:
+          - /url: /Programs
+          - button "See full program details" [ref=e148]:
+            - text: See full program details
+            - img [ref=e149]
+      - generic [ref=e152]:
+        - generic [ref=e153]:
+          - text: Student Stories
+          - heading "Voices from the Community" [level=2] [ref=e154]
+        - generic [ref=e155]:
+          - generic [ref=e156]:
+            - img [ref=e157]
+            - paragraph [ref=e160]: "\"I was feeling lost and unsure where to start, but the support and patience I received made all the difference. Now, I am finally in the application process. I'm so grateful for this program!\""
+            - generic [ref=e161]:
+              - paragraph [ref=e162]: Htet H.
+              - paragraph [ref=e163]: One-on-one Consulting Student
+          - generic [ref=e164]:
+            - img [ref=e165]
+            - paragraph [ref=e168]: "\"The session was so comfortable — like discussing my situation with a trusted friend! It was exactly what I needed to gain clarity on my major and academic journey. The discussion was truly meaningful.\""
+            - generic [ref=e169]:
+              - paragraph [ref=e170]: Kyaw Z.
+              - paragraph [ref=e171]: One-on-one Consulting Student
+          - generic [ref=e172]:
+            - img [ref=e173]
+            - paragraph [ref=e176]: "\"I gained new perspectives I had never considered before. The team took the time to explain everything clearly, helping me decide my study journey with confidence. Thank you for your precious time.\""
+            - generic [ref=e177]:
+              - paragraph [ref=e178]: Nang S.
+              - paragraph [ref=e179]: One-on-one Consulting Student
+          - generic [ref=e180]:
+            - img [ref=e181]
+            - paragraph [ref=e184]: "\"I wasn't sure if I should book at first, but talking through my ideas gave me the exact clarity I needed for my career trajectory. The dedication to helping with every question is remarkable.\""
+            - generic [ref=e185]:
+              - paragraph [ref=e186]: Phyu W.
+              - paragraph [ref=e187]: One-on-one Consulting Student
+      - generic [ref=e190]:
+        - img [ref=e192]
+        - heading "Ready to Take the First Step?" [level=2] [ref=e195]
+        - paragraph [ref=e196]: Our consultants are ready to help you navigate your study abroad journey. Whether you're just starting or need clarity, we're here for you.
+        - paragraph [ref=e197]: No commitment. Just a conversation to help you move forward.
+        - link "Meet Our Consultants" [ref=e198] [cursor=pointer]:
+          - /url: /Consultants
+          - text: Meet Our Consultants
+          - img [ref=e199]
+  - contentinfo [ref=e201]:
+    - generic [ref=e204]:
+      - generic [ref=e205]:
+        - generic [ref=e206]:
+          - img "BladeX Education" [ref=e207]
+          - paragraph [ref=e208]: Guiding Myanmar students toward quality international education, clear pathways, and successful long-term careers abroad.
+          - generic [ref=e209]:
+            - link "Facebook" [ref=e210] [cursor=pointer]:
+              - /url: https://www.facebook.com/profile.php?id=100064021474119
+              - img [ref=e211]
+            - link "YouTube" [ref=e213] [cursor=pointer]:
+              - /url: http://www.youtube.com/@Bladex-edu
+              - img [ref=e214]
+            - link "Telegram" [ref=e217] [cursor=pointer]:
+              - /url: https://t.me/bladexedu
+              - img [ref=e218]
+            - link "LinkedIn" [ref=e221] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/bladex-education/
+              - img [ref=e222]
+        - generic [ref=e226]:
+          - heading "Quick Links" [level=4] [ref=e227]
+          - list [ref=e228]:
+            - listitem [ref=e229]:
+              - link "Home" [ref=e230] [cursor=pointer]:
+                - /url: /Home
+                - text: Home
+            - listitem [ref=e232]:
+              - link "About Us" [ref=e233] [cursor=pointer]:
+                - /url: /About
+                - text: About Us
+            - listitem [ref=e235]:
+              - link "Programs" [ref=e236] [cursor=pointer]:
+                - /url: /Programs
+                - text: Programs
+            - listitem [ref=e238]:
+              - link "Consultants" [ref=e239] [cursor=pointer]:
+                - /url: /Consultants
+                - text: Consultants
+            - listitem [ref=e241]:
+              - link "Social Media" [ref=e242] [cursor=pointer]:
+                - /url: /Social
+                - text: Social Media
+        - generic [ref=e244]:
+          - heading "Get In Touch" [level=4] [ref=e245]
+          - link "bladexedu@gmail.com" [ref=e246] [cursor=pointer]:
+            - /url: mailto:bladexedu@gmail.com
+            - img [ref=e248]
+            - text: bladexedu@gmail.com
+          - paragraph [ref=e252]:
+            - generic [ref=e253]: Advisory only.
+            - text: BladeX does not process visa applications or submit university documents on your behalf.
+      - generic [ref=e254]:
+        - paragraph [ref=e255]: © 2026 BladeX Education. All rights reserved.
+        - paragraph [ref=e256]: Educational guidance for Myanmar students.

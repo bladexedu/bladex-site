@@ -118,7 +118,7 @@ export default function HeroSection() {
             className="flex flex-wrap gap-3 mt-10"
           >
             {['One-on-One Mentorship', 'Study Abroad Guidance', 'Career Pathways', 'No Visa Processing'].map((tag) => (
-              <span key={tag} className="text-xs text-slate-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">
+              <span key={tag} className="text-xs text-slate-200 bg-white/10 border border-white/20 px-3 py-1 rounded-full">
                 {tag}
               </span>
             ))}
