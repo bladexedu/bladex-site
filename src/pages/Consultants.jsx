@@ -81,7 +81,10 @@ function matchesFilters(consultant, filters) {
     const keywords = DESTINATION_MAP[destination] || [];
     const region = (consultant.region || '').toLowerCase();
     const country = (consultant.country_of_expertise || '').toLowerCase();
-    if (!keywords.some(k => region.includes(k) || country.includes(k))) return false;
+    if (!keywords.some(k => {
+      const re = new RegExp(`\\b${k}\\b`);
+      return re.test(region) || re.test(country);
+    })) return false;
   }
 
   if (area !== 'all') {
