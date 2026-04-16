@@ -23,6 +23,8 @@ const LOCATION_MAP = {
   'thomas':    'Canada',
   'arkar':     'Germany',
   'kyi pyar':  'United Kingdom',
+  'ye linn':   'China',
+  'thae myat': 'Germany',
 };
 
 export default function ConsultantCard({ consultant: c, index }) {
