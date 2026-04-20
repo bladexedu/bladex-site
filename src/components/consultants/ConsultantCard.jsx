@@ -8,7 +8,7 @@ const BIO_LIMIT = 120;
 const LOCATION_MAP = {
   'nyan':      'Canada',
   'nang':      'United States',
-  'wutt':      'United States · China',
+  'wutt':      'United States · Singapore',
   'cherry':    'United States',
   'thuta':     'South Korea',
   'win':       'Japan',
