@@ -113,7 +113,12 @@ export default function Header() {
               transition={{ type: 'tween', duration: 0.25 }}
               className="absolute right-0 top-0 bottom-0 w-72 bg-white shadow-2xl"
             >
-              <div className="p-6 pt-20 space-y-6">
+              <div className="flex justify-end px-4 pt-5">
+                <button onClick={() => setIsMobileOpen(false)} className="p-2 text-slate-500 hover:text-slate-900 transition-colors">
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              <div className="p-6 pt-4 space-y-6">
                 {navLinks.map((link) => (
                   <Link
                     key={link.page}
