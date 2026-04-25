@@ -25,6 +25,7 @@ const LOCATION_MAP = {
   'kyi pyar':  'United Kingdom · Thailand',
   'ye linn':   'China',
   'thae myat': 'Germany',
+  'nay chi':   'Italy',
 };
 
 export default function ConsultantCard({ consultant: c, index }) {
