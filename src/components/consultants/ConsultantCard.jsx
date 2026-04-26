@@ -26,6 +26,9 @@ const LOCATION_MAP = {
   'ye linn':   'China',
   'thae myat': 'Germany',
   'nay chi':   'Italy',
+  'yoon su':   'Singapore',
+  'thiri':     'Hong Kong',
+  'su yamin':  'Canada',
 };
 
 export default function ConsultantCard({ consultant: c, index }) {
