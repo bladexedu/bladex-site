@@ -8,6 +8,7 @@ import imgAsia from '@/assests/region-asia.jpg';
 import imgNorthAmerica from '@/assests/region-north-america.jpg';
 import imgUnitedKingdom from '@/assests/region-united-kingdom.jpg';
 import imgEurope from '@/assests/region-europe.jpg';
+import imgOceania from '@/assests/region-oceania.png';
 
 const DESTINATION_MAP = {
   'North America': ['canada', 'usa', 'us', 'united states'],
@@ -22,6 +23,8 @@ const DESTINATION_MAP = {
   'Asia': ['asia', 'singapore', 'japan', 'korea', 'thailand',
            'malaysia', 'hong kong', 'india', 'china'],
   // added: korea (Thuta), thailand (Nyan), malaysia (Shin Lin Let), hong kong (Wai Phyo), china (Ye Linn)
+
+  'Oceania': ['oceania', 'australia', 'new zealand', 'nz'],
 };
 
 const AREA_MAP = {
@@ -57,15 +60,22 @@ const DEGREE_TAG_MAP = {
   "Undergraduate": ['bachelor', 'college', 'college admission', 'university admission', 'pre-med'],
   "Master's": ['master', 'graduate school'],
   'PhD': ['phd', 'graduate school', 'research proposal', 'dphil'],
-  'Pre-University / High School': ['highschool', 'high school', 'uwc', 'foundation', 'a-level'],
+  'Pre-University / High School': ['highschool', 'high school', 'uwc', 'foundation', 'a-level', 'pre-u'],
 };
 
-const REGIONS = [
-  { key: 'North America', label: 'North America', subtitle: 'Canada · USA', img: imgNorthAmerica },
-  { key: 'Europe', label: 'Europe', subtitle: 'Germany · France · Italy · more', img: imgEurope },
-  { key: 'United Kingdom', label: 'United Kingdom', subtitle: 'England · Ireland · more', img: imgUnitedKingdom },
-  { key: 'Asia', label: 'Asia', subtitle: 'Singapore · Japan · Korea · more', img: imgAsia },
+/** Row 1: NA, Europe, Asia — Row 2: UK, Oceania */
+const REGION_LAYOUT = [
+  ['North America', 'Europe', 'Asia'],
+  ['United Kingdom', 'Oceania'],
 ];
+
+const REGION_META = {
+  'North America': { label: 'North America', subtitle: 'Canada · USA', img: imgNorthAmerica },
+  Europe: { label: 'Europe', subtitle: 'Germany · France · Italy · more', img: imgEurope },
+  'United Kingdom': { label: 'United Kingdom', subtitle: 'England · Ireland · more', img: imgUnitedKingdom },
+  Asia: { label: 'Asia', subtitle: 'Singapore · Japan · Korea · more', img: imgAsia },
+  Oceania: { label: 'Oceania', subtitle: 'Australia · New Zealand', img: imgOceania },
+};
 
 function matchesFilters(consultant, filters) {
   const { degree, destination, area } = filters;
@@ -177,52 +187,60 @@ export default function Consultants() {
               Where are you looking to study?
             </p>
 
-            {/* 2×2 region card grid */}
-            <div className="grid grid-cols-2 gap-4 w-full max-w-[640px]">
-              {REGIONS.map((region, i) => (
-                <motion.button
-                  key={region.key}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.05 * i, duration: 0.35 }}
-                  onClick={() => handleRegionClick(region.key)}
-                  className="group relative flex flex-col items-start justify-between rounded-xl p-5 h-[160px] text-left overflow-hidden transition-transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+            {/* Row 1: NA · Europe · Asia — Row 2: UK · Oceania */}
+            <div className="w-full max-w-4xl flex flex-col gap-4">
+              {REGION_LAYOUT.map((rowKeys, rowIdx) => (
+                <div
+                  key={rowIdx}
+                  className={`grid gap-4 w-full ${rowKeys.length === 3 ? 'grid-cols-1 sm:grid-cols-3' : 'grid-cols-1 sm:grid-cols-2'}`}
                 >
-                  {/* Background image */}
-                  <span
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                    style={{ backgroundImage: `url(${region.img})` }}
-                    aria-hidden
-                  />
-                  {/* Dark overlay */}
-                  <span className="absolute inset-0 bg-black/45 group-hover:bg-black/35 transition-colors" aria-hidden />
+                  {rowKeys.map((regionKey, i) => {
+                    const region = REGION_META[regionKey];
+                    const animIndex = rowIdx === 0 ? i : 3 + i;
+                    return (
+                      <motion.button
+                        key={regionKey}
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.05 * animIndex, duration: 0.35 }}
+                        onClick={() => handleRegionClick(regionKey)}
+                        className="group relative flex flex-col items-start justify-between rounded-xl p-5 h-[160px] text-left overflow-hidden transition-transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+                      >
+                        <span
+                          className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                          style={{ backgroundImage: `url(${region.img})` }}
+                          aria-hidden
+                        />
+                        <span className="absolute inset-0 bg-black/45 group-hover:bg-black/35 transition-colors" aria-hidden />
 
-                  {/* Content */}
-                  <span className="relative flex flex-col gap-0.5">
-                    <span className="text-white text-lg font-semibold leading-snug drop-shadow">{region.label}</span>
-                    <span
-                      className="text-xs font-medium bg-clip-text text-transparent"
-                      style={{
-                        backgroundImage: 'linear-gradient(270deg, #ffffff, #9ca3af, #d1d5db, #6b7280, #ffffff)',
-                        backgroundSize: '300% 300%',
-                        animation: 'btn-gradient 4s ease infinite',
-                      }}
-                    >{region.subtitle}</span>
-                  </span>
-                  <span
-                    className="relative inline-flex items-center gap-1.5 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-lg shadow-blue-800/40"
-                    style={{
-                      background: 'linear-gradient(270deg, #1e3a8a, #1d4ed8, #2563eb, #1e40af, #1e3a8a)',
-                      backgroundSize: '300% 300%',
-                      animation: 'btn-gradient 4s ease infinite',
-                    }}
-                  >
-                    Book Now
-                    <svg className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M3 8h10M9 4l4 4-4 4"/>
-                    </svg>
-                  </span>
-                </motion.button>
+                        <span className="relative flex flex-col gap-0.5">
+                          <span className="text-white text-lg font-semibold leading-snug drop-shadow">{region.label}</span>
+                          <span
+                            className="text-xs font-medium bg-clip-text text-transparent"
+                            style={{
+                              backgroundImage: 'linear-gradient(270deg, #ffffff, #9ca3af, #d1d5db, #6b7280, #ffffff)',
+                              backgroundSize: '300% 300%',
+                              animation: 'btn-gradient 4s ease infinite',
+                            }}
+                          >{region.subtitle}</span>
+                        </span>
+                        <span
+                          className="relative inline-flex items-center gap-1.5 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-lg shadow-blue-800/40"
+                          style={{
+                            background: 'linear-gradient(270deg, #1e3a8a, #1d4ed8, #2563eb, #1e40af, #1e3a8a)',
+                            backgroundSize: '300% 300%',
+                            animation: 'btn-gradient 4s ease infinite',
+                          }}
+                        >
+                          Book Now
+                          <svg className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M3 8h10M9 4l4 4-4 4"/>
+                          </svg>
+                        </span>
+                      </motion.button>
+                    );
+                  })}
+                </div>
               ))}
             </div>
 
