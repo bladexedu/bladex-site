@@ -30,6 +30,7 @@ const LOCATION_MAP = {
   'thiri':     'Hong Kong',
   'su yamin':  'Canada',
   'min hein':  'Italy',
+  'zin zin':   'Australia',
 };
 
 export default function ConsultantCard({ consultant: c, index }) {
