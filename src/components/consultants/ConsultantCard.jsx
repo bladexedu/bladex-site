@@ -6,39 +6,37 @@ import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 const BIO_LIMIT = 120;
 
 const LOCATION_MAP = {
-  'nyan':      'Canada',
-  'nang':      'United States',
-  'wutt':      'United States · Singapore',
-  'cherry':    'United States',
-  'thuta':     'South Korea',
-  'win':       'Japan',
-  'yati':      'Hungary',
-  'shin lin':  'United Kingdom · Malaysia',
-  'ei myat':   'Italy',
-  'shin thant':'Canada',
-  'may':       'France',
-  'wai phyo':  'United States',
-  'hnaine':    'United Kingdom',
-  'jimmy':     'Poland · India',
-  'thomas':    'Canada',
-  'arkar':     'Germany',
-  'kyi pyar':  'United Kingdom · Thailand',
-  'ye linn':   'China',
-  'thae myat': 'Germany',
-  'nay chi':   'Italy',
-  'yoon su':   'Singapore',
-  'thiri':     'Hong Kong',
-  'su yamin':  'Canada',
-  'min hein':  'Italy',
-  'zin zin':   'Australia',
+  'nyan lin kyaw':            'Canada',
+  'nang sayoon noi':          'United States',
+  'wutt hmone thin kyi':      'United States · Singapore',
+  'cherry soe':               'United States',
+  'thuta ye moe':             'South Korea',
+  'win soe moe @ dennis':     'Japan',
+  'yati ko ko':               'Hungary',
+  'shin lin let':             'United Kingdom · Malaysia',
+  'ei myat phyu sin':         'Italy',
+  'shin thant phyu':          'Canada',
+  'may htet aung':            'France',
+  'wai phyo hein':            'United States',
+  'hnaine yyar':              'United Kingdom',
+  'aung khant min @ jimmy':   'Poland · India',
+  'min kaung khant @ thomas': 'Canada',
+  'arkar min myat':           'Germany',
+  'kyi pyar shoon lae':       'United Kingdom · Thailand',
+  'ye linn phyoe':            'China',
+  'thae myat aung':           'Germany',
+  'nay chi ye moe':           'Italy',
+  'yoon su lin @ august':     'Singapore',
+  'thiri lwin':               'Hong Kong',
+  'su yamin tun':             'Canada',
+  'min hein khant':           'Italy',
+  'zin zin aye chan':         'Australia',
 };
 
 export default function ConsultantCard({ consultant: c, index }) {
   const firstName = c.name.split(' ')[0];
   const initials = c.name.split(' ').map(n => n[0]).slice(0, 2).join('');
-  const location = Object.entries(LOCATION_MAP).find(([key]) =>
-    c.name.toLowerCase().includes(key)
-  )?.[1];
+  const location = LOCATION_MAP[c.name.toLowerCase()];
 
   return (
     <motion.div
