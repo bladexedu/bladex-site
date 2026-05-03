@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/khunthurein/Desktop/bladeX_clone log --oneline -5)",
+      "Bash(git -C /Users/khunthurein/Desktop/bladeX_clone diff HEAD src/components/consultants/ConsultantCard.jsx)",
+      "Bash(git -C /Users/khunthurein/Desktop/bladeX_clone show 8211d81 --stat)",
+      "Bash(git -C /Users/khunthurein/Desktop/bladeX_clone log --oneline -10)",
+      "Bash(git -C /Users/khunthurein/Desktop/bladeX_clone show ae18132 --stat)",
+      "Bash(git -C /Users/khunthurein/Desktop/bladeX_clone show ae18132 -- src/components/consultants/ConsultantCard.jsx)"
+    ]
+  }
+}
