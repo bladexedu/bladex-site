@@ -31,6 +31,7 @@ const LOCATION_MAP = {
   'su yamin tun':             'Canada',
   'min hein khant':           'Italy',
   'zin zin aye chan':         'Australia',
+  'hein htet zaw':           'Italy',
 };
 
 export default function ConsultantCard({ consultant: c, index }) {
