@@ -19,7 +19,7 @@ const filterGroups = [
   },
 ];
 
-export default function ConsultantFilters({ filters, onChange, count, hideDestination = false }) {
+export default function ConsultantFilters({ filters, onChange, count, hideDestination = false, hideArea = false }) {
   const handleChange = (key, value) => {
     onChange({ ...filters, [key]: value });
   };
@@ -33,7 +33,7 @@ export default function ConsultantFilters({ filters, onChange, count, hideDestin
         <SlidersHorizontal className="w-4 h-4 text-slate-400 mb-1 shrink-0" />
 
         {/* Dropdowns */}
-        {filterGroups.filter(g => !(hideDestination && g.key === 'destination')).map((group) => (
+        {filterGroups.filter(g => !(hideDestination && g.key === 'destination') && !(hideArea && g.key === 'area')).map((group) => (
           <div key={group.key} className="flex flex-col gap-1 min-w-[120px]">
             <label className="text-[10px] font-semibold uppercase tracking-widest text-slate-600">
               {group.label}

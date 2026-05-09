@@ -9,21 +9,14 @@ import imgNorthAmerica from '@/assests/region-north-america.jpg';
 import imgUnitedKingdom from '@/assests/region-united-kingdom.jpg';
 import imgEurope from '@/assests/region-europe.jpg';
 import imgOceania from '@/assests/region-oceania.png';
+import imgWhereToStudy from '@/assests/entry-where-to-study.png';
+import imgWhatToStudy from '@/assests/entry-where-to-study.png';
 
 const DESTINATION_MAP = {
   'North America': ['canada', 'usa', 'us', 'united states'],
-  // covers Nyan, Nang, Wutt, Cherry, Wai Phyo, Hnaine
-
-  'Europe': ['europe', 'germany', 'france', 'netherlands', 'italy',
-             'hungary', 'poland'],
-  // added: hungary (Yati)
-
+  'Europe': ['europe', 'germany', 'france', 'netherlands', 'italy', 'hungary', 'poland'],
   'United Kingdom': ['uk', 'united kingdom'],
-
-  'Asia': ['asia', 'singapore', 'japan', 'korea', 'thailand',
-           'malaysia', 'hong kong', 'india', 'china'],
-  // added: korea (Thuta), thailand (Nyan), malaysia (Shin Lin Let), hong kong (Wai Phyo), china (Ye Linn)
-
+  'Asia': ['asia', 'singapore', 'japan', 'korea', 'thailand', 'malaysia', 'hong kong', 'india', 'china'],
   'Oceania': ['oceania', 'australia', 'new zealand', 'nz'],
 };
 
@@ -51,9 +44,7 @@ const AREA_MAP = {
     'arts', 'humanities', 'social', 'literature', 'history',
     'philosophy', 'linguistics', 'language', 'french', 'fle'
   ],
-  'High School Diploma': [
-    'diploma'
-  ],
+  'High School Diploma': ['diploma'],
 };
 
 const DEGREE_TAG_MAP = {
@@ -63,7 +54,6 @@ const DEGREE_TAG_MAP = {
   'Pre-University / High School': ['highschool', 'high school', 'uwc', 'foundation', 'a-level', 'pre-u'],
 };
 
-/** Row 1: NA, Europe, Asia — Row 2: UK, Oceania */
 const REGION_LAYOUT = [
   ['North America', 'Europe', 'Asia'],
   ['United Kingdom', 'Oceania'],
@@ -71,11 +61,20 @@ const REGION_LAYOUT = [
 
 const REGION_META = {
   'North America': { label: 'North America', subtitle: 'Canada · USA', img: imgNorthAmerica },
-  Europe: { label: 'Europe', subtitle: 'Germany · France · Italy · more', img: imgEurope },
-  'United Kingdom': { label: 'United Kingdom', subtitle: 'England · Ireland · more', img: imgUnitedKingdom },
-  Asia: { label: 'Asia', subtitle: 'Singapore · Japan · Korea · more', img: imgAsia },
-  Oceania: { label: 'Oceania', subtitle: 'Australia · New Zealand', img: imgOceania },
+  'Europe':        { label: 'Europe', subtitle: 'Germany · France · Italy · more', img: imgEurope },
+  'United Kingdom':{ label: 'United Kingdom', subtitle: 'England · Ireland · more', img: imgUnitedKingdom },
+  'Asia':          { label: 'Asia', subtitle: 'Singapore · Japan · Korea · more', img: imgAsia },
+  'Oceania':       { label: 'Oceania', subtitle: 'Australia · New Zealand', img: imgOceania },
 };
+
+const FIELD_META = {
+  'Medicine':        { label: 'Medicine', subtitle: 'Medical School · Biosciences · Health', area: 'Medicine & Sciences', bg: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)' },
+  'Engineering':     { label: 'Engineering', subtitle: 'Mechanical · Civil · Biomedical · more', area: 'Engineering', bg: 'linear-gradient(135deg, #0f172a 0%, #1a3a2a 100%)' },
+  'Business':        { label: 'Business', subtitle: 'Management · Commerce · Analytics', area: 'Business & Management', bg: 'linear-gradient(135deg, #0f172a 0%, #2d1f3d 100%)' },
+  'Computer Science':{ label: 'Computer Science', subtitle: 'Software · Data Science · IT', area: 'Computer Science & IT', bg: 'linear-gradient(135deg, #0f172a 0%, #1a2a3d 100%)' },
+};
+
+const FIELD_LAYOUT = [['Medicine', 'Engineering'], ['Business', 'Computer Science']];
 
 function matchesFilters(consultant, filters) {
   const { degree, destination, area } = filters;
@@ -107,12 +106,81 @@ function matchesFilters(consultant, filters) {
   return true;
 }
 
+const CardButton = ({ label, subtitle, bg, img, onClick, index, height = 160 }) => (
+  <motion.button
+    initial={{ opacity: 0, y: 16 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.05 * index, duration: 0.35 }}
+    onClick={onClick}
+    style={{ height }}
+    className="group relative flex flex-col items-start justify-between rounded-xl p-5 text-left overflow-hidden transition-transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+  >
+    {img ? (
+      <span
+        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+        style={{ backgroundImage: `url(${img})` }}
+        aria-hidden
+      />
+    ) : (
+      <span
+        className="absolute inset-0 transition-transform duration-500 group-hover:scale-105"
+        style={{ background: bg }}
+        aria-hidden
+      />
+    )}
+    <span className="absolute inset-0 bg-black/45 group-hover:bg-black/35 transition-colors" aria-hidden />
+
+    <span className="relative flex flex-col gap-0.5">
+      <span className="text-white text-lg font-semibold leading-snug drop-shadow">{label}</span>
+      <span
+        className="text-xs font-medium bg-clip-text text-transparent"
+        style={{
+          backgroundImage: 'linear-gradient(270deg, #ffffff, #9ca3af, #d1d5db, #6b7280, #ffffff)',
+          backgroundSize: '300% 300%',
+          animation: 'btn-gradient 4s ease infinite',
+        }}
+      >{subtitle}</span>
+    </span>
+    <span
+      className="relative inline-flex items-center gap-1.5 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-lg shadow-blue-800/40"
+      style={{
+        background: 'linear-gradient(270deg, #1e3a8a, #1d4ed8, #2563eb, #1e40af, #1e3a8a)',
+        backgroundSize: '300% 300%',
+        animation: 'btn-gradient 4s ease infinite',
+      }}
+    >
+      Book Now
+      <svg className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 8h10M9 4l4 4-4 4"/>
+      </svg>
+    </span>
+  </motion.button>
+);
+
+const Hero = () => (
+  <section className="relative pt-32 pb-28 bg-slate-900 overflow-hidden">
+    <div className="absolute inset-0"
+      style={{ backgroundImage: 'radial-gradient(circle, rgba(59,130,246,0.35) 1.5px, transparent 1.5px)', backgroundSize: '36px 36px', animation: 'grid-pan 8s linear infinite' }} />
+    <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>
+        <span className="text-blue-400 font-semibold text-xs uppercase tracking-widest">Meet the Team</span>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-5">Our Consultants</h1>
+        <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+          Every consultant at BladeX Education has been through the study-abroad journey themselves. Browse their profiles and book directly with who feels right for you.
+        </p>
+      </motion.div>
+    </div>
+  </section>
+);
+
 export default function Consultants() {
   const [consultants, setConsultants] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({ degree: 'all', destination: 'all', area: 'all' });
-  const [showRegionPicker, setShowRegionPicker] = useState(true);
+  // view: 'entry' | 'region' | 'field' | 'results'
+  const [view, setView] = useState('entry');
   const [selectedRegion, setSelectedRegion] = useState(null);
+  const [selectedField, setSelectedField] = useState(null);
 
   useEffect(() => {
     const fetchConsultants = async () => {
@@ -131,50 +199,57 @@ export default function Consultants() {
 
   const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
 
+  const handleEntryClick = (type) => {
+    setView(type); // 'region' or 'field'
+  };
+
   const handleRegionClick = (regionKey) => {
     setConsultants(prev => shuffle(prev));
     setSelectedRegion(regionKey);
+    setSelectedField(null);
     setFilters({ degree: 'all', destination: regionKey, area: 'all' });
-    setShowRegionPicker(false);
+    setView('results');
+  };
+
+  const handleFieldClick = (fieldKey) => {
+    setConsultants(prev => shuffle(prev));
+    setSelectedField(fieldKey);
+    setSelectedRegion(null);
+    setFilters({ degree: 'all', destination: 'all', area: FIELD_META[fieldKey].area });
+    setView('results');
   };
 
   const handleBrowseAll = () => {
     setConsultants(prev => shuffle(prev));
     setSelectedRegion(null);
+    setSelectedField(null);
     setFilters({ degree: 'all', destination: 'all', area: 'all' });
-    setShowRegionPicker(false);
+    setView('results');
   };
 
-  const handleClearRegion = () => {
+  const handleBack = () => {
+    if (view === 'results') {
+      const backTo = selectedRegion ? 'region' : selectedField ? 'field' : 'entry';
+      setView(backTo);
+    } else {
+      setView('entry');
+    }
     setSelectedRegion(null);
-    setFilters(prev => ({ ...prev, destination: 'all' }));
-  };
-
-  const handleBackToRegions = () => {
-    setShowRegionPicker(true);
-    setSelectedRegion(null);
+    setSelectedField(null);
     setFilters({ degree: 'all', destination: 'all', area: 'all' });
   };
 
-  if (showRegionPicker) {
+  const handleClearChip = () => {
+    setSelectedRegion(null);
+    setSelectedField(null);
+    setFilters({ degree: 'all', destination: 'all', area: 'all' });
+  };
+
+  // ── Entry picker ─────────────────────────────────────────────────────────
+  if (view === 'entry') {
     return (
       <div className="min-h-screen bg-slate-50">
-        {/* Hero — kept intact */}
-        <section className="relative pt-32 pb-28 bg-slate-900 overflow-hidden">
-          <div className="absolute inset-0"
-            style={{ backgroundImage: 'radial-gradient(circle, rgba(59,130,246,0.35) 1.5px, transparent 1.5px)', backgroundSize: '36px 36px', animation: 'grid-pan 8s linear infinite' }} />
-          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>
-              <span className="text-blue-400 font-semibold text-xs uppercase tracking-widest">Meet the Team</span>
-              <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-5">Our Consultants</h1>
-              <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-                Every consultant at BladeX Education has been through the study-abroad journey themselves. Browse their profiles and book directly with who feels right for you.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Region picker */}
+        <Hero />
         <section className="py-20 px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -182,69 +257,29 @@ export default function Consultants() {
             transition={{ duration: 0.4 }}
             className="w-full flex flex-col items-center"
           >
-            {/* Label */}
             <p className="text-slate-500 text-xs font-semibold uppercase tracking-[0.2em] mb-10">
-              Where are you looking to study?
+              How would you like to find a consultant?
             </p>
 
-            {/* Row 1: NA · Europe · Asia — Row 2: UK · Oceania */}
-            <div className="w-full max-w-4xl flex flex-col gap-4">
-              {REGION_LAYOUT.map((rowKeys, rowIdx) => (
-                <div
-                  key={rowIdx}
-                  className={`grid gap-4 w-full ${rowKeys.length === 3 ? 'grid-cols-1 sm:grid-cols-3' : 'grid-cols-1 sm:grid-cols-2'}`}
-                >
-                  {rowKeys.map((regionKey, i) => {
-                    const region = REGION_META[regionKey];
-                    const animIndex = rowIdx === 0 ? i : 3 + i;
-                    return (
-                      <motion.button
-                        key={regionKey}
-                        initial={{ opacity: 0, y: 16 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.05 * animIndex, duration: 0.35 }}
-                        onClick={() => handleRegionClick(regionKey)}
-                        className="group relative flex flex-col items-start justify-between rounded-xl p-5 h-[160px] text-left overflow-hidden transition-transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
-                      >
-                        <span
-                          className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                          style={{ backgroundImage: `url(${region.img})` }}
-                          aria-hidden
-                        />
-                        <span className="absolute inset-0 bg-black/45 group-hover:bg-black/35 transition-colors" aria-hidden />
-
-                        <span className="relative flex flex-col gap-0.5">
-                          <span className="text-white text-lg font-semibold leading-snug drop-shadow">{region.label}</span>
-                          <span
-                            className="text-xs font-medium bg-clip-text text-transparent"
-                            style={{
-                              backgroundImage: 'linear-gradient(270deg, #ffffff, #9ca3af, #d1d5db, #6b7280, #ffffff)',
-                              backgroundSize: '300% 300%',
-                              animation: 'btn-gradient 4s ease infinite',
-                            }}
-                          >{region.subtitle}</span>
-                        </span>
-                        <span
-                          className="relative inline-flex items-center gap-1.5 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-lg shadow-blue-800/40"
-                          style={{
-                            background: 'linear-gradient(270deg, #1e3a8a, #1d4ed8, #2563eb, #1e40af, #1e3a8a)',
-                            backgroundSize: '300% 300%',
-                            animation: 'btn-gradient 4s ease infinite',
-                          }}
-                        >
-                          Book Now
-                          <svg className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M3 8h10M9 4l4 4-4 4"/>
-                          </svg>
-                        </span>
-                      </motion.button>
-                    );
-                  })}
-                </div>
-              ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl">
+              <CardButton
+                label="Where to Study"
+                subtitle="Browse by destination country or region"
+                img={imgWhereToStudy}
+                onClick={() => handleEntryClick('region')}
+                index={0}
+                height={240}
+              />
+              <CardButton
+                label="What to Study"
+                subtitle="Browse by field — Medicine, Engineering & more"
+                img={imgWhatToStudy}
+                onClick={() => handleEntryClick('field')}
+                index={1}
+                height={240}
+              />
             </div>
 
-            {/* Browse all link */}
             <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -260,24 +295,141 @@ export default function Consultants() {
     );
   }
 
+  // ── Region picker ─────────────────────────────────────────────────────────
+  if (view === 'region') {
+    return (
+      <div className="min-h-screen bg-slate-50">
+        <Hero />
+        <section className="py-20 px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="w-full flex flex-col items-center"
+          >
+            <div className="flex items-center gap-3 mb-10 self-start max-w-4xl w-full mx-auto">
+              <button
+                onClick={handleBack}
+                className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-blue-600 transition-colors"
+              >
+                <ArrowLeft className="w-3.5 h-3.5" />
+                Back
+              </button>
+              <p className="text-slate-500 text-xs font-semibold uppercase tracking-[0.2em]">
+                Where are you looking to study?
+              </p>
+            </div>
+
+            <div className="w-full max-w-4xl flex flex-col gap-4">
+              {REGION_LAYOUT.map((rowKeys, rowIdx) => (
+                <div
+                  key={rowIdx}
+                  className={`grid gap-4 w-full ${rowKeys.length === 3 ? 'grid-cols-1 sm:grid-cols-3' : 'grid-cols-1 sm:grid-cols-2'}`}
+                >
+                  {rowKeys.map((regionKey, i) => {
+                    const region = REGION_META[regionKey];
+                    return (
+                      <CardButton
+                        key={regionKey}
+                        label={region.label}
+                        subtitle={region.subtitle}
+                        img={region.img}
+                        onClick={() => handleRegionClick(regionKey)}
+                        index={rowIdx === 0 ? i : 3 + i}
+                      />
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
+
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              onClick={handleBrowseAll}
+              className="mt-10 text-slate-400 hover:text-slate-700 text-sm transition-colors underline underline-offset-4"
+            >
+              Browse all consultants →
+            </motion.button>
+          </motion.div>
+        </section>
+      </div>
+    );
+  }
+
+  // ── Field picker ──────────────────────────────────────────────────────────
+  if (view === 'field') {
+    return (
+      <div className="min-h-screen bg-slate-50">
+        <Hero />
+        <section className="py-20 px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="w-full flex flex-col items-center"
+          >
+            <div className="flex items-center gap-3 mb-10 self-start max-w-2xl w-full mx-auto">
+              <button
+                onClick={handleBack}
+                className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-blue-600 transition-colors"
+              >
+                <ArrowLeft className="w-3.5 h-3.5" />
+                Back
+              </button>
+              <p className="text-slate-500 text-xs font-semibold uppercase tracking-[0.2em]">
+                What do you want to study?
+              </p>
+            </div>
+
+            <div className="w-full max-w-2xl flex flex-col gap-4">
+              {FIELD_LAYOUT.map((rowKeys, rowIdx) => (
+                <div key={rowIdx} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {rowKeys.map((fieldKey, i) => {
+                    const field = FIELD_META[fieldKey];
+                    return (
+                      <CardButton
+                        key={fieldKey}
+                        label={field.label}
+                        subtitle={field.subtitle}
+                        bg={field.bg}
+                        onClick={() => handleFieldClick(fieldKey)}
+                        index={rowIdx * 2 + i}
+                      />
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
+
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              onClick={handleBrowseAll}
+              className="mt-10 text-slate-400 hover:text-slate-700 text-sm transition-colors underline underline-offset-4"
+            >
+              Browse all consultants →
+            </motion.button>
+          </motion.div>
+        </section>
+      </div>
+    );
+  }
+
+  // ── Results ───────────────────────────────────────────────────────────────
+  const filtered = consultants.filter(c => matchesFilters(c, filters));
+  const activeChipLabel = selectedRegion
+    ? `📍 ${selectedRegion}`
+    : selectedField
+    ? `📚 ${selectedField}`
+    : null;
+
   return (
     <div className="min-h-screen bg-slate-50">
-      {/* Hero */}
-      <section className="relative pt-32 pb-28 bg-slate-900 overflow-hidden">
-        <div className="absolute inset-0"
-          style={{ backgroundImage: 'radial-gradient(circle, rgba(59,130,246,0.35) 1.5px, transparent 1.5px)', backgroundSize: '36px 36px', animation: 'grid-pan 8s linear infinite' }} />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="text-blue-400 font-semibold text-xs uppercase tracking-widest">Meet the Team</span>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-5">Our Consultants</h1>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              Every consultant at BladeX Education has been through the study-abroad journey themselves. Browse their profiles and book directly with who feels right for you.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <Hero />
 
-      {/* Grid */}
       <section id="consultants-grid" className="relative py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {loading ? (
@@ -293,53 +445,55 @@ export default function Consultants() {
                 We're setting up our team profiles. In the meantime, browse our programs.
               </p>
             </motion.div>
-          ) : (() => {
-            const filtered = consultants.filter(c => matchesFilters(c, filters));
-            return (
-              <>
-                {/* Back + region chip */}
-                <div className="flex flex-wrap items-center gap-3 mb-4">
-                  <button
-                    onClick={handleBackToRegions}
-                    className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-blue-600 transition-colors"
-                  >
-                    <ArrowLeft className="w-3.5 h-3.5" />
-                    Back
-                  </button>
-                  {selectedRegion && (
-                    <span className="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-700 text-xs font-medium px-3 py-1 rounded-full">
-                      <span>📍 {selectedRegion}</span>
-                      <button
-                        onClick={handleClearRegion}
-                        className="ml-0.5 hover:text-blue-900 transition-colors"
-                        aria-label="Clear region filter"
-                      >
-                        <X className="w-3 h-3" />
-                      </button>
-                    </span>
-                  )}
-                </div>
-
-                <ConsultantFilters filters={filters} onChange={setFilters} count={filtered.length} hideDestination={!!selectedRegion} />
-                {filtered.length === 0 ? (
-                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16">
-                    <p className="text-slate-500 text-lg">No consultants match the selected filters.</p>
-                    <button onClick={() => setFilters({ degree: 'all', destination: 'all', area: 'all' })} className="mt-4 text-blue-600 hover:underline text-sm font-medium">Clear filters</button>
-                  </motion.div>
-                ) : (
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {filtered.map((c, i) => (
-                      <ConsultantCard key={c.id} consultant={c} index={i} />
-                    ))}
-                  </div>
+          ) : (
+            <>
+              <div className="flex flex-wrap items-center gap-3 mb-4">
+                <button
+                  onClick={handleBack}
+                  className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-blue-600 transition-colors"
+                >
+                  <ArrowLeft className="w-3.5 h-3.5" />
+                  Back
+                </button>
+                {activeChipLabel && (
+                  <span className="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-700 text-xs font-medium px-3 py-1 rounded-full">
+                    <span>{activeChipLabel}</span>
+                    <button
+                      onClick={handleClearChip}
+                      className="ml-0.5 hover:text-blue-900 transition-colors"
+                      aria-label="Clear filter"
+                    >
+                      <X className="w-3 h-3" />
+                    </button>
+                  </span>
                 )}
-              </>
-            );
-          })()}
+              </div>
+
+              <ConsultantFilters
+                filters={filters}
+                onChange={setFilters}
+                count={filtered.length}
+                hideDestination={!!selectedRegion}
+                hideArea={!!selectedField}
+              />
+
+              {filtered.length === 0 ? (
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16">
+                  <p className="text-slate-500 text-lg">No consultants match the selected filters.</p>
+                  <button onClick={() => setFilters({ degree: 'all', destination: 'all', area: 'all' })} className="mt-4 text-blue-600 hover:underline text-sm font-medium">Clear filters</button>
+                </motion.div>
+              ) : (
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {filtered.map((c, i) => (
+                    <ConsultantCard key={c.id} consultant={c} index={i} />
+                  ))}
+                </div>
+              )}
+            </>
+          )}
         </div>
       </section>
 
-      {/* Bottom CTA */}
       <section className="py-16 bg-white">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-2xl font-bold text-slate-900 mb-3">Ready to get started?</h2>
