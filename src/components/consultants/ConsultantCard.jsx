@@ -26,7 +26,7 @@ const LOCATION_MAP = {
   'ye linn phyoe':            'China',
   'thae myat aung':           'Germany',
   'nay chi ye moe':           'Italy',
-  'yoon su lin':     'Singapore',
+  'yoon su lin @ august':     'Singapore',
   'thiri lwin':               'Hong Kong',
   'su yamin tun':             'Canada',
   'min hein khant':           'Italy',
