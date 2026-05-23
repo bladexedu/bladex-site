@@ -32,6 +32,7 @@ const LOCATION_MAP = {
   'min hein khant':           'Italy',
   'zin zin aye chan':         'Australia',
   'hein htet zaw':           'Italy',
+  'may thet khine':          'Poland',
 };
 
 export default function ConsultantCard({ consultant: c, index }) {
