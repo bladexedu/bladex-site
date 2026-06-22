@@ -1,6 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Youtube, Facebook, Bell, ThumbsUp, Send, Linkedin } from 'lucide-react';
+import { ExternalLink, Bell } from 'lucide-react';
+import {
+  FacebookIcon,
+  YouTubeIcon,
+  TelegramIcon,
+  LinkedInIcon,
+} from '@/components/shared/SocialIcons';
+import { sectionBadgeClass } from '@/utils/glassStyles';
+import SpaceSectionBackground from '@/components/shared/SpaceSectionBackground';
 
 const channels = [
   {
@@ -8,7 +16,7 @@ const channels = [
     handle: 'BladeX Education',
     description: 'Updates, tips, student stories, and program announcements.',
     url: 'https://www.facebook.com/profile.php?id=100064021474119',
-    icon: Facebook,
+    customIcon: <FacebookIcon className="w-11 h-11 rounded-xl flex-shrink-0" />,
     color: { bg: 'bg-blue-600', light: 'bg-blue-50', text: 'text-blue-600', border: 'border-blue-100' },
     cta: 'Facebook',
     badge: 'Facebook Page',
@@ -18,7 +26,7 @@ const channels = [
     handle: 'BladeX Education',
     description: 'Guidance videos, country breakdowns, Q&As, and student journeys.',
     url: 'http://www.youtube.com/@Bladex-edu',
-    icon: Youtube,
+    customIcon: <YouTubeIcon className="w-11 h-11 rounded-xl flex-shrink-0" />,
     color: { bg: 'bg-red-600', light: 'bg-red-50', text: 'text-red-600', border: 'border-red-100' },
     cta: 'YouTube',
     badge: 'YouTube Channel',
@@ -29,7 +37,7 @@ const channels = [
     handle: '@bladexedu',
     description: 'Instant updates, deadline reminders, and study abroad announcements.',
     url: 'https://t.me/bladexedu',
-    icon: Send,
+    customIcon: <TelegramIcon className="w-11 h-11 rounded-xl flex-shrink-0" />,
     color: { bg: 'bg-cyan-500', light: 'bg-cyan-50', text: 'text-cyan-600', border: 'border-cyan-100' },
     cta: 'Telegram',
     badge: 'Telegram Channel',
@@ -40,7 +48,7 @@ const channels = [
     handle: 'BladeX Education',
     description: 'Industry insights, company milestones, and global career advice.',
     url: 'https://www.linkedin.com/company/bladex-education/',
-    icon: Linkedin,
+    customIcon: <LinkedInIcon className="w-11 h-11 rounded-xl flex-shrink-0" />,
     color: { bg: 'bg-[#0A66C2]', light: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-100' },
     cta: 'LinkedIn',
     badge: 'Company Page',
@@ -52,12 +60,13 @@ export default function Social() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="relative pt-32 pb-28 bg-slate-900 overflow-hidden">
-        <div className="absolute inset-0"
-          style={{ backgroundImage: 'radial-gradient(circle, rgba(59,130,246,0.35) 1.5px, transparent 1.5px)', backgroundSize: '36px 36px', animation: 'grid-pan 8s linear infinite' }} />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative pt-32 pb-28 bg-[#060b18] overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <SpaceSectionBackground starDensity={1.2} />
+        </div>
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="text-blue-400 font-semibold text-xs uppercase tracking-widest">Stay Connected</span>
+            <span className={sectionBadgeClass}>Stay Connected</span>
             <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-5">Follow Us Online</h1>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
               Stay up to date with BladeX Education — tips, student stories, Q&As, and program announcements across our social channels.
@@ -65,12 +74,6 @@ export default function Social() {
           </motion.div>
         </div>
 
-        {/* Wave → white */}
-        <div className="absolute bottom-0 left-0 w-full pointer-events-none">
-          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
-            <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="white" />
-          </svg>
-        </div>
       </section>
 
       {/* Channels + Feed */}
@@ -92,12 +95,14 @@ export default function Social() {
                     initial={{ opacity: 0, x: -16 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, ease: 'easeOut', delay: i * 0.07 }}
+                    transition={{ duration: 0.25, ease: 'easeOut', delay: i * 0.03 }}
                     className="bg-[#f7f6f3] border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 flex items-center gap-4 px-5 py-4"
                   >
-                    <div className={`${ch.color.bg} w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0`}>
-                      <Icon className="w-5 h-5 text-white" />
-                    </div>
+                    {ch.customIcon ?? (
+                      <div className={`${ch.color.bg} w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0`}>
+                        <Icon className="w-5 h-5 text-white" />
+                      </div>
+                    )}
                     <div className="flex-1 min-w-0">
                       <p className="font-bold text-slate-900 text-sm leading-tight">{ch.platform}</p>
                       <p className="text-slate-400 text-xs mt-0.5 mb-1">{ch.handle}</p>
@@ -150,18 +155,38 @@ export default function Social() {
       </section>
 
       {/* Why follow section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white border-y border-slate-300">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Why Follow Us?</h2>
             <div className="grid sm:grid-cols-3 gap-6 mt-8">
               {[
-                { emoji: '🎓', title: 'Study Abroad Tips', desc: 'Country guides, scholarship info, and application advice.' },
-                { emoji: '🗣️', title: 'Student Stories', desc: 'Real journeys from Myanmar students studying abroad.' },
-                { emoji: '📢', title: 'Program Updates', desc: 'Be first to know about events, workshops, and launches.' },
+                {
+                  iconSrc: 'https://img.icons8.com/stickers/100/graduation-cap.png',
+                  iconAlt: 'Graduation cap',
+                  title: 'Study Abroad Tips',
+                  desc: 'Country guides, scholarship info, and application advice.',
+                },
+                {
+                  iconSrc: 'https://img.icons8.com/external-nawicon-outline-color-nawicon/64/external-Review-online-marketing-nawicon-outline-color-nawicon.png',
+                  iconAlt: 'Review',
+                  title: 'Student Stories',
+                  desc: 'Real journeys from Myanmar students studying abroad.',
+                },
+                {
+                  iconSrc: 'https://img.icons8.com/stickers/100/commercial.png',
+                  iconAlt: 'Megaphone',
+                  title: 'Program Updates',
+                  desc: 'Be first to know about events, workshops, and launches.',
+                },
               ].map((item, i) => (
                 <div key={i} className="bg-white rounded-2xl p-6 shadow-sm">
-                  <div className="text-3xl mb-3">{item.emoji}</div>
+                  <img
+                    src={item.iconSrc}
+                    alt={item.iconAlt}
+                    className="w-14 h-14 object-contain mx-auto mb-3"
+                    loading="lazy"
+                  />
                   <h3 className="font-semibold text-slate-900 mb-2">{item.title}</h3>
                   <p className="text-slate-500 text-sm">{item.desc}</p>
                 </div>

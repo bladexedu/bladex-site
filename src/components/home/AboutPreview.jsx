@@ -1,27 +1,84 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { ArrowRight, Compass, Heart, GraduationCap } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { motion } from 'framer-motion';
+import { solidButton } from '@/utils/glassStyles';
+import { ArrowRight } from 'lucide-react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import imgAboutStudents from '@/assests/about-students.jpg';
 
 const pillars = [
   {
-    icon: Compass,
+    iconSrc: 'https://img.icons8.com/external-kmg-design-flat-kmg-design/64/external-direction-maps-navigation-kmg-design-flat-kmg-design-1.png',
+    iconAlt: 'Strategic direction icon',
     title: 'Strategic Academic Direction',
     description: "We offer targeted support to students who feel uncertain about their future trajectory, delivering clarity and a strategic plan to move forward with confidence.",
   },
   {
-    icon: Heart,
+    iconSrc: 'https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-personalization-marketing-technology-flaticons-lineal-color-flat-icons.png',
+    iconAlt: 'Personalized counselling icon',
     title: 'Personalized Counselling',
     description: "We explore your interests, goals, and circumstances to help you choose the right country and university — confidently.",
   },
   {
-    icon: GraduationCap,
+    iconSrc: 'https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-career-online-marketing-flaticons-lineal-color-flat-icons.png',
+    iconAlt: 'Study to career pathway icon',
     title: 'Study-to-Career Pathway',
     description: "We help you choose subjects that align with real career opportunities abroad, building a strong foundation.",
   },
 ];
+
+function PillarCard({ pillar, index }) {
+  const ref = useRef(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springConfig = { stiffness: 280, damping: 24, mass: 0.6 };
+
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [6, -6]), springConfig);
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-6, 6]), springConfig);
+
+  const handleMouseMove = (e) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    x.set((e.clientX - rect.left) / rect.width - 0.5);
+    y.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.3, delay: index * 0.04, ease: 'easeOut' }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: 'preserve-3d',
+      }}
+      className="flex gap-5 bg-slate-50 rounded-2xl p-5 border border-slate-100 shadow-sm hover:shadow-lg hover:shadow-slate-200/80 transition-shadow duration-300 cursor-default"
+    >
+      <img
+        src={pillar.iconSrc}
+        alt={pillar.iconAlt}
+        className="w-10 h-10 object-contain flex-shrink-0"
+        loading="lazy"
+        style={{ transform: 'translateZ(24px)' }}
+      />
+      <div style={{ transform: 'translateZ(16px)' }}>
+        <h3 className="font-semibold text-slate-900 mb-1">{pillar.title}</h3>
+        <p className="text-sm text-slate-600 leading-relaxed">{pillar.description}</p>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function AboutPreview() {
   return (
@@ -45,14 +102,10 @@ export default function AboutPreview() {
             <p className="text-slate-600 leading-relaxed mb-8">
               We believe every student deserves access to high-tier guidance, regardless of their background. Our consultants provide the objective insights and mentorship you need to move forward with confidence.
             </p>
-            <Link to={createPageUrl('About')}>
-              <button className="group inline-flex items-center rounded-full px-5 py-2.5 font-bold text-white shadow-lg shadow-teal-800/40 hover:scale-105 transition-transform duration-200"
-                style={{
-                  background: 'linear-gradient(270deg, #134e4a, #0f766e, #14b8a6, #0d9488, #134e4a)',
-                  backgroundSize: '300% 300%',
-                  animation: 'btn-gradient 4s ease infinite',
-                }}>
-                Learn More About Us <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+            <Link to={createPageUrl('About')} className="inline-block transition-transform duration-200 hover:scale-105">
+              <button className={`group ${solidButton.navySolid} ${solidButton.md}`}>
+                <span>Learn More About Us</span>
+                <ArrowRight className="w-4 h-4 shrink-0 transition-[transform,margin] duration-500 ease-out group-hover:translate-x-2 group-hover:scale-110" />
               </button>
             </Link>
           </motion.div>
@@ -64,31 +117,18 @@ export default function AboutPreview() {
             viewport={{ once: true }}
             transition={{ duration: 0.35, ease: 'easeOut' }}
             className="space-y-5"
+            style={{ perspective: 1000 }}
           >
             <div className="rounded-2xl overflow-hidden h-48 mb-2">
               <img
-                src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&q=80"
-                alt="Students collaborating"
+                src={imgAboutStudents}
+                alt="Students walking through a university campus at dusk"
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             {pillars.map((p, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.92 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.35, ease: 'easeOut' }}
-                className="flex gap-5 bg-slate-50 rounded-2xl p-5"
-              >
-                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <p.icon className="w-6 h-6 text-blue-600" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-slate-900 mb-1">{p.title}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">{p.description}</p>
-                </div>
-              </motion.div>
+              <PillarCard key={p.title} pillar={p} index={i} />
             ))}
           </motion.div>
         </div>

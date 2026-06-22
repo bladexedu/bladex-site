@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, User } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import ConsultantPhoto from '@/components/consultants/ConsultantPhoto';
+import {
+  CONSULTANT_PHOTO_CARD,
+  CONSULTANT_PHOTO_DIALOG,
+} from '@/utils/consultantPhoto';
 
 const BIO_LIMIT = 120;
 
@@ -35,16 +40,17 @@ const LOCATION_MAP = {
 };
 
 export default function ConsultantCard({ consultant: c, index }) {
+  const [profileOpen, setProfileOpen] = useState(false);
   const firstName = c.name.split(' ')[0];
   const initials = c.name.split(' ').map(n => n[0]).slice(0, 2).join('');
   const location = LOCATION_MAP[c.name.toLowerCase()];
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.92 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.35, ease: 'easeOut' }}
+      initial={{ opacity: 0, y: 8 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
       whileHover={{ y: -8, boxShadow: 'none' }}
       whileTap={{ scale: 0.98 }}
       style={{ willChange: 'transform' }}
@@ -76,12 +82,12 @@ export default function ConsultantCard({ consultant: c, index }) {
           />
         ))}
 
-        <div className="relative w-20 h-20 rounded-2xl overflow-hidden bg-white/60 backdrop-blur-sm flex items-center justify-center mb-4 ring-2 ring-slate-800/40 shadow-lg">
-          {c.photo_url ? (
-            <img src={c.photo_url} alt={c.name} className="w-full h-full object-cover object-[center_10%]" />
-          ) : (
-            <User className="w-10 h-10 text-blue-500" />
-          )}
+        <div className="relative w-20 h-20 rounded-2xl overflow-hidden bg-white/60 backdrop-blur-sm mb-4 ring-2 ring-slate-800/40 shadow-lg">
+          <ConsultantPhoto
+            photoUrl={c.photo_url}
+            alt={c.name}
+            transformOptions={CONSULTANT_PHOTO_CARD}
+          />
         </div>
         <h3 className="relative text-base font-bold text-white leading-tight">{c.name}</h3>
         <p className="relative text-blue-400 text-sm font-semibold mt-1">{c.role}</p>
@@ -101,7 +107,7 @@ export default function ConsultantCard({ consultant: c, index }) {
 
       {/* Actions */}
       <div className="px-6 pb-6 pt-4 flex gap-3 bg-[#f7f6f3]">
-        <Dialog>
+        <Dialog onOpenChange={setProfileOpen}>
           <DialogTrigger asChild>
             <button className="flex-1 text-sm font-semibold text-slate-700 border-2 border-slate-400/70 hover:bg-slate-200/60 hover:border-slate-500/60 py-2.5 rounded-xl transition-all duration-200">
               View Profile
@@ -123,14 +129,20 @@ export default function ConsultantCard({ consultant: c, index }) {
                 {/* Avatar */}
                 <div className="relative flex-shrink-0">
                   <div
-                    className="w-[88px] h-[88px] rounded-full overflow-hidden flex items-center justify-center"
+                    className="relative w-[88px] h-[88px] rounded-full overflow-hidden"
                     style={{ background: 'linear-gradient(135deg, #252840, #1a1d2a)', border: '2.5px solid rgba(255,255,255,0.08)' }}
                   >
-                    {c.photo_url ? (
-                      <img src={c.photo_url} alt={c.name} className="w-full h-full object-cover object-[center_10%]" />
-                    ) : (
+                    {c.photo_url && profileOpen ? (
+                      <ConsultantPhoto
+                        photoUrl={c.photo_url}
+                        alt={c.name}
+                        transformOptions={CONSULTANT_PHOTO_DIALOG}
+                        rootClassName="absolute inset-0"
+                        eager
+                      />
+                    ) : !c.photo_url ? (
                       <span className="text-[26px] font-bold text-[#8B97FF]">{initials}</span>
-                    )}
+                    ) : null}
                   </div>
                   <div
                     className="absolute bottom-0.5 right-0.5 w-[22px] h-[22px] rounded-full bg-[#34d399] flex items-center justify-center"

@@ -1,57 +1,109 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle, Users, CheckCircle2, Globe, BookOpen, FileText, Map } from 'lucide-react';
+import { sectionBadgeClass } from '@/utils/glassStyles';
+import SpaceSectionBackground from '@/components/shared/SpaceSectionBackground';
+
+function ProgramAreaBulletIcon() {
+  const uid = React.useId().replace(/:/g, '');
+  const gr1 = `prog-area-gr1-${uid}`;
+  const gr2 = `prog-area-gr2-${uid}`;
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+      className="w-4 h-4 shrink-0"
+      aria-hidden
+    >
+      <linearGradient
+        id={gr1}
+        x1="21.241"
+        x2="3.541"
+        y1="39.241"
+        y2="21.541"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset="0.108" stopColor="#0d7044" />
+        <stop offset="0.433" stopColor="#11945a" />
+      </linearGradient>
+      <path
+        fill={`url(#${gr1})`}
+        d="M16.599,41.42L1.58,26.401c-0.774-0.774-0.774-2.028,0-2.802l4.019-4.019	c0.774-0.774,2.028-0.774,2.802,0L23.42,34.599c0.774,0.774,0.774,2.028,0,2.802l-4.019,4.019	C18.627,42.193,17.373,42.193,16.599,41.42z"
+      />
+      <linearGradient
+        id={gr2}
+        x1="-15.77"
+        x2="26.403"
+        y1="43.228"
+        y2="43.228"
+        gradientTransform="rotate(134.999 21.287 38.873)"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset="0" stopColor="#2ac782" />
+        <stop offset="1" stopColor="#21b876" />
+      </linearGradient>
+      <path
+        fill={`url(#${gr2})`}
+        d="M12.58,34.599L39.599,7.58c0.774-0.774,2.028-0.774,2.802,0l4.019,4.019	c0.774,0.774,0.774,2.028,0,2.802L19.401,41.42c-0.774,0.774-2.028,0.774-2.802,0l-4.019-4.019	C11.807,36.627,11.807,35.373,12.58,34.599z"
+      />
+    </svg>
+  );
+}
 
 const consulting = {
-  icon: MessageCircle,
+  id: 'consulting',
+  iconSrc: 'https://img.icons8.com/stickers/100/group-task.png',
+  iconAlt: 'Group task icon',
   title: 'One-on-One Consulting',
   tagline: 'Clarity, direction, and a plan that fits you.',
   description: "A private, personalized session where we listen to your situation, explore your interests, and help you make confident, informed decisions about studying abroad.",
   areas: [
-    { icon: CheckCircle2, label: 'Major Exploration', detail: 'Business, Computer Science, Medicine, Engineering, and more' },
-    { icon: CheckCircle2, label: 'Country Selection', detail: 'US, Canada, UK, Thailand, Singapore, and others' },
-    { icon: CheckCircle2, label: 'University Direction', detail: 'Finding the right fit for your goals and budget' },
-    { icon: CheckCircle2, label: 'Application Planning', detail: 'Timeline and step-by-step preparation' },
-    { icon: CheckCircle2, label: 'Document Review', detail: 'SOP, CV, and essential application materials' },
+    { label: 'Major Exploration', detail: 'Business, Computer Science, Medicine, Engineering, and more' },
+    { label: 'Country Selection', detail: 'US, Canada, UK, Thailand, Singapore, and others' },
+    { label: 'University Direction', detail: 'Finding the right fit for your goals and budget' },
+    { label: 'Application Planning', detail: 'Timeline and step-by-step preparation' },
+    { label: 'Document Review', detail: 'SOP, CV, and essential application materials' },
   ],
   note: 'Sessions are booked directly with your chosen consultant — at a time that works for both of you.',
   free: true,
 };
 
 const mentorship = {
-  icon: Users,
+  id: 'mentorship',
+  iconSrc: 'https://img.icons8.com/stickers/100/classroom.png',
+  iconAlt: 'Classroom icon',
   title: 'Mentorship Program',
   tagline: 'Continuous partnership, through your academic journey.',
   description: "A continuous partnership where we guide you through every step of your academic journey. Rather than a single consultation, we work closely with you over multiple sessions to navigate the entire application process.",
   areas: [
-    { icon: CheckCircle2, label: 'Ongoing Check-ins', detail: 'Regular meetings to answer your questions and plan your next steps' },
-    { icon: CheckCircle2, label: 'Application Assistance', detail: 'Step-by-step help with preparing and submitting your university applications' },
-    { icon: CheckCircle2, label: 'Offer Support', detail: 'Guidance on reviewing, choosing, and accepting your university admission offers' },
-    { icon: CheckCircle2, label: 'Goal Setting & Progress Tracking', detail: 'Keeping your application deadlines organized and moving forward' },
-    { icon: CheckCircle2, label: 'Community Connection', detail: 'Access to a network of peers and mentors who have successfully navigated the process' },
+    { label: 'Ongoing Check-ins', detail: 'Regular meetings to answer your questions and plan your next steps' },
+    { label: 'Application Assistance', detail: 'Step-by-step help with preparing and submitting your university applications' },
+    { label: 'Offer Support', detail: 'Guidance on reviewing, choosing, and accepting your university admission offers' },
+    { label: 'Goal Setting & Progress Tracking', detail: 'Keeping your application deadlines organized and moving forward' },
+    { label: 'Community Connection', detail: 'Access to a network of peers and mentors who have successfully navigated the process' },
   ],
   note: 'We work closely with you over multiple sessions to navigate the entire application process, keeping you on track until you successfully secure your university offer.',
   free: true,
 };
 
 const guidance = {
-  icon: Map,
+  id: 'guidance',
+  iconSrc: 'https://img.icons8.com/stickers/100/user-manual.png',
+  iconAlt: 'User manual icon',
   title: 'Career Guidance Program',
   tagline: 'Consultation for your future career path.',
   description: "Whether you feel overwhelmed by having too many interests or are completely unsure of which direction to take, our mentors and consultants are here to listen. Using their professional experience and knowledge, they will provide tailored advice to help you find your best fit. 🔍",
   areas: [
-    { icon: CheckCircle2, label: 'Career Path Exploration', detail: 'Discover multiple career options aligned with your interests' },
-    { icon: CheckCircle2, label: 'Professional Trajectory Planning', detail: 'Map out a strategic plan for your professional future' },
-    { icon: CheckCircle2, label: 'Tailored Advice', detail: 'Personalized recommendations based on your unique situation' },
-    { icon: CheckCircle2, label: 'Industry Insights', detail: 'Learn from professionals with real-world experience' },
-    { icon: CheckCircle2, label: 'Direction Finding', detail: 'Clarity when you are overwhelmed or unsure of which path to take' },
+    { label: 'Career Path Exploration', detail: 'Discover multiple career options aligned with your interests' },
+    { label: 'Professional Trajectory Planning', detail: 'Map out a strategic plan for your professional future' },
+    { label: 'Tailored Advice', detail: 'Personalized recommendations based on your unique situation' },
+    { label: 'Industry Insights', detail: 'Learn from professionals with real-world experience' },
+    { label: 'Direction Finding', detail: 'Clarity when you are overwhelmed or unsure of which path to take' },
   ],
   note: 'While similar in format to our One-on-One Consulting, this program focuses specifically on your career and professional trajectory rather than just academics.',
   free: true,
 };
 
 function ProgramCard({ program, reverse }) {
-  const Icon = program.icon;
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.92 }}
@@ -62,18 +114,24 @@ function ProgramCard({ program, reverse }) {
     >
       {/* Image / Visual side */}
       <div className={`${reverse ? 'lg:col-start-2' : ''}`}>
-        <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-10 text-white overflow-hidden min-h-[360px] flex flex-col justify-between">
-          <div className="absolute top-0 right-0 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl" />
-          <div>
-            <div className="w-14 h-14 bg-blue-600/20 border border-blue-500/30 rounded-2xl flex items-center justify-center mb-5">
-              <Icon className="w-7 h-7 text-blue-400" />
+        <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-10 text-white min-h-[360px] flex flex-col justify-between">
+          <div className="flex flex-col justify-between flex-1">
+            <div>
+              <div className="w-14 h-14 bg-blue-600/20 border border-blue-500/30 rounded-2xl flex items-center justify-center mb-5">
+                <img
+                  src={program.iconSrc}
+                  alt={program.iconAlt ?? program.title}
+                  className="w-8 h-8 object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <p className="text-sm text-white font-extrabold uppercase tracking-widest mb-2">BladeX Service</p>
+              <h3 className="text-2xl font-bold text-white mb-3">{program.title}</h3>
+              <p className="text-slate-300 text-sm italic">"{program.tagline}"</p>
             </div>
-            <p className="text-sm text-blue-400 font-semibold uppercase tracking-widest mb-2">BladeX Service</p>
-            <h3 className="text-2xl font-bold text-white mb-3">{program.title}</h3>
-            <p className="text-slate-400 text-sm italic">"{program.tagline}"</p>
-          </div>
-          <div className="mt-8 bg-white/5 rounded-xl px-4 py-3 text-xs text-slate-400 border border-white/10">
-            📌 {program.note}
+            <div className="mt-8 bg-white/5 rounded-xl px-4 py-3 text-xs text-slate-400 border border-white/10">
+              📌 {program.note}
+            </div>
           </div>
         </div>
       </div>
@@ -83,20 +141,17 @@ function ProgramCard({ program, reverse }) {
         <p className="text-slate-600 leading-relaxed mb-7">{program.description}</p>
         <h4 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">What's Included</h4>
         <ul className="space-y-4">
-          {program.areas.map((area, i) => {
-            const AreaIcon = area.icon;
-            return (
-              <li key={i} className="flex gap-4 items-start">
-                <div className="w-9 h-9 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <AreaIcon className="w-4 h-4 text-blue-600" />
-                </div>
-                <div>
-                  <p className="font-semibold text-slate-900 text-sm">{area.label}</p>
-                  <p className="text-slate-500 text-xs mt-0.5">{area.detail}</p>
-                </div>
-              </li>
-            );
-          })}
+          {program.areas.map((area, i) => (
+            <li key={i} className="flex gap-4 items-start">
+              <div className="w-9 h-9 bg-emerald-50 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                <ProgramAreaBulletIcon />
+              </div>
+              <div>
+                <p className="font-semibold text-slate-900 text-sm">{area.label}</p>
+                <p className="text-slate-500 text-xs mt-0.5">{area.detail}</p>
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
     </motion.div>
@@ -107,12 +162,13 @@ export default function Programs() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="relative pt-32 pb-28 bg-slate-900 overflow-hidden">
-        <div className="absolute inset-0"
-          style={{ backgroundImage: 'radial-gradient(circle, rgba(59,130,246,0.35) 1.5px, transparent 1.5px)', backgroundSize: '36px 36px', animation: 'grid-pan 8s linear infinite' }} />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative pt-32 pb-28 bg-[#060b18] overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <SpaceSectionBackground starDensity={1.2} />
+        </div>
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.35, ease: 'easeOut' }}>
-            <span className="text-blue-400 font-semibold text-xs uppercase tracking-widest">Our Services</span>
+            <span className={sectionBadgeClass}>Our Services</span>
             <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-5">Programs & Services</h1>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
               Personalized consulting and mentorship for Myanmar students pursuing education abroad.
@@ -120,12 +176,6 @@ export default function Programs() {
           </motion.div>
         </div>
 
-        {/* Wave → white */}
-        <div className="absolute bottom-0 left-0 w-full pointer-events-none">
-          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20 block">
-            <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="white" />
-          </svg>
-        </div>
       </section>
 
       {/* Programs */}
@@ -139,7 +189,7 @@ export default function Programs() {
       </section>
 
       {/* Global Destinations & Fields of Study */}
-      <section className="relative py-24 bg-white">
+      <section className="relative py-24 bg-white border-y border-slate-300">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.92 }}
@@ -157,14 +207,24 @@ export default function Programs() {
             <motion.div
               initial={{ opacity: 0, scale: 0.92 }}
               whileInView={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.02, transition: { duration: 0.2, ease: 'easeOut' } }}
               viewport={{ once: true }}
               transition={{ duration: 0.35, ease: 'easeOut' }}
-              className="bg-white rounded-3xl p-10 border border-slate-100 shadow-sm"
+              className="bg-white rounded-3xl p-10 border border-slate-100 shadow-sm cursor-default"
             >
-              <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
-                <Globe className="w-7 h-7 text-blue-600" />
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 shrink-0 bg-blue-100 rounded-2xl flex items-center justify-center">
+                  <img
+                    src="https://img.icons8.com/stickers/100/globe.png"
+                    alt="Globe"
+                    className="w-8 h-8 object-contain"
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 leading-snug min-w-0 m-0">
+                  Global Destinations
+                </h3>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Global Destinations</h3>
               <p className="text-slate-600 leading-relaxed mb-6">
                 We guide students toward top-tier educational hubs worldwide. Whether you are looking to study in the US, Canada, or the UK, or exploring diverse academic opportunities across Europe and Asia, we help you find the destination that fits your goals.
               </p>
@@ -179,14 +239,24 @@ export default function Programs() {
             <motion.div
               initial={{ opacity: 0, scale: 0.92 }}
               whileInView={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.02, transition: { duration: 0.2, ease: 'easeOut' } }}
               viewport={{ once: true }}
               transition={{ duration: 0.35, ease: 'easeOut' }}
-              className="bg-white rounded-3xl p-10 border border-slate-100 shadow-sm"
+              className="bg-white rounded-3xl p-10 border border-slate-100 shadow-sm cursor-default"
             >
-              <div className="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center mb-6">
-                <BookOpen className="w-7 h-7 text-indigo-600" />
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 shrink-0 bg-indigo-100 rounded-2xl flex items-center justify-center">
+                  <img
+                    src="https://img.icons8.com/stickers/100/saving-book.png"
+                    alt="Saving book"
+                    className="w-8 h-8 object-contain"
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 leading-snug min-w-0 m-0">
+                  Fields of Study
+                </h3>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Fields of Study</h3>
               <p className="text-slate-600 leading-relaxed mb-6">
                 We strategically align your career ambitions with the right university programs. Our expertise covers a wide spectrum of competitive disciplines, including Business, Computer Science, Software Engineering, Data Science, Medicine, Biochemistry, and many more.
               </p>

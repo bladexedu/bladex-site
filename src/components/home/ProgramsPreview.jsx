@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { Users, MessageCircle, Map, ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { solidButton } from '@/utils/glassStyles';
+import { ArrowRight } from 'lucide-react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 const programs = [
   {
-    icon: MessageCircle,
+    iconSrc: 'https://img.icons8.com/stickers/100/group-task.png',
+    iconAlt: 'Group task icon',
     label: 'Program 1',
     title: 'One-on-One Consulting',
     description: "A private, personalized session where we listen to your situation, explore your interests, and help you make confident, informed decisions about studying abroad.",
@@ -14,7 +16,8 @@ const programs = [
     color: 'blue',
   },
   {
-    icon: Users,
+    iconSrc: 'https://img.icons8.com/stickers/100/classroom.png',
+    iconAlt: 'Classroom icon',
     label: 'Program 2',
     title: 'Mentorship Program',
     description: "A continuous partnership where we guide you through every step of your academic journey — from application to offer acceptance.",
@@ -22,7 +25,8 @@ const programs = [
     color: 'indigo',
   },
   {
-    icon: Map,
+    iconSrc: 'https://img.icons8.com/stickers/100/user-manual.png',
+    iconAlt: 'User manual icon',
     label: 'Program 3',
     title: 'Career Guidance Program',
     description: "Choosing a major is only the beginning. We help you connect your academic path to real-world opportunities — so you graduate with direction, not just a degree.",
@@ -32,14 +36,83 @@ const programs = [
 ];
 
 const colorMap = {
-  blue: { bg: 'bg-blue-50', icon: 'bg-blue-100 text-blue-600', badge: 'bg-blue-600', dot: 'bg-blue-500' },
-  indigo: { bg: 'bg-indigo-50', icon: 'bg-indigo-100 text-indigo-600', badge: 'bg-indigo-600', dot: 'bg-indigo-500' },
-  emerald: { bg: 'bg-emerald-50', icon: 'bg-emerald-100 text-emerald-600', badge: 'bg-emerald-600', dot: 'bg-emerald-500' },
+  blue: { bg: 'bg-blue-50', badge: 'bg-blue-600', dot: 'bg-blue-500' },
+  indigo: { bg: 'bg-indigo-50', badge: 'bg-indigo-600', dot: 'bg-indigo-500' },
+  emerald: { bg: 'bg-emerald-50', badge: 'bg-emerald-600', dot: 'bg-emerald-500' },
 };
+
+function ProgramCard({ program, index }) {
+  const c = colorMap[program.color];
+  const ref = useRef(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springConfig = { stiffness: 280, damping: 24, mass: 0.6 };
+
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [6, -6]), springConfig);
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-6, 6]), springConfig);
+
+  const handleMouseMove = (e) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    x.set((e.clientX - rect.left) / rect.width - 0.5);
+    y.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.3, delay: index * 0.04, ease: 'easeOut' }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: 'preserve-3d',
+      }}
+      className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-100/80 transition-shadow duration-300 flex flex-col cursor-default"
+    >
+      <div className={`${c.bg} px-8 pt-8 pb-6 flex-grow`} style={{ transform: 'translateZ(20px)' }}>
+        <div className="flex items-center gap-3 mb-4">
+          <img
+            src={program.iconSrc}
+            alt={program.iconAlt}
+            className="w-10 h-10 object-contain flex-shrink-0"
+            loading="lazy"
+            style={{ transform: 'translateZ(28px)' }}
+          />
+          <span className={`text-xs font-bold uppercase tracking-widest text-white ${c.badge} px-3 py-1 rounded-full`}>
+            {program.label}
+          </span>
+        </div>
+        <h3 className="text-2xl font-bold text-slate-900 mb-2">{program.title}</h3>
+        <p className="text-slate-600 text-sm leading-relaxed">{program.description}</p>
+      </div>
+      <div className="px-8 py-6" style={{ transform: 'translateZ(12px)' }}>
+        <ul className="space-y-2">
+          {program.highlights.map((h) => (
+            <li key={h} className="flex items-center gap-2 text-sm text-slate-700">
+              <span className={`w-2 h-2 rounded-full ${c.dot} flex-shrink-0`} />
+              {h}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function ProgramsPreview() {
   return (
-    <section className="relative py-24 bg-slate-50">
+    <section className="relative py-24 bg-slate-50 border-y border-slate-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, scale: 0.92 }}
@@ -53,43 +126,10 @@ export default function ProgramsPreview() {
           <p className="text-slate-500 max-w-xl mx-auto">We offer high-quality, complimentary guidance tailored to your goals. Explore our core services and take the first step toward your study abroad journey today.</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {programs.map((prog, i) => {
-            const c = colorMap[prog.color];
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.92 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.35, ease: 'easeOut' }}
-                className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col"
-              >
-                <div className={`${c.bg} px-8 pt-8 pb-6 flex-grow`}>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={`w-12 h-12 ${c.icon} rounded-xl flex items-center justify-center`}>
-                      <prog.icon className="w-6 h-6" />
-                    </div>
-                    <span className={`text-xs font-bold uppercase tracking-widest text-white ${c.badge} px-3 py-1 rounded-full`}>
-                      {prog.label}
-                    </span>
-                  </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">{prog.title}</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">{prog.description}</p>
-                </div>
-                <div className="px-8 py-6">
-                  <ul className="space-y-2">
-                    {prog.highlights.map((h, j) => (
-                      <li key={j} className="flex items-center gap-2 text-sm text-slate-700">
-                        <span className={`w-2 h-2 rounded-full ${c.dot} flex-shrink-0`} />
-                        {h}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            );
-          })}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" style={{ perspective: 1000 }}>
+          {programs.map((prog, i) => (
+            <ProgramCard key={prog.title} program={prog} index={i} />
+          ))}
         </div>
 
         <motion.div
@@ -99,14 +139,14 @@ export default function ProgramsPreview() {
           transition={{ duration: 0.35, ease: 'easeOut' }}
           className="text-center mt-10"
         >
-          <Link to={createPageUrl('Programs')}>
-            <button className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all text-sm">
-              See full program details <ArrowRight className="w-4 h-4" />
+          <Link to={createPageUrl('Programs')} className="inline-block transition-transform duration-200 hover:scale-105">
+            <button className={`group ${solidButton.navySolid} ${solidButton.md}`}>
+              <span>See full program details</span>
+              <ArrowRight className="w-4 h-4 shrink-0 transition-[transform,margin] duration-500 ease-out group-hover:translate-x-2 group-hover:scale-110" />
             </button>
           </Link>
         </motion.div>
       </div>
-
     </section>
   );
 }
