@@ -33,6 +33,15 @@ const LOCATION_MAP = {
   'zin zin aye chan':         'Australia',
   'hein htet zaw':           'Italy',
   'may thet khine':          'Poland',
+  'cho mya thwe':            'Czech Republic',
+  'ei nandar soe':           'Malaysia',
+  'htet arkar':              'South Korea',
+  'phoo pwint thaung sein':  'Australia',
+  'pyae phyo thu @ rachel':  'Thailand',
+  'shun le min lwin':        'South Korea',
+  'tayza thiha':             'Japan · Erasmus Mundus',
+  'thet htar phyu':          'Czech Republic',
+  'wint phyu sin moe @ nari': 'Thailand',
 };
 
 export default function ConsultantCard({ consultant: c, index }) {
