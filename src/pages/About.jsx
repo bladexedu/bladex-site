@@ -192,7 +192,7 @@ export default function About() {
               {
                 initials: 'NSN',
                 name: 'Nang Sayoon Noi',
-                role: 'Co-Founder & Operations Lead',
+                role: 'Co-Founder & Head of Operations',
                 degree: 'Bachelor of Science in Biochemistry (Chemistry Honors)',
                 university: 'Sacramento State University',
                 note: 'Overseeing the organizational structure, internal communications, and seamless day-to-day operations.',
@@ -203,7 +203,7 @@ export default function About() {
               {
                 initials: 'KT',
                 name: 'Khun Thurein',
-                role: 'Technical Operations Lead',
+                role: 'Head of Technology and Analytics',
                 degree: 'Bachelor of Computer Science',
                 university: 'Carleton University',
                 note: 'Managing technical infrastructure, platform development, and digital systems for BladeX.',
@@ -276,9 +276,9 @@ export default function About() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
             {[
-              { name: 'Myat Min Htet', role: 'Operations & Analytics Associate' },
-              { name: 'Thin Thiri San', role: 'Market Research & Operations Associate' },
-              { name: 'Myint Zu Linn', role: 'Content & Social Media Intern' },
+              { name: 'Myat Min Htet', role: 'Operations Lead & Data Analyst' },
+              { name: 'Thin Thiri San', role: 'Operations Lead & Market Research Analyst' },
+              { name: 'Myint Zu Linn', role: 'Research & Operation Intern' },
               { name: 'Chaw Ei Ei Thu', role: 'Content & Social Media Intern' },
               { name: 'Htun Htun', role: 'Creative Design & Video Editing Intern' },
             ].map((m, i) => (
