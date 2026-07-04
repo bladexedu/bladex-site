@@ -15,8 +15,8 @@ const DESTINATION_MAP = {
   // covers Nyan, Nang, Wutt, Cherry, Wai Phyo, Hnaine
 
   'Europe': ['europe', 'germany', 'france', 'netherlands', 'italy',
-             'hungary', 'poland'],
-  // added: hungary (Yati)
+             'hungary', 'poland', 'czech', 'czechia', 'slovakia'],
+  // added: hungary (Yati), czech/slovakia (Thet Htar, Cho Mya Thwe)
 
   'United Kingdom': ['uk', 'united kingdom'],
 
