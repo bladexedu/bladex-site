@@ -42,6 +42,9 @@ const LOCATION_MAP = {
   'tayza thiha':             'Japan · Erasmus Mundus',
   'thet htar phyu':          'Czech Republic',
   'wint phyu sin moe @ nari': 'Thailand',
+  'chaw tynzar maung':       'Thailand',
+  'yoon myat tharaphi':      'Australia',
+  'yupar win thu':           'New Zealand',
 };
 
 export default function ConsultantCard({ consultant: c, index }) {
