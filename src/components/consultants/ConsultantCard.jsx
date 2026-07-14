@@ -33,7 +33,7 @@ const LOCATION_MAP = {
   'zin zin aye chan':         'Australia',
   'hein htet zaw':           'Italy',
   'may thet khine':          'Poland',
-  'cho mya thwe':            'Czech Republic',
+  'cho myo thwe':            'Czech Republic',
   'ei nandar soe':           'Malaysia',
   'htet arkar':              'South Korea',
   'phoo pwint thaung sein':  'Australia',
