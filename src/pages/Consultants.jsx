@@ -16,7 +16,7 @@ const DESTINATION_MAP = {
 
   'Europe': ['europe', 'germany', 'france', 'netherlands', 'italy',
              'hungary', 'poland', 'czech', 'czechia', 'slovakia', 'finland', 'switzerland'],
-  // added: hungary (Yati), czech/slovakia (Thet Htar, Cho Mya), finland (Yupar), switzerland (Chaw)
+  // added: hungary (Yati), czech/slovakia (Thet Htar, Cho Myo), finland (Yupar), switzerland (Chaw)
 
   'United Kingdom': ['uk', 'united kingdom'],
 
