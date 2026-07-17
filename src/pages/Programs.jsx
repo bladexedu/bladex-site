@@ -1,7 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Globe, BookOpen } from 'lucide-react';
 import { sectionBadgeClass } from '@/utils/glassStyles';
 import SpaceSectionBackground from '@/components/shared/SpaceSectionBackground';
+
+const programVisual = {
+  consulting: { iconSrc: 'https://img.icons8.com/fluency/96/chat--v1.png', iconAlt: 'Chat', box: 'bg-blue-600/20 border-blue-500/30', glow: ['#3b82f6', '#0ea5e9'] },
+  mentorship: { iconSrc: 'https://img.icons8.com/office/80/training.png', iconAlt: 'Training', box: 'bg-indigo-600/20 border-indigo-500/30', glow: ['#6366f1', '#818cf8'] },
+  guidance: { iconSrc: 'https://img.icons8.com/office/80/user-manual.png', iconAlt: 'User manual', box: 'bg-emerald-600/20 border-emerald-500/30', glow: ['#10b981', '#34d399'] },
+};
 
 function ProgramAreaBulletIcon() {
   const uid = React.useId().replace(/:/g, '');
@@ -51,8 +58,6 @@ function ProgramAreaBulletIcon() {
 
 const consulting = {
   id: 'consulting',
-  iconSrc: 'https://img.icons8.com/stickers/100/group-task.png',
-  iconAlt: 'Group task icon',
   title: 'One-on-One Consulting',
   tagline: 'Clarity, direction, and a plan that fits you.',
   description: "A private, personalized session where we listen to your situation, explore your interests, and help you make confident, informed decisions about studying abroad.",
@@ -69,8 +74,6 @@ const consulting = {
 
 const mentorship = {
   id: 'mentorship',
-  iconSrc: 'https://img.icons8.com/stickers/100/classroom.png',
-  iconAlt: 'Classroom icon',
   title: 'Mentorship Program',
   tagline: 'Continuous partnership, through your academic journey.',
   description: "A continuous partnership where we guide you through every step of your academic journey. Rather than a single consultation, we work closely with you over multiple sessions to navigate the entire application process.",
@@ -87,8 +90,6 @@ const mentorship = {
 
 const guidance = {
   id: 'guidance',
-  iconSrc: 'https://img.icons8.com/stickers/100/user-manual.png',
-  iconAlt: 'User manual icon',
   title: 'Career Guidance Program',
   tagline: 'Consultation for your future career path.',
   description: "Whether you feel overwhelmed by having too many interests or are completely unsure of which direction to take, our mentors and consultants are here to listen. Using their professional experience and knowledge, they will provide tailored advice to help you find your best fit. 🔍",
@@ -104,6 +105,9 @@ const guidance = {
 };
 
 function ProgramCard({ program, reverse }) {
+  const visual = programVisual[program.id];
+  const { box, iconSrc, iconAlt, Icon, icon, glow } = visual;
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.92 }}
@@ -114,16 +118,24 @@ function ProgramCard({ program, reverse }) {
     >
       {/* Image / Visual side */}
       <div className={`${reverse ? 'lg:col-start-2' : ''}`}>
-        <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-10 text-white min-h-[360px] flex flex-col justify-between">
-          <div className="flex flex-col justify-between flex-1">
+        <div className="relative overflow-hidden bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900 rounded-3xl p-10 text-white min-h-[360px] flex flex-col justify-between">
+          <div className="absolute -top-10 -right-10 w-52 h-52 rounded-full blur-3xl opacity-45 pointer-events-none" style={{ background: glow[0] }} aria-hidden />
+          <div className="absolute -bottom-12 -left-8 w-48 h-48 rounded-full blur-3xl opacity-35 pointer-events-none" style={{ background: glow[1] }} aria-hidden />
+          <div className="absolute top-1/2 right-1/4 w-36 h-36 rounded-full blur-2xl opacity-25 pointer-events-none" style={{ background: glow[0] }} aria-hidden />
+          <div className="absolute top-8 left-1/3 w-24 h-24 rounded-full blur-2xl opacity-20 pointer-events-none bg-white" aria-hidden />
+          <div className="relative z-10 flex flex-col justify-between flex-1">
             <div>
-              <div className="w-14 h-14 bg-blue-600/20 border border-blue-500/30 rounded-2xl flex items-center justify-center mb-5">
-                <img
-                  src={program.iconSrc}
-                  alt={program.iconAlt ?? program.title}
-                  className="w-8 h-8 object-contain"
-                  loading="lazy"
-                />
+              <div className={`w-14 h-14 border rounded-2xl flex items-center justify-center mb-5 ${box}`}>
+                {iconSrc ? (
+                  <img
+                    src={iconSrc}
+                    alt={iconAlt ?? program.title}
+                    className="w-8 h-8 object-contain"
+                    loading="lazy"
+                  />
+                ) : (
+                  <Icon className={`w-7 h-7 ${icon}`} strokeWidth={2} aria-hidden />
+                )}
               </div>
               <p className="text-sm text-white font-extrabold uppercase tracking-widest mb-2">BladeX Service</p>
               <h3 className="text-2xl font-bold text-white mb-3">{program.title}</h3>
@@ -214,12 +226,7 @@ export default function Programs() {
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-14 h-14 shrink-0 bg-blue-100 rounded-2xl flex items-center justify-center">
-                  <img
-                    src="https://img.icons8.com/stickers/100/globe.png"
-                    alt="Globe"
-                    className="w-8 h-8 object-contain"
-                    loading="lazy"
-                  />
+                  <Globe className="w-7 h-7 text-blue-600" strokeWidth={2} aria-hidden />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 leading-snug min-w-0 m-0">
                   Global Destinations
@@ -246,12 +253,7 @@ export default function Programs() {
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-14 h-14 shrink-0 bg-indigo-100 rounded-2xl flex items-center justify-center">
-                  <img
-                    src="https://img.icons8.com/stickers/100/saving-book.png"
-                    alt="Saving book"
-                    className="w-8 h-8 object-contain"
-                    loading="lazy"
-                  />
+                  <BookOpen className="w-7 h-7 text-indigo-600" strokeWidth={2} aria-hidden />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 leading-snug min-w-0 m-0">
                   Fields of Study

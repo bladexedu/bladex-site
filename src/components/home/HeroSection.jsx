@@ -6,14 +6,14 @@ import { ArrowRight, Ban, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 import SpaceSectionBackground from '@/components/shared/SpaceSectionBackground';
 
-const heroGlassTagMuted =
-  'border border-dashed border-slate-500/50 bg-slate-700/25 text-slate-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]';
+const heroTagMuted =
+  'border border-dashed border-slate-500/50 bg-slate-800/60 text-slate-400';
 
 const heroTags = [
   { label: 'One-on-One Mentorship', className: sectionBadgeBlue, Icon: Check },
   { label: 'Study Abroad Guidance', className: sectionBadgeBlue, Icon: Check },
   { label: 'Career Pathways', className: sectionBadgeBlue, Icon: Check },
-  { label: 'No Visa Processing', className: heroGlassTagMuted, Icon: Ban },
+  { label: 'No Visa Processing', className: heroTagMuted, Icon: Ban },
 ];
 
 export default function HeroSection() {

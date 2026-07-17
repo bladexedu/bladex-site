@@ -35,7 +35,7 @@ const valuesIconColor = {
 };
 
 const statCardStyle =
-  'border bg-gradient-to-b from-blue-400/25 to-blue-600/10 backdrop-blur-xl backdrop-saturate-150 border-blue-400/40 shadow-[0_4px_18px_rgba(96,165,250,0.18),inset_0_1px_0_rgba(255,255,255,0.25)]';
+  'border border-blue-400/40 bg-blue-600/20';
 
 const stats = [
   { value: 'Complimentary Advisory', label: 'High-quality, strategic guidance provided at absolutely no cost.' },
@@ -240,7 +240,7 @@ export default function About() {
               {
                 initials: 'NSN',
                 name: 'Nang Sayoon Noi',
-                role: 'Co-Founder & Operations Lead',
+                role: 'Co-Founder & Head of Operations',
                 degree: 'Bachelor of Science in Biochemistry (Chemistry Honors)',
                 university: 'Sacramento State University',
                 note: 'Overseeing the organizational structure, internal communications, and seamless day-to-day operations.',
@@ -251,7 +251,7 @@ export default function About() {
               {
                 initials: 'KT',
                 name: 'Khun Thurein',
-                role: 'Technical Operations Lead',
+                role: 'Head of Technology and Analytics',
                 degree: 'Bachelor of Computer Science',
                 university: 'Carleton University',
                 note: 'Managing technical infrastructure, platform development, and digital systems for BladeX.',
@@ -270,7 +270,7 @@ export default function About() {
                   <div className="absolute -top-6 -left-6 w-32 h-32 rounded-full blur-2xl opacity-50" style={{ background: '#3b82f6' }} />
                   <div className="absolute -bottom-4 -right-4 w-28 h-28 rounded-full blur-2xl opacity-40" style={{ background: '#6366f1' }} />
                   <div className="absolute top-4 right-8 w-20 h-20 rounded-full blur-xl opacity-30" style={{ background: '#0ea5e9' }} />
-                  <div className="absolute inset-0 bg-slate-900/50 backdrop-blur-md" />
+                  <div className="absolute inset-0 bg-slate-900/70" />
                   {[
                     { top: '10%', left: '8%',  size: 3, delay: 0 },
                     { top: '20%', left: '80%', size: 2, delay: 0.5 },
@@ -290,7 +290,7 @@ export default function About() {
                       transition={{ duration: 3, repeat: Infinity, delay: dot.delay, ease: 'easeInOut' }}
                     />
                   ))}
-                  <div className="relative w-20 h-20 rounded-2xl overflow-hidden bg-white/60 backdrop-blur-sm flex items-center justify-center mb-4 ring-2 ring-slate-800/40 shadow-lg">
+                  <div className="relative w-20 h-20 rounded-2xl overflow-hidden bg-slate-800 flex items-center justify-center mb-4 ring-2 ring-slate-700/60 shadow-lg">
                     {p.photo
                       ? <img src={p.photo} alt={p.name} className="w-full h-full object-cover object-[center_10%]" />
                       : <span className={`text-lg font-bold bg-gradient-to-br ${p.gradient} bg-clip-text text-transparent`}>{p.initials}</span>
@@ -317,40 +317,15 @@ export default function About() {
 
           {/* Team members */}
           <div className="text-center mb-8">
-            <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Meet Our Team Members</span>
+            <span className="text-sm font-extrabold uppercase tracking-widest text-slate-500">Meet Our Team Members</span>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
             {[
-              {
-                name: 'Myat Min Htet',
-                role: 'Operations & Analytics Associate',
-                iconSrc: 'https://img.icons8.com/stickers/100/user.png',
-                iconAlt: 'Myat Min Htet',
-              },
-              {
-                name: 'Thin Thiri San',
-                role: 'Market Research & Operations Associate',
-                iconSrc: 'https://img.icons8.com/stickers/100/person-female.png',
-                iconAlt: 'Thin Thiri San',
-              },
-              {
-                name: 'Myint Zu Linn',
-                role: 'Content & Social Media Intern',
-                iconSrc: 'https://img.icons8.com/stickers/100/person-female.png',
-                iconAlt: 'Myint Zu Linn',
-              },
-              {
-                name: 'Chaw Ei Ei Thu',
-                role: 'Content & Social Media Intern',
-                iconSrc: 'https://img.icons8.com/stickers/100/person-female.png',
-                iconAlt: 'Chaw Ei Ei Thu',
-              },
-              {
-                name: 'Htun Htun',
-                role: 'Creative Design & Video Editing Intern',
-                iconSrc: 'https://img.icons8.com/stickers/100/user.png',
-                iconAlt: 'Htun Htun',
-              },
+              { name: 'Myat Min Htet', role: 'Operations Lead & Data Analyst' },
+              { name: 'Thin Thiri San', role: 'Operations Lead & Market Research Analyst' },
+              { name: 'Myint Zu Linn', role: 'Research & Operation Intern' },
+              { name: 'Chaw Ei Ei Thu', role: 'Content & Social Media Intern' },
+              { name: 'Htun Htun', role: 'Creative Design & Video Editing Intern' },
             ].map((m, i) => (
               <motion.div
                 key={i}
@@ -361,12 +336,9 @@ export default function About() {
                 transition={{ duration: 0.28, ease: 'easeOut', delay: i * 0.03 }}
                 className="bg-white rounded-2xl p-5 text-center shadow-sm border border-slate-100 cursor-default"
               >
-                <img
-                  src={m.iconSrc}
-                  alt={m.iconAlt ?? m.name}
-                  className="w-12 h-12 object-contain mx-auto mb-3"
-                  loading="lazy"
-                />
+                <div className="w-12 h-12 rounded-full bg-blue-900 text-white font-bold text-lg flex items-center justify-center mx-auto mb-3">
+                  {m.name.charAt(0)}
+                </div>
                 <p className="font-bold text-slate-900 text-sm leading-tight">{m.name}</p>
                 <p className="text-blue-500 text-xs mt-1 leading-snug font-medium">{m.role}</p>
               </motion.div>

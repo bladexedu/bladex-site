@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { glassDark, glassLight, solidButton } from '@/utils/glassStyles';
+import { solidButton } from '@/utils/glassStyles';
 import { Menu, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -16,42 +16,12 @@ const navLinks = [
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [hoverPill, setHoverPill] = useState({ left: 0, width: 0, visible: false });
-  const navRef = useRef(null);
-  const linkRefs = useRef([]);
   const location = useLocation();
   const navigate = useNavigate();
 
   const handleBookMeeting = () => {
     navigate(createPageUrl('Consultants'));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
-
-  const positionPillAt = useCallback((index) => {
-    const el = linkRefs.current[index];
-    const nav = navRef.current;
-    if (!el || !nav) return false;
-
-    const navRect = nav.getBoundingClientRect();
-    const elRect = el.getBoundingClientRect();
-
-    setHoverPill({
-      left: elRect.left - navRect.left + 3,
-      width: elRect.width - 6,
-      visible: true,
-    });
-    return true;
-  }, []);
-
-  const showPillAtActive = useCallback(() => {
-    const activeIndex = navLinks.findIndex((link) => location.pathname === createPageUrl(link.page));
-    if (activeIndex >= 0) {
-      positionPillAt(activeIndex);
-    } else {
-      setHoverPill((prev) => ({ ...prev, visible: false }));
-    }
-  }, [location.pathname, positionPillAt]);
 
   useEffect(() => {
     let scrolled = window.scrollY > 24;
@@ -59,7 +29,6 @@ export default function Header() {
 
     const onScroll = () => {
       const y = window.scrollY;
-      // Hysteresis avoids a flash when crossing the top threshold
       if (!scrolled && y > 24) {
         scrolled = true;
         setIsScrolled(true);
@@ -75,28 +44,26 @@ export default function Header() {
 
   useEffect(() => setIsMobileOpen(false), [location]);
 
-  useEffect(() => {
-    const frame = requestAnimationFrame(showPillAtActive);
-    return () => cancelAnimationFrame(frame);
-  }, [showPillAtActive, isScrolled]);
-
-  const glassTrayClass = isScrolled ? glassLight.tray : glassDark.tray;
-
-  const hoverGlassClass = isScrolled ? glassLight.hover : glassDark.hover;
-
-  const linkClass = () =>
-    isScrolled ? 'text-blue-900/75 hover:text-blue-900' : 'text-white';
+  const linkClass = (page) => {
+    const isActive = location.pathname === createPageUrl(page);
+    const base = isScrolled
+      ? 'text-blue-900/75 hover:text-blue-900'
+      : 'text-white/90 hover:text-white';
+    const underline = isActive
+      ? 'underline underline-offset-4 decoration-2'
+      : 'hover:underline underline-offset-4 decoration-2';
+    return `${base} ${underline}`;
+  };
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,backdrop-filter] duration-300 ease-out ${
-          isScrolled ? 'bg-blue-50/65 backdrop-blur-xl' : 'bg-transparent backdrop-blur-none'
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ease-out ${
+          isScrolled ? 'bg-blue-50' : 'bg-transparent'
         }`}
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-4">
-            {/* Logo */}
             <Link to={createPageUrl('Home')} className="flex items-center h-11 shrink-0">
               <img
                 src="/bladeX_logo_original-removebg-preview.png"
@@ -105,43 +72,18 @@ export default function Header() {
               />
             </Link>
 
-            {/* Desktop Nav — floating glass capsule */}
-            <nav
-              ref={navRef}
-              className={`hidden md:flex items-center h-11 relative rounded-2xl p-0.5 transition-[background-color,border-color,box-shadow] duration-300 ease-out ${glassTrayClass}`}
-              onMouseLeave={showPillAtActive}
-            >
-              <motion.div
-                aria-hidden
-                className={`absolute top-1 bottom-1 rounded-xl pointer-events-none border backdrop-blur-md ${hoverGlassClass}`}
-                initial={false}
-                animate={{
-                  left: hoverPill.left,
-                  width: hoverPill.width,
-                  opacity: hoverPill.visible ? 1 : 0,
-                }}
-                transition={{
-                  left: { type: 'spring', stiffness: 420, damping: 34, mass: 0.8 },
-                  width: { type: 'spring', stiffness: 420, damping: 34, mass: 0.8 },
-                  opacity: { duration: 0.15 },
-                }}
-              />
-
-              {navLinks.map((link, index) => (
+            <nav className="hidden md:flex items-center gap-1 h-11">
+              {navLinks.map((link) => (
                 <Link
                   key={link.page}
-                  ref={(el) => { linkRefs.current[index] = el; }}
                   to={createPageUrl(link.page)}
-                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                  onMouseEnter={() => positionPillAt(index)}
-                  className={`relative z-10 px-3 py-1.5 text-sm font-medium transition-colors duration-200 rounded-xl whitespace-nowrap ${linkClass()}`}
+                  className={`px-3 py-1.5 text-sm font-medium transition-colors duration-200 whitespace-nowrap ${linkClass(link.page)}`}
                 >
                   {link.name}
                 </Link>
               ))}
             </nav>
 
-            {/* CTA */}
             <div className="hidden md:flex items-center h-11 shrink-0">
               <button
                 type="button"
@@ -156,7 +98,6 @@ export default function Header() {
               </button>
             </div>
 
-            {/* Mobile Toggle */}
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
               className={`md:hidden p-2 ${isScrolled ? 'text-slate-900' : 'text-white'}`}
@@ -167,7 +108,6 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div

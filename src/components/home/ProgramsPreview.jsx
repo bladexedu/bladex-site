@@ -7,8 +7,8 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 const programs = [
   {
-    iconSrc: 'https://img.icons8.com/stickers/100/group-task.png',
-    iconAlt: 'Group task icon',
+    iconSrc: 'https://img.icons8.com/fluency/96/chat--v1.png',
+    iconAlt: 'Chat',
     label: 'Program 1',
     title: 'One-on-One Consulting',
     description: "A private, personalized session where we listen to your situation, explore your interests, and help you make confident, informed decisions about studying abroad.",
@@ -16,8 +16,8 @@ const programs = [
     color: 'blue',
   },
   {
-    iconSrc: 'https://img.icons8.com/stickers/100/classroom.png',
-    iconAlt: 'Classroom icon',
+    iconSrc: 'https://img.icons8.com/office/80/training.png',
+    iconAlt: 'Training',
     label: 'Program 2',
     title: 'Mentorship Program',
     description: "A continuous partnership where we guide you through every step of your academic journey — from application to offer acceptance.",
@@ -25,8 +25,8 @@ const programs = [
     color: 'indigo',
   },
   {
-    iconSrc: 'https://img.icons8.com/stickers/100/user-manual.png',
-    iconAlt: 'User manual icon',
+    iconSrc: 'https://img.icons8.com/office/80/user-manual.png',
+    iconAlt: 'User manual',
     label: 'Program 3',
     title: 'Career Guidance Program',
     description: "Choosing a major is only the beginning. We help you connect your academic path to real-world opportunities — so you graduate with direction, not just a degree.",
@@ -36,13 +36,14 @@ const programs = [
 ];
 
 const colorMap = {
-  blue: { bg: 'bg-blue-50', badge: 'bg-blue-600', dot: 'bg-blue-500' },
-  indigo: { bg: 'bg-indigo-50', badge: 'bg-indigo-600', dot: 'bg-indigo-500' },
-  emerald: { bg: 'bg-emerald-50', badge: 'bg-emerald-600', dot: 'bg-emerald-500' },
+  blue: { bg: 'bg-blue-50', badge: 'bg-blue-600', dot: 'bg-blue-500', icon: 'text-blue-600', iconBg: 'bg-blue-600/10' },
+  indigo: { bg: 'bg-indigo-50', badge: 'bg-indigo-600', dot: 'bg-indigo-500', icon: 'text-indigo-600', iconBg: 'bg-indigo-600/10' },
+  emerald: { bg: 'bg-emerald-50', badge: 'bg-emerald-600', dot: 'bg-emerald-500', icon: 'text-emerald-600', iconBg: 'bg-emerald-600/10' },
 };
 
 function ProgramCard({ program, index }) {
   const c = colorMap[program.color];
+  const Icon = program.Icon;
   const ref = useRef(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -82,13 +83,21 @@ function ProgramCard({ program, index }) {
     >
       <div className={`${c.bg} px-8 pt-8 pb-6 flex-grow`} style={{ transform: 'translateZ(20px)' }}>
         <div className="flex items-center gap-3 mb-4">
-          <img
-            src={program.iconSrc}
-            alt={program.iconAlt}
-            className="w-10 h-10 object-contain flex-shrink-0"
-            loading="lazy"
+          <div
+            className={`w-10 h-10 rounded-xl ${c.iconBg} flex items-center justify-center flex-shrink-0`}
             style={{ transform: 'translateZ(28px)' }}
-          />
+          >
+            {program.iconSrc ? (
+              <img
+                src={program.iconSrc}
+                alt={program.iconAlt ?? program.title}
+                className="w-6 h-6 object-contain"
+                loading="lazy"
+              />
+            ) : (
+              <Icon className={`w-5 h-5 ${c.icon}`} strokeWidth={2} aria-hidden />
+            )}
+          </div>
           <span className={`text-xs font-bold uppercase tracking-widest text-white ${c.badge} px-3 py-1 rounded-full`}>
             {program.label}
           </span>

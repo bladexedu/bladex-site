@@ -37,6 +37,19 @@ const LOCATION_MAP = {
   'min hein khant':           'Italy',
   'zin zin aye chan':         'Australia',
   'hein htet zaw':           'Italy',
+  'may thet khine':          'Poland',
+  'cho myo thwe':            'Czech Republic',
+  'ei nandar soe':           'Malaysia',
+  'htet arkar':              'South Korea',
+  'phoo pwint thaung sein':  'Australia',
+  'pyae phyo thu @ rachel':  'Thailand',
+  'shun le min lwin':        'South Korea',
+  'tayza thiha':             'Japan · Erasmus Mundus',
+  'thet htar phyu':          'Czech Republic',
+  'wint phyu sin moe @ nari': 'Thailand',
+  'chaw tynzar maung':       'Thailand',
+  'yoon myat tharaphi':      'Australia',
+  'yupar win thu':           'New Zealand',
 };
 
 export default function ConsultantCard({ consultant: c, index }) {
@@ -56,12 +69,12 @@ export default function ConsultantCard({ consultant: c, index }) {
       style={{ willChange: 'transform' }}
       className="bg-slate-900 border border-slate-700/50 rounded-3xl overflow-hidden shadow-md flex flex-col cursor-pointer"
     >
-      {/* Avatar banner — Glassmorphism */}
+      {/* Avatar banner */}
       <div className="relative px-6 pt-8 pb-6 flex flex-col items-center text-center overflow-hidden">
         <div className="absolute -top-6 -left-6 w-32 h-32 rounded-full blur-2xl opacity-50" style={{ background: '#3b82f6' }} />
         <div className="absolute -bottom-4 -right-4 w-28 h-28 rounded-full blur-2xl opacity-40" style={{ background: '#6366f1' }} />
         <div className="absolute top-4 right-8 w-20 h-20 rounded-full blur-xl opacity-30" style={{ background: '#0ea5e9' }} />
-        <div className="absolute inset-0 bg-slate-900/50 backdrop-blur-md" />
+        <div className="absolute inset-0 bg-slate-900/70" />
         {[
           { top: '10%', left: '8%',  size: 3, delay: 0 },
           { top: '20%', left: '80%', size: 2, delay: 0.5 },
@@ -82,7 +95,7 @@ export default function ConsultantCard({ consultant: c, index }) {
           />
         ))}
 
-        <div className="relative w-20 h-20 rounded-2xl overflow-hidden bg-white/60 backdrop-blur-sm mb-4 ring-2 ring-slate-800/40 shadow-lg">
+        <div className="relative w-20 h-20 rounded-2xl overflow-hidden bg-slate-800 mb-4 ring-2 ring-slate-700/60 shadow-lg">
           <ConsultantPhoto
             photoUrl={c.photo_url}
             alt={c.name}
