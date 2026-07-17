@@ -28,7 +28,7 @@ const OPTIONS = {
   },
   b: {
     chooseId: 'what',
-    decor: 'dots',
+    decor: 'tracks',
     title: 'WHAT to study',
     hint: 'Got a career path in mind?',
     detail: 'Browse consultants by field',
@@ -82,34 +82,55 @@ function RingsDecor({ isActive }) {
   );
 }
 
-function DotsDecor({ isActive }) {
+function TracksDecor({ isActive }) {
   return (
     <svg
       aria-hidden
-      width="280"
-      height="220"
+      width="320"
+      height="260"
+      viewBox="0 0 320 260"
       style={{
         position: 'absolute',
-        top: -20,
-        right: -20,
+        top: -36,
+        right: -48,
         pointerEvents: 'none',
-        opacity: isActive ? 0.5 : 0.3,
+        opacity: isActive ? 0.95 : 0.7,
         transition: `opacity ${T250}`,
       }}
     >
       <defs>
-        <pattern id="choose-dots" width="22" height="22" patternUnits="userSpaceOnUse">
-          <circle cx="2" cy="2" r="1.5" fill="#60a5fa" />
-        </pattern>
-        <linearGradient id="choose-dots-fade" x1="0" y1="1" x2="1" y2="0">
-          <stop offset="0%" stopColor="#fff" stopOpacity="0" />
-          <stop offset="70%" stopColor="#fff" stopOpacity="1" />
+        <linearGradient id="choose-tracks-fade" x1="1" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#93c5fd" stopOpacity="0.85" />
+          <stop offset="45%" stopColor="#60a5fa" stopOpacity="0.4" />
+          <stop offset="100%" stopColor="#60a5fa" stopOpacity="0" />
         </linearGradient>
-        <mask id="choose-dots-mask">
-          <rect width="280" height="220" fill="url(#choose-dots-fade)" />
-        </mask>
       </defs>
-      <rect width="280" height="220" fill="url(#choose-dots)" mask="url(#choose-dots-mask)" />
+      {/* Soft curriculum “lanes” — subject paths instead of a dot grid */}
+      {[
+        { y: 48, o: 0.9 },
+        { y: 88, o: 0.72 },
+        { y: 128, o: 0.55 },
+        { y: 168, o: 0.4 },
+        { y: 208, o: 0.28 },
+      ].map(({ y, o }) => (
+        <path
+          key={y}
+          d={`M 40 ${y} C 120 ${y - 18}, 200 ${y + 22}, 300 ${y - 6}`}
+          fill="none"
+          stroke="url(#choose-tracks-fade)"
+          strokeWidth="2"
+          strokeLinecap="round"
+          opacity={o}
+        />
+      ))}
+      <path
+        d="M 210 18 L 298 18 L 298 106"
+        fill="none"
+        stroke="#93c5fd"
+        strokeWidth="1.5"
+        strokeOpacity="0.55"
+      />
+      <circle cx="298" cy="18" r="3.5" fill="#93c5fd" fillOpacity="0.7" />
     </svg>
   );
 }
@@ -196,7 +217,7 @@ function PathSide({ option, widthPct, isActive, isLeaning, isRight, stacked, onS
         />
       ) : null}
       {decor === 'rings' ? <RingsDecor isActive={isActive} /> : null}
-      {decor === 'dots' ? <DotsDecor isActive={isActive} /> : null}
+      {decor === 'tracks' ? <TracksDecor isActive={isActive} /> : null}
       {watermark ? (
         <span
           aria-hidden

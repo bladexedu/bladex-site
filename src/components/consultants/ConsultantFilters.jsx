@@ -20,7 +20,7 @@ const filterGroups = [
       'Engineering & Architecture',
       'Business & Finance',
       'Computer Science & IT',
-      'Languages & Humanities',
+      'Social Science and Education',
       'Pre-University',
     ],
   },
