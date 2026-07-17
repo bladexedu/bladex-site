@@ -1,7 +1,14 @@
 import React from 'react';
+import SpaceSectionBackground from '@/components/shared/SpaceSectionBackground';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { Mail, Facebook, Youtube, Send, Linkedin } from 'lucide-react';
+import {
+  FacebookIcon,
+  YouTubeIcon,
+  TelegramIcon,
+  LinkedInIcon,
+  EmailIcon,
+} from '@/components/shared/SocialIcons';
 
 const navLinks = [
   { name: 'Home', page: 'Home' },
@@ -12,23 +19,23 @@ const navLinks = [
 ];
 
 const socials = [
-  { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=100064021474119', label: 'Facebook', color: 'hover:bg-blue-600/20 hover:text-blue-400 hover:border-blue-500/40' },
-  { icon: Youtube,  href: 'http://www.youtube.com/@Bladex-edu', label: 'YouTube', color: 'hover:bg-red-600/20 hover:text-red-400 hover:border-red-500/40' },
-  { icon: Send,     href: 'https://t.me/bladexedu', label: 'Telegram', color: 'hover:bg-cyan-600/20 hover:text-cyan-400 hover:border-cyan-500/40' },
-  { icon: Linkedin, href: 'https://www.linkedin.com/company/bladex-education/', label: 'LinkedIn', color: 'hover:bg-blue-700/20 hover:text-blue-300 hover:border-blue-400/40' },
+  { Icon: FacebookIcon, href: 'https://www.facebook.com/profile.php?id=100064021474119', label: 'Facebook', color: 'hover:bg-blue-600/20 hover:border-blue-500/40 hover:shadow-[0_0_12px_rgba(59,130,246,0.35)]' },
+  { Icon: YouTubeIcon, href: 'http://www.youtube.com/@Bladex-edu', label: 'YouTube', color: 'hover:bg-red-600/20 hover:border-red-500/40 hover:shadow-[0_0_12px_rgba(239,68,68,0.35)]' },
+  { Icon: TelegramIcon, href: 'https://t.me/bladexedu', label: 'Telegram', color: 'hover:bg-cyan-600/20 hover:border-cyan-500/40 hover:shadow-[0_0_12px_rgba(34,211,238,0.35)]' },
+  { Icon: LinkedInIcon, href: 'https://www.linkedin.com/company/bladex-education/', label: 'LinkedIn', color: 'hover:bg-blue-700/20 hover:border-blue-400/40 hover:shadow-[0_0_12px_rgba(96,165,250,0.35)]' },
 ];
 
 export default function Footer() {
   return (
-    <footer className="relative bg-slate-900 text-white overflow-hidden">
+    <footer className="relative bg-[#060b18] text-white overflow-hidden">
       {/* Top accent line */}
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
+      <div className="relative z-10 h-px w-full bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
 
-      {/* Animated dot grid */}
-      <div className="absolute inset-0"
-        style={{ backgroundImage: 'radial-gradient(circle, rgba(59,130,246,0.35) 1.5px, transparent 1.5px)', backgroundSize: '36px 36px', animation: 'grid-pan 8s linear infinite' }} />
+      <div className="absolute inset-0 z-0">
+        <SpaceSectionBackground />
+      </div>
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
         <div className="grid md:grid-cols-3 gap-12">
 
           {/* Brand */}
@@ -43,16 +50,16 @@ export default function Footer() {
             </p>
             {/* Social icon buttons */}
             <div className="flex gap-2 flex-wrap">
-              {socials.map(({ icon: Icon, href, label, color }) => (
+              {socials.map(({ Icon, href, label, color }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className={`w-9 h-9 rounded-xl border border-white/10 flex items-center justify-center text-slate-400 transition-all duration-200 ${color}`}
+                  className={`group w-9 h-9 rounded-xl border border-white/10 flex items-center justify-center transition-all duration-200 ${color}`}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-7 h-7 rounded-md flex-shrink-0 transition-transform duration-200 group-hover:scale-110" />
                 </a>
               ))}
             </div>
@@ -84,8 +91,8 @@ export default function Footer() {
               href="mailto:bladexedu@gmail.com"
               className="flex items-center gap-3 text-slate-400 hover:text-white transition-colors text-sm mb-6 group"
             >
-              <div className="w-9 h-9 rounded-xl border border-white/10 flex items-center justify-center group-hover:border-blue-500/40 group-hover:bg-blue-600/20 transition-all">
-                <Mail className="w-4 h-4 text-blue-400" />
+              <div className="w-9 h-9 rounded-xl border border-white/10 flex items-center justify-center group-hover:border-blue-500/40 group-hover:bg-blue-600/20 group-hover:shadow-[0_0_12px_rgba(59,130,246,0.35)] transition-all">
+                <EmailIcon className="w-7 h-7 rounded-md flex-shrink-0 transition-transform duration-200 group-hover:scale-110" />
               </div>
               bladexedu@gmail.com
             </a>
@@ -99,9 +106,21 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/10 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} BladeX Education. All rights reserved.</p>
-          <p>Educational guidance for Myanmar students.</p>
+        <div className="border-t border-white/10 mt-12 pt-6 space-y-2">
+          <div className="flex flex-col sm:flex-row sm:items-center items-center justify-between gap-3 text-xs text-slate-500">
+            <p>© {new Date().getFullYear()} BladeX Education. All rights reserved.</p>
+            <p className="text-center sm:text-right">Educational guidance for Myanmar students.</p>
+          </div>
+          <div className="text-center sm:text-right text-xs">
+            <a
+              href="https://icons8.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-500/60 hover:text-slate-300 transition-colors"
+            >
+              Icons by Icons8
+            </a>
+          </div>
         </div>
       </div>
     </footer>

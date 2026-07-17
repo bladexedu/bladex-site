@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowRight, CalendarCheck } from 'lucide-react';
+import { solidButton } from '@/utils/glassStyles';
+import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
@@ -15,7 +16,12 @@ export default function BookingCTA() {
           transition={{ duration: 0.35, ease: 'easeOut' }}
         >
           <div className="w-16 h-16 bg-blue-100 border border-blue-200 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <CalendarCheck className="w-8 h-8 text-blue-600" />
+            <img
+              src="https://img.icons8.com/stickers/100/event-accepted.png"
+              alt="Event accepted icon"
+              className="w-10 h-10 object-contain"
+              loading="lazy"
+            />
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
             Ready to Take the First Step?
@@ -26,17 +32,13 @@ export default function BookingCTA() {
           <p className="text-slate-400 text-sm mb-10">
             No commitment. Just a conversation to help you move forward.
           </p>
-          <Link
-            to={createPageUrl('Consultants')}
-            className="group inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-full text-base shadow-lg shadow-blue-800/40 hover:scale-105 transition-transform duration-200"
-            style={{
-              background: 'linear-gradient(270deg, #1e3a8a, #1d4ed8, #2563eb, #1e40af, #1e3a8a)',
-              backgroundSize: '300% 300%',
-              animation: 'btn-gradient 4s ease infinite',
-            }}
-          >
-            Meet Our Consultants
-            <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+          <Link to={createPageUrl('Consultants')} className="inline-block transition-transform duration-200 hover:scale-105">
+            <button
+              className={`group inline-flex items-center justify-center gap-2 rounded-full font-bold text-white bg-shine-gradient ${solidButton.lg}`}
+            >
+              <span>Meet Our Consultants</span>
+              <ArrowRight className="w-4 h-4 shrink-0 transition-[transform,margin] duration-500 ease-out group-hover:translate-x-2 group-hover:scale-110" />
+            </button>
           </Link>
         </motion.div>
       </div>

@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
+import { solidButton } from '@/utils/glassStyles';
 import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { AnimatePresence, motion } from 'framer-motion';
+
+const navLinks = [
+  { name: 'Home', page: 'Home' },
+  { name: 'About', page: 'About' },
+  { name: 'Programs', page: 'Programs' },
+  { name: 'Consultants', page: 'Consultants' },
+  { name: 'Social', page: 'Social' },
+];
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -12,80 +20,84 @@ export default function Header() {
   const navigate = useNavigate();
 
   const handleBookMeeting = () => {
-    if (location.pathname === createPageUrl('Consultants')) {
-      document.getElementById('consultants-grid')?.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      navigate(createPageUrl('Consultants'));
-    }
+    navigate(createPageUrl('Consultants'));
   };
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll);
+    let scrolled = window.scrollY > 24;
+    setIsScrolled(scrolled);
+
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (!scrolled && y > 24) {
+        scrolled = true;
+        setIsScrolled(true);
+      } else if (scrolled && y < 8) {
+        scrolled = false;
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   useEffect(() => setIsMobileOpen(false), [location]);
 
-  const navLinks = [
-    { name: 'Home', page: 'Home' },
-    { name: 'About', page: 'About' },
-    { name: 'Programs', page: 'Programs' },
-    { name: 'Consultants', page: 'Consultants' },
-    { name: 'Social', page: 'Social' },
-  ];
-
-  const isActive = (page) => location.pathname === createPageUrl(page);
+  const linkClass = (page) => {
+    const isActive = location.pathname === createPageUrl(page);
+    const base = isScrolled
+      ? 'text-blue-900/75 hover:text-blue-900'
+      : 'text-white/90 hover:text-white';
+    const underline = isActive
+      ? 'underline underline-offset-4 decoration-2'
+      : 'hover:underline underline-offset-4 decoration-2';
+    return `${base} ${underline}`;
+  };
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-sm' : 'bg-transparent'}`}>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ease-out ${
+          isScrolled ? 'bg-blue-50' : 'bg-transparent'
+        }`}
+      >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-18 py-4">
-            {/* Logo */}
-            <Link to={createPageUrl('Home')} className="flex items-center gap-2">
+          <div className="flex items-center justify-between py-4">
+            <Link to={createPageUrl('Home')} className="flex items-center h-11 shrink-0">
               <img
                 src="/bladeX_logo_original-removebg-preview.png"
                 alt="BladeX Education"
-                className={`h-10 w-auto object-contain transition-all duration-300 ${isScrolled ? 'brightness-75' : 'brightness-100'}`}
+                className={`h-11 w-auto object-contain transition-[filter,opacity] duration-300 ease-out ${isScrolled ? 'brightness-0 opacity-85' : 'brightness-100 opacity-100'}`}
               />
             </Link>
 
-            {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center gap-8">
+            <nav className="hidden md:flex items-center gap-1 h-11">
               {navLinks.map((link) => (
                 <Link
                   key={link.page}
                   to={createPageUrl(link.page)}
-                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                  className={`text-sm font-medium transition-all duration-200 relative group ${
-                    isActive(link.page)
-                      ? isScrolled ? 'text-blue-600' : 'text-blue-300'
-                      : isScrolled ? 'text-slate-600 hover:text-slate-900' : 'text-white/80 hover:text-white'
-                  }`}
+                  className={`px-3 py-1.5 text-sm font-medium transition-colors duration-200 whitespace-nowrap ${linkClass(link.page)}`}
                 >
                   {link.name}
-                  <span className={`absolute -bottom-0.5 left-0 h-[2px] rounded-full transition-all duration-200 bg-current ${isActive(link.page) ? 'w-full' : 'w-0 group-hover:w-full'}`} />
                 </Link>
               ))}
             </nav>
 
-            {/* CTA */}
-            <div className="hidden md:block">
-              <Button
+            <div className="hidden md:flex items-center h-11 shrink-0">
+              <button
+                type="button"
                 onClick={handleBookMeeting}
-                className="relative text-white rounded-full px-5 py-2 text-sm font-bold flex items-center gap-1.5 hover:scale-105 transition-transform duration-200 shadow-lg shadow-blue-800/40"
-                style={{
-                  background: 'linear-gradient(270deg, #1e3a8a, #1d4ed8, #2563eb, #1e40af, #1e3a8a)',
-                  backgroundSize: '300% 300%',
-                  animation: 'btn-gradient 4s ease infinite',
-                }}
+                className={`${isScrolled ? solidButton.headerCtaScrolled : solidButton.headerCtaTop} gap-2 px-4 py-1.5 text-sm font-semibold`}
               >
                 Book a Meeting
-              </Button>
+                <span className="relative inline-flex h-2 w-2 shrink-0" aria-hidden>
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                </span>
+              </button>
             </div>
 
-            {/* Mobile Toggle */}
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
               className={`md:hidden p-2 ${isScrolled ? 'text-slate-900' : 'text-white'}`}
@@ -96,7 +108,6 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div
@@ -128,9 +139,13 @@ export default function Header() {
                     {link.name}
                   </Link>
                 ))}
-                <Button onClick={handleBookMeeting} className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-full mt-4">
+                <button
+                  type="button"
+                  onClick={handleBookMeeting}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-full mt-4 px-4 py-2.5 text-sm font-semibold"
+                >
                   Book a Meeting
-                </Button>
+                </button>
               </div>
             </motion.div>
           </motion.div>

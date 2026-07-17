@@ -1,6 +1,7 @@
 #env
 .env
 .env.*
+!.env.example
 
 # Logs
 logs
@@ -25,5 +26,7 @@ dist-ssr
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?.playwright-mcp/
+*.sw?
+.playwright-mcp/
+.cursor/
 .claude/
