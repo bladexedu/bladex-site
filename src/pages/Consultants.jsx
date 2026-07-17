@@ -80,7 +80,7 @@ const AREA_MAP = {
     'computer science', 'software engineering', 'data science', 'information systems',
     'information technology', 'technology and data', 'computing', 'healthcare analytics',
   ],
-  'Languages & Humanities': [
+  'Social Science and Education': [
     'french', 'linguistics', 'fle', 'language teaching', 'delf', 'dalf',
     'political science', 'public administration', 'humanities', 'literature', 'history', 'philosophy',
     'applied linguistics', 'international organizations',
@@ -140,17 +140,17 @@ const AREA_KEYS = [
   'Engineering & Architecture',
   'Business & Finance',
   'Computer Science & IT',
-  'Languages & Humanities',
+  'Social Science and Education',
   'Pre-University',
 ];
 
 const AREA_META = {
-  'Medicine & Health Sciences': { subtitle: 'Medicine · Biosciences · Health', img: imgMedicine },
-  'Engineering & Architecture': { subtitle: 'Mechanical · Biomedical · Architecture', img: imgEngineering },
-  'Business & Finance': { subtitle: 'Commerce · Finance · Marketing', img: imgBusiness },
-  'Computer Science & IT': { subtitle: 'Software · Data Science · IT', img: imgCompSci },
-  'Languages & Humanities': { subtitle: 'French · Linguistics · Social Sciences', img: imgArts },
-  'Pre-University': { subtitle: 'IB · Foundation · A-Level', img: imgHighSchool },
+  'Medicine & Health Sciences': { subtitle: 'Medicine · Biosciences · Health · and more', img: imgMedicine },
+  'Engineering & Architecture': { subtitle: 'Mechanical · Biomedical · Architecture · and more', img: imgEngineering },
+  'Business & Finance': { subtitle: 'Commerce · Finance · Marketing · and more', img: imgBusiness },
+  'Computer Science & IT': { subtitle: 'Software · Data Science · IT · and more', img: imgCompSci },
+  'Social Science and Education': { subtitle: 'French · Linguistics · Social Sciences · and more', img: imgArts },
+  'Pre-University': { subtitle: 'IB · Foundation · A-Level · and more', img: imgHighSchool },
 };
 
 function StudyPickerCard({ label, subtitle, image, gradient, onClick, tall = false, cta = 'View Consultants' }) {
