@@ -15,7 +15,7 @@ const OPTIONS = {
     hint: 'Got a dream destination in mind?',
     detail: 'Browse consultants by destination',
     regions: ['North America', 'Europe', 'Asia', 'The UK', 'Oceania'],
-    stats: [{ label: 'Focus', value: 'Place-First' }],
+    stats: [{ label: 'Focus', value: 'Destination-First' }],
     colors: {
       rest: '#E2E8F0',
       active: '#CBD5E1',

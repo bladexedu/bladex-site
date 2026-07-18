@@ -65,11 +65,13 @@ const AREA_MAP = {
     'biochemistry', 'molecular biology', 'cell and molecular', 'genetics', 'organic chemistry',
     'biosciences', 'biotechnology', 'biotech', 'health sciences', 'kinesiology',
     'immunology', 'developmental biology', 'transplant', 'clinical research', 'basic science research',
-    'environmental science', 'chemical and environmental', 'healthcare pathways', 'healthcare',
+    // ponytail: not "environmental science" — that pulled energy/materials people into Medicine
+    'chemical and environmental', 'healthcare pathways', 'healthcare',
   ],
   'Engineering & Architecture': [
     'engineering', 'mechanical engineering', 'biomedical engineering', 'general engineering',
-    'software engineering', 'engineering related', 'architecture', 'sustainable energy',
+    // software engineering lives under CS & IT only
+    'engineering related', 'architecture', 'sustainable energy',
     'materials science', 'computational materials', 'systems engineering',
   ],
   'Business & Finance': [
@@ -91,6 +93,17 @@ const AREA_MAP = {
   ],
 };
 
+/** Exact-name overrides: still show on card majors, but not under this Subject-first filter. */
+const AREA_FILTER_EXCLUDES = {
+  'Engineering & Architecture': ['Phoo Pwint Thaung Sein'],
+  'Business & Finance': [
+    'Yoon Su Lin',
+    'Pyae Phyo Thu @ Rachel',
+    'Aung Khant Min @ Jimmy',
+  ],
+  'Computer Science & IT': ['Aung Khant Min @ Jimmy'],
+};
+
 function escapeRegex(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
@@ -101,7 +114,10 @@ function subjectMatchesStudyKeyword(subject, keyword) {
 
   if (k === 'healthcare') return s === 'healthcare';
   if (k === 'engineering') {
-    return (s === 'engineering' || /\bengineering\b/.test(s)) && !/partial in medical/.test(s);
+    // "Software Engineering" is CS-only; bare "engineering" must not swallow it
+    return (s === 'engineering' || /\bengineering\b/.test(s))
+      && !/partial in medical/.test(s)
+      && !/software engineering/.test(s);
   }
   if (k.length <= 4) return new RegExp(`\\b${escapeRegex(k)}\\b`).test(s);
   return s.includes(k);
@@ -112,6 +128,13 @@ function majorMatchesStudyArea(majors, keywords) {
   return keywords.some((keyword) =>
     subjects.some((subject) => subjectMatchesStudyKeyword(subject, keyword)),
   );
+}
+
+function isExcludedFromArea(consultant, area) {
+  const excludes = AREA_FILTER_EXCLUDES[area];
+  if (!excludes?.length) return false;
+  const name = consultant.name || '';
+  return excludes.some((n) => name === n);
 }
 
 const DEGREE_TAG_MAP = {
@@ -214,6 +237,7 @@ function matchesFilters(consultant, filters) {
   }
 
   if (area !== 'all') {
+    if (isExcludedFromArea(consultant, area)) return false;
     const keywords = AREA_MAP[area] || [];
     if (!majorMatchesStudyArea(consultant.major_subject_expertise, keywords)) return false;
   }
