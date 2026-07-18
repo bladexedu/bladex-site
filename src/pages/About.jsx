@@ -124,14 +124,14 @@ export default function About() {
     <div className="min-h-screen bg-white">
 
       {/* Hero */}
-      <section className="relative pt-36 pb-32 bg-[#060b18] overflow-hidden">
+      <section className="relative flex min-h-[100dvh] items-center bg-[#060b18] overflow-hidden pt-28 pb-16 sm:pt-32">
         <div className="absolute inset-0 z-0">
           <SpaceSectionBackground starDensity={1.2} />
           <div className="absolute top-10 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-indigo-600/20 rounded-full blur-3xl" />
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.35, ease: 'easeOut' }}>
             <span className={`${sectionBadgeClass} mb-5`}>About BladeX Education</span>
             <h1 className="text-4xl md:text-5xl font-bold text-white mt-2 mb-6 leading-tight">
