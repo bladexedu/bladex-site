@@ -50,6 +50,7 @@ const LOCATION_MAP = {
   'chaw tynzar maung':       'Thailand',
   'yoon myat tharaphi':      'Australia',
   'yupar win thu':           'New Zealand',
+  'chan thar soe':           'Czech Republic · Thailand · Taiwan',
 };
 
 export default function ConsultantCard({ consultant: c, index }) {

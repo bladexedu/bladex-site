@@ -52,8 +52,8 @@ const DESTINATION_MAP = {
   'United Kingdom': ['uk', 'united kingdom'],
 
   'Asia': ['asia', 'singapore', 'japan', 'korea', 'thailand',
-           'malaysia', 'hong kong', 'india', 'china'],
-  // added: korea (Thuta), thailand (Nyan), malaysia (Shin Lin Let), hong kong (Wai Phyo), china (Ye Linn)
+           'malaysia', 'hong kong', 'india', 'china', 'taiwan'],
+  // added: korea (Thuta), thailand (Nyan), malaysia (Shin Lin Let), hong kong (Wai Phyo), china (Ye Linn), taiwan (Chan Thar)
 
   'Oceania': ['oceania', 'australia', 'new zealand', 'nz'],
 };
