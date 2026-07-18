@@ -2,12 +2,20 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
 import { pagesConfig } from './pages.config'
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import PageNotFound from './lib/PageNotFound';
 
+// ponytail: useLayoutEffect so scroll resets before paint; otherwise whileInView
+// mounts off-screen and stays opacity:0 until hard refresh. Ceiling: no animated
+// scroll restore — upgrade to ScrollRestoration / view transitions if needed.
 function ScrollToTop() {
   const { pathname } = useLocation();
-  useEffect(() => window.scrollTo(0, 0), [pathname]);
+  useLayoutEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return null;
 }
 

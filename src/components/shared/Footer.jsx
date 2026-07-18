@@ -73,7 +73,6 @@ export default function Footer() {
                 <li key={l.page}>
                   <Link
                     to={createPageUrl(l.page)}
-                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                     className="text-slate-400 hover:text-white text-sm transition-colors flex items-center gap-2 group"
                   >
                     <span className="w-1 h-1 rounded-full bg-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
