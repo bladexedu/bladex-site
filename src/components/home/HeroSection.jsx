@@ -248,7 +248,7 @@ export default function HeroSection() {
         className="relative z-10 mt-10 sm:mt-14 w-full"
       >
         <p className="mb-4 text-center text-[11px] font-medium uppercase tracking-[0.2em] text-slate-500">
-          Our consultants are from:
+          Our Consultants Were Admitted To:
         </p>
         <div
           className="relative overflow-hidden"
