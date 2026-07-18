@@ -37,22 +37,21 @@ const UNIVERSITIES = [
   { id: 'rutgers', name: 'Rutgers University' },
 ];
 
-// Prefer SVG when we have a real wordmark/seal (or when PNG favicon is too weak)
+// Prefer SVG when we have a real wordmark/seal
 const PREFER_SVG = new Set(['ucla', 'kcl']);
 const WORDMARK_IDS = new Set(['ucla', 'kcl', 'ntu', 'warwick', 'toronto']);
 const CREST_IDS = new Set(['mcgill', 'rutgers', 'nus', 'oxford', 'zhejiang', 'melbourne', 'waterloo']);
 
 function UniLogoMark({ id, name }) {
   const preferSvg = PREFER_SVG.has(id);
-  const primary = preferSvg ? `/uni-logos/${id}.svg` : `/uni-logos/${id}.png`;
-  const fallback = preferSvg ? `/uni-logos/${id}.png` : `/uni-logos/${id}.svg`;
+  const src = preferSvg ? `/uni-logos/${id}.svg` : `/uni-logos/${id}.png`;
   const isWordmark = WORDMARK_IDS.has(id);
   const isCrest = CREST_IDS.has(id);
 
   return (
     <span className="inline-flex h-11 shrink-0 items-center gap-3 px-1" title={name}>
       <img
-        src={primary}
+        src={src}
         alt=""
         width={isWordmark ? 96 : 36}
         height={36}
@@ -61,11 +60,6 @@ function UniLogoMark({ id, name }) {
         className={`object-contain opacity-75 grayscale brightness-125 contrast-75 ${
           isWordmark ? 'h-7 w-auto max-w-[6.5rem]' : isCrest ? 'h-10 w-10' : 'h-9 w-9'
         }`}
-        onError={(e) => {
-          if (e.currentTarget.dataset.fallback === '1') return;
-          e.currentTarget.dataset.fallback = '1';
-          e.currentTarget.src = fallback;
-        }}
       />
       <span className="max-w-[11rem] text-[11px] font-semibold leading-tight tracking-wide text-slate-400 whitespace-nowrap sm:max-w-none sm:text-xs">
         {name}
