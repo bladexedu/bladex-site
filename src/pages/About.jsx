@@ -250,7 +250,7 @@ export default function About() {
               },
               {
                 initials: 'KT',
-                name: 'Khun Thurein',
+                name: 'Khun Thu Rein',
                 role: 'Head of Technology and Analytics',
                 degree: 'Bachelor of Computer Science',
                 university: 'Carleton University',
