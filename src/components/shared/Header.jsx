@@ -11,6 +11,7 @@ const navLinks = [
   { name: 'Programs', page: 'Programs' },
   { name: 'Consultants', page: 'Consultants' },
   { name: 'Social', page: 'Social' },
+  { name: 'BladeX AI', page: null, comingSoon: true },
 ];
 
 export default function Header() {
@@ -55,6 +56,10 @@ export default function Header() {
     return `${base} ${underline}`;
   };
 
+  const comingSoonLabelClass = isScrolled
+    ? 'text-blue-900/75'
+    : 'text-white/90';
+
   return (
     <>
       <header
@@ -73,15 +78,28 @@ export default function Header() {
             </Link>
 
             <nav className="hidden md:flex items-center gap-1 h-11">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.page}
-                  to={createPageUrl(link.page)}
-                  className={`px-3 py-1.5 text-sm font-medium transition-colors duration-200 whitespace-nowrap ${linkClass(link.page)}`}
-                >
-                  {link.name}
-                </Link>
-              ))}
+              {navLinks.map((link) =>
+                link.comingSoon ? (
+                  <span
+                    key={link.name}
+                    className={`relative px-3 py-1.5 text-sm font-medium whitespace-nowrap cursor-default ${comingSoonLabelClass}`}
+                    aria-disabled="true"
+                  >
+                    {link.name}
+                    <span className="pointer-events-none absolute -bottom-0.5 right-1 text-[8px] font-normal leading-none text-slate-400 whitespace-nowrap">
+                      Coming soon
+                    </span>
+                  </span>
+                ) : (
+                  <Link
+                    key={link.page}
+                    to={createPageUrl(link.page)}
+                    className={`px-3 py-1.5 text-sm font-medium transition-colors duration-200 whitespace-nowrap ${linkClass(link.page)}`}
+                  >
+                    {link.name}
+                  </Link>
+                ),
+              )}
             </nav>
 
             <div className="hidden md:flex items-center h-11 shrink-0">
@@ -130,15 +148,28 @@ export default function Header() {
                 </button>
               </div>
               <div className="p-6 pt-4 space-y-6">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.page}
-                    to={createPageUrl(link.page)}
-                    className="block text-lg font-medium text-slate-700 border-b border-slate-100 pb-4"
-                  >
-                    {link.name}
-                  </Link>
-                ))}
+                {navLinks.map((link) =>
+                  link.comingSoon ? (
+                    <span
+                      key={link.name}
+                      className="relative block text-lg font-medium text-slate-700 border-b border-slate-100 pb-4 cursor-default"
+                      aria-disabled="true"
+                    >
+                      {link.name}
+                      <span className="pointer-events-none absolute bottom-1 right-0 text-[9px] font-normal leading-none text-slate-400 whitespace-nowrap">
+                        Coming soon
+                      </span>
+                    </span>
+                  ) : (
+                    <Link
+                      key={link.page}
+                      to={createPageUrl(link.page)}
+                      className="block text-lg font-medium text-slate-700 border-b border-slate-100 pb-4"
+                    >
+                      {link.name}
+                    </Link>
+                  ),
+                )}
                 <button
                   type="button"
                   onClick={handleBookMeeting}
