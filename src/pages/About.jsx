@@ -1,8 +1,10 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { sectionBadgeClass } from '@/utils/glassStyles';
 import Tilt3DCard from '@/components/shared/Tilt3DCard';
 import SpaceSectionBackground from '@/components/shared/SpaceSectionBackground';
+
+const HERO_ACCENT = 'Every Step of the Way';
 
 const values = [
   {
@@ -120,6 +122,8 @@ const steps = [
 ];
 
 export default function About() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <div className="min-h-screen bg-white">
 
@@ -136,7 +140,23 @@ export default function About() {
             <span className={`${sectionBadgeClass} mb-5`}>About BladeX Education</span>
             <h1 className="text-4xl md:text-5xl font-bold text-white mt-2 mb-6 leading-tight">
               We Walk With You,<br />
-              <span className="text-blue-400">Every Step of the Way</span>
+              <span className="text-blue-400" aria-label={HERO_ACCENT}>
+                {HERO_ACCENT.split('').map((character, index) => (
+                  <motion.span
+                    key={`${character}-${index}`}
+                    aria-hidden="true"
+                    className="inline-block"
+                    initial={reduceMotion ? false : { opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                      duration: reduceMotion ? 0 : 0.01,
+                      delay: reduceMotion ? 0 : 0.25 + index * 0.08,
+                    }}
+                  >
+                    {character === ' ' ? '\u00A0' : character}
+                  </motion.span>
+                ))}
+              </span>
             </h1>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
               BladeX Education is a dedicated advisory platform empowering Myanmar students who aspire to study abroad. We go beyond standard consulting to act as your strategic partners in international education.

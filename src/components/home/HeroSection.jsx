@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { solidButton, sectionBadgeBlue, sectionBadgeClass } from '@/utils/glassStyles';
 import { ArrowRight, Ban, Check } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import SpaceSectionBackground from '@/components/shared/SpaceSectionBackground';
+
+const HERO_TITLE = 'Find Your Path.';
 
 const heroTagMuted =
   'border border-dashed border-slate-500/50 bg-slate-800/60 text-slate-400';
@@ -70,6 +72,7 @@ function UniLogoMark({ id, name }) {
 
 export default function HeroSection() {
   const logos = [...UNIVERSITIES, ...UNIVERSITIES];
+  const reduceMotion = useReducedMotion();
 
   return (
     <section className="relative flex min-h-[100dvh] flex-col overflow-hidden bg-[#060b18] pt-28 pb-10 sm:pt-32 sm:pb-12">
@@ -187,9 +190,28 @@ export default function HeroSection() {
               transition={{ duration: 0.35, delay: 0.05 }}
               className="font-bold text-white leading-tight mb-6 sm:mb-8"
             >
-              <span className="block text-4xl sm:text-5xl md:text-6xl">Find Your Path.</span>
-              <span className="block text-2xl sm:text-4xl md:text-4xl whitespace-nowrap">
-                <span className="text-blue-400">Study Abroad</span> With Confidence.
+              <span
+                className="block text-4xl sm:text-5xl md:text-6xl"
+                aria-label={HERO_TITLE}
+              >
+                {HERO_TITLE.split('').map((character, index) => (
+                  <motion.span
+                    key={`${character}-${index}`}
+                    aria-hidden="true"
+                    className="inline-block"
+                    initial={reduceMotion ? false : { opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                      duration: reduceMotion ? 0 : 0.01,
+                      delay: reduceMotion ? 0 : 0.25 + index * 0.08,
+                    }}
+                  >
+                    {character === ' ' ? '\u00A0' : character}
+                  </motion.span>
+                ))}
+              </span>
+              <span className="block text-2xl sm:text-4xl md:text-4xl">
+                <span className="text-blue-400">Study Abroad</span> With Confidence
               </span>
             </motion.h1>
 
