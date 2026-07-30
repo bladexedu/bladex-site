@@ -51,6 +51,8 @@ const LOCATION_MAP = {
   'yoon myat tharaphi':      'Australia',
   'yupar win thu':           'New Zealand',
   'chan thar soe':           'Czech Republic',
+  'hsu myat pwint wai':      'United Kingdom',
+  'thant thawdar aung @ sarah': 'New Zealand',
 };
 
 export default function ConsultantCard({ consultant: c, index }) {
