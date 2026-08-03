@@ -339,7 +339,7 @@ export default function About() {
           <div className="text-center mb-8">
             <span className="text-sm font-extrabold uppercase tracking-widest text-slate-500">Meet Our Team Members</span>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { name: 'Myat Min Htet', role: 'Operations Lead & Data Analyst' },
               { name: 'Thin Thiri San', role: 'Operations Lead & Market Research Analyst' },
