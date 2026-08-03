@@ -344,7 +344,6 @@ export default function About() {
               { name: 'Myat Min Htet', role: 'Operations Lead & Data Analyst' },
               { name: 'Thin Thiri San', role: 'Operations Lead & Market Research Analyst' },
               { name: 'Myint Zu Linn', role: 'Research & Operation Intern' },
-              { name: 'Chaw Ei Ei Thu', role: 'Content & Social Media Intern' },
               { name: 'Htun Htun', role: 'Creative Design & Video Editing Intern' },
             ].map((m, i) => (
               <motion.div
