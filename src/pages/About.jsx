@@ -260,7 +260,7 @@ export default function About() {
               {
                 initials: 'NSN',
                 name: 'Nang Sayoon Noi',
-                role: 'Co-Founder & Head of Operations',
+                role: 'Co-Founder & Chief Operating Officer',
                 degree: 'Bachelor of Science in Biochemistry (Chemistry Honors)',
                 university: 'Sacramento State University',
                 note: 'Overseeing the organizational structure, internal communications, and seamless day-to-day operations.',
@@ -271,7 +271,7 @@ export default function About() {
               {
                 initials: 'KT',
                 name: 'Khun Thu Rein',
-                role: 'Head of Technology and Analytics',
+                role: 'Chief Technology Officer',
                 degree: 'Bachelor of Computer Science',
                 university: 'Carleton University',
                 note: 'Managing technical infrastructure, platform development, and digital systems for BladeX.',
@@ -339,12 +339,11 @@ export default function About() {
           <div className="text-center mb-8">
             <span className="text-sm font-extrabold uppercase tracking-widest text-slate-500">Meet Our Team Members</span>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
             {[
               { name: 'Myat Min Htet', role: 'Operations Lead & Data Analyst' },
               { name: 'Thin Thiri San', role: 'Operations Lead & Market Research Analyst' },
               { name: 'Myint Zu Linn', role: 'Research & Operation Intern' },
-              { name: 'Htun Htun', role: 'Creative Design & Video Editing Intern' },
             ].map((m, i) => (
               <motion.div
                 key={i}
