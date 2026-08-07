@@ -5,9 +5,31 @@ import { sectionBadgeClass } from '@/utils/glassStyles';
 import SpaceSectionBackground from '@/components/shared/SpaceSectionBackground';
 
 const programVisual = {
-  consulting: { iconSrc: 'https://img.icons8.com/fluency/96/chat--v1.png', iconAlt: 'Chat', box: 'bg-blue-600/20 border-blue-500/30', glow: ['#3b82f6', '#0ea5e9'] },
-  mentorship: { iconSrc: 'https://img.icons8.com/office/80/training.png', iconAlt: 'Training', box: 'bg-indigo-600/20 border-indigo-500/30', glow: ['#6366f1', '#818cf8'] },
-  guidance: { iconSrc: 'https://img.icons8.com/office/80/user-manual.png', iconAlt: 'User manual', box: 'bg-emerald-600/20 border-emerald-500/30', glow: ['#10b981', '#34d399'] },
+  // ponytail: same accent themes, one step brighter than shared slate matte
+  consulting: {
+    iconSrc: 'https://img.icons8.com/fluency/96/chat--v1.png',
+    iconAlt: 'Chat',
+    box: 'bg-blue-500/25 border-blue-400/40',
+    glow: ['#60a5fa', '#38bdf8'],
+    panel: 'from-blue-800 via-slate-800 to-slate-900',
+    glowStrong: true,
+  },
+  mentorship: {
+    iconSrc: 'https://img.icons8.com/office/80/training.png',
+    iconAlt: 'Training',
+    box: 'bg-indigo-500/25 border-indigo-400/40',
+    glow: ['#818cf8', '#a5b4fc'],
+    panel: 'from-indigo-800 via-slate-800 to-slate-900',
+    glowStrong: true,
+  },
+  guidance: {
+    iconSrc: 'https://img.icons8.com/office/80/user-manual.png',
+    iconAlt: 'User manual',
+    box: 'bg-emerald-500/25 border-emerald-400/40',
+    glow: ['#34d399', '#6ee7b7'],
+    panel: 'from-emerald-800 via-slate-800 to-slate-900',
+    glowStrong: true,
+  },
 };
 
 function ProgramAreaBulletIcon() {
@@ -106,7 +128,8 @@ const guidance = {
 
 function ProgramCard({ program, reverse }) {
   const visual = programVisual[program.id];
-  const { box, iconSrc, iconAlt, Icon, icon, glow } = visual;
+  const { box, iconSrc, iconAlt, Icon, icon, glow, panel, glowStrong } = visual;
+  const panelClass = panel || 'from-slate-700 via-slate-800 to-slate-900';
 
   return (
     <motion.div
@@ -118,11 +141,11 @@ function ProgramCard({ program, reverse }) {
     >
       {/* Image / Visual side */}
       <div className={`${reverse ? 'lg:col-start-2' : ''}`}>
-        <div className="relative overflow-hidden bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900 rounded-3xl p-10 text-white min-h-[360px] flex flex-col justify-between">
-          <div className="absolute -top-10 -right-10 w-52 h-52 rounded-full blur-3xl opacity-45 pointer-events-none" style={{ background: glow[0] }} aria-hidden />
-          <div className="absolute -bottom-12 -left-8 w-48 h-48 rounded-full blur-3xl opacity-35 pointer-events-none" style={{ background: glow[1] }} aria-hidden />
-          <div className="absolute top-1/2 right-1/4 w-36 h-36 rounded-full blur-2xl opacity-25 pointer-events-none" style={{ background: glow[0] }} aria-hidden />
-          <div className="absolute top-8 left-1/3 w-24 h-24 rounded-full blur-2xl opacity-20 pointer-events-none bg-white" aria-hidden />
+        <div className={`relative overflow-hidden bg-gradient-to-br ${panelClass} rounded-3xl p-10 text-white min-h-[360px] flex flex-col justify-between`}>
+          <div className={`absolute -top-10 -right-10 w-52 h-52 rounded-full blur-3xl pointer-events-none ${glowStrong ? 'opacity-55' : 'opacity-45'}`} style={{ background: glow[0] }} aria-hidden />
+          <div className={`absolute -bottom-12 -left-8 w-48 h-48 rounded-full blur-3xl pointer-events-none ${glowStrong ? 'opacity-45' : 'opacity-35'}`} style={{ background: glow[1] }} aria-hidden />
+          <div className={`absolute top-1/2 right-1/4 w-36 h-36 rounded-full blur-2xl pointer-events-none ${glowStrong ? 'opacity-35' : 'opacity-25'}`} style={{ background: glow[0] }} aria-hidden />
+          <div className={`absolute top-8 left-1/3 w-24 h-24 rounded-full blur-2xl pointer-events-none bg-white ${glowStrong ? 'opacity-30' : 'opacity-20'}`} aria-hidden />
           <div className="relative z-10 flex flex-col justify-between flex-1">
             <div>
               <div className={`w-14 h-14 border rounded-2xl flex items-center justify-center mb-5 ${box}`}>
@@ -141,7 +164,7 @@ function ProgramCard({ program, reverse }) {
               <h3 className="text-2xl font-bold text-white mb-3">{program.title}</h3>
               <p className="text-slate-300 text-sm italic">"{program.tagline}"</p>
             </div>
-            <div className="mt-8 bg-white/5 rounded-xl px-4 py-3 text-xs text-slate-400 border border-white/10">
+            <div className="mt-8 bg-white/5 rounded-xl px-4 py-3 text-xs text-white/90 border border-white/10">
               📌 {program.note}
             </div>
           </div>
