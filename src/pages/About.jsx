@@ -121,6 +121,146 @@ const steps = [
   },
 ];
 
+const PROFILE_STAR_DOTS = [
+  { top: '10%', left: '8%', size: 3, delay: 0 },
+  { top: '20%', left: '80%', size: 2, delay: 0.5 },
+  { top: '55%', left: '15%', size: 2, delay: 1.0 },
+  { top: '70%', left: '70%', size: 3, delay: 1.5 },
+  { top: '30%', left: '55%', size: 2, delay: 0.8 },
+  { top: '80%', left: '35%', size: 2, delay: 0.3 },
+  { top: '15%', left: '42%', size: 2, delay: 1.2 },
+  { top: '65%', left: '88%', size: 3, delay: 0.6 },
+  { top: '85%', left: '12%', size: 2, delay: 1.8 },
+  { top: '40%', left: '92%', size: 2, delay: 0.9 },
+];
+
+/** Founding leadership — photos from Supabase Storage */
+const FOUNDERS = [
+  {
+    initials: 'NLK',
+    name: 'Nyan Lin Kyaw',
+    role: 'Founder & Head of Consulting',
+    degree: 'Honours Bachelor of Commerce, Business Technology Management',
+    university: 'University of Ottawa',
+    note: "Driving the organization's strategy, marketing initiatives, and long-term vision.",
+    gradient: 'from-blue-500 to-indigo-600',
+    photo: 'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/public/consultant-photos/1.jpg',
+    location: 'Canada',
+  },
+  {
+    initials: 'NSN',
+    name: 'Nang Sayoon Noi',
+    role: 'Co-Founder & Chief Operating Officer',
+    degree: 'Bachelor of Science in Biochemistry (Chemistry Honors)',
+    university: 'Sacramento State University',
+    note: 'Overseeing the organizational structure, internal communications, and seamless day-to-day operations.',
+    gradient: 'from-emerald-500 to-teal-600',
+    photo: 'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/public/consultant-photos/2.jpg',
+    location: 'United States',
+  },
+  {
+    initials: 'KT',
+    name: 'Khun Thu Rein',
+    role: 'Chief Technology Officer',
+    degree: 'Bachelor of Computer Science',
+    university: 'Carleton University',
+    note: 'Managing technical infrastructure, platform development, and digital systems for BladeX.',
+    gradient: 'from-slate-600 to-slate-800',
+    photo:
+      'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/sign/Team/ktr.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84ZWY5ZjAzNS00OWY3LTQ4MDUtYmRmZi02N2IxYzU3NWY5ZmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJUZWFtL2t0ci5qcGciLCJpYXQiOjE3NzUxNjg5MzIsImV4cCI6MjA5MDUyODkzMn0.d3OZOvYByl1VJDYs5aayrs6_3gD6Eu370-egVFqTo3A',
+    location: 'Canada',
+  },
+];
+
+/** Advisory board — photos + studies from Supabase consultants table */
+const ASSOCIATE_CONSULTANTS = [
+  {
+    initials: 'CS',
+    name: 'Cherry Soe',
+    roleLines: ['Educational Consultant', 'Advisory Board Member'],
+    degree: 'Bachelor of Science in Molecular, Cell, and Developmental Biology (Departmental Honors)',
+    university: 'UCLA',
+    note: 'Mentors students pursuing study abroad and medicine — from Myanmar pathways to U.S. medical school.',
+    gradient: 'from-rose-500 to-pink-600',
+    photo: 'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/public/consultant-photos/4.jpg',
+    location: 'United States',
+  },
+  {
+    initials: 'TYM',
+    name: 'Thuta Ye Moe',
+    roleLines: ['Educational Consultant', 'Advisory Board Member'],
+    degree: 'Bachelor of Science in Engineering (Energy & Environmental Science and Engineering)',
+    university: 'Yonsei University',
+    note: 'Guides students through university admissions, scholarships, and clear pathways toward research and graduate study.',
+    gradient: 'from-violet-500 to-indigo-600',
+    photo: 'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/public/consultant-photos/5.jpg',
+    location: 'South Korea',
+  },
+  {
+    initials: 'WSM',
+    name: 'Win Soe Moe @ Dennis',
+    roleLines: ['Educational Consultant', 'Advisory Board Member'],
+    degree: 'Doctor of Medicine (MD) Program, Year 5',
+    university: 'IUHW School of Medicine',
+    note: 'Specializes in study in Japan, scholarship essays, and interview strategy for competitive admissions.',
+    gradient: 'from-cyan-500 to-blue-600',
+    photo: 'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/public/consultant-photos/6.jpg',
+    location: 'Japan',
+  },
+];
+
+function ProfileTiltCard({ p, delay = 0 }) {
+  return (
+    <Tilt3DCard
+      delay={delay}
+      className="bg-slate-900 border border-slate-700/50 rounded-3xl overflow-hidden shadow-md flex flex-col cursor-default"
+    >
+      <div className="relative px-6 pt-8 pb-6 flex flex-col items-center text-center overflow-hidden">
+        <div className="absolute -top-6 -left-6 w-32 h-32 rounded-full blur-2xl opacity-50" style={{ background: '#3b82f6' }} />
+        <div className="absolute -bottom-4 -right-4 w-28 h-28 rounded-full blur-2xl opacity-40" style={{ background: '#6366f1' }} />
+        <div className="absolute top-4 right-8 w-20 h-20 rounded-full blur-xl opacity-30" style={{ background: '#0ea5e9' }} />
+        <div className="absolute inset-0 bg-slate-900/70" />
+        {PROFILE_STAR_DOTS.map((dot, di) => (
+          <motion.div
+            key={di}
+            className="absolute rounded-full bg-blue-500/50 pointer-events-none"
+            style={{ top: dot.top, left: dot.left, width: dot.size, height: dot.size }}
+            animate={{ opacity: [0.2, 1, 0.2], scale: [0.8, 1.4, 0.8] }}
+            transition={{ duration: 3, repeat: Infinity, delay: dot.delay, ease: 'easeInOut' }}
+          />
+        ))}
+        <div className="relative w-20 h-20 rounded-2xl overflow-hidden bg-slate-800 flex items-center justify-center mb-4 ring-2 ring-slate-700/60 shadow-lg">
+          {p.photo ? (
+            <img src={p.photo} alt={p.name} className="w-full h-full object-cover object-[center_10%]" />
+          ) : (
+            <span className={`text-lg font-bold bg-gradient-to-br ${p.gradient} bg-clip-text text-transparent`}>
+              {p.initials}
+            </span>
+          )}
+        </div>
+        <h3 className="relative text-base font-bold text-white leading-tight">{p.name}</h3>
+        {p.roleLines ? (
+          <div className="relative mt-1.5 text-blue-400 text-xs font-semibold leading-snug">
+            <p>{p.roleLines[0]}</p>
+            <p className="font-normal text-blue-300/70 my-0.5">&</p>
+            <p>{p.roleLines[1]}</p>
+          </div>
+        ) : (
+          <p className="relative text-blue-400 text-xs font-semibold mt-1">{p.role}</p>
+        )}
+        <p className="relative text-[#f7f6f3]/80 text-xs mt-1.5">📍 {p.location}</p>
+      </div>
+
+      <div className="px-6 py-5 bg-[#fdfcfa] flex-1 flex flex-col gap-3 text-left">
+        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-blue-500">{p.university}</p>
+        <p className="text-slate-700 text-sm font-medium leading-snug">{p.degree}</p>
+        <div className="h-px w-full bg-slate-200/90" aria-hidden />
+        <p className="text-slate-500 text-xs leading-relaxed">{p.note}</p>
+      </div>
+    </Tilt3DCard>
+  );
+}
+
 export default function About() {
   const reduceMotion = useReducedMotion();
 
@@ -245,93 +385,20 @@ export default function About() {
 
           {/* Leadership cards */}
           <motion.div className="grid md:grid-cols-3 gap-6 mb-14" style={{ perspective: 1000 }}>
-            {[
-              {
-                initials: 'NLK',
-                name: 'Nyan Lin Kyaw',
-                role: 'Founder & Lead Education Consultant',
-                degree: 'Honours Bachelor of Commerce, Business Technology Management',
-                university: 'University of Ottawa',
-                note: 'Driving the organization\'s strategy, marketing initiatives, and long-term vision.',
-                gradient: 'from-blue-500 to-indigo-600',
-                photo: 'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/public/consultant-photos/1.jpg',
-                location: 'Canada',
-              },
-              {
-                initials: 'NSN',
-                name: 'Nang Sayoon Noi',
-                role: 'Co-Founder & Chief Operating Officer',
-                degree: 'Bachelor of Science in Biochemistry (Chemistry Honors)',
-                university: 'Sacramento State University',
-                note: 'Overseeing the organizational structure, internal communications, and seamless day-to-day operations.',
-                gradient: 'from-emerald-500 to-teal-600',
-                photo: 'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/public/consultant-photos/2.jpg',
-                location: 'United States',
-              },
-              {
-                initials: 'KT',
-                name: 'Khun Thu Rein',
-                role: 'Chief Technology Officer',
-                degree: 'Bachelor of Computer Science',
-                university: 'Carleton University',
-                note: 'Managing technical infrastructure, platform development, and digital systems for BladeX.',
-                gradient: 'from-slate-600 to-slate-800',
-                photo: 'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/sign/Team/ktr.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84ZWY5ZjAzNS00OWY3LTQ4MDUtYmRmZi02N2IxYzU3NWY5ZmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJUZWFtL2t0ci5qcGciLCJpYXQiOjE3NzUxNjg5MzIsImV4cCI6MjA5MDUyODkzMn0.d3OZOvYByl1VJDYs5aayrs6_3gD6Eu370-egVFqTo3A',
-                location: 'Canada',
-              },
-            ].map((p, i) => (
-              <Tilt3DCard
-                key={i}
-                delay={i * 0.03}
-                className="bg-slate-900 border border-slate-700/50 rounded-3xl overflow-hidden shadow-md flex flex-col cursor-default"
-              >
-                {/* Top — dark with photo */}
-                <div className="relative px-6 pt-8 pb-6 flex flex-col items-center text-center overflow-hidden">
-                  <div className="absolute -top-6 -left-6 w-32 h-32 rounded-full blur-2xl opacity-50" style={{ background: '#3b82f6' }} />
-                  <div className="absolute -bottom-4 -right-4 w-28 h-28 rounded-full blur-2xl opacity-40" style={{ background: '#6366f1' }} />
-                  <div className="absolute top-4 right-8 w-20 h-20 rounded-full blur-xl opacity-30" style={{ background: '#0ea5e9' }} />
-                  <div className="absolute inset-0 bg-slate-900/70" />
-                  {[
-                    { top: '10%', left: '8%',  size: 3, delay: 0 },
-                    { top: '20%', left: '80%', size: 2, delay: 0.5 },
-                    { top: '55%', left: '15%', size: 2, delay: 1.0 },
-                    { top: '70%', left: '70%', size: 3, delay: 1.5 },
-                    { top: '30%', left: '55%', size: 2, delay: 0.8 },
-                    { top: '80%', left: '35%', size: 2, delay: 0.3 },
-                    { top: '15%', left: '42%', size: 2, delay: 1.2 },
-                    { top: '65%', left: '88%', size: 3, delay: 0.6 },
-                    { top: '85%', left: '12%', size: 2, delay: 1.8 },
-                    { top: '40%', left: '92%', size: 2, delay: 0.9 },
-                  ].map((dot, di) => (
-                    <motion.div key={di}
-                      className="absolute rounded-full bg-blue-500/50 pointer-events-none"
-                      style={{ top: dot.top, left: dot.left, width: dot.size, height: dot.size }}
-                      animate={{ opacity: [0.2, 1, 0.2], scale: [0.8, 1.4, 0.8] }}
-                      transition={{ duration: 3, repeat: Infinity, delay: dot.delay, ease: 'easeInOut' }}
-                    />
-                  ))}
-                  <div className="relative w-20 h-20 rounded-2xl overflow-hidden bg-slate-800 flex items-center justify-center mb-4 ring-2 ring-slate-700/60 shadow-lg">
-                    {p.photo
-                      ? <img src={p.photo} alt={p.name} className="w-full h-full object-cover object-[center_10%]" />
-                      : <span className={`text-lg font-bold bg-gradient-to-br ${p.gradient} bg-clip-text text-transparent`}>{p.initials}</span>
-                    }
-                  </div>
-                  <h3 className="relative text-base font-bold text-white leading-tight">{p.name}</h3>
-                  <p className="relative text-blue-400 text-xs font-semibold mt-1">{p.role}</p>
-                  <p className="relative text-[#f7f6f3]/80 text-xs mt-1.5">📍 {p.location}</p>
-                </div>
+            {FOUNDERS.map((p, i) => (
+              <ProfileTiltCard key={p.name} p={p} delay={i * 0.03} />
+            ))}
+          </motion.div>
 
-                {/* Bottom — beige */}
-                <div className="px-6 py-5 bg-[#fdfcfa] flex-1 flex flex-col gap-4">
-                  <div>
-                    <p className="text-slate-800 font-bold text-sm leading-snug">{p.degree}</p>
-                    <p className="text-blue-500 text-xs mt-1 font-medium">{p.university}</p>
-                  </div>
-                  <div>
-                    <p className="text-slate-600 text-xs leading-relaxed">{p.note}</p>
-                  </div>
-                </div>
-              </Tilt3DCard>
+          {/* Associate consultants — same card design as founders */}
+          <div className="text-center mb-8">
+            <span className="text-sm font-extrabold uppercase tracking-widest text-slate-500">
+              Advisory Board Members
+            </span>
+          </div>
+          <motion.div className="grid md:grid-cols-3 gap-6 mb-14" style={{ perspective: 1000 }}>
+            {ASSOCIATE_CONSULTANTS.map((p, i) => (
+              <ProfileTiltCard key={p.name} p={p} delay={i * 0.03} />
             ))}
           </motion.div>
 
@@ -343,7 +410,12 @@ export default function About() {
             {[
               { name: 'Myat Min Htet', role: 'Operations Lead & Data Analyst' },
               { name: 'Thin Thiri San', role: 'Operations Lead & Market Research Analyst' },
-              { name: 'Myint Zu Linn', role: 'Research & Operation Intern' },
+              {
+                name: 'Myint Zu Linn',
+                role: 'Research & Operation Associate',
+                photo:
+                  'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/sign/Team/myint-zu-linn.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84ZWY5ZjAzNS00OWY3LTQ4MDUtYmRmZi02N2IxYzU3NWY5ZmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJUZWFtL215aW50LXp1LWxpbm4ucG5nIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NjIzOTIxOCwiZXhwIjoyMTAxNTk5MjE4fQ.lXrNoPWH9fOnR0NO7mImrhYjd3r3P-ZKZLf6nJnJedU',
+              },
             ].map((m, i) => (
               <motion.div
                 key={i}
@@ -354,9 +426,19 @@ export default function About() {
                 transition={{ duration: 0.28, ease: 'easeOut', delay: i * 0.03 }}
                 className="bg-white rounded-2xl p-5 text-center shadow-sm border border-slate-100 cursor-default"
               >
-                <div className="w-12 h-12 rounded-full bg-blue-900 text-white font-bold text-lg flex items-center justify-center mx-auto mb-3">
-                  {m.name.charAt(0)}
-                </div>
+                {m.photo ? (
+                  <div className="w-12 h-12 rounded-full overflow-hidden mx-auto mb-3 ring-2 ring-slate-100">
+                    <img
+                      src={m.photo}
+                      alt={m.name}
+                      className="w-full h-full object-cover object-center"
+                    />
+                  </div>
+                ) : (
+                  <div className="w-12 h-12 rounded-full bg-blue-900 text-white font-bold text-lg flex items-center justify-center mx-auto mb-3">
+                    {m.name.charAt(0)}
+                  </div>
+                )}
                 <p className="font-bold text-slate-900 text-sm leading-tight">{m.name}</p>
                 <p className="text-blue-500 text-xs mt-1 leading-snug font-medium">{m.role}</p>
               </motion.div>
