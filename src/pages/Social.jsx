@@ -9,6 +9,7 @@ import {
 } from '@/components/shared/SocialIcons';
 import { sectionBadgeClass } from '@/utils/glassStyles';
 import SpaceSectionBackground from '@/components/shared/SpaceSectionBackground';
+import TestimonialsSection from '@/components/home/TestimonialsSection';
 
 const channels = [
   {
@@ -153,6 +154,8 @@ export default function Social() {
         </div>
 
       </section>
+
+      <TestimonialsSection />
 
       {/* Why follow section */}
       <section className="py-16 bg-white border-y border-slate-300">
