@@ -151,8 +151,8 @@ const FOUNDERS = [
     initials: 'NSN',
     name: 'Nang Sayoon Noi',
     role: 'Co-Founder & Chief Operating Officer',
-    degree: 'Bachelor of Science in Biochemistry (Chemistry Honors)',
-    university: 'Sacramento State University',
+    degree: 'Doctor of Philosophy - Molecular Bioscience (Cell and Developmental Biology)',
+    university: 'Rutgers University',
     note: 'Overseeing the organizational structure, internal communications, and seamless day-to-day operations.',
     gradient: 'from-emerald-500 to-teal-600',
     photo: 'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/public/consultant-photos/2.jpg',
@@ -173,14 +173,14 @@ const FOUNDERS = [
 ];
 
 /** Advisory board — photos + studies from Supabase consultants table */
-const ASSOCIATE_CONSULTANTS = [
+const ADVISORY_BOARD_MEMBERS = [
   {
     initials: 'CS',
     name: 'Cherry Soe',
-    roleLines: ['Educational Consultant', 'Advisory Board Member'],
-    degree: 'Bachelor of Science in Molecular, Cell, and Developmental Biology (Departmental Honors)',
-    university: 'UCLA',
-    note: 'Mentors students pursuing study abroad and medicine — from Myanmar pathways to U.S. medical school.',
+    role: 'Advisory Board Member',
+    degree: 'Doctor of Medicine',
+    university: 'UCSF',
+    note: 'Bringing firsthand experience and a student-centered perspective to help BladeX better understand the experiences, challenges, and aspirations of students pursuing education abroad.',
     gradient: 'from-rose-500 to-pink-600',
     photo: 'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/public/consultant-photos/4.jpg',
     location: 'United States',
@@ -188,21 +188,34 @@ const ASSOCIATE_CONSULTANTS = [
   {
     initials: 'TYM',
     name: 'Thuta Ye Moe',
-    roleLines: ['Educational Consultant', 'Advisory Board Member'],
-    degree: 'Bachelor of Science in Engineering (Energy & Environmental Science and Engineering)',
-    university: 'Yonsei University',
-    note: 'Guides students through university admissions, scholarships, and clear pathways toward research and graduate study.',
+    role: 'Advisory Board Member',
+    degree: 'Doctor of Philosophy - Engineering & IT',
+    university: 'University of Melbourne',
+    note: 'Bringing experience in organizational development and team collaboration to help strengthen BladeX’s internal structure, culture, and foundation for growth.',
     gradient: 'from-violet-500 to-indigo-600',
     photo: 'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/public/consultant-photos/5.jpg',
-    location: 'South Korea',
+    location: 'Australia',
   },
   {
     initials: 'WSM',
     name: 'Win Soe Moe @ Dennis',
-    roleLines: ['Educational Consultant', 'Advisory Board Member'],
-    degree: 'Doctor of Medicine (MD) Program, Year 5',
+    role: 'Advisory Board Member',
+    degree: 'Doctor of Medicine',
     university: 'IUHW School of Medicine',
-    note: 'Specializes in study in Japan, scholarship essays, and interview strategy for competitive admissions.',
+    note: (
+      <>
+        Founder of{' '}
+        <a
+          href="https://www.facebook.com/p/Youth-Know-versity-100078966399846/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline text-[#465161]"
+        >
+          Youth Know-versity
+        </a>
+        . Expanding BladeX’s perspective beyond the organization through external relationships, strategic opportunities, and connections that can help broaden our reach and impact.
+      </>
+    ),
     gradient: 'from-cyan-500 to-blue-600',
     photo: 'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/public/consultant-photos/6.jpg',
     location: 'Japan',
@@ -239,15 +252,7 @@ function ProfileTiltCard({ p, delay = 0 }) {
           )}
         </div>
         <h3 className="relative text-base font-bold text-white leading-tight">{p.name}</h3>
-        {p.roleLines ? (
-          <div className="relative mt-1.5 text-blue-400 text-xs font-semibold leading-snug">
-            <p>{p.roleLines[0]}</p>
-            <p className="font-normal text-blue-300/70 my-0.5">&</p>
-            <p>{p.roleLines[1]}</p>
-          </div>
-        ) : (
-          <p className="relative text-blue-400 text-xs font-semibold mt-1">{p.role}</p>
-        )}
+        <p className="relative text-blue-400 text-xs font-semibold mt-1">{p.role}</p>
         <p className="relative text-[#f7f6f3]/80 text-xs mt-1.5">📍 {p.location}</p>
       </div>
 
@@ -397,7 +402,7 @@ export default function About() {
             </span>
           </div>
           <motion.div className="grid md:grid-cols-3 gap-6 mb-14" style={{ perspective: 1000 }}>
-            {ASSOCIATE_CONSULTANTS.map((p, i) => (
+            {ADVISORY_BOARD_MEMBERS.map((p, i) => (
               <ProfileTiltCard key={p.name} p={p} delay={i * 0.03} />
             ))}
           </motion.div>
