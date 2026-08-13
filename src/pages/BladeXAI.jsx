@@ -1,8 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { createPageUrl } from '@/utils';
 import { solidButton } from '@/utils/glassStyles';
 import Tilt3DCard from '@/components/shared/Tilt3DCard';
 import SpaceSectionBackground from '@/components/shared/SpaceSectionBackground';
@@ -686,15 +684,15 @@ export default function BladeXAI() {
             <p className="mt-4 text-sm sm:text-base text-slate-400 max-w-md mx-auto leading-relaxed">
               Follow BladeX AI & Technology as we build the future.
             </p>
-            <Link to={createPageUrl('Social')} className="mt-8 inline-block">
-              <button
-                type="button"
-                className={`group inline-flex items-center justify-center gap-2 bg-neutral-200 text-black font-semibold rounded-2xl transition-[background-color,color,box-shadow,gap] duration-300 ease-out hover:bg-red-600 hover:text-white hover:gap-3 hover:shadow-[0_4px_14px_rgba(220,38,38,0.35)] ${solidButton.md}`}
-              >
-                <span>Follow Us</span>
-                <ArrowRight className="w-4 h-4 shrink-0 transition-[transform,margin] duration-500 ease-out group-hover:translate-x-2 group-hover:scale-110" />
-              </button>
-            </Link>
+            <a
+              href="https://www.facebook.com/profile.php?id=61591631907089"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group mt-8 inline-flex items-center justify-center gap-2 bg-neutral-200 text-black font-semibold rounded-2xl transition-[background-color,color,box-shadow,gap] duration-300 ease-out hover:bg-red-600 hover:text-white hover:gap-3 hover:shadow-[0_4px_14px_rgba(220,38,38,0.35)] ${solidButton.md}`}
+            >
+              <span>Follow Us</span>
+              <ArrowRight className="w-4 h-4 shrink-0 transition-[transform,margin] duration-500 ease-out group-hover:translate-x-2 group-hover:scale-110" />
+            </a>
           </motion.div>
         </div>
       </section>
