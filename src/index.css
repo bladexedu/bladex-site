@@ -6,6 +6,8 @@
   :root {
     --font-serif: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
     --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-ai-display: 'Albert Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-ai-sans: 'Space Mono', ui-monospace, monospace;
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
@@ -166,4 +168,23 @@
     position: relative;
     z-index: 1;
   }
+}
+
+/* BladeX AI division — distinct from education site type */
+.bladex-ai-page {
+  font-family: var(--font-ai-sans);
+}
+
+.bladex-ai-page h1,
+.bladex-ai-page h2,
+.bladex-ai-page h3 {
+  font-family: var(--font-ai-display);
+  letter-spacing: 0.04em;
+  font-weight: 400;
+}
+
+.nav-bladex-ai {
+  font-family: var(--font-ai-display);
+  letter-spacing: 0.06em;
+  font-weight: 400;
 }

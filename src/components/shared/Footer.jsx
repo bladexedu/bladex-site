@@ -1,6 +1,6 @@
 import React from 'react';
 import SpaceSectionBackground from '@/components/shared/SpaceSectionBackground';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import {
   FacebookIcon,
@@ -25,14 +25,21 @@ const socials = [
   { Icon: LinkedInIcon, href: 'https://www.linkedin.com/company/bladex-education/', label: 'LinkedIn', color: 'hover:bg-blue-700/20 hover:border-blue-400/40 hover:shadow-[0_0_12px_rgba(96,165,250,0.35)]' },
 ];
 
-export default function Footer() {
-  return (
-    <footer className="relative bg-[#060b18] text-white overflow-hidden">
-      {/* Top accent line */}
-      <div className="relative z-10 h-px w-full bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
+const aiSocialHover =
+  'hover:bg-red-600/20 hover:border-red-500/40 hover:shadow-[0_0_12px_rgba(239,68,68,0.35)]';
 
+export default function Footer() {
+  const location = useLocation();
+  const isAiPage = location.pathname === createPageUrl('BladeXAI');
+
+  return (
+    <footer
+      className={`relative text-white overflow-hidden ${
+        isAiPage ? 'bg-black nav-bladex-ai' : 'bg-[#060b18]'
+      }`}
+    >
       <div className="absolute inset-0 z-0">
-        <SpaceSectionBackground />
+        <SpaceSectionBackground vignetteBlack={isAiPage} />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
@@ -57,7 +64,9 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className={`group w-9 h-9 rounded-xl border border-white/10 flex items-center justify-center transition-all duration-200 ${color}`}
+                  className={`group w-9 h-9 rounded-xl border border-white/10 flex items-center justify-center transition-all duration-200 ${
+                    isAiPage ? aiSocialHover : color
+                  }`}
                 >
                   <Icon className="w-7 h-7 rounded-md flex-shrink-0 transition-transform duration-200 group-hover:scale-110" />
                 </a>
@@ -75,7 +84,11 @@ export default function Footer() {
                     to={createPageUrl(l.page)}
                     className="text-slate-400 hover:text-white text-sm transition-colors flex items-center gap-2 group"
                   >
-                    <span className="w-1 h-1 rounded-full bg-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <span
+                      className={`w-1 h-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity ${
+                        isAiPage ? 'bg-red-500' : 'bg-blue-500'
+                      }`}
+                    />
                     {l.name}
                   </Link>
                 </li>
@@ -90,7 +103,13 @@ export default function Footer() {
               href="mailto:bladexedu@gmail.com"
               className="flex items-center gap-3 text-slate-400 hover:text-white transition-colors text-sm mb-6 group"
             >
-              <div className="w-9 h-9 rounded-xl border border-white/10 flex items-center justify-center group-hover:border-blue-500/40 group-hover:bg-blue-600/20 group-hover:shadow-[0_0_12px_rgba(59,130,246,0.35)] transition-all">
+              <div
+                className={`w-9 h-9 rounded-xl border border-white/10 flex items-center justify-center transition-all ${
+                  isAiPage
+                    ? 'group-hover:border-red-500/40 group-hover:bg-red-600/20 group-hover:shadow-[0_0_12px_rgba(239,68,68,0.35)]'
+                    : 'group-hover:border-blue-500/40 group-hover:bg-blue-600/20 group-hover:shadow-[0_0_12px_rgba(59,130,246,0.35)]'
+                }`}
+              >
                 <EmailIcon className="w-7 h-7 rounded-md flex-shrink-0 transition-transform duration-200 group-hover:scale-110" />
               </div>
               bladexedu@gmail.com

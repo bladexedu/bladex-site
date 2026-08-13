@@ -6,6 +6,8 @@ module.exports = {
   	extend: {
   		fontFamily: {
   			sans: ['Plus Jakarta Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+  			ai: ['Space Mono', 'ui-monospace', 'monospace'],
+  			'ai-display': ['Albert Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
