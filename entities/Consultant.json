@@ -26,6 +26,10 @@
         "type": "string",
         "description": "e.g. BSc Computer Science, University of Toronto"
       },
+      "current_occupation": {
+        "type": "string",
+        "description": "Current professional role and organization"
+      },
       "current_country": {
         "type": "string",
         "description": "Country they are currently based in"

@@ -30,3 +30,6 @@ dist-ssr
 .playwright-mcp/
 .cursor/
 .claude/
+
+# Local agent instructions
+AGENTS.md

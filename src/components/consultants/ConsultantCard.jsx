@@ -11,6 +11,8 @@ import {
 const BIO_LIMIT = 120;
 
 const LOCATION_MAP = {
+  'htar yu nwe':               'United Kingdom',
+  'htet yamin ko ko':          'Switzerland',
   'nyan lin kyaw':            'Canada',
   'nang sayoon noi':          'United States',
   'wutt hmone thin kyi':      'United States · Singapore',
@@ -193,8 +195,8 @@ export default function ConsultantCard({ consultant: c, index }) {
                 </div>
               )}
 
-              {/* Studies + Country — 2 col */}
-              {(c.current_studies || c.country_of_expertise) && (
+              {/* Studies / Occupation + Country — 2 col */}
+              {(c.current_studies || c.current_occupation || c.country_of_expertise) && (
                 <div className="grid grid-cols-2 gap-3">
                   {c.current_studies && (
                     <div className="rounded-[14px] p-[18px] border border-black/[0.07] bg-white">
@@ -209,6 +211,23 @@ export default function ConsultantCard({ consultant: c, index }) {
                           </>
                         ) : (
                           <p className="text-[13.5px] font-semibold text-slate-800 leading-snug">{c.current_studies}</p>
+                        );
+                      })()}
+                    </div>
+                  )}
+                  {c.current_occupation && (
+                    <div className="rounded-[14px] p-[18px] border border-black/[0.07] bg-white">
+                      <div className="w-8 h-8 rounded-[9px] flex items-center justify-center text-sm mb-3 bg-slate-100 border border-slate-200">💼</div>
+                      <p className="text-[10px] font-bold tracking-[1.5px] uppercase text-slate-400 mb-1.5">Occupation</p>
+                      {(() => {
+                        const parts = c.current_occupation.split(/\s*—\s*/);
+                        return parts.length > 1 ? (
+                          <>
+                            <p className="text-[13.5px] font-semibold text-slate-800 leading-snug">{parts[0].trim()}</p>
+                            <p className="text-[12px] text-slate-500 mt-1 leading-snug">{parts.slice(1).join(' — ').trim()}</p>
+                          </>
+                        ) : (
+                          <p className="text-[13.5px] font-semibold text-slate-800 leading-snug">{c.current_occupation}</p>
                         );
                       })()}
                     </div>
