@@ -216,8 +216,14 @@ function StudyPickerCard({ label, subtitle, image, gradient, onClick, tall = fal
   );
 }
 
-function matchesFilters(consultant, filters) {
+function matchesFilters(consultant, filters, search = '') {
   const { degree, destination, area } = filters;
+  const query = search.trim().toLowerCase();
+
+  if (query) {
+    const name = (consultant.name || '').toLowerCase();
+    if (!name.includes(query)) return false;
+  }
 
   if (degree !== 'all') {
     const keywords = DEGREE_TAG_MAP[degree] || [];
@@ -249,6 +255,7 @@ export default function Consultants() {
   const { data: consultants = [], isLoading: loading } = useConsultants();
   const location = useLocation();
   const [filters, setFilters] = useState({ degree: 'all', destination: 'all', area: 'all' });
+  const [search, setSearch] = useState('');
   const [showRegionPicker, setShowRegionPicker] = useState(true);
   const [pickerStep, setPickerStep] = useState('main');
   const [selectedRegion, setSelectedRegion] = useState(null);
@@ -263,6 +270,7 @@ export default function Consultants() {
     setSelectedRegion(null);
     setSelectedArea(null);
     setFilters({ degree: 'all', destination: 'all', area: 'all' });
+    setSearch('');
   }, [location.key]);
 
   const displayedConsultants = useMemo(() => {
@@ -276,6 +284,7 @@ export default function Consultants() {
     bumpShuffle();
     setSelectedRegion(regionKey);
     setFilters({ degree: 'all', destination: regionKey, area: 'all' });
+    setSearch('');
     setShowRegionPicker(false);
   };
 
@@ -283,6 +292,7 @@ export default function Consultants() {
     bumpShuffle();
     setSelectedArea(areaKey);
     setFilters({ degree: 'all', destination: 'all', area: areaKey });
+    setSearch('');
     setShowRegionPicker(false);
   };
 
@@ -291,6 +301,7 @@ export default function Consultants() {
     setSelectedRegion(null);
     setSelectedArea(null);
     setFilters({ degree: 'all', destination: 'all', area: 'all' });
+    setSearch('');
     setShowRegionPicker(false);
   };
 
@@ -306,6 +317,7 @@ export default function Consultants() {
 
   const handleBackToPicker = () => {
     setShowRegionPicker(true);
+    setSearch('');
 
     if (selectedArea) {
       setPickerStep('what');
@@ -503,7 +515,11 @@ export default function Consultants() {
               </p>
             </motion.div>
           ) : (() => {
-            const filtered = displayedConsultants.filter(c => matchesFilters(c, filters));
+            const filtered = displayedConsultants.filter(c => matchesFilters(c, filters, search));
+            const clearAll = () => {
+              setFilters({ degree: 'all', destination: 'all', area: 'all' });
+              setSearch('');
+            };
             return (
               <>
                 {/* Back + region chip */}
@@ -541,11 +557,25 @@ export default function Consultants() {
                   )}
                 </div>
 
-                <ConsultantFilters filters={filters} onChange={setFilters} count={filtered.length} hideDestination={!!selectedRegion} hideArea={!!selectedArea} />
+                <ConsultantFilters
+                  filters={filters}
+                  onChange={setFilters}
+                  search={search}
+                  onSearchChange={setSearch}
+                  count={filtered.length}
+                  hideDestination={!!selectedRegion}
+                  hideArea={!!selectedArea}
+                />
                 {filtered.length === 0 ? (
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16">
-                    <p className="text-slate-500 text-lg">No consultants match the selected filters.</p>
-                    <button onClick={() => setFilters({ degree: 'all', destination: 'all', area: 'all' })} className="mt-4 text-blue-600 hover:underline text-sm font-medium">Clear filters</button>
+                    <p className="text-slate-500 text-lg">
+                      {search.trim()
+                        ? 'No consultants match your search.'
+                        : 'No consultants match the selected filters.'}
+                    </p>
+                    <button onClick={clearAll} className="mt-4 text-blue-600 hover:underline text-sm font-medium">
+                      Clear filters
+                    </button>
                   </motion.div>
                 ) : (
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

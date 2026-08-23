@@ -1,0 +1,542 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e6]:
+      - link [ref=e7] [cursor=pointer]:
+        - /url: /Home
+        - img "BladeX Education" [ref=e8]
+      - navigation [ref=e9]:
+        - link "Home" [ref=e10] [cursor=pointer]:
+          - /url: /Home
+        - link "About" [ref=e11] [cursor=pointer]:
+          - /url: /About
+        - link "Programs" [ref=e12] [cursor=pointer]:
+          - /url: /Programs
+        - link "Consultants" [ref=e13] [cursor=pointer]:
+          - /url: /Consultants
+        - link "Social" [ref=e14] [cursor=pointer]:
+          - /url: /Social
+        - link "BladeX AI New" [ref=e15] [cursor=pointer]:
+          - /url: /BladeXAI
+          - text: BladeX AI
+          - generic: New
+      - button "Book a Meeting" [ref=e17] [cursor=pointer]
+  - main [ref=e21]:
+    - generic [ref=e22]:
+      - generic [ref=e28]:
+        - generic [ref=e29]: Meet the Team
+        - heading "Our Consultants" [level=1] [ref=e30]
+        - paragraph [ref=e31]: Every consultant at BladeX Education has been through the study-abroad journey themselves. Browse their profiles and book directly with who feels right for you.
+      - generic [ref=e1211]:
+        - button "Back" [ref=e1213] [cursor=pointer]
+        - generic [ref=e1216]:
+          - generic [ref=e1217]:
+            - generic [ref=e1218]: Search consultants by name
+            - textbox "Search consultants by name" [ref=e1219]:
+              - /placeholder: Search by consultant name…
+          - generic [ref=e1220]:
+            - generic [ref=e1221]:
+              - generic [ref=e1222]: Degree Level
+              - combobox [ref=e1224] [cursor=pointer]:
+                - option "All" [selected]
+                - option "Undergraduate"
+                - option "Master's"
+                - option "PhD"
+                - option "Pre-University / High School"
+            - generic [ref=e1225]:
+              - generic [ref=e1226]: Destination
+              - combobox [ref=e1228] [cursor=pointer]:
+                - option "All" [selected]
+                - option "North America"
+                - option "Europe"
+                - option "United Kingdom"
+                - option "Asia"
+                - option "Oceania"
+            - generic [ref=e1229]:
+              - generic [ref=e1230]: Area of Study
+              - combobox [ref=e1232] [cursor=pointer]:
+                - option "All" [selected]
+                - option "Medicine & Health Sciences"
+                - option "Engineering & Architecture"
+                - option "Business & Finance"
+                - option "Computer Science & IT"
+                - option "Social Science and Education"
+                - option "Pre-University"
+            - generic [ref=e1233]: 41 consultants
+        - generic [ref=e1235]:
+          - generic [ref=e1236] [cursor=pointer]:
+            - generic [ref=e1237]:
+              - img "Shun Le Min Lwin" [ref=e1244]
+              - heading "Shun Le Min Lwin" [level=3] [ref=e1245]
+              - paragraph [ref=e1246]: Educational Consultant
+              - paragraph [ref=e1247]: 📍 South Korea
+            - paragraph [ref=e1249]: Shun Le Min Lwin is a fourth-year Biomedical Engineering student at Hanyang University in Seoul. As an international stu...
+            - generic [ref=e1250]:
+              - button "View Profile" [ref=e1251]
+              - link "Book" [ref=e1252]:
+                - /url: https://calendly.com/shunleminlwin
+          - generic [ref=e1257] [cursor=pointer]:
+            - generic [ref=e1258]:
+              - img "Wint Phyu Sin Moe @ Nari" [ref=e1265]
+              - heading "Wint Phyu Sin Moe @ Nari" [level=3] [ref=e1266]
+              - paragraph [ref=e1267]: Educational Consultant
+              - paragraph [ref=e1268]: 📍 Thailand
+            - paragraph [ref=e1270]: Wint Phyu Sin Moe is a hospitality student and an education consultant with a diverse academic and professional backgrou...
+            - generic [ref=e1271]:
+              - button "View Profile" [ref=e1272]
+              - link "Book" [ref=e1273]:
+                - /url: https://calendly.com/wintphyusinmoe444/30min
+          - generic [ref=e1278] [cursor=pointer]:
+            - generic [ref=e1279]:
+              - img "Wai Phyo Hein" [ref=e1286]
+              - heading "Wai Phyo Hein" [level=3] [ref=e1287]
+              - paragraph [ref=e1288]: Educational Consultant
+              - paragraph [ref=e1289]: 📍 United States
+            - paragraph [ref=e1291]: Wai Phyo Hein graduated from BEHS-1 Dagon, Yangon, in 2020 and is now a junior, studying Computer Science at the Univers...
+            - generic [ref=e1292]:
+              - button "View Profile" [ref=e1293]
+              - link "Book" [ref=e1294]:
+                - /url: https://calendly.com/danielwaiphyo25204/bridgeburma-mentorship
+          - generic [ref=e1299] [cursor=pointer]:
+            - generic [ref=e1300]:
+              - img "Yati Ko Ko" [ref=e1307]
+              - heading "Yati Ko Ko" [level=3] [ref=e1308]
+              - paragraph [ref=e1309]: Senior Educational Consultant
+              - paragraph [ref=e1310]: 📍 Hungary
+            - paragraph [ref=e1312]: Yati is a Computer Science graduate from the University of Debrecen and a fully funded scholar under the Stipendium Hung...
+            - generic [ref=e1313]:
+              - button "View Profile" [ref=e1314]
+              - link "Book" [ref=e1315]:
+                - /url: https://calendly.com/yatikoko1212/one-on-one-consulting
+          - generic [ref=e1320] [cursor=pointer]:
+            - generic [ref=e1321]:
+              - img "Chan Thar Soe" [ref=e1328]
+              - heading "Chan Thar Soe" [level=3] [ref=e1329]
+              - paragraph [ref=e1330]: Educational Consultant
+              - paragraph [ref=e1331]: 📍 Czech Republic
+            - paragraph [ref=e1333]: Chan Thar Soe is currently pursuing a PhD in Physical Chemistry at the Faculty of Science, Charles University, Czech Rep...
+            - generic [ref=e1334]:
+              - button "View Profile" [ref=e1335]
+              - link "Book" [ref=e1336]:
+                - /url: https://calendly.com/chantharsoe/30min
+          - generic [ref=e1341] [cursor=pointer]:
+            - generic [ref=e1342]:
+              - img "Wutt Hmone Thin Kyi" [ref=e1349]
+              - heading "Wutt Hmone Thin Kyi" [level=3] [ref=e1350]
+              - paragraph [ref=e1351]: Senior Educational Consultant
+              - paragraph [ref=e1352]: 📍 United States · Singapore
+            - paragraph [ref=e1354]: Wutt Hmone Thin Kyi grew up in Yangon, Myanmar, until the age of ten before moving to Singapore, where she continued her...
+            - generic [ref=e1355]:
+              - button "View Profile" [ref=e1356]
+              - link "Book" [ref=e1357]:
+                - /url: https://calendly.com/wutthmonethinkyi/bladex-mentorship-with-wutt
+          - generic [ref=e1362] [cursor=pointer]:
+            - generic [ref=e1363]:
+              - img "Min Hein Khant" [ref=e1370]
+              - heading "Min Hein Khant" [level=3] [ref=e1371]
+              - paragraph [ref=e1372]: Educational Consultant
+              - paragraph [ref=e1373]: 📍 Italy
+            - paragraph [ref=e1375]: Min Hein Khant is a graduating student currently pursuing a Bachelor's degree in Biosciences and Biotechnology at the Un...
+            - generic [ref=e1376]:
+              - button "View Profile" [ref=e1377]
+              - link "Book" [ref=e1378]:
+                - /url: https://calendly.com/minh-cornerinfo/30min?month=2026-05
+          - generic [ref=e1383] [cursor=pointer]:
+            - generic [ref=e1384]:
+              - img "Su Yamin Tun" [ref=e1391]
+              - heading "Su Yamin Tun" [level=3] [ref=e1392]
+              - paragraph [ref=e1393]: Educational Consultant
+              - paragraph [ref=e1394]: 📍 Canada
+            - paragraph [ref=e1396]: Growing up in Myanmar, Su Yamin Tun began her higher education journey at Yangon University studying Environmental Studi...
+            - generic [ref=e1397]:
+              - button "View Profile" [ref=e1398]
+              - link "Book" [ref=e1399]:
+                - /url: https://calendly.com/suyamintun02/30min
+          - generic [ref=e1404] [cursor=pointer]:
+            - generic [ref=e1405]:
+              - img "Htet Yamin Ko Ko" [ref=e1412]
+              - heading "Htet Yamin Ko Ko" [level=3] [ref=e1413]
+              - paragraph [ref=e1414]: Educational Consultant
+              - paragraph [ref=e1415]: 📍 Switzerland
+            - paragraph [ref=e1417]: Htet Yamin Ko Ko is a postdoctoral research fellow at the International Space Science Institute in Bern, Switzerland. Sh...
+            - generic [ref=e1418]:
+              - button "View Profile" [ref=e1419]
+              - link "Book" [ref=e1420]:
+                - /url: https://calendly.com/htetyaminkokoedu/30min
+          - generic [ref=e1425] [cursor=pointer]:
+            - generic [ref=e1426]:
+              - heading "Arkar Min Myat" [level=3] [ref=e1437]
+              - paragraph [ref=e1438]: Senior Educational Consultant
+              - paragraph [ref=e1439]: 📍 Germany
+            - paragraph [ref=e1441]: Arkar began his academic journey in Germany by completing a German language preparation course, building upon three year...
+            - generic [ref=e1442]:
+              - button "View Profile" [ref=e1443]
+              - link "Book" [ref=e1444]:
+                - /url: https://calendly.com/arkarminmyat200/30min
+          - generic [ref=e1449] [cursor=pointer]:
+            - generic [ref=e1450]:
+              - heading "Shin Lin Let" [level=3] [ref=e1461]
+              - paragraph [ref=e1462]: Senior Educational Consultant
+              - paragraph [ref=e1463]: 📍 United Kingdom · Malaysia
+            - paragraph [ref=e1465]: Shin Lin Let is a fourth-year medical student at the University of Liverpool, having transferred from IMU, Malaysia, aft...
+            - generic [ref=e1466]:
+              - button "View Profile" [ref=e1467]
+              - link "Book" [ref=e1468]:
+                - /url: https://calendly.com/shinlinlet2002/bladex-education-shin
+          - generic [ref=e1473] [cursor=pointer]:
+            - generic [ref=e1474]:
+              - heading "Yupar Win Thu" [level=3] [ref=e1485]
+              - paragraph [ref=e1486]: Educational Consultant
+              - paragraph [ref=e1487]: 📍 New Zealand
+            - paragraph [ref=e1489]: Yupar Win Thu developed her love for animals from an early age by watching her mother work as a veterinarian. She is cur...
+            - generic [ref=e1490]:
+              - button "View Profile" [ref=e1491]
+              - link "Book" [ref=e1492]:
+                - /url: https://calendly.com/yuparwinthu16/30min
+          - generic [ref=e1497] [cursor=pointer]:
+            - generic [ref=e1498]:
+              - heading "Nyan Lin Kyaw" [level=3] [ref=e1509]
+              - paragraph [ref=e1510]: Lead Educational Consultant
+              - paragraph [ref=e1511]: 📍 Canada
+            - paragraph [ref=e1513]: Nyan holds an Honours Bachelor of Commerce in Business Technology Management (Magna Cum Laude) from the University of Ot...
+            - generic [ref=e1514]:
+              - button "View Profile" [ref=e1515]
+              - link "Book" [ref=e1516]:
+                - /url: https://calendly.com/nyankyaw027/advising-session
+          - generic [ref=e1521] [cursor=pointer]:
+            - generic [ref=e1522]:
+              - heading "Phoo Pwint Thaung Sein" [level=3] [ref=e1533]
+              - paragraph [ref=e1534]: Educational Consultant
+              - paragraph [ref=e1535]: 📍 Australia
+            - paragraph [ref=e1537]: Phoo Pwint Thaung Sein started out in Burmese school until Grade 9, then switched over to the IB curriculum for high sch...
+            - generic [ref=e1538]:
+              - button "View Profile" [ref=e1539]
+              - link "Book" [ref=e1540]:
+                - /url: https://calendly.com/phoopwintthaungsein/advising-session
+          - generic [ref=e1545] [cursor=pointer]:
+            - generic [ref=e1546]:
+              - heading "Htar Yu Nwe" [level=3] [ref=e1557]
+              - paragraph [ref=e1558]: Educational Consultant
+              - paragraph [ref=e1559]: 📍 United Kingdom
+            - paragraph [ref=e1561]: Htar is an incoming DPhil student at the University of Oxford, fully funded by the Clarendon Scholarship. Her doctoral r...
+            - generic [ref=e1562]:
+              - button "View Profile" [ref=e1563]
+              - link "Book" [ref=e1564]:
+                - /url: https://calendly.com/kebl8617-ox/30min
+          - generic [ref=e1569] [cursor=pointer]:
+            - generic [ref=e1570]:
+              - heading "Thae Myat Aung" [level=3] [ref=e1581]
+              - paragraph [ref=e1582]: Senior Educational Consultant
+              - paragraph [ref=e1583]: 📍 Germany
+            - paragraph [ref=e1585]: Thae Myat Aung completed 3rd MB at the University of Medicine 1, Yangon and is now continuing her medical studies at the...
+            - generic [ref=e1586]:
+              - button "View Profile" [ref=e1587]
+              - link "Book" [ref=e1588]:
+                - /url: https://calendly.com/thaemyat1706/30min/2026-04-19T10:00:00+02:00?month=2026-04&date=2026-04-19
+          - generic [ref=e1593] [cursor=pointer]:
+            - generic [ref=e1594]:
+              - heading "Win Soe Moe @ Dennis" [level=3] [ref=e1605]
+              - paragraph [ref=e1606]: Senior Educational Consultant
+              - paragraph [ref=e1607]: 📍 Japan
+            - paragraph [ref=e1609]: Dennis is currently pursuing his medical degree at the IUHW School of Medicine in Japan, where he is a fifth-year medica...
+            - generic [ref=e1610]:
+              - button "View Profile" [ref=e1611]
+              - link "Book" [ref=e1612]:
+                - /url: https://calendly.com/dennis_ykv/blade-x-education
+          - generic [ref=e1617] [cursor=pointer]:
+            - generic [ref=e1618]:
+              - heading "Hsu Myat Pwint Wai" [level=3] [ref=e1629]
+              - paragraph [ref=e1630]: Educational Consultant
+              - paragraph [ref=e1631]: 📍 United Kingdom
+            - paragraph [ref=e1633]: Hsu Myat Pwint Wai finished Myanmar government high school in 2017, and she started her undergraduate journey in 2022 at...
+            - generic [ref=e1634]:
+              - button "View Profile" [ref=e1635]
+              - link "Book" [ref=e1636]:
+                - /url: https://calendly.com/hsumyatpwintwai/30min
+          - generic [ref=e1641] [cursor=pointer]:
+            - generic [ref=e1642]:
+              - heading "Ei Nandar Soe" [level=3] [ref=e1653]
+              - paragraph [ref=e1654]: Educational Consultant
+              - paragraph [ref=e1655]: 📍 Malaysia
+            - paragraph [ref=e1657]: Ei Nandar Soe is currently pursuing a Master of Philosophy in Management at Multimedia University (MMU) on a full schola...
+            - generic [ref=e1658]:
+              - button "View Profile" [ref=e1659]
+              - link "Book" [ref=e1660]:
+                - /url: https://calendly.com/soe-eiinandar/30min
+          - generic [ref=e1665] [cursor=pointer]:
+            - generic [ref=e1666]:
+              - heading "Zin Zin Aye Chan" [level=3] [ref=e1677]
+              - paragraph [ref=e1678]: Educational Consultant
+              - paragraph [ref=e1679]: 📍 Australia
+            - paragraph [ref=e1681]: Zin Zin Aye Chan completed her high school education at B.E.H.S (2) Latha in 2017, after which she began her undergradua...
+            - generic [ref=e1682]:
+              - button "View Profile" [ref=e1683]
+              - link "Book" [ref=e1684]:
+                - /url: https://calendly.com/zinzinayechan/30min
+          - generic [ref=e1689] [cursor=pointer]:
+            - generic [ref=e1690]:
+              - heading "Yoon Myat Tharaphi" [level=3] [ref=e1701]
+              - paragraph [ref=e1702]: Educational Consultant
+              - paragraph [ref=e1703]: 📍 Australia
+            - paragraph [ref=e1705]: Yoon Myat Tharaphi studied in Burmese school until grade 8. After that, she studied IGCSE O level and completed it in Ma...
+            - generic [ref=e1706]:
+              - button "View Profile" [ref=e1707]
+              - link "Book" [ref=e1708]:
+                - /url: https://calendly.com/yoontharaphi2/bladex-advising-session
+          - generic [ref=e1713] [cursor=pointer]:
+            - generic [ref=e1714]:
+              - heading "Ye Linn Phyoe" [level=3] [ref=e1725]
+              - paragraph [ref=e1726]: Educational Consultant
+              - paragraph [ref=e1727]: 📍 China
+            - paragraph [ref=e1729]: Ye Linn Phyoe is a medical student at the International School of Medicine, Zhejiang University (ZJU-ISM). He began his...
+            - generic [ref=e1730]:
+              - button "View Profile" [ref=e1731]
+              - link "Book" [ref=e1732]:
+                - /url: https://calendly.com/yelinnphyoe7/30min
+          - generic [ref=e1737] [cursor=pointer]:
+            - generic [ref=e1738]:
+              - heading "Yoon Su Lin" [level=3] [ref=e1749]
+              - paragraph [ref=e1750]: Educational Consultant
+              - paragraph [ref=e1751]: 📍 Singapore
+            - paragraph [ref=e1753]: Yoon holds a Bachelor's degree in Biomedical Engineering from the National University of Singapore, with a minor in Entr...
+            - generic [ref=e1754]:
+              - button "View Profile" [ref=e1755]
+              - link "Book" [ref=e1756]:
+                - /url: https://calendly.com/yoonsulin2001/bladex-consulting
+          - generic [ref=e1761] [cursor=pointer]:
+            - generic [ref=e1762]:
+              - heading "Nay Chi Ye Moe" [level=3] [ref=e1773]
+              - paragraph [ref=e1774]: Educational Consultant
+              - paragraph [ref=e1775]: 📍 Italy
+            - paragraph [ref=e1777]: After completing the Foundation Year program at the University of Pisa, Nay Chi sat the IMAT and was admitted to the Uni...
+            - generic [ref=e1778]:
+              - button "View Profile" [ref=e1779]
+              - link "Book" [ref=e1780]:
+                - /url: https://calendly.com/naychiyemoe/30min
+          - generic [ref=e1785] [cursor=pointer]:
+            - generic [ref=e1786]:
+              - heading "Kyi Pyar Shoon Lae" [level=3] [ref=e1797]
+              - paragraph [ref=e1798]: Senior Educational Consultant
+              - paragraph [ref=e1799]: 📍 United Kingdom · Thailand
+            - paragraph [ref=e1801]: Kyi Pyar is currently pursuing a degree in Business Management (Finance) at Middlesex University, London, after transfer...
+            - generic [ref=e1802]:
+              - button "View Profile" [ref=e1803]
+              - link "Book" [ref=e1804]:
+                - /url: https://calendly.com/kyi-lae
+          - generic [ref=e1809] [cursor=pointer]:
+            - generic [ref=e1810]:
+              - heading "May Htet Aung" [level=3] [ref=e1821]
+              - paragraph [ref=e1822]: Educational Consultant
+              - paragraph [ref=e1823]: 📍 France
+            - paragraph [ref=e1825]: May Htet Aung holds a Bachelor’s degree in French from Yangon University of Foreign Languages and is currently pursuing...
+            - generic [ref=e1826]:
+              - button "View Profile" [ref=e1827]
+              - link "Book" [ref=e1828]:
+                - /url: https://calendly.com/mayseptem2/france
+          - generic [ref=e1833] [cursor=pointer]:
+            - generic [ref=e1834]:
+              - heading "Ei Myat Phyu Sin" [level=3] [ref=e1845]
+              - paragraph [ref=e1846]: Educational Consultant
+              - paragraph [ref=e1847]: 📍 Italy
+            - paragraph [ref=e1849]: Ei Myat Phyu Sin is a third-year medical student at the International Medical School, UniversitÃ degli Studi di Milano...
+            - generic [ref=e1850]:
+              - button "View Profile" [ref=e1851]
+              - link "Book" [ref=e1852]:
+                - /url: https://calendly.com/emps_mei
+          - generic [ref=e1857] [cursor=pointer]:
+            - generic [ref=e1858]:
+              - heading "Cherry Soe" [level=3] [ref=e1869]
+              - paragraph [ref=e1870]: Senior Educational Consultant
+              - paragraph [ref=e1871]: 📍 United States
+            - paragraph [ref=e1873]: Cherry Soe studied medicine and finished 3rd M.B. at the University of Medicine (1), Yangon. She restarted her academic...
+            - generic [ref=e1874]:
+              - button "View Profile" [ref=e1875]
+              - link "Book" [ref=e1876]:
+                - /url: https://calendly.com/cherrysoe0002/30min
+          - generic [ref=e1881] [cursor=pointer]:
+            - generic [ref=e1882]:
+              - heading "Nang Sayoon Noi" [level=3] [ref=e1893]
+              - paragraph [ref=e1894]: Educational Consultant
+              - paragraph [ref=e1895]: 📍 United States
+            - paragraph [ref=e1897]: Nang Sayoon Noi moved to the US at the age of 16 to pursue higher education at Sacramento City College. She earned an A....
+            - generic [ref=e1898]:
+              - button "View Profile" [ref=e1899]
+              - link "Book" [ref=e1900]:
+                - /url: https://calendly.com/nangsayoon/one-on-one-consultation
+          - generic [ref=e1905] [cursor=pointer]:
+            - generic [ref=e1906]:
+              - heading "Thet Htar Phyu" [level=3] [ref=e1917]
+              - paragraph [ref=e1918]: Educational Consultant
+              - paragraph [ref=e1919]: 📍 Czech Republic
+            - paragraph [ref=e1921]: Having completed high school (Grade 10) and the GED exam, Thet Htar was awarded a 75% merit scholarship for Bachelor of...
+            - generic [ref=e1922]:
+              - button "View Profile" [ref=e1923]
+              - link "Book" [ref=e1924]:
+                - /url: https://calendly.com/thethtarphyu37/30min
+          - generic [ref=e1929] [cursor=pointer]:
+            - generic [ref=e1930]:
+              - heading "Thant Thawdar Aung @ Sarah" [level=3] [ref=e1941]
+              - paragraph [ref=e1942]: Educational Consultant
+              - paragraph [ref=e1943]: 📍 New Zealand
+            - paragraph [ref=e1945]: Sarah is currently a second-year medical student at the University of Otago in New Zealand, where she is a recipient of...
+            - generic [ref=e1946]:
+              - button "View Profile" [ref=e1947]
+              - link "Book" [ref=e1948]:
+                - /url: https://calendly.com/sarahaungg-work/30min
+          - generic [ref=e1953] [cursor=pointer]:
+            - generic [ref=e1954]:
+              - heading "Thuta Ye Moe" [level=3] [ref=e1965]
+              - paragraph [ref=e1966]: Senior Educational Consultant
+              - paragraph [ref=e1967]: 📍 South Korea
+            - paragraph [ref=e1969]: Graduating with a Bachelor of Science in Engineering with a major in Energy & Environmental Science and Engineering from...
+            - generic [ref=e1970]:
+              - button "View Profile" [ref=e1971]
+              - link "Book" [ref=e1972]:
+                - /url: https://calendly.com/thutayemoe/consultation
+          - generic [ref=e1977] [cursor=pointer]:
+            - generic [ref=e1978]:
+              - heading "Aung Khant Min @ Jimmy" [level=3] [ref=e1989]
+              - paragraph [ref=e1990]: Senior Educational Consultant
+              - paragraph [ref=e1991]: 📍 Poland · India
+            - paragraph [ref=e1993]: Aung Khant Min is a PhD candidate in Political and Administrative Sciences at the University of Wrocław and a Brand Amba...
+            - generic [ref=e1994]:
+              - button "View Profile" [ref=e1995]
+              - link "Book" [ref=e1996]:
+                - /url: https://calendly.com/123aungkhantmin123/30min
+          - generic [ref=e2001] [cursor=pointer]:
+            - generic [ref=e2002]:
+              - heading "Cho Myo Thwe" [level=3] [ref=e2013]
+              - paragraph [ref=e2014]: Educational Consultant
+              - paragraph [ref=e2015]: 📍 Czech Republic
+            - paragraph [ref=e2017]: Graduating with a Diploma in Electronics and Communication Engineering from Nanyang Polytechnic and a Bachelor of Engine...
+            - generic [ref=e2018]:
+              - button "View Profile" [ref=e2019]
+              - link "Book" [ref=e2020]:
+                - /url: https://calendly.com/clarissa-t
+          - generic [ref=e2025] [cursor=pointer]:
+            - generic [ref=e2026]:
+              - heading "Shin Thant Phyu" [level=3] [ref=e2037]
+              - paragraph [ref=e2038]: Educational Consultant
+              - paragraph [ref=e2039]: 📍 Canada
+            - paragraph [ref=e2041]: Shin is a current scholar at the prestigious Pearson College UWC in Canada, attending on a Full-Ride Scholarship. Having...
+            - generic [ref=e2042]:
+              - button "View Profile" [ref=e2043]
+              - link "Book" [ref=e2044]:
+                - /url: https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ24gFPr_A_8EKGGjCj6hnovaIavVEL35msuFKRtyFVV4GzOKTRXMosXrFv64iZosXA3WTteUrPX
+          - generic [ref=e2049] [cursor=pointer]:
+            - generic [ref=e2050]:
+              - heading "Tayza Thiha" [level=3] [ref=e2061]
+              - paragraph [ref=e2062]: Educational Consultant
+              - paragraph [ref=e2063]: 📍 Japan · Erasmus Mundus
+            - paragraph [ref=e2065]: Tayza Thiha is an incoming graduate student at the Graduate School of Frontier Sciences (GSFS), The University of Tokyo,...
+            - generic [ref=e2066]:
+              - button "View Profile" [ref=e2067]
+              - link "Book" [ref=e2068]:
+                - /url: https://calendly.com/tayzanyx/30min
+          - generic [ref=e2073] [cursor=pointer]:
+            - generic [ref=e2074]:
+              - heading "Chaw Tynzar Maung" [level=3] [ref=e2085]
+              - paragraph [ref=e2086]: Educational Consultant
+              - paragraph [ref=e2087]: 📍 Thailand
+            - paragraph [ref=e2089]: Chaw Tynzar Maung is a recent graduate with a Bachelor of Biomedical Science (International Program) from Rangsit Univer...
+            - generic [ref=e2090]:
+              - button "View Profile" [ref=e2091]
+              - link "Book" [ref=e2092]:
+                - /url: https://calendly.com/maungtreza10/30min
+          - generic [ref=e2097] [cursor=pointer]:
+            - generic [ref=e2098]:
+              - heading "Hein Htet Zaw" [level=3] [ref=e2109]
+              - paragraph [ref=e2110]: Educational Consultant
+              - paragraph [ref=e2111]: 📍 Italy
+            - paragraph [ref=e2113]: Currently pursuing a Bachelor's degree in Architectural Design at Politecnico di Milano, one of Italy's top universities...
+            - generic [ref=e2114]:
+              - button "View Profile" [ref=e2115]
+              - link "Book" [ref=e2116]:
+                - /url: https://calendly.com/hein-htet-zaw-is-chilled/30min
+          - generic [ref=e2121] [cursor=pointer]:
+            - generic [ref=e2122]:
+              - heading "May Thet Khine" [level=3] [ref=e2133]
+              - paragraph [ref=e2134]: Educational Consultant
+              - paragraph [ref=e2135]: 📍 Poland
+            - paragraph [ref=e2137]: May Thet Khine is a fifth-year medical student at Wroclaw Medical University and a dedicated board member of the psychia...
+            - generic [ref=e2138]:
+              - button "View Profile" [ref=e2139]
+              - link "Book" [ref=e2140]:
+                - /url: https://calendly.com/maythetkhine06/30min
+          - generic [ref=e2145] [cursor=pointer]:
+            - generic [ref=e2146]:
+              - heading "Htet Arkar" [level=3] [ref=e2157]
+              - paragraph [ref=e2158]: Educational Consultant
+              - paragraph [ref=e2159]: 📍 South Korea
+            - paragraph [ref=e2161]: Htet Arkar is an undergraduate student at Chung-Ang University, pursuing a B.S. in Computer Science and Engineering (exp...
+            - generic [ref=e2162]:
+              - button "View Profile" [ref=e2163]
+              - link "Book" [ref=e2164]:
+                - /url: https://calendly.com/harkar-mm/30min
+          - generic [ref=e2169] [cursor=pointer]:
+            - generic [ref=e2170]:
+              - heading "Pyae Phyo Thu @ Rachel" [level=3] [ref=e2181]
+              - paragraph [ref=e2182]: Educational Consultant
+              - paragraph [ref=e2183]: 📍 Thailand
+            - paragraph [ref=e2185]: Pyae Phyo Thu (Rachel) is a 4th year Architecture student with a strong passion for creativity, and learning. Alongside...
+            - generic [ref=e2186]:
+              - button "View Profile" [ref=e2187]
+              - link "Book" [ref=e2188]:
+                - /url: https://calendly.com/rachelminn-03/30min
+      - generic [ref=e2194]:
+        - heading "Ready to get started?" [level=2] [ref=e2195]
+        - paragraph [ref=e2196]: Browse the profiles above and book directly with the consultant that feels right for you.
+        - paragraph [ref=e2197]:
+          - text: Not sure how to make an appointment?
+          - link "Watch this guide on Facebook" [ref=e2198] [cursor=pointer]:
+            - /url: https://www.facebook.com/share/p/1D5v18oj6M/
+          - text: .
+        - paragraph [ref=e2199]:
+          - text: Questions? Email us at
+          - link "bladexedu@gmail.com" [ref=e2200] [cursor=pointer]:
+            - /url: mailto:bladexedu@gmail.com
+  - contentinfo [ref=e96]:
+    - generic [ref=e100]:
+      - generic [ref=e101]:
+        - generic [ref=e102]:
+          - img "BladeX Education" [ref=e103]
+          - paragraph [ref=e104]: Guiding Myanmar students toward quality international education, clear pathways, and successful long-term careers abroad.
+          - generic [ref=e105]:
+            - link "Facebook" [ref=e106] [cursor=pointer]:
+              - /url: https://www.facebook.com/profile.php?id=100064021474119
+            - link "YouTube" [ref=e110] [cursor=pointer]:
+              - /url: http://www.youtube.com/@Bladex-edu
+            - link "Telegram" [ref=e114] [cursor=pointer]:
+              - /url: https://t.me/bladexedu
+            - link "LinkedIn" [ref=e120] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/bladex-education/
+        - generic [ref=e124]:
+          - heading "Quick Links" [level=4] [ref=e125]
+          - list [ref=e126]:
+            - listitem [ref=e127]:
+              - link "Home" [ref=e128] [cursor=pointer]:
+                - /url: /Home
+            - listitem [ref=e130]:
+              - link "About Us" [ref=e131] [cursor=pointer]:
+                - /url: /About
+            - listitem [ref=e133]:
+              - link "Programs" [ref=e134] [cursor=pointer]:
+                - /url: /Programs
+            - listitem [ref=e136]:
+              - link "Consultants" [ref=e137] [cursor=pointer]:
+                - /url: /Consultants
+            - listitem [ref=e139]:
+              - link "Social Media" [ref=e140] [cursor=pointer]:
+                - /url: /Social
+        - generic [ref=e142]:
+          - heading "Get In Touch" [level=4] [ref=e143]
+          - link [ref=e144] [cursor=pointer]:
+            - /url: mailto:bladexedu@gmail.com
+          - paragraph [ref=e150]:
+            - generic [ref=e151]: Advisory only.
+            - text: BladeX does not process visa applications or submit university documents on your behalf.
+      - generic [ref=e152]:
+        - generic [ref=e153]:
+          - paragraph [ref=e154]: © 2026 BladeX Education. All rights reserved.
+          - paragraph [ref=e155]: Educational guidance for Myanmar students.
+        - link "Icons by Icons8" [ref=e157] [cursor=pointer]:
+          - /url: https://icons8.com

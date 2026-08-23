@@ -11,7 +11,6 @@ const programVisual = {
     iconAlt: 'Chat',
     box: 'bg-blue-500/25 border-blue-400/40',
     glow: ['#60a5fa', '#38bdf8'],
-    panel: 'from-blue-800 via-slate-800 to-slate-900',
     glowStrong: true,
   },
   mentorship: {
@@ -19,7 +18,6 @@ const programVisual = {
     iconAlt: 'Training',
     box: 'bg-indigo-500/25 border-indigo-400/40',
     glow: ['#818cf8', '#a5b4fc'],
-    panel: 'from-indigo-800 via-slate-800 to-slate-900',
     glowStrong: true,
   },
   guidance: {
@@ -27,7 +25,6 @@ const programVisual = {
     iconAlt: 'User manual',
     box: 'bg-emerald-500/25 border-emerald-400/40',
     glow: ['#34d399', '#6ee7b7'],
-    panel: 'from-emerald-800 via-slate-800 to-slate-900',
     glowStrong: true,
   },
 };
@@ -128,8 +125,7 @@ const guidance = {
 
 function ProgramCard({ program, reverse }) {
   const visual = programVisual[program.id];
-  const { box, iconSrc, iconAlt, Icon, icon, glow, panel, glowStrong } = visual;
-  const panelClass = panel || 'from-slate-700 via-slate-800 to-slate-900';
+  const { box, iconSrc, iconAlt, Icon, icon, glow, glowStrong } = visual;
 
   return (
     <motion.div
@@ -141,11 +137,12 @@ function ProgramCard({ program, reverse }) {
     >
       {/* Image / Visual side */}
       <div className={`${reverse ? 'lg:col-start-2' : ''}`}>
-        <div className={`relative overflow-hidden bg-gradient-to-br ${panelClass} rounded-3xl p-10 text-white min-h-[360px] flex flex-col justify-between`}>
-          <div className={`absolute -top-10 -right-10 w-52 h-52 rounded-full blur-3xl pointer-events-none ${glowStrong ? 'opacity-55' : 'opacity-45'}`} style={{ background: glow[0] }} aria-hidden />
-          <div className={`absolute -bottom-12 -left-8 w-48 h-48 rounded-full blur-3xl pointer-events-none ${glowStrong ? 'opacity-45' : 'opacity-35'}`} style={{ background: glow[1] }} aria-hidden />
-          <div className={`absolute top-1/2 right-1/4 w-36 h-36 rounded-full blur-2xl pointer-events-none ${glowStrong ? 'opacity-35' : 'opacity-25'}`} style={{ background: glow[0] }} aria-hidden />
-          <div className={`absolute top-8 left-1/3 w-24 h-24 rounded-full blur-2xl pointer-events-none bg-white ${glowStrong ? 'opacity-30' : 'opacity-20'}`} aria-hidden />
+        <div className="relative overflow-hidden bg-[#060b18] rounded-3xl p-10 text-white min-h-[360px] flex flex-col justify-between">
+          <div className="absolute inset-0 z-0">
+            <SpaceSectionBackground softVignette starDensity={1.1} />
+          </div>
+          <div className={`absolute -top-10 -right-10 z-[1] w-52 h-52 rounded-full blur-3xl pointer-events-none ${glowStrong ? 'opacity-45' : 'opacity-35'}`} style={{ background: glow[0] }} aria-hidden />
+          <div className={`absolute -bottom-12 -left-8 z-[1] w-48 h-48 rounded-full blur-3xl pointer-events-none ${glowStrong ? 'opacity-35' : 'opacity-30'}`} style={{ background: glow[1] }} aria-hidden />
           <div className="relative z-10 flex flex-col justify-between flex-1">
             <div>
               <div className={`w-14 h-14 border rounded-2xl flex items-center justify-center mb-5 ${box}`}>

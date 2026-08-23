@@ -1,0 +1,250 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e6]:
+      - link [ref=e7] [cursor=pointer]:
+        - /url: /Home
+        - img "BladeX Education" [ref=e8]
+      - navigation [ref=e9]:
+        - link "Home" [ref=e10] [cursor=pointer]:
+          - /url: /Home
+        - link "About" [ref=e11] [cursor=pointer]:
+          - /url: /About
+        - link "Programs" [ref=e12] [cursor=pointer]:
+          - /url: /Programs
+        - link "Consultants" [ref=e13] [cursor=pointer]:
+          - /url: /Consultants
+        - link "Social" [ref=e14] [cursor=pointer]:
+          - /url: /Social
+        - link "BladeX AI New" [ref=e15] [cursor=pointer]:
+          - /url: /BladeXAI
+          - text: BladeX AI
+          - generic: New
+      - button "Book a Meeting" [ref=e17] [cursor=pointer]
+  - main [ref=e21]:
+    - generic [ref=e22]:
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e31]: About BladeX Education
+          - heading [level=1] [ref=e32]:
+            - text: We Walk With You,
+            - generic "Every Step of the Way" [ref=e33]:
+              - generic [ref=e34]: E
+              - generic [ref=e35]: v
+              - generic [ref=e36]: e
+              - generic [ref=e37]: r
+              - generic [ref=e38]: "y"
+              - generic [ref=e40]: S
+              - generic [ref=e41]: t
+              - generic [ref=e42]: e
+              - generic [ref=e43]: p
+              - generic [ref=e45]: o
+              - generic [ref=e46]: f
+              - generic [ref=e48]: t
+              - generic [ref=e49]: h
+              - generic [ref=e50]: e
+              - generic [ref=e52]: W
+              - generic [ref=e53]: a
+              - generic [ref=e54]: "y"
+          - paragraph [ref=e55]: BladeX Education is a dedicated advisory platform empowering Myanmar students who aspire to study abroad. We go beyond standard consulting to act as your strategic partners in international education.
+        - generic [ref=e56]:
+          - generic [ref=e57]:
+            - generic [ref=e58]: Complimentary Advisory
+            - generic [ref=e59]: High-quality, strategic guidance provided at absolutely no cost.
+          - generic [ref=e60]:
+            - generic [ref=e61]: Global Mentor Network
+            - generic [ref=e62]: A growing team of diverse experts from top universities worldwide.
+          - generic [ref=e63]:
+            - generic [ref=e64]: Empowering Ambitions
+            - generic [ref=e65]: Dedicated to helping Myanmar students achieve global academic success.
+          - generic [ref=e66]:
+            - generic [ref=e67]: Founded in 2026
+            - generic [ref=e68]: Built on real student experiences, authentic mentorship, and proven strategies.
+      - generic [ref=e70]:
+        - generic [ref=e71]:
+          - text: Our Purpose
+          - heading "Vision & Mission" [level=2] [ref=e72]
+        - generic [ref=e73]:
+          - generic [ref=e78]:
+            - img "Vision" [ref=e79]
+            - paragraph [ref=e80]: Our Vision
+            - paragraph [ref=e81]: "\"To pave the way for Myanmar students toward quality international education, clear pathways, and successful long-term careers abroad.\""
+          - generic [ref=e86]:
+            - img "Mission" [ref=e87]
+            - paragraph [ref=e88]: Our Mission
+            - paragraph [ref=e89]: "\"To guide and empower young individuals who feel lost and unsure where to start — by providing accessible educational guidance and helping them become knowledgeable and prepared for their future choices.\""
+      - generic [ref=e91]:
+        - generic [ref=e92]:
+          - text: The People Behind BladeX
+          - heading "Our Leadership Team" [level=2] [ref=e93]
+        - generic [ref=e94]:
+          - generic [ref=e95]:
+            - generic [ref=e96]:
+              - img "Nyan Lin Kyaw" [ref=e102]
+              - heading "Nyan Lin Kyaw" [level=3] [ref=e103]
+              - paragraph [ref=e104]: Founder & Head of Consulting
+              - paragraph [ref=e105]: 📍 Canada
+            - generic [ref=e106]:
+              - paragraph [ref=e107]: University of Ottawa
+              - paragraph [ref=e108]: Honours Bachelor of Commerce, Business Technology Management
+              - paragraph [ref=e110]: Driving the organization's strategy, marketing initiatives, and long-term vision.
+          - generic [ref=e111]:
+            - generic [ref=e112]:
+              - img "Nang Sayoon Noi" [ref=e118]
+              - heading "Nang Sayoon Noi" [level=3] [ref=e119]
+              - paragraph [ref=e120]: Co-Founder & Chief Operating Officer
+              - paragraph [ref=e121]: 📍 United States
+            - generic [ref=e122]:
+              - paragraph [ref=e123]: Rutgers University
+              - paragraph [ref=e124]: Doctor of Philosophy - Molecular Bioscience (Cell and Developmental Biology)
+              - paragraph [ref=e126]: Overseeing the organizational structure, internal communications, and seamless day-to-day operations.
+          - generic [ref=e127]:
+            - generic [ref=e128]:
+              - img "Khun Thu Rein" [ref=e134]
+              - heading "Khun Thu Rein" [level=3] [ref=e135]
+              - paragraph [ref=e136]: Chief Technology Officer
+              - paragraph [ref=e137]: 📍 Canada
+            - generic [ref=e138]:
+              - paragraph [ref=e139]: Carleton University
+              - paragraph [ref=e140]: Bachelor of Computer Science
+              - paragraph [ref=e142]: Managing technical infrastructure, platform development, and digital systems for BladeX.
+        - generic [ref=e143]: Advisory Board Members
+        - generic [ref=e144]:
+          - generic [ref=e145]:
+            - generic [ref=e146]:
+              - img "Cherry Soe" [ref=e152]
+              - heading "Cherry Soe" [level=3] [ref=e153]
+              - paragraph [ref=e154]: Advisory Board Member
+              - paragraph [ref=e155]: 📍 United States
+            - generic [ref=e156]:
+              - paragraph [ref=e157]: UCSF
+              - paragraph [ref=e158]: Doctor of Medicine
+              - paragraph [ref=e160]: Bringing firsthand experience and a student-centered perspective to help BladeX better understand the experiences, challenges, and aspirations of students pursuing education abroad.
+          - generic [ref=e161]:
+            - generic [ref=e162]:
+              - img "Thuta Ye Moe" [ref=e168]
+              - heading "Thuta Ye Moe" [level=3] [ref=e169]
+              - paragraph [ref=e170]: Advisory Board Member
+              - paragraph [ref=e171]: 📍 Australia
+            - generic [ref=e172]:
+              - paragraph [ref=e173]: University of Melbourne
+              - paragraph [ref=e174]: Doctor of Philosophy - Engineering & IT
+              - paragraph [ref=e176]: Bringing experience in organizational development and team collaboration to help strengthen BladeX’s internal structure, culture, and foundation for growth.
+          - generic [ref=e177]:
+            - generic [ref=e178]:
+              - img "Win Soe Moe @ Dennis" [ref=e184]
+              - heading "Win Soe Moe @ Dennis" [level=3] [ref=e185]
+              - paragraph [ref=e186]: Advisory Board Member
+              - paragraph [ref=e187]: 📍 Japan
+            - generic [ref=e188]:
+              - paragraph [ref=e189]: IUHW School of Medicine
+              - paragraph [ref=e190]: Doctor of Medicine
+              - paragraph [ref=e192]:
+                - text: Founder of
+                - link "Youth Know-versity" [ref=e193] [cursor=pointer]:
+                  - /url: https://www.facebook.com/p/Youth-Know-versity-100078966399846/
+                - text: . Expanding BladeX’s perspective beyond the organization through external relationships, strategic opportunities, and connections that can help broaden our reach and impact.
+        - generic [ref=e194]: Meet Our Team Members
+        - generic [ref=e195]:
+          - generic [ref=e196]:
+            - generic [ref=e197]: M
+            - paragraph [ref=e198]: Myat Min Htet
+            - paragraph [ref=e199]: Operations Lead & Data Analyst
+          - generic [ref=e200]:
+            - generic [ref=e201]: T
+            - paragraph [ref=e202]: Thin Thiri San
+            - paragraph [ref=e203]: Operations Lead & Market Research Analyst
+          - generic [ref=e204]:
+            - img "Myint Zu Linn" [ref=e206]
+            - paragraph [ref=e207]: Myint Zu Linn
+            - paragraph [ref=e208]: Research & Operation Associate
+      - generic [ref=e210]:
+        - generic [ref=e211]:
+          - text: Our Approach
+          - heading "Three Key Areas" [level=2] [ref=e212]
+          - paragraph [ref=e213]: Everything we do centers around making your study abroad journey feel manageable, clear, and purposeful.
+        - generic [ref=e214]:
+          - generic [ref=e215]:
+            - generic [ref=e216]:
+              - img "Strategic direction icon" [ref=e218]
+              - heading "Strategic Academic Direction" [level=3] [ref=e219]
+            - paragraph [ref=e220]: We offer targeted support to students who feel uncertain about their future trajectory, delivering clarity and a strategic plan to move forward with confidence.
+          - generic [ref=e221]:
+            - generic [ref=e222]:
+              - img "Personalized counselling icon" [ref=e224]
+              - heading "Personalized Counselling" [level=3] [ref=e225]
+            - paragraph [ref=e226]: We explore your interests, goals, and situation to help you choose the right country and university — confidently.
+          - generic [ref=e227]:
+            - generic [ref=e228]:
+              - img "Study to career pathway icon" [ref=e230]
+              - heading "Study-to-Career Pathway" [level=3] [ref=e231]
+            - paragraph [ref=e232]: We help you strategically select a field of study that aligns with tangible career opportunities, delivering a robust, long-term foundation for your professional future.
+      - generic [ref=e234]:
+        - generic [ref=e235]:
+          - text: How It Works
+          - heading "Our Process" [level=2] [ref=e236]
+          - paragraph [ref=e237]: From your first conversation to your final plan — here's how we walk with you.
+        - generic [ref=e238]:
+          - generic [ref=e240]:
+            - img "Search" [ref=e245]
+            - generic [ref=e246]: Step 01
+            - heading "Discovery & Assessment" [level=3] [ref=e247]
+            - paragraph [ref=e248]: We start with a comprehensive consultation to understand your unique background, academic strengths, and where you feel uncertain about your future.
+          - generic [ref=e249]:
+            - img "Map marker" [ref=e254]
+            - generic [ref=e255]: Step 02
+            - heading "Strategic Pathway Mapping" [level=3] [ref=e256]
+            - paragraph [ref=e257]: Our consultants analyze your goals to strategically recommend the right fields of study and academic destinations that align with your career ambitions.
+          - generic [ref=e258]:
+            - img "Checked checkbox" [ref=e263]
+            - generic [ref=e264]: Step 03
+            - heading "Actionable Roadmap" [level=3] [ref=e265]
+            - paragraph [ref=e266]: We equip you with a step-by-step preparation plan, giving you the clarity, confidence, and resources to independently navigate your applications.
+      - generic [ref=e269]:
+        - heading "Let's Take the First Step Together" [level=2] [ref=e270]
+        - paragraph [ref=e271]: Schedule a one-on-one session with our consultants and get the guidance you need for your study abroad journey.
+  - contentinfo [ref=e272]:
+    - generic [ref=e276]:
+      - generic [ref=e277]:
+        - generic [ref=e278]:
+          - img "BladeX Education" [ref=e279]
+          - paragraph [ref=e280]: Guiding Myanmar students toward quality international education, clear pathways, and successful long-term careers abroad.
+          - generic [ref=e281]:
+            - link "Facebook" [ref=e282] [cursor=pointer]:
+              - /url: https://www.facebook.com/profile.php?id=100064021474119
+            - link "YouTube" [ref=e286] [cursor=pointer]:
+              - /url: http://www.youtube.com/@Bladex-edu
+            - link "Telegram" [ref=e290] [cursor=pointer]:
+              - /url: https://t.me/bladexedu
+            - link "LinkedIn" [ref=e296] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/bladex-education/
+        - generic [ref=e300]:
+          - heading "Quick Links" [level=4] [ref=e301]
+          - list [ref=e302]:
+            - listitem [ref=e303]:
+              - link "Home" [ref=e304] [cursor=pointer]:
+                - /url: /Home
+            - listitem [ref=e306]:
+              - link "About Us" [ref=e307] [cursor=pointer]:
+                - /url: /About
+            - listitem [ref=e309]:
+              - link "Programs" [ref=e310] [cursor=pointer]:
+                - /url: /Programs
+            - listitem [ref=e312]:
+              - link "Consultants" [ref=e313] [cursor=pointer]:
+                - /url: /Consultants
+            - listitem [ref=e315]:
+              - link "Social Media" [ref=e316] [cursor=pointer]:
+                - /url: /Social
+        - generic [ref=e318]:
+          - heading "Get In Touch" [level=4] [ref=e319]
+          - link [ref=e320] [cursor=pointer]:
+            - /url: mailto:bladexedu@gmail.com
+          - paragraph [ref=e326]:
+            - generic [ref=e327]: Advisory only.
+            - text: BladeX does not process visa applications or submit university documents on your behalf.
+      - generic [ref=e328]:
+        - generic [ref=e329]:
+          - paragraph [ref=e330]: © 2026 BladeX Education. All rights reserved.
+          - paragraph [ref=e331]: Educational guidance for Myanmar students.
+        - link "Icons by Icons8" [ref=e333] [cursor=pointer]:
+          - /url: https://icons8.com

@@ -62,37 +62,37 @@ function StatCard({ stat, index }) {
   );
 }
 
-function VisionMissionShapes({ variant }) {
-  if (variant === 'vision') {
-    return (
-      <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block" aria-hidden>
-        <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full border border-white/20" />
-        <div className="absolute -right-4 top-8 h-40 w-40 rounded-full border border-sky-300/25" />
-        <div className="absolute right-20 top-24 h-3 w-3 rounded-full bg-white/30" />
-        <div className="absolute right-32 top-40 h-2 w-2 rounded-full bg-sky-200/40" />
-        <div className="absolute bottom-6 right-10 h-28 w-28 rotate-12 rounded-2xl border border-white/15 bg-white/5" />
-        <div className="absolute -left-8 bottom-12 h-32 w-32 -rotate-6 rounded-full bg-blue-400/15" />
-        <svg className="absolute left-6 top-1/2 h-24 w-24 -translate-y-1/2 text-white/10" viewBox="0 0 100 100" fill="none">
-          <path d="M50 8 L92 50 L50 92 L8 50 Z" stroke="currentColor" strokeWidth="1.5" />
-          <path d="M50 22 L78 50 L50 78 L22 50 Z" stroke="currentColor" strokeWidth="1" opacity="0.6" />
-        </svg>
-      </div>
-    );
-  }
+function VisionMissionCard({ variant, iconSrc, iconAlt, title, quote }) {
+  const isVision = variant === 'vision';
+  const glow = isVision ? ['#34d399', '#6ee7b7'] : ['#60a5fa', '#38bdf8'];
 
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block" aria-hidden>
-      <div className="absolute -left-20 -bottom-20 h-72 w-72 rounded-full border border-indigo-400/20" />
-      <div className="absolute left-12 bottom-16 h-44 w-44 rounded-full border border-slate-500/30" />
-      <div className="absolute right-8 top-6 h-20 w-20 rotate-45 border border-rose-300/20 bg-rose-400/5" />
-      <div className="absolute right-24 top-20 h-4 w-4 rounded-full bg-indigo-300/35" />
-      <div className="absolute right-40 top-12 h-2.5 w-2.5 rounded-full bg-slate-400/40" />
-      <div className="absolute top-1/2 right-6 h-36 w-px bg-gradient-to-b from-transparent via-indigo-300/30 to-transparent" />
-      <div className="absolute top-1/3 right-14 h-px w-24 bg-gradient-to-r from-transparent via-slate-400/25 to-transparent" />
-      <svg className="absolute -right-6 top-1/2 h-32 w-32 -translate-y-1/2 text-indigo-300/15" viewBox="0 0 120 120" fill="none">
-        <circle cx="60" cy="60" r="52" stroke="currentColor" strokeWidth="1.5" strokeDasharray="8 10" />
-        <circle cx="60" cy="60" r="34" stroke="currentColor" strokeWidth="1" opacity="0.7" />
-      </svg>
+    <div className="relative overflow-hidden bg-[#060b18] rounded-3xl p-10 text-white">
+      <div className="absolute inset-0 z-0">
+        <SpaceSectionBackground softVignette starDensity={1.1} />
+      </div>
+      <div
+        className="absolute -top-10 -right-10 z-[1] w-52 h-52 rounded-full blur-3xl pointer-events-none opacity-45"
+        style={{ background: glow[0] }}
+        aria-hidden
+      />
+      <div
+        className="absolute -bottom-12 -left-8 z-[1] w-48 h-48 rounded-full blur-3xl pointer-events-none opacity-35"
+        style={{ background: glow[1] }}
+        aria-hidden
+      />
+      <div className="relative z-10">
+        <img
+          src={iconSrc}
+          alt={iconAlt}
+          className="w-14 h-14 object-contain mb-6"
+          loading="lazy"
+        />
+        <p className="text-sm font-extrabold uppercase tracking-widest mb-3 text-white">{title}</p>
+        <p className={`text-lg leading-relaxed font-medium ${isVision ? 'text-white' : 'text-slate-200'}`}>
+          {quote}
+        </p>
+      </div>
     </div>
   );
 }
@@ -337,39 +337,20 @@ export default function About() {
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-8">
-            <div className="relative bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl p-10 text-white overflow-hidden">
-              <VisionMissionShapes variant="vision" />
-              <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-2xl hidden md:block" aria-hidden />
-              <div className="relative z-10">
-                <img
-                  src="https://img.icons8.com/stickers/100/visible.png"
-                  alt="Vision"
-                  className="w-14 h-14 object-contain mb-6"
-                  loading="lazy"
-                />
-                <p className="text-sm font-extrabold uppercase tracking-widest mb-3 text-white">Our Vision</p>
-                <p className="text-white text-lg leading-relaxed font-medium">
-                  "To pave the way for Myanmar students toward quality international education, clear pathways, and successful long-term careers abroad."
-                </p>
-              </div>
-            </div>
-
-            <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-10 text-white overflow-hidden">
-              <VisionMissionShapes variant="mission" />
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-indigo-600/20 rounded-full blur-2xl hidden md:block" aria-hidden />
-              <div className="relative z-10">
-                <img
-                  src="https://img.icons8.com/color/96/goal--v1.png"
-                  alt="Mission"
-                  className="w-14 h-14 object-contain mb-6"
-                  loading="lazy"
-                />
-                <p className="text-sm font-extrabold uppercase tracking-widest mb-3 text-white">Our Mission</p>
-                <p className="text-slate-200 text-lg leading-relaxed font-medium">
-                  "To guide and empower young individuals who feel lost and unsure where to start — by providing accessible educational guidance and helping them become knowledgeable and prepared for their future choices."
-                </p>
-              </div>
-            </div>
+            <VisionMissionCard
+              variant="vision"
+              iconSrc="https://img.icons8.com/stickers/100/visible.png"
+              iconAlt="Vision"
+              title="Our Vision"
+              quote='"To pave the way for Myanmar students toward quality international education, clear pathways, and successful long-term careers abroad."'
+            />
+            <VisionMissionCard
+              variant="mission"
+              iconSrc="https://img.icons8.com/color/96/goal--v1.png"
+              iconAlt="Mission"
+              title="Our Mission"
+              quote='"To guide and empower young individuals who feel lost and unsure where to start — by providing accessible educational guidance and helping them become knowledgeable and prepared for their future choices."'
+            />
           </div>
         </div>
 
@@ -529,11 +510,14 @@ export default function About() {
                   transition={{ duration: 0.35, ease: 'easeOut' }}
                   className="relative flex flex-col items-center text-center"
                 >
-                  <div className="relative z-10 w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-200">
+                  <div className="relative z-10 w-20 h-20 overflow-hidden bg-[#060b18] rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-slate-300/40">
+                    <div className="absolute inset-0">
+                      <SpaceSectionBackground softVignette starDensity={0.2} />
+                    </div>
                     <img
                       src={step.iconSrc}
                       alt={step.iconAlt ?? ''}
-                      className="w-10 h-10 object-contain"
+                      className="relative z-10 w-10 h-10 object-contain"
                       loading="lazy"
                     />
                   </div>
