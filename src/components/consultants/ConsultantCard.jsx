@@ -55,6 +55,9 @@ const LOCATION_MAP = {
   'chan thar soe':           'Czech Republic',
   'hsu myat pwint wai':      'United Kingdom',
   'thant thawdar aung @ sarah': 'New Zealand',
+  'manead khin':             'United States',
+  'shwe wady':               'Austria',
+  'tay za aung':             'Georgia',
 };
 
 export default function ConsultantCard({ consultant: c, index }) {

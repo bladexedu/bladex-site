@@ -8,7 +8,7 @@ async function fetchActiveConsultants() {
     .select('*')
     .eq('is_active', true)
     .order('order')
-    .limit(50);
+    .limit(200);
   if (error) throw error;
   return data ?? [];
 }

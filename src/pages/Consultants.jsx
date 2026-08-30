@@ -46,8 +46,10 @@ const DESTINATION_MAP = {
   // covers Nyan, Nang, Wutt, Cherry, Wai Phyo, Hnaine
 
   'Europe': ['europe', 'germany', 'france', 'netherlands', 'italy',
-             'hungary', 'poland', 'czech', 'czechia', 'slovakia', 'finland', 'switzerland'],
-  // added: hungary (Yati), czech/slovakia (Thet Htar, Cho Myo), finland (Yupar), switzerland (Chaw)
+             'hungary', 'poland', 'czech', 'czechia', 'slovakia', 'finland', 'switzerland',
+             'austria', 'georgia'],
+  // added: hungary (Yati), czech/slovakia (Thet Htar, Cho Myo), finland (Yupar), switzerland (Chaw),
+  // austria (Shwe Wady), georgia (Tay Za)
 
   'United Kingdom': ['uk', 'united kingdom'],
 
@@ -61,7 +63,7 @@ const DESTINATION_MAP = {
 /** Keywords derived from active consultants' major_subject_expertise values. */
 const AREA_MAP = {
   'Medicine & Health Sciences': [
-    'medicine', 'medical school', 'medical related', 'med-related', 'pre-med',
+    'medicine', 'medical school', 'medical related', 'medical-related', 'med-related', 'pre-med',
     'biochemistry', 'molecular biology', 'cell and molecular', 'genetics', 'organic chemistry',
     'biosciences', 'biotechnology', 'biotech', 'health sciences', 'kinesiology',
     'immunology', 'developmental biology', 'transplant', 'clinical research', 'basic science research',
