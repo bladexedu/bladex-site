@@ -31,6 +31,3 @@ dist-ssr
 .playwright-cli/
 .cursor/
 .claude/
-
-# Local agent instructions
-AGENTS.md
