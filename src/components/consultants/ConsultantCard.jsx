@@ -58,6 +58,7 @@ const LOCATION_MAP = {
   'manead khin':             'United States',
   'shwe wady':               'Austria',
   'tay za aung':             'Georgia',
+  'sett myat noe':           'United States',
 };
 
 export default function ConsultantCard({ consultant: c, index }) {

@@ -79,6 +79,7 @@ const AREA_MAP = {
   'Business & Finance': [
     'business', 'finance', 'management', 'commerce', 'accounting', 'marketing',
     'business administration', 'business analytics', 'business & management', 'mba', 'bcom', 'btm',
+    'economics',
   ],
   'Computer Science & IT': [
     'computer science', 'software engineering', 'data science', 'information systems',
