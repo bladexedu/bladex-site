@@ -51,7 +51,8 @@ const DESTINATION_MAP = {
   // added: hungary (Yati), czech/slovakia (Thet Htar, Cho Myo), finland (Yupar), switzerland (Chaw),
   // austria (Shwe Wady), georgia (Tay Za)
 
-  'United Kingdom': ['uk', 'united kingdom'],
+  'United Kingdom': ['uk', 'united kingdom', 'ireland'],
+  // ireland (Hsu Myat Pwint Wai) — UK picker subtitle already lists Ireland
 
   'Asia': ['asia', 'singapore', 'japan', 'korea', 'thailand',
            'malaysia', 'hong kong', 'india', 'china', 'taiwan'],
@@ -64,7 +65,7 @@ const DESTINATION_MAP = {
 const AREA_MAP = {
   'Medicine & Health Sciences': [
     'medicine', 'medical school', 'medical related', 'medical-related', 'med-related', 'pre-med',
-    'dentistry', 'biomedical science', 'health-related',
+    'dentistry', 'biomedical science', 'health-related', 'health related',
     'biochemistry', 'molecular biology', 'cell and molecular', 'genetics', 'organic chemistry',
     'biosciences', 'biotechnology', 'biotech', 'health sciences', 'kinesiology',
     'immunology', 'developmental biology', 'transplant', 'clinical research', 'basic science research',
@@ -73,7 +74,7 @@ const AREA_MAP = {
   ],
   'Engineering & Architecture': [
     'engineering', 'mechanical engineering', 'biomedical engineering', 'general engineering',
-    // software engineering lives under CS & IT only
+    // software / genetic engineering are excluded from bare "engineering" below
     'engineering related', 'architecture', 'sustainable energy',
     'materials science', 'computational materials', 'systems engineering',
   ],
@@ -92,8 +93,8 @@ const AREA_MAP = {
     'applied linguistics', 'international organizations',
   ],
   'Pre-University': [
-    'ib diploma', 'foundation year', 'pre-u', 'pre-university', 'a-level', 'high school', 'uwc',
-    'studienkolleg', 'singapore education system',
+    'ib diploma', 'foundation year', 'foundation', 'preparatory', 'pre-u', 'pre-university',
+    'a-level', 'high school', 'uwc', 'studienkolleg', 'singapore education system',
   ],
 };
 
@@ -118,10 +119,12 @@ function subjectMatchesStudyKeyword(subject, keyword) {
 
   if (k === 'healthcare') return s === 'healthcare';
   if (k === 'engineering') {
-    // "Software Engineering" is CS-only; bare "engineering" must not swallow it
+    // "Software Engineering" is CS-only; "Genetic engineering" is Medicine/bio — bare
+    // "engineering" must not swallow either
     return (s === 'engineering' || /\bengineering\b/.test(s))
       && !/partial in medical/.test(s)
-      && !/software engineering/.test(s);
+      && !/software engineering/.test(s)
+      && !/genetic engineering/.test(s);
   }
   if (k.length <= 4) return new RegExp(`\\b${escapeRegex(k)}\\b`).test(s);
   return s.includes(k);
