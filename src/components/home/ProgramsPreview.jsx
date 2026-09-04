@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { solidButton } from '@/utils/glassStyles';
 import { ArrowRight } from 'lucide-react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const programs = [
   {
@@ -44,49 +44,19 @@ const colorMap = {
 function ProgramCard({ program, index }) {
   const c = colorMap[program.color];
   const Icon = program.Icon;
-  const ref = useRef(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const springConfig = { stiffness: 280, damping: 24, mass: 0.6 };
-
-  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [6, -6]), springConfig);
-  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-6, 6]), springConfig);
-
-  const handleMouseMove = (e) => {
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    x.set((e.clientX - rect.left) / rect.width - 0.5);
-    y.set((e.clientY - rect.top) / rect.height - 0.5);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
 
   return (
     <motion.div
-      ref={ref}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ scale: 1.03, transition: { duration: 0.2, ease: 'easeOut' } }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.3, delay: index * 0.04, ease: 'easeOut' }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX,
-        rotateY,
-        transformStyle: 'preserve-3d',
-      }}
       className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-100/80 transition-shadow duration-300 flex flex-col cursor-default"
     >
-      <div className={`${c.bg} px-8 pt-8 pb-6 flex-grow`} style={{ transform: 'translateZ(20px)' }}>
+      <div className={`${c.bg} px-8 pt-8 pb-6 flex-grow`}>
         <div className="flex items-center gap-3 mb-4">
-          <div
-            className={`w-10 h-10 rounded-xl ${c.iconBg} flex items-center justify-center flex-shrink-0`}
-            style={{ transform: 'translateZ(28px)' }}
-          >
+          <div className={`w-10 h-10 rounded-xl ${c.iconBg} flex items-center justify-center flex-shrink-0`}>
             {program.iconSrc ? (
               <img
                 src={program.iconSrc}
@@ -105,7 +75,7 @@ function ProgramCard({ program, index }) {
         <h3 className="text-2xl font-bold text-slate-900 mb-2">{program.title}</h3>
         <p className="text-slate-600 text-sm leading-relaxed">{program.description}</p>
       </div>
-      <div className="px-8 py-6" style={{ transform: 'translateZ(12px)' }}>
+      <div className="px-8 py-6">
         <ul className="space-y-2">
           {program.highlights.map((h) => (
             <li key={h} className="flex items-center gap-2 text-sm text-slate-700">
@@ -135,7 +105,7 @@ export default function ProgramsPreview() {
           <p className="text-slate-500 max-w-xl mx-auto">We offer high-quality, complimentary guidance tailored to your goals. Explore our core services and take the first step toward your study abroad journey today.</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" style={{ perspective: 1000 }}>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {programs.map((prog, i) => (
             <ProgramCard key={prog.title} program={prog} index={i} />
           ))}

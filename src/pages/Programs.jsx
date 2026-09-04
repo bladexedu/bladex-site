@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Globe, BookOpen } from 'lucide-react';
 import { sectionBadgeClass } from '@/utils/glassStyles';
 import SpaceSectionBackground from '@/components/shared/SpaceSectionBackground';
 
@@ -123,6 +122,60 @@ const guidance = {
   free: true,
 };
 
+const values = [
+  {
+    iconSrc: 'https://img.icons8.com/external-kmg-design-flat-kmg-design/64/external-direction-maps-navigation-kmg-design-flat-kmg-design-1.png',
+    iconAlt: 'Strategic direction icon',
+    title: 'Strategic Academic Direction',
+    description: "We offer targeted support to students who feel uncertain about their future trajectory, delivering clarity and a strategic plan to move forward with confidence.",
+    color: 'blue',
+  },
+  {
+    iconSrc: 'https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-personalization-marketing-technology-flaticons-lineal-color-flat-icons.png',
+    iconAlt: 'Personalized counselling icon',
+    title: 'Personalized Counselling',
+    description: "We explore your interests, goals, and situation to help you choose the right country and university — confidently.",
+    color: 'rose',
+  },
+  {
+    iconSrc: 'https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-career-online-marketing-flaticons-lineal-color-flat-icons.png',
+    iconAlt: 'Study to career pathway icon',
+    title: 'Study-to-Career Pathway',
+    description: "We help you strategically select a field of study that aligns with tangible career opportunities, delivering a robust, long-term foundation for your professional future.",
+    color: 'indigo',
+  },
+];
+
+const valuesIconColor = {
+  blue: 'bg-blue-100 text-blue-600',
+  rose: 'bg-rose-100 text-rose-600',
+  indigo: 'bg-indigo-100 text-indigo-600',
+};
+
+const steps = [
+  {
+    iconSrc: 'https://img.icons8.com/stickers/50/search.png',
+    iconAlt: 'Search',
+    number: '01',
+    title: 'Discovery & Assessment',
+    description: 'We start with a comprehensive consultation to understand your unique background, academic strengths, and where you feel uncertain about your future.',
+  },
+  {
+    iconSrc: 'https://img.icons8.com/stickers/100/map-marker.png',
+    iconAlt: 'Map marker',
+    number: '02',
+    title: 'Strategic Pathway Mapping',
+    description: 'Our consultants analyze your goals to strategically recommend the right fields of study and academic destinations that align with your career ambitions.',
+  },
+  {
+    iconSrc: 'https://img.icons8.com/stickers/100/checked-checkbox.png',
+    iconAlt: 'Checked checkbox',
+    number: '03',
+    title: 'Actionable Roadmap',
+    description: 'We equip you with a step-by-step preparation plan, giving you the clarity, confidence, and resources to independently navigate your applications.',
+  },
+];
+
 function ProgramCard({ program, reverse }) {
   const visual = programVisual[program.id];
   const { box, iconSrc, iconAlt, Icon, icon, glow, glowStrong } = visual;
@@ -220,8 +273,8 @@ export default function Programs() {
 
       </section>
 
-      {/* Global Destinations & Fields of Study */}
-      <section className="relative py-24 bg-white border-y border-slate-300">
+      {/* What We Focus On */}
+      <section className="relative py-24 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.92 }}
@@ -230,66 +283,91 @@ export default function Programs() {
             transition={{ duration: 0.35, ease: 'easeOut' }}
             className="text-center mb-14"
           >
-            <span className="text-blue-600 font-semibold text-xs uppercase tracking-widest">Where We Can Take You</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-3">Global Destinations & Fields of Study</h2>
+            <span className="text-blue-600 font-semibold text-xs uppercase tracking-widest">Our Approach</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-3">Three Key Areas</h2>
+            <p className="text-slate-500 mt-4 max-w-xl mx-auto">Everything we do centers around making your study abroad journey feel manageable, clear, and purposeful.</p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Destinations */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.92 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ scale: 1.02, transition: { duration: 0.2, ease: 'easeOut' } }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.35, ease: 'easeOut' }}
-              className="bg-white rounded-3xl p-10 border border-slate-100 shadow-sm cursor-default"
-            >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 shrink-0 bg-blue-100 rounded-2xl flex items-center justify-center">
-                  <Globe className="w-7 h-7 text-blue-600" strokeWidth={2} aria-hidden />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 leading-snug min-w-0 m-0">
-                  Global Destinations
-                </h3>
-              </div>
-              <p className="text-slate-600 leading-relaxed mb-6">
-                We guide students toward top-tier educational hubs worldwide. Whether you are looking to study in the US, Canada, or the UK, or exploring diverse academic opportunities across Europe and Asia, we help you find the destination that fits your goals.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {['United States', 'Canada', 'United Kingdom', 'France', 'Hungary', 'Italy', 'Japan', 'South Korea', 'Australia', 'and more...'].map((d) => (
-                  <span key={d} className="text-xs bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full font-medium">{d}</span>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Academic Majors */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.92 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ scale: 1.02, transition: { duration: 0.2, ease: 'easeOut' } }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.35, ease: 'easeOut' }}
-              className="bg-white rounded-3xl p-10 border border-slate-100 shadow-sm cursor-default"
-            >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 shrink-0 bg-indigo-100 rounded-2xl flex items-center justify-center">
-                  <BookOpen className="w-7 h-7 text-indigo-600" strokeWidth={2} aria-hidden />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 leading-snug min-w-0 m-0">
-                  Fields of Study
-                </h3>
-              </div>
-              <p className="text-slate-600 leading-relaxed mb-6">
-                We strategically align your career ambitions with the right university programs. Our expertise covers a wide spectrum of competitive disciplines, including Business, Computer Science, Software Engineering, Data Science, Medicine, Biochemistry, and many more.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {['Business', 'Computer Science', 'Software Engineering', 'Data Science', 'Medicine', 'Biochemistry', 'and more...'].map((m) => (
-                  <span key={m} className="text-xs bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-full font-medium">{m}</span>
-                ))}
-              </div>
-            </motion.div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {values.map((v, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.92 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.35, ease: 'easeOut' }}
+                  className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 border border-slate-100"
+                >
+                  <div className="flex items-center gap-4 mb-6">
+                    <div
+                      className={`w-14 h-14 shrink-0 ${valuesIconColor[v.color]} rounded-2xl flex items-center justify-center`}
+                    >
+                      <img
+                        src={v.iconSrc}
+                        alt={v.iconAlt}
+                        className="w-8 h-8 object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 leading-snug min-w-0 m-0">
+                      {v.title}
+                    </h3>
+                  </div>
+                  <p className="text-slate-500 leading-relaxed">{v.description}</p>
+                </motion.div>
+            ))}
           </div>
         </div>
+
+      </section>
+
+      {/* Our Process */}
+      <section className="relative py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
+            className="text-center mb-14"
+          >
+            <span className="text-blue-600 font-semibold text-xs uppercase tracking-widest">How It Works</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-3">Our Process</h2>
+            <p className="text-slate-500 mt-4 max-w-xl mx-auto">From your first conversation to your final plan — here's how we walk with you.</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8 relative">
+            {/* Connector line (desktop only) */}
+            <div className="hidden md:block absolute top-10 left-1/6 right-1/6 h-px bg-gradient-to-r from-blue-200 via-blue-400 to-blue-200" style={{ left: '17%', right: '17%' }} />
+
+            {steps.map((step, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.92 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.35, ease: 'easeOut' }}
+                  className="relative flex flex-col items-center text-center"
+                >
+                  <div className="relative z-10 w-20 h-20 overflow-hidden bg-[#060b18] rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-slate-300/40">
+                    <div className="absolute inset-0">
+                      <SpaceSectionBackground softVignette starDensity={0.2} />
+                    </div>
+                    <img
+                      src={step.iconSrc}
+                      alt={step.iconAlt ?? ''}
+                      className="relative z-10 w-10 h-10 object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="text-xs font-bold text-blue-500 uppercase tracking-widest mb-2">Step {step.number}</div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-3">{step.title}</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed">{step.description}</p>
+                </motion.div>
+            ))}
+          </div>
+        </div>
+
       </section>
     </div>
   );

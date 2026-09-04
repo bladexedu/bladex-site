@@ -2,6 +2,7 @@ import React from 'react';
 import HeroSection from '@/components/home/HeroSection';
 import AboutPreview from '@/components/home/AboutPreview';
 import ProgramsPreview from '@/components/home/ProgramsPreview';
+import GlobalDestinations from '@/components/home/GlobalDestinations';
 import BookingCTA from '@/components/home/BookingCTA';
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
       <HeroSection />
       <AboutPreview />
       <ProgramsPreview />
+      <GlobalDestinations />
       <BookingCTA />
     </div>
   );

@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { solidButton } from '@/utils/glassStyles';
 import { ArrowRight } from 'lucide-react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import imgAboutStudents from '@/assests/about-students.jpg';
 
 const pillars = [
@@ -28,41 +28,13 @@ const pillars = [
 ];
 
 function PillarCard({ pillar, index }) {
-  const ref = useRef(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const springConfig = { stiffness: 280, damping: 24, mass: 0.6 };
-
-  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [6, -6]), springConfig);
-  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-6, 6]), springConfig);
-
-  const handleMouseMove = (e) => {
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    x.set((e.clientX - rect.left) / rect.width - 0.5);
-    y.set((e.clientY - rect.top) / rect.height - 0.5);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
   return (
     <motion.div
-      ref={ref}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ scale: 1.03, transition: { duration: 0.2, ease: 'easeOut' } }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.3, delay: index * 0.04, ease: 'easeOut' }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX,
-        rotateY,
-        transformStyle: 'preserve-3d',
-      }}
       className="flex gap-5 bg-slate-50 rounded-2xl p-5 border border-slate-100 shadow-sm hover:shadow-lg hover:shadow-slate-200/80 transition-shadow duration-300 cursor-default"
     >
       <img
@@ -70,9 +42,8 @@ function PillarCard({ pillar, index }) {
         alt={pillar.iconAlt}
         className="w-10 h-10 object-contain flex-shrink-0"
         loading="lazy"
-        style={{ transform: 'translateZ(24px)' }}
       />
-      <div style={{ transform: 'translateZ(16px)' }}>
+      <div>
         <h3 className="font-semibold text-slate-900 mb-1">{pillar.title}</h3>
         <p className="text-sm text-slate-600 leading-relaxed">{pillar.description}</p>
       </div>
@@ -117,7 +88,6 @@ export default function AboutPreview() {
             viewport={{ once: true }}
             transition={{ duration: 0.35, ease: 'easeOut' }}
             className="space-y-5"
-            style={{ perspective: 1000 }}
           >
             <div className="rounded-2xl overflow-hidden h-48 mb-2">
               <img

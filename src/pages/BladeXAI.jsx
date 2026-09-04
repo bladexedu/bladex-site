@@ -2,7 +2,6 @@ import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { solidButton } from '@/utils/glassStyles';
-import Tilt3DCard from '@/components/shared/Tilt3DCard';
 import SpaceSectionBackground from '@/components/shared/SpaceSectionBackground';
 
 /** 16×16 pixel icons — crispEdges for sharp pixel rendering */
@@ -446,7 +445,6 @@ export default function BladeXAI() {
                   className="h-7 w-7 object-contain"
                 />
                 <span className="absolute -right-0.5 -top-0.5 flex h-2.5 w-2.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                   <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
                 </span>
               </div>
@@ -524,11 +522,15 @@ export default function BladeXAI() {
             </p>
           </motion.div>
 
-          <motion.div className="grid md:grid-cols-2 gap-5 max-w-3xl mx-auto" style={{ perspective: 1000 }}>
+          <motion.div className="grid md:grid-cols-2 gap-5 max-w-3xl mx-auto">
             {leaders.map((p, i) => (
-              <Tilt3DCard
+              <motion.div
                 key={p.name}
-                delay={i * 0.03}
+                initial={{ opacity: 0, scale: 0.92 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                whileHover={{ scale: 1.03, transition: { duration: 0.2, ease: 'easeOut' } }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35, delay: i * 0.03, ease: 'easeOut' }}
                 className="group bg-white rounded-2xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.35)] ring-1 ring-white/10 border-t-2 border-red-600 flex flex-col cursor-default transition-shadow duration-300 hover:shadow-[0_16px_48px_rgba(239,68,68,0.18)]"
               >
                 {/* Top — About-style photo header */}
@@ -601,7 +603,7 @@ export default function BladeXAI() {
                     </div>
                   </div>
                 </div>
-              </Tilt3DCard>
+              </motion.div>
             ))}
           </motion.div>
 
