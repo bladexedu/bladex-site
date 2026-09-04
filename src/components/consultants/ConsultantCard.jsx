@@ -59,6 +59,7 @@ const LOCATION_MAP = {
   'shwe wady':               'Austria',
   'tay za aung':             'Georgia',
   'sett myat noe':           'United States',
+  'kaung khant ye mon':      'Taiwan',
 };
 
 export default function ConsultantCard({ consultant: c, index }) {

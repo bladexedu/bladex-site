@@ -341,7 +341,7 @@ export default function About() {
           <div className="text-center mb-8">
             <span className="text-sm font-extrabold uppercase tracking-widest text-slate-500">Meet Our Team Members</span>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
             {[
               { name: 'Myat Min Htet', role: 'Operations Lead & Data Analyst' },
               { name: 'Thin Thiri San', role: 'Operations Lead & Market Research Analyst' },
@@ -351,6 +351,8 @@ export default function About() {
                 photo:
                   'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/sign/Team/myint-zu-linn.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84ZWY5ZjAzNS00OWY3LTQ4MDUtYmRmZi02N2IxYzU3NWY5ZmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJUZWFtL215aW50LXp1LWxpbm4ucG5nIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NjIzOTIxOCwiZXhwIjoyMTAxNTk5MjE4fQ.lXrNoPWH9fOnR0NO7mImrhYjd3r3P-ZKZLf6nJnJedU',
               },
+              { name: 'Poe Pearl Thwe', role: 'Strategy & Operations Associate' },
+              { name: 'Thuriya Kyaw', role: 'Operations & Research Associate' },
             ].map((m, i) => (
               <motion.div
                 key={i}
@@ -359,7 +361,7 @@ export default function About() {
                 whileHover={{ scale: 1.02, transition: { duration: 0.2, ease: 'easeOut' } }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.28, ease: 'easeOut', delay: i * 0.03 }}
-                className="bg-white rounded-2xl p-5 text-center shadow-sm border border-slate-100 cursor-default"
+                className="bg-white rounded-2xl p-5 text-center shadow-sm border border-slate-100 cursor-default w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.67rem)]"
               >
                 {m.photo ? (
                   <div className="w-12 h-12 rounded-full overflow-hidden mx-auto mb-3 ring-2 ring-slate-100">

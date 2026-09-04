@@ -64,6 +64,7 @@ const DESTINATION_MAP = {
 const AREA_MAP = {
   'Medicine & Health Sciences': [
     'medicine', 'medical school', 'medical related', 'medical-related', 'med-related', 'pre-med',
+    'dentistry', 'biomedical science', 'health-related',
     'biochemistry', 'molecular biology', 'cell and molecular', 'genetics', 'organic chemistry',
     'biosciences', 'biotechnology', 'biotech', 'health sciences', 'kinesiology',
     'immunology', 'developmental biology', 'transplant', 'clinical research', 'basic science research',
@@ -143,7 +144,7 @@ function isExcludedFromArea(consultant, area) {
 const DEGREE_TAG_MAP = {
   "Undergraduate": ['bachelor', 'college', 'college admission', 'university admission', 'pre-med'],
   "Master's": ['master', 'graduate school'],
-  'PhD': ['phd', 'graduate school', 'research proposal', 'dphil'],
+  'PhD': ['phd', 'graduate school', 'research proposal', 'research application', 'dphil'],
   'Pre-University / High School': ['highschool', 'high school', 'uwc', 'foundation', 'a-level', 'pre-u'],
 };
 
