@@ -9,19 +9,17 @@
         "lint": "eslint . --quiet",
         "lint:fix": "eslint . --fix",
         "typecheck": "tsc -p ./jsconfig.json",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "test": "node --test src/utils/consultantFilters.test.js"
     },
     "dependencies": {
         "@radix-ui/react-dialog": "^1.1.6",
         "@supabase/supabase-js": "^2.49.1",
-        "@tanstack/react-query": "^5.84.1",
-        "clsx": "^2.1.1",
         "framer-motion": "^11.16.4",
         "lucide-react": "^0.475.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-router-dom": "^6.26.0",
-        "tailwind-merge": "^3.0.2",
         "tailwindcss-animate": "^1.0.7"
     },
     "devDependencies": {

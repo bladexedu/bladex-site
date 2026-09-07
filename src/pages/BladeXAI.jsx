@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { solidButton } from '@/utils/glassStyles';
-import SpaceSectionBackground from '@/components/shared/SpaceSectionBackground';
+import StarfieldBackground from '@/components/shared/StarfieldBackground';
 
 /** 16×16 pixel icons — crispEdges for sharp pixel rendering */
 function PixelIcon({ cells, className = '', size = 20 }) {
@@ -204,7 +204,7 @@ export default function BladeXAI() {
       {/* Hero */}
       <section className="relative flex min-h-[100dvh] items-center overflow-hidden pt-28 pb-16 sm:pt-32">
         <div className="absolute inset-0 z-0">
-          <SpaceSectionBackground starDensity={1.1} softVignette vignetteBlack />
+          <StarfieldBackground starDensity={1.1} softVignette vignetteBlack />
         </div>
 
         <div className="relative z-10 w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

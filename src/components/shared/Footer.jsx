@@ -1,5 +1,5 @@
 import React from 'react';
-import SpaceSectionBackground from '@/components/shared/SpaceSectionBackground';
+import StarfieldBackground from '@/components/shared/StarfieldBackground';
 import { Link, useLocation } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import {
@@ -39,7 +39,7 @@ export default function Footer() {
       }`}
     >
       <div className="absolute inset-0 z-0">
-        <SpaceSectionBackground vignetteBlack={isAiPage} />
+        <StarfieldBackground vignetteBlack={isAiPage} />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">

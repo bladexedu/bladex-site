@@ -1,55 +1,38 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+const TESTIMONIAL_THEME = {
+  bg: 'bg-gradient-to-br from-blue-100 via-sky-50 to-white border border-blue-200/70',
+  shadow: 'shadow-md shadow-blue-200/40',
+  quote: 'text-blue-300/80',
+  divider: 'border-blue-200/60',
+};
+
 const quotes = [
   {
     quote: "I was feeling lost and unsure where to start, but the support and patience I received made all the difference. Now, I am finally in the application process. I'm so grateful for this program!",
     author_name: "Htet H.",
     author_role: "One-on-one Consulting Student",
-    theme: {
-      bg: 'bg-gradient-to-br from-blue-100 via-sky-50 to-white border border-blue-200/70',
-      shadow: 'shadow-md shadow-blue-200/40',
-      quote: 'text-blue-300/80',
-      divider: 'border-blue-200/60',
-    },
   },
   {
     quote: "The session was so comfortable — like discussing my situation with a trusted friend! It was exactly what I needed to gain clarity on my major and academic journey. The discussion was truly meaningful.",
     author_name: "Kyaw Z.",
     author_role: "One-on-one Consulting Student",
-    theme: {
-      bg: 'bg-gradient-to-br from-blue-100 via-sky-50 to-white border border-blue-200/70',
-      shadow: 'shadow-md shadow-blue-200/40',
-      quote: 'text-blue-300/80',
-      divider: 'border-blue-200/60',
-    },
   },
   {
     quote: "I gained new perspectives I had never considered before. The team took the time to explain everything clearly, helping me decide my study journey with confidence. Thank you for your precious time.",
     author_name: "Nang S.",
     author_role: "One-on-one Consulting Student",
-    theme: {
-      bg: 'bg-gradient-to-br from-blue-100 via-sky-50 to-white border border-blue-200/70',
-      shadow: 'shadow-md shadow-blue-200/40',
-      quote: 'text-blue-300/80',
-      divider: 'border-blue-200/60',
-    },
   },
   {
     quote: "I wasn't sure if I should book at first, but talking through my ideas gave me the exact clarity I needed for my career trajectory. The dedication to helping with every question is remarkable.",
     author_name: "Phyu W.",
     author_role: "One-on-one Consulting Student",
-    theme: {
-      bg: 'bg-gradient-to-br from-blue-100 via-sky-50 to-white border border-blue-200/70',
-      shadow: 'shadow-md shadow-blue-200/40',
-      quote: 'text-blue-300/80',
-      divider: 'border-blue-200/60',
-    },
   },
 ];
 
 function TestimonialCard({ item, index }) {
-  const { theme } = item;
+  const theme = TESTIMONIAL_THEME;
 
   return (
     <motion.div

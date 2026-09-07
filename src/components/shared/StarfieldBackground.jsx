@@ -62,9 +62,34 @@ function releaseCanvas(canvas) {
 }
 
 /**
- * Lightweight canvas starfield — pauses when off-screen or tab hidden.
+ * Lightweight canvas starfield with optional edge vignette — pauses when off-screen or tab hidden.
  */
-export default function StarfieldBackground({ className = 'absolute inset-0', starDensity = 1 }) {
+export default function StarfieldBackground({
+  className = 'absolute inset-0',
+  starDensity = 1,
+  softVignette = false,
+  vignetteBlack = false,
+}) {
+  const edge = vignetteBlack ? 'rgba(0, 0, 0, 0.85)' : 'rgba(15, 23, 42, 0.78)';
+  const edgeSolid = vignetteBlack ? '#000000' : '#0f172a';
+
+  return (
+    <>
+      <StarfieldCanvas className={className} starDensity={starDensity} />
+      <div
+        className="absolute inset-0"
+        style={{
+          background: softVignette
+            ? `radial-gradient(ellipse 78% 82% at 54% 45%, transparent 48%, ${edge} 100%)`
+            : `radial-gradient(ellipse 70% 70% at 50% 50%, transparent 40%, ${edgeSolid} 100%)`,
+        }}
+        aria-hidden
+      />
+    </>
+  );
+}
+
+function StarfieldCanvas({ className = 'absolute inset-0', starDensity = 1 }) {
   const canvasRef = useRef(null);
   const starsRef = useRef([]);
   const rafRef = useRef(null);

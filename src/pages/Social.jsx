@@ -8,7 +8,7 @@ import {
   LinkedInIcon,
 } from '@/components/shared/SocialIcons';
 import { sectionBadgeClass } from '@/utils/glassStyles';
-import SpaceSectionBackground from '@/components/shared/SpaceSectionBackground';
+import StarfieldBackground from '@/components/shared/StarfieldBackground';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 
 const channels = [
@@ -63,7 +63,7 @@ export default function Social() {
       {/* Hero */}
       <section className="relative pt-32 pb-28 bg-[#060b18] overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <SpaceSectionBackground starDensity={1.2} />
+          <StarfieldBackground starDensity={1.2} />
         </div>
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>

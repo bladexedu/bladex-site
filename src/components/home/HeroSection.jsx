@@ -4,7 +4,7 @@ import { createPageUrl } from '@/utils';
 import { solidButton, sectionBadgeBlue, sectionBadgeClass } from '@/utils/glassStyles';
 import { ArrowRight, Ban, Check } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
-import SpaceSectionBackground from '@/components/shared/SpaceSectionBackground';
+import StarfieldBackground from '@/components/shared/StarfieldBackground';
 
 const HERO_TITLE = 'Find Your Path.';
 
@@ -116,7 +116,7 @@ export default function HeroSection() {
 
       {/* Space starfield background */}
       <div className="absolute inset-0 z-0">
-        <SpaceSectionBackground softVignette />
+        <StarfieldBackground softVignette />
         {/* Primary drifting glow blob — kept smaller so left side isn’t washed out */}
         <div
           className="absolute top-[48%] left-[30%] w-[460px] h-[320px] rounded-full blur-3xl"

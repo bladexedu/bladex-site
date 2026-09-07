@@ -31,5 +31,6 @@ dist-ssr
 .playwright-cli/
 .cursor/
 .claude/
-skills/
 tmp/
+# Legacy: skills moved to sibling ../bladex-local/ (private repo)
+skills/

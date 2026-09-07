@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { sectionBadgeClass } from '@/utils/glassStyles';
-import SpaceSectionBackground from '@/components/shared/SpaceSectionBackground';
+import StarfieldBackground from '@/components/shared/StarfieldBackground';
 
 const programVisual = {
   // ponytail: same accent themes, one step brighter than shared slate matte
@@ -192,7 +192,7 @@ function ProgramCard({ program, reverse }) {
       <div className={`${reverse ? 'lg:col-start-2' : ''}`}>
         <div className="relative overflow-hidden bg-[#060b18] rounded-3xl p-10 text-white min-h-[360px] flex flex-col justify-between">
           <div className="absolute inset-0 z-0">
-            <SpaceSectionBackground softVignette starDensity={1.1} />
+            <StarfieldBackground softVignette starDensity={1.1} />
           </div>
           <div className={`absolute -top-10 -right-10 z-[1] w-52 h-52 rounded-full blur-3xl pointer-events-none ${glowStrong ? 'opacity-45' : 'opacity-35'}`} style={{ background: glow[0] }} aria-hidden />
           <div className={`absolute -bottom-12 -left-8 z-[1] w-48 h-48 rounded-full blur-3xl pointer-events-none ${glowStrong ? 'opacity-35' : 'opacity-30'}`} style={{ background: glow[1] }} aria-hidden />
@@ -249,7 +249,7 @@ export default function Programs() {
       {/* Hero */}
       <section className="relative pt-32 pb-28 bg-[#060b18] overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <SpaceSectionBackground starDensity={1.2} />
+          <StarfieldBackground starDensity={1.2} />
         </div>
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.35, ease: 'easeOut' }}>
@@ -351,7 +351,7 @@ export default function Programs() {
                 >
                   <div className="relative z-10 w-20 h-20 overflow-hidden bg-[#060b18] rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-slate-300/40">
                     <div className="absolute inset-0">
-                      <SpaceSectionBackground softVignette starDensity={0.2} />
+                      <StarfieldBackground softVignette starDensity={0.2} />
                     </div>
                     <img
                       src={step.iconSrc}

@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useCallback, useEffect, useState } from 'react';
 import { supabase } from '@/api/supabaseClient';
 
 async function fetchActiveConsultants() {
@@ -14,10 +14,37 @@ async function fetchActiveConsultants() {
 }
 
 export function useConsultants() {
-  return useQuery({
-    queryKey: ['consultants', 'active'],
-    queryFn: fetchActiveConsultants,
-    staleTime: 1000 * 60 * 10,
-    gcTime: 1000 * 60 * 30,
-  });
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [fetchKey, setFetchKey] = useState(0);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function load() {
+      setIsLoading(true);
+      setIsError(false);
+      try {
+        const rows = await fetchActiveConsultants();
+        if (!cancelled) setData(rows);
+      } catch {
+        if (!cancelled) {
+          setIsError(true);
+          setData([]);
+        }
+      } finally {
+        if (!cancelled) setIsLoading(false);
+      }
+    }
+
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, [fetchKey]);
+
+  const refetch = useCallback(() => setFetchKey((n) => n + 1), []);
+
+  return { data, isLoading, isError, refetch };
 }

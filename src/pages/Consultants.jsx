@@ -27,7 +27,7 @@ import { X, ArrowLeft, ArrowRight } from 'lucide-react';
 import ConsultantCard from '@/components/consultants/ConsultantCard';
 import ConsultantFilters from '@/components/consultants/ConsultantFilters';
 import ChoosePathCard from '@/components/consultants/ChoosePathCard';
-import SpaceSectionBackground from '@/components/shared/SpaceSectionBackground';
+import StarfieldBackground from '@/components/shared/StarfieldBackground';
 import imgAsia from '@/assests/region-asia.jpg';
 import imgNorthAmerica from '@/assests/region-north-america.jpg';
 import imgUnitedKingdom from '@/assests/region-united-kingdom.jpg';
@@ -40,116 +40,7 @@ import imgCompSci from '@/assests/area-compsci.jpg';
 import imgArts from '@/assests/area-arts.jpg';
 import imgHighSchool from '@/assests/area-highschool.jpg';
 import { sectionBadgeClass, solidButton } from '@/utils/glassStyles';
-
-const DESTINATION_MAP = {
-  'North America': ['canada', 'usa', 'us', 'united states'],
-  // covers Nyan, Nang, Wutt, Cherry, Wai Phyo, Hnaine
-
-  'Europe': ['europe', 'germany', 'france', 'netherlands', 'italy',
-             'hungary', 'poland', 'czech', 'czechia', 'slovakia', 'finland', 'switzerland',
-             'austria', 'georgia'],
-  // added: hungary (Yati), czech/slovakia (Thet Htar, Cho Myo), finland (Yupar), switzerland (Chaw),
-  // austria (Shwe Wady), georgia (Tay Za)
-
-  'United Kingdom': ['uk', 'united kingdom', 'ireland'],
-  // ireland (Hsu Myat Pwint Wai) — UK picker subtitle already lists Ireland
-
-  'Asia': ['asia', 'singapore', 'japan', 'korea', 'thailand',
-           'malaysia', 'hong kong', 'india', 'china', 'taiwan'],
-  // added: korea (Thuta), thailand (Nyan), malaysia (Shin Lin Let), hong kong (Wai Phyo), china (Ye Linn), taiwan (Chan Thar)
-
-  'Oceania': ['oceania', 'australia', 'new zealand', 'nz'],
-};
-
-/** Keywords derived from active consultants' major_subject_expertise values. */
-const AREA_MAP = {
-  'Medicine & Health Sciences': [
-    'medicine', 'medical school', 'medical related', 'medical-related', 'med-related', 'pre-med',
-    'dentistry', 'biomedical science', 'health-related', 'health related',
-    'biochemistry', 'molecular biology', 'cell and molecular', 'genetics', 'organic chemistry',
-    'biosciences', 'biotechnology', 'biotech', 'health sciences', 'kinesiology',
-    'immunology', 'developmental biology', 'transplant', 'clinical research', 'basic science research',
-    // ponytail: not "environmental science" — that pulled energy/materials people into Medicine
-    'chemical and environmental', 'healthcare pathways', 'healthcare',
-  ],
-  'Engineering & Architecture': [
-    'engineering', 'mechanical engineering', 'biomedical engineering', 'general engineering',
-    // software / genetic engineering are excluded from bare "engineering" below
-    'engineering related', 'architecture', 'sustainable energy',
-    'materials science', 'computational materials', 'systems engineering',
-  ],
-  'Business & Finance': [
-    'business', 'finance', 'management', 'commerce', 'accounting', 'marketing',
-    'business administration', 'business analytics', 'business & management', 'mba', 'bcom', 'btm',
-    'economics',
-  ],
-  'Computer Science & IT': [
-    'computer science', 'software engineering', 'data science', 'information systems',
-    'information technology', 'technology and data', 'computing', 'healthcare analytics',
-  ],
-  'Social Science and Education': [
-    'french', 'linguistics', 'fle', 'language teaching', 'delf', 'dalf',
-    'political science', 'public administration', 'humanities', 'literature', 'history', 'philosophy',
-    'applied linguistics', 'international organizations',
-  ],
-  'Pre-University': [
-    'ib diploma', 'foundation year', 'foundation', 'preparatory', 'pre-u', 'pre-university',
-    'a-level', 'high school', 'uwc', 'studienkolleg', 'singapore education system',
-  ],
-};
-
-/** Exact-name overrides: still show on card majors, but not under this Subject-first filter. */
-const AREA_FILTER_EXCLUDES = {
-  'Engineering & Architecture': ['Phoo Pwint Thaung Sein'],
-  'Business & Finance': [
-    'Yoon Su Lin',
-    'Pyae Phyo Thu @ Rachel',
-    'Aung Khant Min @ Jimmy',
-  ],
-  'Computer Science & IT': ['Aung Khant Min @ Jimmy'],
-};
-
-function escapeRegex(value) {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
-function subjectMatchesStudyKeyword(subject, keyword) {
-  const k = keyword.toLowerCase();
-  const s = subject.toLowerCase();
-
-  if (k === 'healthcare') return s === 'healthcare';
-  if (k === 'engineering') {
-    // "Software Engineering" is CS-only; "Genetic engineering" is Medicine/bio — bare
-    // "engineering" must not swallow either
-    return (s === 'engineering' || /\bengineering\b/.test(s))
-      && !/partial in medical/.test(s)
-      && !/software engineering/.test(s)
-      && !/genetic engineering/.test(s);
-  }
-  if (k.length <= 4) return new RegExp(`\\b${escapeRegex(k)}\\b`).test(s);
-  return s.includes(k);
-}
-
-function majorMatchesStudyArea(majors, keywords) {
-  const subjects = majors || [];
-  return keywords.some((keyword) =>
-    subjects.some((subject) => subjectMatchesStudyKeyword(subject, keyword)),
-  );
-}
-
-function isExcludedFromArea(consultant, area) {
-  const excludes = AREA_FILTER_EXCLUDES[area];
-  if (!excludes?.length) return false;
-  const name = consultant.name || '';
-  return excludes.some((n) => name === n);
-}
-
-const DEGREE_TAG_MAP = {
-  "Undergraduate": ['bachelor', 'college', 'college admission', 'university admission', 'pre-med'],
-  "Master's": ['master', 'graduate school'],
-  'PhD': ['phd', 'graduate school', 'research proposal', 'research application', 'dphil'],
-  'Pre-University / High School': ['highschool', 'high school', 'uwc', 'foundation', 'a-level', 'pre-u'],
-};
+import { matchesFilters } from '@/utils/consultantFilters';
 
 /** Row 1: NA, Europe, Asia — Row 2: UK, Oceania */
 const REGION_LAYOUT = [
@@ -223,43 +114,8 @@ function StudyPickerCard({ label, subtitle, image, gradient, onClick, tall = fal
   );
 }
 
-function matchesFilters(consultant, filters, search = '') {
-  const { degree, destination, area } = filters;
-  const query = search.trim().toLowerCase();
-
-  if (query) {
-    const name = (consultant.name || '').toLowerCase();
-    if (!name.includes(query)) return false;
-  }
-
-  if (degree !== 'all') {
-    const keywords = DEGREE_TAG_MAP[degree] || [];
-    const areaHelp = (consultant.area_of_expertise || []).join(' ').toLowerCase();
-    const majorHelp = (consultant.major_subject_expertise || []).join(' ').toLowerCase();
-    if (!keywords.some(k => areaHelp.includes(k) || majorHelp.includes(k))) return false;
-  }
-
-  if (destination !== 'all') {
-    const keywords = DESTINATION_MAP[destination] || [];
-    const region = (consultant.region || '').toLowerCase();
-    const country = (consultant.country_of_expertise || '').toLowerCase();
-    if (!keywords.some(k => {
-      const re = new RegExp(`\\b${k}\\b`);
-      return re.test(region) || re.test(country);
-    })) return false;
-  }
-
-  if (area !== 'all') {
-    if (isExcludedFromArea(consultant, area)) return false;
-    const keywords = AREA_MAP[area] || [];
-    if (!majorMatchesStudyArea(consultant.major_subject_expertise, keywords)) return false;
-  }
-
-  return true;
-}
-
 export default function Consultants() {
-  const { data: consultants = [], isLoading: loading } = useConsultants();
+  const { data: consultants = [], isLoading: loading, isError, refetch } = useConsultants();
   const location = useLocation();
   const [filters, setFilters] = useState({ degree: 'all', destination: 'all', area: 'all' });
   const [search, setSearch] = useState('');
@@ -350,7 +206,7 @@ export default function Consultants() {
         {/* Hero — kept intact */}
         <section className="relative pt-32 pb-28 bg-[#060b18] overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <SpaceSectionBackground starDensity={1.2} />
+            <StarfieldBackground starDensity={1.2} />
           </div>
           <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>
@@ -492,7 +348,7 @@ export default function Consultants() {
       {/* Hero */}
       <section className="relative pt-32 pb-28 bg-[#060b18] overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <SpaceSectionBackground starDensity={1.2} />
+          <StarfieldBackground starDensity={1.2} />
         </div>
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>
@@ -514,6 +370,20 @@ export default function Consultants() {
                 <div key={i} className="bg-white rounded-3xl h-64 animate-pulse" />
               ))}
             </div>
+          ) : isError ? (
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20">
+              <h2 className="text-2xl font-bold text-slate-800 mb-3">Could not load consultants</h2>
+              <p className="text-slate-500 max-w-md mx-auto mb-8">
+                Something went wrong fetching the roster. Try again in a moment.
+              </p>
+              <button
+                type="button"
+                onClick={() => refetch()}
+                className="text-blue-600 hover:underline text-sm font-medium"
+              >
+                Try again
+              </button>
+            </motion.div>
           ) : consultants.length === 0 ? (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20">
               <h2 className="text-2xl font-bold text-slate-800 mb-3">Consultant Profiles Coming Soon</h2>

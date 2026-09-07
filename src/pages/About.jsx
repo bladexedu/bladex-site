@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { sectionBadgeClass } from '@/utils/glassStyles';
-import SpaceSectionBackground from '@/components/shared/SpaceSectionBackground';
+import StarfieldBackground from '@/components/shared/StarfieldBackground';
 
 const HERO_ACCENT = 'Every Step of the Way';
 
@@ -38,7 +38,7 @@ function VisionMissionCard({ variant, iconSrc, iconAlt, title, quote }) {
   return (
     <div className="relative overflow-hidden bg-[#060b18] rounded-3xl p-10 text-white">
       <div className="absolute inset-0 z-0">
-        <SpaceSectionBackground softVignette starDensity={1.1} />
+        <StarfieldBackground softVignette starDensity={1.1} />
       </div>
       <div
         className="absolute -top-10 -right-10 z-[1] w-52 h-52 rounded-full blur-3xl pointer-events-none opacity-45"
@@ -224,7 +224,7 @@ export default function About() {
       {/* Hero */}
       <section className="relative flex min-h-[100dvh] items-center bg-[#060b18] overflow-hidden pt-28 pb-16 sm:pt-32">
         <div className="absolute inset-0 z-0">
-          <SpaceSectionBackground starDensity={1.2} />
+          <StarfieldBackground starDensity={1.2} />
           <div className="absolute top-10 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-indigo-600/20 rounded-full blur-3xl" />
         </div>
