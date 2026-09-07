@@ -17,8 +17,18 @@ the repo. Each active consultant’s `photo_url` points at
 - [ ] 3. prepare → compressed JPEG named {order}.jpg
 - [ ] 4. upload with --name so photo_url is set
 - [ ] 5. Re-get the row; curl -sI the public URL (expect 200 image/jpeg)
-- [ ] 6. Browser-check /consultants for that card’s photo
 ```
+
+### Routine-task verification rule
+
+For a routine consultant photo upload or replacement, stop after the wrapper
+re-query and HTTP image check succeed. Do **not** start browser automation,
+remote-debugging setup, CDP inspection, headless Chrome, or screenshot testing.
+
+Use one normal browser page check only when the task also changes React/UI code,
+the user explicitly asks for a visual check, or the wrapper/HTTP verification
+shows a problem. Do not escalate a normal page check into browser debugging
+unless there is a specific visible failure to investigate.
 
 ## Bucket convention
 
@@ -99,8 +109,8 @@ node --env-file=.env $S get "Exact Name"
 curl -sI "$PHOTO_URL" | head -5   # 200 + content-type: image/jpeg
 ```
 
-On `/consultants`, search the name and confirm the avatar loads (card + profile
-dialog). No React change is required when only `photo_url` changes.
+These checks are sufficient for a routine photo-only change. No React change or
+browser debugging is required when only `photo_url` changes.
 
 ## Gotchas
 
@@ -111,3 +121,17 @@ dialog). No React change is required when only `photo_url` changes.
 - Warn if a prepared file exceeds ~400 KB before upload.
 - Photo work is separate from filter maps (`LOCATION_MAP`, etc.); those still
   belong to manage-consultants.
+
+## Team bucket (About / staff)
+
+The private **`Team`** bucket holds ops/staff photos (kebab-case names, `.jpg`
+or `.png`). About.jsx and BladeXAI.jsx embed long-lived **signed URLs**, not
+public object paths.
+
+```bash
+P=skills/consultant-photos/scripts/photos.mjs
+node --env-file=.env $P prepare ./raw.jpg ./tmp/thin-thiri-san.jpg
+node --env-file=.env $P upload-team ./tmp/thin-thiri-san.jpg thin-thiri-san.jpg
+```
+
+Paste the printed `signed_url` into the page. Do not commit local staging files.

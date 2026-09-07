@@ -19,9 +19,20 @@ pre-flight checks below before writing.
 - [ ] 4. Verify filter reachability (all four maps)
 - [ ] 5. Apply code fixes for any unreachable path
 - [ ] 6. Write via the wrapper
-- [ ] 7. Re-query to confirm + browser check
+- [ ] 7. Re-query to confirm the stored values
 - [ ] 8. lint, typecheck, build if code changed
 ```
+
+### Routine-task verification rule
+
+For routine consultant information changes, the wrapper re-query is the default
+end-to-end verification. Do **not** start browser automation, remote-debugging
+setup, CDP inspection, headless Chrome, or screenshot testing.
+
+Use one normal browser page check only when the task also changes React/UI or
+filter code, the user explicitly asks for a visual check, or the re-query shows
+a problem. Do not escalate a normal page check into browser debugging unless
+there is a specific visible failure to investigate.
 
 ## Credentials
 
@@ -146,10 +157,10 @@ subject on their card.
 After a write, re-run `get` to confirm the value landed. If code changed, run
 `npm run lint && npm run typecheck && npm run build`.
 
-For UI-affecting changes, check the live page with the playwright skill: browse
-all consultants, search the new name, confirm the card renders with role,
-location chip, and bio, then confirm each intended destination and area filter
-returns them.
+These checks are sufficient for routine data-only changes. When UI or filter
+code changed, perform one normal page check of the affected path after the
+automated checks pass; use browser debugging only to investigate an observed
+failure.
 
 ## Gotchas
 

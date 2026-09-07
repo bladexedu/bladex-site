@@ -344,7 +344,12 @@ export default function About() {
           <div className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
             {[
               { name: 'Myat Min Htet', role: 'Operations Lead & Data Analyst' },
-              { name: 'Thin Thiri San', role: 'Operations Lead & Market Research Analyst' },
+              {
+                name: 'Thin Thiri San',
+                role: 'Operations Lead & Market Research Analyst',
+                photo:
+                  'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/sign/Team/thin-thiri-san.jpg?token=eyJraWQiOiI4ZWY5ZjAzNS00OWY3LTQ4MDUtYmRmZi02N2IxYzU3NWY5ZmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJUZWFtL3RoaW4tdGhpcmktc2FuLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODg4MTI0NTQsImV4cCI6MjEwNDE3MjQ1NH0.zaNSYcksCY9a_d51cLJbFoMphAh_lkWuT9TKydQqK2w',
+              },
               {
                 name: 'Myint Zu Linn',
                 role: 'Research & Operation Associate',
