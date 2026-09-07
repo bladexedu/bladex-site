@@ -27,14 +27,14 @@ study abroad. The site also includes the BladeX AI & Technology division.
 
 ## Skills
 
-- Before BladeX work, inspect `skills/` and load each `SKILL.md` that matches the
-  task.
-- Treat `skills/` as the canonical, repository-owned skill directory. Do not
-  depend on an editor-specific folder for skill discovery.
+Internal agent skills live in `skills/` at the project root. That directory is
+**gitignored** and is not part of the public repo.
+
+- Before BladeX admin or consultant work, inspect local `skills/` and load each
+  `SKILL.md` that matches the task.
 - Read the complete matching skill and its required scripts or references before
   taking action.
-- Keep skill procedures and support files committed so that they travel with every
-  clone and remain available to any agent that follows this file.
+- Do not commit `skills/` or any credentials the wrappers consume from `.env`.
 
 ## Verification
 
