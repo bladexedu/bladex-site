@@ -96,7 +96,7 @@ const FOUNDERS = [
     initials: 'NSN',
     name: 'Nang Sayoon Noi',
     role: 'Co-Founder & Chief Operating Officer',
-    degree: 'Doctor of Philosophy - Molecular Bioscience (Cell and Developmental Biology)',
+    degree: 'PhD in Molecular Biosciences',
     university: 'Rutgers University',
     note: 'Overseeing the organizational structure, internal communications, and seamless day-to-day operations.',
     gradient: 'from-emerald-500 to-teal-600',
