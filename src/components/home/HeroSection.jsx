@@ -190,14 +190,14 @@ export default function HeroSection() {
               transition={{ duration: 0.35, delay: 0.05 }}
               className="font-bold text-white leading-tight mb-6 sm:mb-8"
             >
+              <span className="sr-only">{HERO_TITLE}</span>
               <span
                 className="block text-4xl sm:text-5xl md:text-6xl"
-                aria-label={HERO_TITLE}
+                aria-hidden="true"
               >
                 {HERO_TITLE.split('').map((character, index) => (
                   <motion.span
                     key={`${character}-${index}`}
-                    aria-hidden="true"
                     className="inline-block"
                     initial={reduceMotion ? false : { opacity: 0 }}
                     animate={{ opacity: 1 }}

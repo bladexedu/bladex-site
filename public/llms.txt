@@ -1,0 +1,16 @@
+# BladeX Education
+
+> Educational consulting and mentorship for Myanmar students pursuing study abroad. The site also includes the BladeX AI & Technology division.
+
+## Pages
+
+- [Home](https://bladex-edu.vercel.app/): Overview, programs preview, and university destinations.
+- [About Us](https://bladex-edu.vercel.app/About): Team profiles and mission.
+- [Programs](https://bladex-edu.vercel.app/Programs): Advisory programs and services.
+- [Consultants](https://bladex-edu.vercel.app/Consultants): Browse mentors by destination, field, and degree level.
+- [Social Media](https://bladex-edu.vercel.app/Social): Official channels and community links.
+- [BladeX AI & Technology](https://bladex-edu.vercel.app/BladeXAI): AI and technology division.
+
+## Contact
+
+- [Email](mailto:bladexedu@gmail.com): General inquiries.
