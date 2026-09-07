@@ -32,5 +32,4 @@ dist-ssr
 .cursor/
 .claude/
 tmp/
-# Legacy: skills moved to sibling ../bladex-local/ (private repo)
 skills/
