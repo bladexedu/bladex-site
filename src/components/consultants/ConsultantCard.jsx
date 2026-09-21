@@ -60,6 +60,11 @@ const LOCATION_MAP = {
   'tay za aung':             'Georgia',
   'sett myat noe':           'United States',
   'kaung khant ye mon':      'Taiwan',
+  'ei tha zin':              'Singapore',
+  'glad (kyi sin) lynn':     'United States',
+  'htike chit su':           'Indonesia',
+  'soe nyi nyi kyaw':        'Sweden · Malta',
+  'su myat myint san':       'United Kingdom',
 };
 
 export default function ConsultantCard({ consultant: c, index }) {
