@@ -1,30 +1,33 @@
 import React from 'react';
 import { Search, X } from 'lucide-react';
+import { EMPTY_FILTERS } from '@/utils/consultantFilters';
 
-const filterGroups = [
-  {
-    key: 'degree',
-    label: 'Degree Level',
-    options: ['Undergraduate', "Master's", 'PhD', 'Pre-University / High School'],
-  },
-  {
-    key: 'destination',
-    label: 'Destination',
-    options: ['North America', 'Europe', 'United Kingdom', 'Asia', 'Oceania'],
-  },
-  {
-    key: 'area',
-    label: 'Area of Study',
-    options: [
-      'Medicine & Health Sciences',
-      'Engineering & Architecture',
-      'Business & Finance',
-      'Computer Science & IT',
-      'Social Science and Education',
-      'Pre-University',
-    ],
-  },
-];
+const toOptions = (values) => values.map((v) => ({ value: v, label: v }));
+
+const DEGREE_GROUP = {
+  key: 'degree',
+  label: 'Degree Level',
+  options: toOptions(['Undergraduate', "Master's", 'PhD', 'Pre-University / High School']),
+};
+
+const DESTINATION_GROUP = {
+  key: 'destination',
+  label: 'Destination',
+  options: toOptions(['North America', 'Europe', 'United Kingdom', 'Asia', 'Oceania']),
+};
+
+const AREA_GROUP = {
+  key: 'area',
+  label: 'Area of Study',
+  options: toOptions([
+    'Medicine & Health Sciences',
+    'Engineering & Architecture',
+    'Business & Finance',
+    'Computer Science & IT',
+    'Social Science and Education',
+    'Pre-University',
+  ]),
+};
 
 export default function ConsultantFilters({
   filters,
@@ -32,19 +35,35 @@ export default function ConsultantFilters({
   search = '',
   onSearchChange,
   count,
+  countryOptions = [],
   hideDestination = false,
   hideArea = false,
 }) {
   const handleChange = (key, value) => {
-    onChange({ ...filters, [key]: value });
+    const next = { ...filters, [key]: value };
+    if (key === 'destination') next.country = 'all';
+    onChange(next);
   };
+
+  const countryGroup = {
+    key: 'country',
+    label: 'Country',
+    options: countryOptions.map(({ name, count: n }) => ({ value: name, label: `${name} (${n})` })),
+  };
+
+  const groups = [
+    DEGREE_GROUP,
+    !hideDestination && DESTINATION_GROUP,
+    countryGroup,
+    !hideArea && AREA_GROUP,
+  ].filter(Boolean);
 
   const hasActiveDropdowns = Object.values(filters).some((v) => v !== 'all');
   const hasSearch = Boolean(search.trim());
   const hasActiveFilters = hasActiveDropdowns || hasSearch;
 
   const clearAll = () => {
-    onChange({ degree: 'all', destination: 'all', area: 'all' });
+    onChange(EMPTY_FILTERS);
     onSearchChange?.('');
   };
 
@@ -83,34 +102,36 @@ export default function ConsultantFilters({
 
       {/* Secondary: dropdown filters */}
       <div className="flex flex-wrap items-end gap-6 border-b border-slate-200 pb-4">
-        {filterGroups
-          .filter((g) => !(hideDestination && g.key === 'destination') && !(hideArea && g.key === 'area'))
-          .map((group) => (
-            <div key={group.key} className="flex min-w-[120px] flex-col gap-1">
-              <label className="text-[10px] font-semibold uppercase tracking-widest text-slate-500">
-                {group.label}
-              </label>
-              <div className="relative">
-                <select
-                  value={filters[group.key] || 'all'}
-                  onChange={(e) => handleChange(group.key, e.target.value)}
-                  className="w-full cursor-pointer appearance-none border-b border-slate-300 bg-transparent pb-1 pr-5 text-sm text-slate-700 transition-colors focus:border-blue-500 focus:outline-none"
-                  style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")`,
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'right 2px center',
-                  }}
-                >
-                  <option value="all">All</option>
-                  {group.options.map((opt) => (
-                    <option key={opt} value={opt}>
-                      {opt}
-                    </option>
-                  ))}
-                </select>
-              </div>
+        {groups.map((group) => (
+          <div key={group.key} className="flex min-w-[120px] flex-col gap-1">
+            <label
+              htmlFor={`consultant-filter-${group.key}`}
+              className="text-[10px] font-semibold uppercase tracking-widest text-slate-500"
+            >
+              {group.label}
+            </label>
+            <div className="relative">
+              <select
+                id={`consultant-filter-${group.key}`}
+                value={filters[group.key] || 'all'}
+                onChange={(e) => handleChange(group.key, e.target.value)}
+                className="w-full cursor-pointer appearance-none border-b border-slate-300 bg-transparent pb-1 pr-5 text-sm text-slate-700 transition-colors focus:border-blue-500 focus:outline-none"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")`,
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'right 2px center',
+                }}
+              >
+                <option value="all">All</option>
+                {group.options.map((opt) => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
+                ))}
+              </select>
             </div>
-          ))}
+          </div>
+        ))}
 
         <div className="flex-1" />
 

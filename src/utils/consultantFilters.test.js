@@ -2,10 +2,15 @@ import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import {
   AREA_MAP,
+  EMPTY_FILTERS,
+  consultantCountries,
+  getCountryOptions,
   matchesFilters,
   majorMatchesStudyArea,
   subjectMatchesStudyKeyword,
 } from './consultantFilters.js';
+
+const withFilters = (overrides) => ({ ...EMPTY_FILTERS, ...overrides });
 
 describe('subjectMatchesStudyKeyword', () => {
   it('keeps software engineering out of bare engineering', () => {
@@ -108,5 +113,71 @@ describe('matchesFilters', () => {
       matchesFilters(consultant, { degree: 'all', destination: 'Europe', area: 'all' }),
       true,
     );
+  });
+
+  it('reaches Sweden, Malta, and Indonesia through their regions', () => {
+    const soe = { name: 'Soe Nyi Nyi Kyaw', country_of_expertise: 'Sweden, Malta' };
+    const htike = { name: 'Htike Chit Su', country_of_expertise: 'Indonesia' };
+
+    assert.equal(matchesFilters(soe, withFilters({ destination: 'Europe' })), true);
+    assert.equal(matchesFilters(htike, withFilters({ destination: 'Asia' })), true);
+  });
+
+  it('filters by country', () => {
+    const poland = { name: 'May Thet Khine', country_of_expertise: 'Poland' };
+    const germany = { name: 'Arkar Min Myat', country_of_expertise: 'Germany' };
+
+    assert.equal(matchesFilters(poland, withFilters({ destination: 'Europe', country: 'Poland' })), true);
+    assert.equal(matchesFilters(germany, withFilters({ destination: 'Europe', country: 'Poland' })), false);
+  });
+});
+
+describe('consultantCountries', () => {
+  it('resolves aliases to canonical country names', () => {
+    assert.deepEqual(consultantCountries({ country_of_expertise: 'Korea, UK' }), [
+      'United Kingdom',
+      'South Korea',
+    ]);
+    assert.deepEqual(consultantCountries({ country_of_expertise: 'USA, Hong Kong' }), [
+      'United States',
+      'Hong Kong',
+    ]);
+    assert.deepEqual(
+      consultantCountries({ country_of_expertise: 'Slovakia and Czech Republic' }),
+      ['Czech Republic', 'Slovakia'],
+    );
+    assert.deepEqual(
+      consultantCountries({ country_of_expertise: 'United Kingdom (England and Scotland)' }),
+      ['United Kingdom'],
+    );
+  });
+
+  it('ignores generic region words without a country', () => {
+    assert.deepEqual(consultantCountries({ country_of_expertise: 'Europe' }), []);
+  });
+});
+
+describe('getCountryOptions', () => {
+  const roster = [
+    { name: 'A', country_of_expertise: 'Poland' },
+    { name: 'B', country_of_expertise: 'Poland, India' },
+    { name: 'C', country_of_expertise: 'Germany' },
+    { name: 'D', country_of_expertise: 'Japan' },
+  ];
+
+  it('lists only countries with consultants, with counts, sorted', () => {
+    assert.deepEqual(getCountryOptions(roster), [
+      { name: 'Germany', count: 1 },
+      { name: 'India', count: 1 },
+      { name: 'Japan', count: 1 },
+      { name: 'Poland', count: 2 },
+    ]);
+  });
+
+  it('narrows to the selected region', () => {
+    assert.deepEqual(getCountryOptions(roster, 'Europe'), [
+      { name: 'Germany', count: 1 },
+      { name: 'Poland', count: 2 },
+    ]);
   });
 });

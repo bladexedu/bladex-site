@@ -40,7 +40,7 @@ import imgCompSci from '@/assests/area-compsci.jpg';
 import imgArts from '@/assests/area-arts.jpg';
 import imgHighSchool from '@/assests/area-highschool.jpg';
 import { sectionBadgeClass, solidButton } from '@/utils/glassStyles';
-import { matchesFilters } from '@/utils/consultantFilters';
+import { EMPTY_FILTERS, getCountryOptions, matchesFilters } from '@/utils/consultantFilters';
 
 /** Row 1: NA, Europe, Asia — Row 2: UK, Oceania */
 const REGION_LAYOUT = [
@@ -117,7 +117,7 @@ function StudyPickerCard({ label, subtitle, image, gradient, onClick, tall = fal
 export default function Consultants() {
   const { data: consultants = [], isLoading: loading, isError, refetch } = useConsultants();
   const location = useLocation();
-  const [filters, setFilters] = useState({ degree: 'all', destination: 'all', area: 'all' });
+  const [filters, setFilters] = useState(EMPTY_FILTERS);
   const [search, setSearch] = useState('');
   const [showRegionPicker, setShowRegionPicker] = useState(true);
   const [pickerStep, setPickerStep] = useState('main');
@@ -132,7 +132,7 @@ export default function Consultants() {
     setPickerStep('main');
     setSelectedRegion(null);
     setSelectedArea(null);
-    setFilters({ degree: 'all', destination: 'all', area: 'all' });
+    setFilters(EMPTY_FILTERS);
     setSearch('');
   }, [location.key]);
 
@@ -141,12 +141,17 @@ export default function Consultants() {
     return [...consultants].sort(() => Math.random() - 0.5);
   }, [consultants, shuffleSeed]);
 
+  const countryOptions = useMemo(
+    () => getCountryOptions(consultants, filters.destination),
+    [consultants, filters.destination],
+  );
+
   const bumpShuffle = () => setShuffleSeed((n) => n + 1);
 
   const handleRegionClick = (regionKey) => {
     bumpShuffle();
     setSelectedRegion(regionKey);
-    setFilters({ degree: 'all', destination: regionKey, area: 'all' });
+    setFilters({ ...EMPTY_FILTERS, destination: regionKey });
     setSearch('');
     setShowRegionPicker(false);
   };
@@ -154,7 +159,7 @@ export default function Consultants() {
   const handleAreaClick = (areaKey) => {
     bumpShuffle();
     setSelectedArea(areaKey);
-    setFilters({ degree: 'all', destination: 'all', area: areaKey });
+    setFilters({ ...EMPTY_FILTERS, area: areaKey });
     setSearch('');
     setShowRegionPicker(false);
   };
@@ -163,14 +168,14 @@ export default function Consultants() {
     bumpShuffle();
     setSelectedRegion(null);
     setSelectedArea(null);
-    setFilters({ degree: 'all', destination: 'all', area: 'all' });
+    setFilters(EMPTY_FILTERS);
     setSearch('');
     setShowRegionPicker(false);
   };
 
   const handleClearRegion = () => {
     setSelectedRegion(null);
-    setFilters(prev => ({ ...prev, destination: 'all' }));
+    setFilters(prev => ({ ...prev, destination: 'all', country: 'all' }));
   };
 
   const handleClearArea = () => {
@@ -185,19 +190,19 @@ export default function Consultants() {
     if (selectedArea) {
       setPickerStep('what');
       setSelectedArea(null);
-      setFilters({ degree: 'all', destination: 'all', area: 'all' });
+      setFilters(EMPTY_FILTERS);
       return;
     }
 
     if (selectedRegion) {
       setPickerStep('where');
       setSelectedRegion(null);
-      setFilters({ degree: 'all', destination: 'all', area: 'all' });
+      setFilters(EMPTY_FILTERS);
       return;
     }
 
     setPickerStep('main');
-    setFilters({ degree: 'all', destination: 'all', area: 'all' });
+    setFilters(EMPTY_FILTERS);
   };
 
   if (showRegionPicker) {
@@ -394,7 +399,7 @@ export default function Consultants() {
           ) : (() => {
             const filtered = displayedConsultants.filter(c => matchesFilters(c, filters, search));
             const clearAll = () => {
-              setFilters({ degree: 'all', destination: 'all', area: 'all' });
+              setFilters(EMPTY_FILTERS);
               setSearch('');
             };
             return (
@@ -440,6 +445,7 @@ export default function Consultants() {
                   search={search}
                   onSearchChange={setSearch}
                   count={filtered.length}
+                  countryOptions={countryOptions}
                   hideDestination={!!selectedRegion}
                   hideArea={!!selectedArea}
                 />
