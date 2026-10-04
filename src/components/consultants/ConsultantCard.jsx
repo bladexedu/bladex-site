@@ -65,6 +65,8 @@ const LOCATION_MAP = {
   'htike chit su':           'Indonesia',
   'soe nyi nyi kyaw':        'Sweden · Malta',
   'su myat myint san':       'United Kingdom',
+  'ei thandar phyo':         'South Korea',
+  'shwe eain lin':           'Malaysia · Malta',
 };
 
 export default function ConsultantCard({ consultant: c, index }) {
