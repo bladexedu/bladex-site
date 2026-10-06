@@ -2,32 +2,31 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { solidButton } from '@/utils/glassStyles';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Compass, Globe, HeartHandshake } from 'lucide-react';
 import { motion } from 'framer-motion';
 import imgAboutStudents from '@/assests/about-students.jpg';
 
 const pillars = [
   {
-    iconSrc: 'https://img.icons8.com/external-kmg-design-flat-kmg-design/64/external-direction-maps-navigation-kmg-design-flat-kmg-design-1.png',
-    iconAlt: 'Strategic direction icon',
-    title: 'Strategic Academic Direction',
-    description: "We offer targeted support to students who feel uncertain about their future trajectory, delivering clarity and a strategic plan to move forward with confidence.",
+    Icon: Compass,
+    title: 'Find Your Direction',
+    description: "Every student's journey is different. We help you explore your options, understand your strengths, and identify academic pathways that align with your goals and circumstances.",
   },
   {
-    iconSrc: 'https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-personalization-marketing-technology-flaticons-lineal-color-flat-icons.png',
-    iconAlt: 'Personalized counselling icon',
-    title: 'Personalized Counselling',
-    description: "We explore your interests, goals, and circumstances to help you choose the right country and university — confidently.",
+    Icon: HeartHandshake,
+    title: 'Guidance That Understands You',
+    description: "Your ambitions, background, and circumstances matter. Our consultants offer personalized insights and practical guidance to help you navigate university choices, applications, and important decisions.",
   },
   {
-    iconSrc: 'https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-career-online-marketing-flaticons-lineal-color-flat-icons.png',
-    iconAlt: 'Study to career pathway icon',
-    title: 'Study-to-Career Pathway',
-    description: "We help you choose subjects that align with real career opportunities abroad, building a strong foundation.",
+    Icon: Globe,
+    title: 'A Global Community, Closer to You',
+    description: "Connect with consultants and mentors who have firsthand experience studying abroad. From choosing a university to adjusting to a new academic environment, learn from people who have been through the journey themselves.",
   },
 ];
 
 function PillarCard({ pillar, index }) {
+  const Icon = pillar.Icon;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -37,12 +36,9 @@ function PillarCard({ pillar, index }) {
       transition={{ duration: 0.3, delay: index * 0.04, ease: 'easeOut' }}
       className="flex gap-5 bg-slate-50 rounded-2xl p-5 border border-slate-100 shadow-sm hover:shadow-lg hover:shadow-slate-200/80 transition-shadow duration-300 cursor-default"
     >
-      <img
-        src={pillar.iconSrc}
-        alt={pillar.iconAlt}
-        className="w-10 h-10 object-contain flex-shrink-0"
-        loading="lazy"
-      />
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50">
+        <Icon className="h-5 w-5 text-blue-500" strokeWidth={1.75} aria-hidden />
+      </div>
       <div>
         <h3 className="font-semibold text-slate-900 mb-1">{pillar.title}</h3>
         <p className="text-sm text-slate-600 leading-relaxed">{pillar.description}</p>
@@ -64,14 +60,18 @@ export default function AboutPreview() {
             transition={{ duration: 0.35, ease: 'easeOut' }}
           >
             <span className="text-blue-600 font-semibold text-xs uppercase tracking-widest">Who We Are</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-3 mb-5 leading-snug">
-              More than a consultancy.<br />We are your strategic partners.
+            <h2 className="text-3xl md:text-4xl font-bold mt-3 mb-5 leading-snug">
+              <span className="block text-slate-900">More Than Admissions & Consultancy.</span>
+              <span className="block text-blue-600">A Partner In Your Journey.</span>
             </h2>
             <p className="text-slate-600 leading-relaxed mb-6">
-              BladeX Education is a dedicated advisory platform for <strong>Myanmar students who aspire to study abroad</strong>. Rather than just focusing on paperwork, we take the time to sit with you, understand your unique story, and help you build a strategic roadmap for your future.
+              BladeX Education is a global education advisory platform dedicated to helping Myanmar students turn their aspirations of studying abroad into reality. Whether you're just beginning to explore your options or already have a destination in mind but need guidance on how to get there, we're here to help.
+            </p>
+            <p className="text-slate-600 leading-relaxed mb-6">
+              Through our global network of consultants, personalized guidance, and mentorship, we help students navigate their educational journeys, make informed decisions, and take meaningful steps toward their future.
             </p>
             <p className="text-slate-600 leading-relaxed mb-8">
-              We believe every student deserves access to high-tier guidance, regardless of their background. Our consultants provide the objective insights and mentorship you need to move forward with confidence.
+              We believe that every student deserves the opportunity to pursue an education beyond borders, regardless of their background or circumstances. At BladeX, we're here to make that journey a little clearer, more accessible, and less overwhelming.
             </p>
             <Link to={createPageUrl('About')} className="inline-block transition-transform duration-200 hover:scale-105">
               <button className={`group ${solidButton.navySolid} ${solidButton.md}`}>

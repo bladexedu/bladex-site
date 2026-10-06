@@ -1,32 +1,77 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { sectionBadgeClass } from '@/utils/glassStyles';
+import { ArrowRight, Check, Compass, Globe, HeartHandshake, MapPin, Search } from 'lucide-react';
+import { createPageUrl } from '@/utils';
+import { sectionBadgeClass, solidButton } from '@/utils/glassStyles';
 import StarfieldBackground from '@/components/shared/StarfieldBackground';
 
 const programVisual = {
-  // ponytail: same accent themes, one step brighter than shared slate matte
-  consulting: {
-    iconSrc: 'https://img.icons8.com/fluency/96/chat--v1.png',
-    iconAlt: 'Chat',
-    box: 'bg-blue-500/25 border-blue-400/40',
-    glow: ['#60a5fa', '#38bdf8'],
-    glowStrong: true,
-  },
-  mentorship: {
-    iconSrc: 'https://img.icons8.com/office/80/training.png',
-    iconAlt: 'Training',
-    box: 'bg-indigo-500/25 border-indigo-400/40',
-    glow: ['#818cf8', '#a5b4fc'],
-    glowStrong: true,
-  },
-  guidance: {
-    iconSrc: 'https://img.icons8.com/office/80/user-manual.png',
-    iconAlt: 'User manual',
-    box: 'bg-emerald-500/25 border-emerald-400/40',
-    glow: ['#34d399', '#6ee7b7'],
-    glowStrong: true,
-  },
+  consulting: { decor: 'rings' },
+  mentorship: { decor: 'tracks' },
+  guidance: { decor: 'squares' },
 };
+
+function RingsDecor() {
+  return (
+    <svg aria-hidden viewBox="0 0 360 360" className="pointer-events-none absolute -bottom-36 -left-36 h-[360px] w-[360px] opacity-90">
+      {[70, 110, 150, 178].map((r, i) => (
+        <circle key={r} cx="180" cy="180" r={r} fill="none" stroke="#93c5fd" strokeWidth="1.4" opacity={0.85 - i * 0.12} />
+      ))}
+    </svg>
+  );
+}
+
+function TracksDecor() {
+  return (
+    <svg aria-hidden viewBox="0 0 320 260" className="pointer-events-none absolute -top-9 -right-12 h-[260px] w-[320px] opacity-100">
+      <defs>
+        <linearGradient id="program-tracks-fade" x1="1" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#93c5fd" stopOpacity="1" />
+          <stop offset="45%" stopColor="#60a5fa" stopOpacity="0.7" />
+          <stop offset="100%" stopColor="#60a5fa" stopOpacity="0.15" />
+        </linearGradient>
+      </defs>
+      {[48, 88, 128, 168, 208].map((y, i) => (
+        <path
+          key={y}
+          d={`M 40 ${y} C 120 ${y - 18}, 200 ${y + 22}, 300 ${y - 6}`}
+          fill="none"
+          stroke="url(#program-tracks-fade)"
+          strokeWidth="2"
+          strokeLinecap="round"
+          opacity={1 - i * 0.12}
+        />
+      ))}
+    </svg>
+  );
+}
+
+function SquaresDecor() {
+  return (
+    <svg aria-hidden viewBox="0 0 360 360" className="pointer-events-none absolute -top-36 -right-36 h-[360px] w-[360px] opacity-90">
+      {[70, 110, 150, 190].map((s, i) => (
+        <rect
+          key={s}
+          x={180 - s}
+          y={180 - s}
+          width={s * 2}
+          height={s * 2}
+          fill="none"
+          stroke="#93c5fd"
+          strokeWidth="1.4"
+          opacity={0.85 - i * 0.12}
+        />
+      ))}
+    </svg>
+  );
+}
+
+function ProgramDecor({ type }) {
+  if (type === 'tracks') return <TracksDecor />;
+  if (type === 'squares') return <SquaresDecor />;
+  return <RingsDecor />;
+}
 
 function ProgramAreaBulletIcon() {
   const uid = React.useId().replace(/:/g, '');
@@ -78,107 +123,116 @@ const consulting = {
   id: 'consulting',
   title: 'One-on-One Consulting',
   tagline: 'Clarity, direction, and a plan that fits you.',
-  description: "A private, personalized session where we listen to your situation, explore your interests, and help you make confident, informed decisions about studying abroad.",
+  description: "A personalized conversation where you can share your goals, questions, and uncertainties. Whether you already have a clear plan or simply know that you want to study abroad but don't know where to begin, our consultants are here to listen, share their firsthand experience, and help you figure out what comes next.",
+  areasHeading: "What's Included",
   areas: [
-    { label: 'Major Exploration', detail: 'Business, Computer Science, Medicine, Engineering, and more' },
-    { label: 'Country Selection', detail: 'US, Canada, UK, Thailand, Singapore, and others' },
-    { label: 'University Direction', detail: 'Finding the right fit for your goals and budget' },
-    { label: 'Application Planning', detail: 'Timeline and step-by-step preparation' },
-    { label: 'Document Review', detail: 'SOP, CV, and essential application materials' },
+    { label: 'Explore Your Direction', detail: 'Discuss your interests, strengths, and possible academic pathways.' },
+    { label: 'Major & Field Exploration', detail: 'Learn more about different fields from consultants with firsthand experience in their areas of study.' },
+    { label: 'Country & University Exploration', detail: 'Understand your options and explore destinations and universities that may fit your goals.' },
+    { label: 'Application Guidance', detail: 'Understand requirements, timelines, and the steps involved in preparing your application.' },
+    { label: 'Motivation & Support', detail: 'Get encouragement, perspective, and practical guidance when you feel lost, uncertain, or unsure where to start.' },
   ],
-  note: 'Sessions are booked directly with your chosen consultant — at a time that works for both of you.',
+  note: 'Sessions are arranged directly with your chosen consultant at a mutually convenient time.',
   free: true,
 };
 
 const mentorship = {
   id: 'mentorship',
   title: 'Mentorship Program',
-  tagline: 'Continuous partnership, through your academic journey.',
-  description: "A continuous partnership where we guide you through every step of your academic journey. Rather than a single consultation, we work closely with you over multiple sessions to navigate the entire application process.",
+  tagline: 'Someone to guide you, support you, and walk with you along the way.',
+  description: "Unlike a one-time consultation, the Mentorship Program gives you the opportunity to build an ongoing relationship with a consultant who can provide guidance as your plans develop, questions arise, and important decisions come up.",
+  areasHeading: 'How We Can Help',
   areas: [
-    { label: 'Ongoing Check-ins', detail: 'Regular meetings to answer your questions and plan your next steps' },
-    { label: 'Application Assistance', detail: 'Step-by-step help with preparing and submitting your university applications' },
-    { label: 'Offer Support', detail: 'Guidance on reviewing, choosing, and accepting your university admission offers' },
-    { label: 'Goal Setting & Progress Tracking', detail: 'Keeping your application deadlines organized and moving forward' },
-    { label: 'Community Connection', detail: 'Access to a network of peers and mentors who have successfully navigated the process' },
+    { label: 'Ongoing Guidance', detail: 'Regular conversations to discuss your progress, questions, goals, and next steps.' },
+    { label: 'Personalized Academic Support', detail: 'Guidance tailored to your interests, circumstances, and academic pathway.' },
+    { label: 'Application Guidance', detail: 'Support with understanding requirements, planning timelines, and preparing for important application steps.' },
+    { label: 'Goal Setting & Progress', detail: 'Turn your goals into manageable steps and stay on track throughout your journey.' },
+    { label: 'Firsthand Experience & Community', detail: 'Learn from someone who has navigated the study-abroad experience while becoming part of a wider community of students, consultants, and mentors.' },
   ],
-  note: 'We work closely with you over multiple sessions to navigate the entire application process, keeping you on track until you successfully secure your university offer.',
+  note: 'A longer-term mentorship experience connecting you with a consultant who understands your goals and can support you throughout your academic journey.',
   free: true,
 };
 
 const guidance = {
   id: 'guidance',
-  title: 'Career Guidance Program',
-  tagline: 'Consultation for your future career path.',
-  description: "Whether you feel overwhelmed by having too many interests or are completely unsure of which direction to take, our mentors and consultants are here to listen. Using their professional experience and knowledge, they will provide tailored advice to help you find your best fit. 🔍",
+  title: 'Career & Future Guidance Program',
+  tagline: "Connect what you're interested in with where you want to go.",
+  description: "Whether you're choosing a career direction, exploring opportunities related to your field of study, or considering a change in career, our consultants are here to help you understand your options and find a path that fits your goals.",
+  areasHeading: 'How We Can Help',
   areas: [
-    { label: 'Career Path Exploration', detail: 'Discover multiple career options aligned with your interests' },
-    { label: 'Professional Trajectory Planning', detail: 'Map out a strategic plan for your professional future' },
-    { label: 'Tailored Advice', detail: 'Personalized recommendations based on your unique situation' },
-    { label: 'Industry Insights', detail: 'Learn from professionals with real-world experience' },
-    { label: 'Direction Finding', detail: 'Clarity when you are overwhelmed or unsure of which path to take' },
+    { label: 'Academic-to-Career Alignment', detail: 'Explore how your academic interests, major, and skills can connect to potential career paths.' },
+    { label: 'Career Path Exploration', detail: 'Discover different roles, industries, and opportunities that align with your interests and strengths.' },
+    { label: 'Career Change Guidance', detail: "If you're considering a new direction, discuss your transferable skills, possible pathways, and the steps involved in making a change." },
+    { label: 'Industry Insights', detail: 'Learn from consultants with firsthand experience across different fields, industries, and professional environments.' },
+    { label: 'Finding Your Direction', detail: "Gain clarity when you're unsure what comes next, have too many options, or simply want another perspective before making an important career decision." },
   ],
-  note: 'While similar in format to our One-on-One Consulting, this program focuses specifically on your career and professional trajectory rather than just academics.',
+  note: 'A personalized session to help you connect your academic interests, skills, and experiences with potential career paths.',
   free: true,
 };
 
 const values = [
   {
-    iconSrc: 'https://img.icons8.com/external-kmg-design-flat-kmg-design/64/external-direction-maps-navigation-kmg-design-flat-kmg-design-1.png',
-    iconAlt: 'Strategic direction icon',
-    title: 'Strategic Academic Direction',
-    description: "We offer targeted support to students who feel uncertain about their future trajectory, delivering clarity and a strategic plan to move forward with confidence.",
-    color: 'blue',
+    Icon: Compass,
+    title: 'Find Your Direction',
+    description: "Not sure what to study, where to go, or even where to begin? We help you explore your interests, strengths, and possibilities so you can better understand what path may be right for you.",
   },
   {
-    iconSrc: 'https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-personalization-marketing-technology-flaticons-lineal-color-flat-icons.png',
-    iconAlt: 'Personalized counselling icon',
-    title: 'Personalized Counselling',
-    description: "We explore your interests, goals, and situation to help you choose the right country and university — confidently.",
-    color: 'rose',
+    Icon: HeartHandshake,
+    title: "Guidance That's Personal",
+    description: "Your goals, circumstances, and aspirations are unique. We take the time to understand your story and connect you with guidance that reflects where you are and where you want to go.",
   },
   {
-    iconSrc: 'https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-career-online-marketing-flaticons-lineal-color-flat-icons.png',
-    iconAlt: 'Study to career pathway icon',
-    title: 'Study-to-Career Pathway',
-    description: "We help you strategically select a field of study that aligns with tangible career opportunities, delivering a robust, long-term foundation for your professional future.",
-    color: 'indigo',
+    Icon: Globe,
+    title: 'Learn From Experience',
+    description: "Connect with consultants and mentors who have firsthand experience in the countries, universities, and fields you're exploring. Get practical perspectives that go beyond what you can find online.",
   },
 ];
 
-const valuesIconColor = {
-  blue: 'bg-blue-100 text-blue-600',
-  rose: 'bg-rose-100 text-rose-600',
-  indigo: 'bg-indigo-100 text-indigo-600',
-};
-
 const steps = [
   {
-    iconSrc: 'https://img.icons8.com/stickers/50/search.png',
-    iconAlt: 'Search',
+    Icon: Search,
     number: '01',
     title: 'Discovery & Assessment',
     description: 'We start with a comprehensive consultation to understand your unique background, academic strengths, and where you feel uncertain about your future.',
   },
   {
-    iconSrc: 'https://img.icons8.com/stickers/100/map-marker.png',
-    iconAlt: 'Map marker',
+    Icon: MapPin,
     number: '02',
     title: 'Strategic Pathway Mapping',
     description: 'Our consultants analyze your goals to strategically recommend the right fields of study and academic destinations that align with your career ambitions.',
   },
   {
-    iconSrc: 'https://img.icons8.com/stickers/100/checked-checkbox.png',
-    iconAlt: 'Checked checkbox',
+    Icon: Check,
     number: '03',
     title: 'Actionable Roadmap',
     description: 'We equip you with a step-by-step preparation plan, giving you the clarity, confidence, and resources to independently navigate your applications.',
   },
 ];
 
+function ProcessStep({ step, index }) {
+  const Icon = step.Icon;
+  const n = index + 1;
+
+  return (
+    <div className="relative z-10 flex flex-col items-center text-center">
+      <div className={`proc-icon proc-icon-${n} relative z-10 mb-6 flex h-20 w-20 items-center justify-center overflow-hidden rounded-2xl bg-[#060b18] shadow-lg shadow-slate-300/40`}>
+        <div className="pointer-events-none absolute inset-0 bg-[#060b18]" aria-hidden />
+        <div className="absolute inset-0">
+          <StarfieldBackground starDensity={0.2} />
+        </div>
+        <Icon className="relative z-10 h-9 w-9" strokeWidth={1.75} aria-hidden />
+      </div>
+      <div className={`proc-copy proc-copy-${n} mb-2 text-xs font-bold uppercase tracking-widest text-blue-500`}>
+        Step {step.number}
+      </div>
+      <h3 className={`proc-copy proc-copy-${n} mb-3 text-lg font-bold text-slate-900`}>{step.title}</h3>
+      <p className={`proc-copy proc-copy-${n} text-sm leading-relaxed text-slate-500`}>{step.description}</p>
+    </div>
+  );
+}
+
 function ProgramCard({ program, reverse }) {
   const visual = programVisual[program.id];
-  const { box, iconSrc, iconAlt, Icon, icon, glow, glowStrong } = visual;
 
   return (
     <motion.div
@@ -190,32 +244,21 @@ function ProgramCard({ program, reverse }) {
     >
       {/* Image / Visual side */}
       <div className={`${reverse ? 'lg:col-start-2' : ''}`}>
-        <div className="relative overflow-hidden bg-[#060b18] rounded-3xl p-10 text-white min-h-[360px] flex flex-col justify-between">
-          <div className="absolute inset-0 z-0">
-            <StarfieldBackground softVignette starDensity={1.1} />
-          </div>
-          <div className={`absolute -top-10 -right-10 z-[1] w-52 h-52 rounded-full blur-3xl pointer-events-none ${glowStrong ? 'opacity-45' : 'opacity-35'}`} style={{ background: glow[0] }} aria-hidden />
-          <div className={`absolute -bottom-12 -left-8 z-[1] w-48 h-48 rounded-full blur-3xl pointer-events-none ${glowStrong ? 'opacity-35' : 'opacity-30'}`} style={{ background: glow[1] }} aria-hidden />
-          <div className="relative z-10 flex flex-col justify-between flex-1">
+        <div className="relative flex min-h-[360px] flex-col justify-between overflow-hidden rounded-3xl bg-[linear-gradient(165deg,#1e293b_0%,#0f172a_48%,#060b18_100%)] p-10 text-white">
+          <ProgramDecor type={visual.decor} />
+          <div className="relative z-10 flex flex-1 flex-col justify-between">
             <div>
-              <div className={`w-14 h-14 border rounded-2xl flex items-center justify-center mb-5 ${box}`}>
-                {iconSrc ? (
-                  <img
-                    src={iconSrc}
-                    alt={iconAlt ?? program.title}
-                    className="w-8 h-8 object-contain"
-                    loading="lazy"
-                  />
-                ) : (
-                  <Icon className={`w-7 h-7 ${icon}`} strokeWidth={2} aria-hidden />
-                )}
-              </div>
-              <p className="text-sm text-white font-extrabold uppercase tracking-widest mb-2">BladeX Service</p>
-              <h3 className="text-2xl font-bold text-white mb-3">{program.title}</h3>
-              <p className="text-slate-300 text-sm italic">"{program.tagline}"</p>
+              <p className="mb-2 text-sm font-extrabold uppercase tracking-widest text-white">
+                BladeX Service
+              </p>
+              <h3 className="mb-3 text-2xl font-normal text-slate-100">
+                {program.title}
+              </h3>
+              <p className="text-sm italic text-slate-300">"{program.tagline}"</p>
             </div>
-            <div className="mt-8 bg-white/5 rounded-xl px-4 py-3 text-xs text-white/90 border border-white/10">
-              📌 {program.note}
+            <div className="mt-8 flex items-start gap-2.5 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-xs text-white/90">
+              <span aria-hidden className="mt-1 h-2 w-2 shrink-0 rotate-45 bg-red-500" />
+              <span>{program.note}</span>
             </div>
           </div>
         </div>
@@ -223,8 +266,10 @@ function ProgramCard({ program, reverse }) {
 
       {/* Content side */}
       <div className={`${reverse ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
-        <p className="text-slate-600 leading-relaxed mb-7">{program.description}</p>
-        <h4 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">What's Included</h4>
+        {program.description ? (
+          <p className="text-slate-600 leading-relaxed mb-7">{program.description}</p>
+        ) : null}
+        <h4 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">{program.areasHeading}</h4>
         <ul className="space-y-4">
           {program.areas.map((area, i) => (
             <li key={i} className="flex gap-4 items-start">
@@ -256,7 +301,7 @@ export default function Programs() {
             <span className={sectionBadgeClass}>Our Services</span>
             <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-5">Programs & Services</h1>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              Personalized consulting and mentorship for Myanmar students pursuing education abroad.
+              Guidance, mentorship, and support for students exploring education beyond borders.
             </p>
           </motion.div>
         </div>
@@ -264,7 +309,7 @@ export default function Programs() {
       </section>
 
       {/* Programs */}
-      <section className="relative py-24">
+      <section className="relative bg-white py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32">
           <ProgramCard program={consulting} reverse={false} />
           <ProgramCard program={mentorship} reverse={true} />
@@ -274,7 +319,7 @@ export default function Programs() {
       </section>
 
       {/* What We Focus On */}
-      <section className="relative py-24 bg-slate-50">
+      <section className="relative bg-white py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.92 }}
@@ -296,20 +341,13 @@ export default function Programs() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.35, ease: 'easeOut' }}
-                  className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 border border-slate-100"
+                  className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 border border-slate-100 text-center"
                 >
-                  <div className="flex items-center gap-4 mb-6">
-                    <div
-                      className={`w-14 h-14 shrink-0 ${valuesIconColor[v.color]} rounded-2xl flex items-center justify-center`}
-                    >
-                      <img
-                        src={v.iconSrc}
-                        alt={v.iconAlt}
-                        className="w-8 h-8 object-contain"
-                        loading="lazy"
-                      />
+                  <div className="mb-5 flex flex-col items-center">
+                    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600">
+                      <v.Icon className="h-7 w-7" strokeWidth={1.75} aria-hidden />
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 leading-snug min-w-0 m-0">
+                    <h3 className="text-xl font-bold text-slate-900 leading-snug m-0">
                       {v.title}
                     </h3>
                   </div>
@@ -322,7 +360,108 @@ export default function Programs() {
       </section>
 
       {/* Our Process */}
-      <section className="relative py-24 bg-white">
+      <section className="relative bg-white py-24">
+        <style>{`
+          .proc-timeline .proc-line-fill {
+            transform: scaleX(0);
+            transform-origin: left center;
+            animation: proc-line 5.2s ease-in-out infinite;
+          }
+          .proc-timeline .proc-icon,
+          .proc-timeline .proc-copy {
+            animation-duration: 5.2s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+          }
+          .proc-timeline .proc-icon {
+            color: #fff;
+          }
+          .proc-timeline .proc-icon-1 { animation-name: proc-icon-1; }
+          .proc-timeline .proc-icon-2 { animation-name: proc-icon-2; }
+          .proc-timeline .proc-icon-3 { animation-name: proc-icon-3; }
+          .proc-timeline .proc-copy-1 { animation-name: proc-copy-1; }
+          .proc-timeline .proc-copy-2 { animation-name: proc-copy-2; }
+          .proc-timeline .proc-copy-3 { animation-name: proc-copy-3; }
+          .proc-timeline:hover .proc-line-fill,
+          .proc-timeline:hover .proc-icon,
+          .proc-timeline:hover .proc-copy {
+            animation-play-state: paused;
+          }
+          @keyframes proc-line {
+            0%, 8% { transform: scaleX(0); }
+            30% { transform: scaleX(0.5); }
+            54%, 76% { transform: scaleX(1); }
+            88%, 100% { transform: scaleX(0); }
+          }
+          @keyframes proc-icon-1 {
+            0%, 76% {
+              transform: scale(1.06);
+              color: #22c55e;
+              box-shadow: 0 0 0 2px #22c55e, 0 8px 22px -6px rgba(34, 197, 94, 0.55);
+            }
+            88%, 100% {
+              transform: scale(1);
+              color: #fff;
+              box-shadow: 0 10px 15px -3px rgb(203 213 225 / 0.4);
+            }
+          }
+          @keyframes proc-icon-2 {
+            0%, 24% {
+              transform: scale(1);
+              color: #fff;
+              box-shadow: 0 10px 15px -3px rgb(203 213 225 / 0.4);
+            }
+            30%, 76% {
+              transform: scale(1.06);
+              color: #22c55e;
+              box-shadow: 0 0 0 2px #22c55e, 0 8px 22px -6px rgba(34, 197, 94, 0.55);
+            }
+            88%, 100% {
+              transform: scale(1);
+              color: #fff;
+              box-shadow: 0 10px 15px -3px rgb(203 213 225 / 0.4);
+            }
+          }
+          @keyframes proc-icon-3 {
+            0%, 48% {
+              transform: scale(1);
+              color: #fff;
+              box-shadow: 0 10px 15px -3px rgb(203 213 225 / 0.4);
+            }
+            54%, 76% {
+              transform: scale(1.06);
+              color: #22c55e;
+              box-shadow: 0 0 0 2px #22c55e, 0 8px 22px -6px rgba(34, 197, 94, 0.55);
+            }
+            88%, 100% {
+              transform: scale(1);
+              color: #fff;
+              box-shadow: 0 10px 15px -3px rgb(203 213 225 / 0.4);
+            }
+          }
+          @keyframes proc-copy-1 {
+            0%, 76% { opacity: 1; }
+            88%, 100% { opacity: 0.4; }
+          }
+          @keyframes proc-copy-2 {
+            0%, 24% { opacity: 0.4; }
+            30%, 76% { opacity: 1; }
+            88%, 100% { opacity: 0.4; }
+          }
+          @keyframes proc-copy-3 {
+            0%, 48% { opacity: 0.4; }
+            54%, 76% { opacity: 1; }
+            88%, 100% { opacity: 0.4; }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .proc-timeline .proc-line-fill,
+            .proc-timeline .proc-icon,
+            .proc-timeline .proc-copy { animation: none; }
+            .proc-timeline .proc-line-fill { transform: scaleX(1); }
+            .proc-timeline .proc-icon { transform: none; color: #22c55e; box-shadow: 0 0 0 2px #22c55e, 0 8px 22px -6px rgba(34, 197, 94, 0.55); }
+            .proc-timeline .proc-copy { opacity: 1; }
+          }
+        `}</style>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.92 }}
@@ -333,38 +472,37 @@ export default function Programs() {
           >
             <span className="text-blue-600 font-semibold text-xs uppercase tracking-widest">How It Works</span>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-3">Our Process</h2>
-            <p className="text-slate-500 mt-4 max-w-xl mx-auto">From your first conversation to your final plan — here's how we walk with you.</p>
+            <p className="text-slate-500 mt-4 max-w-xl mx-auto">From your first conversation to your final step: here's how we walk with you.</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 relative">
-            {/* Connector line (desktop only) */}
-            <div className="hidden md:block absolute top-10 left-1/6 right-1/6 h-px bg-gradient-to-r from-blue-200 via-blue-400 to-blue-200" style={{ left: '17%', right: '17%' }} />
+          <div className="proc-timeline relative grid gap-8 md:grid-cols-3">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-[17%] right-[17%] top-10 z-0 hidden h-0.5 overflow-hidden bg-blue-200 md:block"
+              style={{
+                maskImage:
+                  'linear-gradient(to right, transparent 0, transparent 2.6rem, #000 2.6rem, #000 calc(50% - 2.6rem), transparent calc(50% - 2.6rem), transparent calc(50% + 2.6rem), #000 calc(50% + 2.6rem), #000 calc(100% - 2.6rem), transparent calc(100% - 2.6rem), transparent 100%)',
+                WebkitMaskImage:
+                  'linear-gradient(to right, transparent 0, transparent 2.6rem, #000 2.6rem, #000 calc(50% - 2.6rem), transparent calc(50% - 2.6rem), transparent calc(50% + 2.6rem), #000 calc(50% + 2.6rem), #000 calc(100% - 2.6rem), transparent calc(100% - 2.6rem), transparent 100%)',
+              }}
+            >
+              <div className="proc-line-fill h-full w-full bg-blue-500" />
+            </div>
 
             {steps.map((step, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.92 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.35, ease: 'easeOut' }}
-                  className="relative flex flex-col items-center text-center"
-                >
-                  <div className="relative z-10 w-20 h-20 overflow-hidden bg-[#060b18] rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-slate-300/40">
-                    <div className="absolute inset-0">
-                      <StarfieldBackground softVignette starDensity={0.2} />
-                    </div>
-                    <img
-                      src={step.iconSrc}
-                      alt={step.iconAlt ?? ''}
-                      className="relative z-10 w-10 h-10 object-contain"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="text-xs font-bold text-blue-500 uppercase tracking-widest mb-2">Step {step.number}</div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-3">{step.title}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">{step.description}</p>
-                </motion.div>
+              <ProcessStep key={step.number} step={step} index={i} />
             ))}
+          </div>
+
+          <div className="mt-14 text-center">
+            <Link to={createPageUrl('Consultants')} className="inline-block transition-transform duration-200 hover:scale-105">
+              <button
+                className={`group inline-flex items-center justify-center gap-2 rounded-full font-bold text-white bg-shine-gradient ${solidButton.lg}`}
+              >
+                <span>See Consultants Now</span>
+                <ArrowRight className="w-4 h-4 shrink-0 transition-[transform,margin] duration-500 ease-out group-hover:translate-x-2 group-hover:scale-110" />
+              </button>
+            </Link>
           </div>
         </div>
 

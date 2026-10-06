@@ -3,6 +3,7 @@ import About from './pages/About';
 import BladeXAI from './pages/BladeXAI';
 import Consultants from './pages/Consultants';
 import Home from './pages/Home';
+import Privacy from './pages/Privacy';
 import Programs from './pages/Programs';
 import Social from './pages/Social';
 import __Layout from './Layout.jsx';
@@ -12,6 +13,7 @@ export const PAGES = {
   BladeXAI,
   Consultants,
   Home,
+  Privacy,
   Programs,
   Social,
 };

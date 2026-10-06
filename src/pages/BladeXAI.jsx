@@ -444,9 +444,6 @@ export default function BladeXAI() {
                   alt=""
                   className="h-7 w-7 object-contain"
                 />
-                <span className="absolute -right-0.5 -top-0.5 flex h-2.5 w-2.5">
-                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
-                </span>
               </div>
               <div className="min-w-0 flex-1 pt-0.5">
                 <div className="flex flex-wrap items-center gap-2.5">

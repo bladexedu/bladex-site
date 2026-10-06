@@ -119,7 +119,9 @@ export default function Consultants() {
   const location = useLocation();
   const [filters, setFilters] = useState(EMPTY_FILTERS);
   const [search, setSearch] = useState('');
-  const [showRegionPicker, setShowRegionPicker] = useState(true);
+  const [showRegionPicker, setShowRegionPicker] = useState(
+    () => new URLSearchParams(location.search).get('browse') !== 'all',
+  );
   const [pickerStep, setPickerStep] = useState('main');
   const [selectedRegion, setSelectedRegion] = useState(null);
   const [selectedArea, setSelectedArea] = useState(null);
@@ -127,14 +129,16 @@ export default function Consultants() {
 
   // Re-clicking "Consultants" in the nav doesn't remount this page,
   // so reset to the choose-path picker on every navigation event.
+  // `?browse=all` skips the picker and opens the full roster.
   useEffect(() => {
-    setShowRegionPicker(true);
+    const browseAll = new URLSearchParams(location.search).get('browse') === 'all';
+    setShowRegionPicker(!browseAll);
     setPickerStep('main');
     setSelectedRegion(null);
     setSelectedArea(null);
     setFilters(EMPTY_FILTERS);
     setSearch('');
-  }, [location.key]);
+  }, [location.key, location.search]);
 
   const displayedConsultants = useMemo(() => {
     if (shuffleSeed === 0) return consultants;

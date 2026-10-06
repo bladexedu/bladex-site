@@ -1,6 +1,9 @@
-import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-import { sectionBadgeClass } from '@/utils/glassStyles';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { animate, motion, useInView, useReducedMotion } from 'framer-motion';
+import { ArrowRight, Globe, GraduationCap, Users } from 'lucide-react';
+import { createPageUrl } from '@/utils';
+import { sectionBadgeClass, solidButton } from '@/utils/glassStyles';
 import StarfieldBackground from '@/components/shared/StarfieldBackground';
 
 const HERO_ACCENT = 'Every Step of the Way';
@@ -9,9 +12,9 @@ const statCardStyle =
   'border border-blue-400/40 bg-blue-600/20';
 
 const stats = [
-  { value: 'Complimentary Advisory', label: 'High-quality, strategic guidance provided at absolutely no cost.' },
-  { value: 'Global Mentor Network', label: 'A growing team of diverse experts from top universities worldwide.' },
-  { value: 'Empowering Ambitions', label: 'Dedicated to helping Myanmar students achieve global academic success.' },
+  { value: 'Complimentary Advisory', label: 'Access personalized educational guidance and support without the traditional consultancy fees.' },
+  { value: 'A Global Community', label: 'Connect with consultants and mentors from all around the world, bringing firsthand experiences from universities and academic fields.' },
+  { value: 'Empowering Ambitions', label: 'Created from a simple belief: every student deserves access to guidance, support, and the opportunity to dream beyond borders.' },
   { value: 'Founded in 2026', label: 'Built on real student experiences, authentic mentorship, and proven strategies.' },
 ];
 
@@ -31,35 +34,106 @@ function StatCard({ stat, index }) {
   );
 }
 
-function VisionMissionCard({ variant, iconSrc, iconAlt, title, quote }) {
-  const isVision = variant === 'vision';
-  const glow = isVision ? ['#34d399', '#6ee7b7'] : ['#60a5fa', '#38bdf8'];
+function RingsDecor() {
+  return (
+    <svg aria-hidden viewBox="0 0 360 360" className="pointer-events-none absolute -bottom-36 -left-36 h-[360px] w-[360px] opacity-50">
+      {[70, 110, 150, 178].map((r) => (
+        <circle key={r} cx="180" cy="180" r={r} fill="none" stroke="#64748b" strokeWidth="1.25" opacity="0.4" />
+      ))}
+    </svg>
+  );
+}
+
+function TracksDecor() {
+  return (
+    <svg aria-hidden viewBox="0 0 320 260" className="pointer-events-none absolute -top-9 -right-12 h-[260px] w-[320px] opacity-80">
+      <defs>
+        <linearGradient id="purpose-tracks-fade" x1="1" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#93c5fd" stopOpacity="0.85" />
+          <stop offset="45%" stopColor="#60a5fa" stopOpacity="0.4" />
+          <stop offset="100%" stopColor="#60a5fa" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      {[48, 88, 128, 168, 208].map((y, i) => (
+        <path
+          key={y}
+          d={`M 40 ${y} C 120 ${y - 18}, 200 ${y + 22}, 300 ${y - 6}`}
+          fill="none"
+          stroke="url(#purpose-tracks-fade)"
+          strokeWidth="2"
+          strokeLinecap="round"
+          opacity={0.9 - i * 0.15}
+        />
+      ))}
+    </svg>
+  );
+}
+
+const PURPOSE_METRICS = [
+  { to: 50, label: 'Consultants', Icon: Users },
+  { to: 30, label: 'Countries', Icon: Globe },
+  { to: 20, label: 'Fields of Study', Icon: GraduationCap },
+];
+
+function MetricStat({ to, label, Icon, delay = 0 }) {
+  const reduceMotion = useReducedMotion();
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.6 });
+  const [value, setValue] = useState(reduceMotion ? to : 0);
+
+  useEffect(() => {
+    if (!inView) return;
+    if (reduceMotion) {
+      setValue(to);
+      return undefined;
+    }
+
+    const controls = animate(0, to, {
+      duration: 2.2,
+      delay,
+      ease: 'easeOut',
+      onUpdate: (latest) => setValue(Math.round(latest)),
+    });
+    return () => controls.stop();
+  }, [delay, inView, reduceMotion, to]);
 
   return (
-    <div className="relative overflow-hidden bg-[#060b18] rounded-3xl p-10 text-white">
-      <div className="absolute inset-0 z-0">
-        <StarfieldBackground softVignette starDensity={1.1} />
-      </div>
-      <div
-        className="absolute -top-10 -right-10 z-[1] w-52 h-52 rounded-full blur-3xl pointer-events-none opacity-45"
-        style={{ background: glow[0] }}
-        aria-hidden
-      />
-      <div
-        className="absolute -bottom-12 -left-8 z-[1] w-48 h-48 rounded-full blur-3xl pointer-events-none opacity-35"
-        style={{ background: glow[1] }}
-        aria-hidden
-      />
-      <div className="relative z-10">
-        <img
-          src={iconSrc}
-          alt={iconAlt}
-          className="w-14 h-14 object-contain mb-6"
-          loading="lazy"
-        />
-        <p className="text-sm font-extrabold uppercase tracking-widest mb-3 text-white">{title}</p>
-        <p className={`text-lg leading-relaxed font-medium ${isVision ? 'text-white' : 'text-slate-200'}`}>
-          {quote}
+    <div ref={ref} className="flex min-w-[7.5rem] flex-col items-center" aria-label={`${to}+ ${label}`}>
+      <span className="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-50">
+        <Icon className="h-5 w-5 text-blue-600" strokeWidth={1.75} aria-hidden />
+      </span>
+      <p className="text-4xl font-bold tracking-tight text-slate-900 md:text-5xl" aria-hidden>
+        {value}+
+      </p>
+      <p className="mt-1 text-sm text-slate-500">{label}</p>
+    </div>
+  );
+}
+
+function VisionMissionCard({ variant, title, quote }) {
+  const isVision = variant === 'vision';
+  const [leadA, leadB, ...quoteRest] = quote.split(' ');
+  const lead = `${leadA} ${leadB}`;
+  const body = quoteRest.join(' ');
+
+  return (
+    <div
+      className={`relative flex min-h-[300px] overflow-hidden rounded-3xl p-10 ${
+        isVision
+          ? 'bg-slate-200'
+          : 'bg-[linear-gradient(165deg,#1e293b_0%,#0f172a_48%,#060b18_100%)]'
+      }`}
+    >
+      {isVision ? <RingsDecor /> : <TracksDecor />}
+      <div className="relative z-10 m-auto flex max-w-md flex-col items-center text-center">
+        <h3 className={`text-3xl font-normal leading-tight tracking-tight md:text-4xl ${isVision ? 'text-slate-900' : 'text-slate-100'}`}>
+          {title}
+        </h3>
+        <p className={`mt-5 text-sm leading-relaxed md:text-[15px] ${isVision ? 'text-slate-600' : 'text-slate-300'}`}>
+          <span className={`text-xl font-semibold md:text-2xl ${isVision ? 'text-slate-900' : 'text-slate-100'}`}>
+            {lead}{' '}
+          </span>
+          {body}
         </p>
       </div>
     </div>
@@ -272,7 +346,7 @@ export default function About() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="relative py-24">
+      <section className="relative bg-white py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.92 }}
@@ -285,28 +359,33 @@ export default function About() {
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-3">Vision & Mission</h2>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid items-stretch gap-6 lg:grid-cols-2">
             <VisionMissionCard
               variant="vision"
-              iconSrc="https://img.icons8.com/stickers/100/visible.png"
-              iconAlt="Vision"
               title="Our Vision"
-              quote='"To pave the way for Myanmar students toward quality international education, clear pathways, and successful long-term careers abroad."'
+              quote="To create a world where every Myanmar student with the ambition to study abroad can access the guidance, knowledge, and opportunities they need to pursue their aspirations. A world where background and circumstance do not decide who gets to look beyond borders."
             />
             <VisionMissionCard
               variant="mission"
-              iconSrc="https://img.icons8.com/color/96/goal--v1.png"
-              iconAlt="Mission"
               title="Our Mission"
-              quote='"To guide and empower young individuals who feel lost and unsure where to start — by providing accessible educational guidance and helping them become knowledgeable and prepared for their future choices."'
+              quote="To support students at every stage of their journey, especially those who feel lost or unsure where to begin, by connecting them with accessible guidance, firsthand experiences, and a global community that helps them make informed decisions about their future."
             />
+          </div>
+
+          <div className="mt-16 text-center">
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">Our Reach</p>
+            <div className="mt-6 flex flex-wrap items-start justify-center gap-12 sm:gap-20">
+              {PURPOSE_METRICS.map((metric, index) => (
+                <MetricStat key={metric.label} {...metric} delay={index * 0.12} />
+              ))}
+            </div>
           </div>
         </div>
 
       </section>
 
       {/* Our Leadership Team */}
-      <section className="relative py-24 bg-slate-50">
+      <section className="relative bg-white py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.92 }}
@@ -391,11 +470,19 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="relative overflow-hidden bg-white py-24">
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.92 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.35, ease: 'easeOut' }}>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Let's Take the First Step Together</h2>
             <p className="text-slate-600 text-lg mb-8 leading-relaxed">Schedule a one-on-one session with our consultants and get the guidance you need for your study abroad journey.</p>
+            <Link to={createPageUrl('Consultants')} className="inline-block transition-transform duration-200 hover:scale-105">
+              <button
+                className={`group inline-flex items-center justify-center gap-2 rounded-full font-bold text-white bg-shine-gradient ${solidButton.lg}`}
+              >
+                <span>See Consultants</span>
+                <ArrowRight className="w-4 h-4 shrink-0 transition-[transform,margin] duration-500 ease-out group-hover:translate-x-2 group-hover:scale-110" />
+              </button>
+            </Link>
           </motion.div>
         </div>
       </section>

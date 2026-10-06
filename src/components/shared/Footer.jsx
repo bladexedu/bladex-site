@@ -16,6 +16,7 @@ const navLinks = [
   { name: 'Programs', page: 'Programs' },
   { name: 'Consultants', page: 'Consultants' },
   { name: 'Social Media', page: 'Social' },
+  { name: 'Privacy', page: 'Privacy' },
 ];
 
 const socials = [

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Bell } from 'lucide-react';
+import { Bell, ExternalLink, GraduationCap, Megaphone, MessageCircle } from 'lucide-react';
 import {
   FacebookIcon,
   YouTubeIcon,
@@ -70,7 +70,7 @@ export default function Social() {
             <span className={sectionBadgeClass}>Stay Connected</span>
             <h1 className="text-4xl md:text-5xl font-bold text-white mt-3 mb-5">Follow Us Online</h1>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              Stay up to date with BladeX Education — tips, student stories, Q&As, and program announcements across our social channels.
+              Stay up to date with BladeX Education — tips, student stories, Q&As, internship opportunities, and program announcements across our social channels.
             </p>
           </motion.div>
         </div>
@@ -78,7 +78,7 @@ export default function Social() {
       </section>
 
       {/* Channels + Feed */}
-      <section className="relative py-24">
+      <section className="relative bg-white py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-10 items-start">
 
@@ -158,40 +158,36 @@ export default function Social() {
       <TestimonialsSection />
 
       {/* Why follow section */}
-      <section className="py-16 bg-white border-y border-slate-300">
+      <section className="bg-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Why Follow Us?</h2>
             <div className="grid sm:grid-cols-3 gap-6 mt-8">
               {[
                 {
-                  iconSrc: 'https://img.icons8.com/stickers/100/graduation-cap.png',
-                  iconAlt: 'Graduation cap',
+                  Icon: GraduationCap,
                   title: 'Study Abroad Tips',
                   desc: 'Country guides, scholarship info, and application advice.',
                 },
                 {
-                  iconSrc: 'https://img.icons8.com/external-nawicon-outline-color-nawicon/64/external-Review-online-marketing-nawicon-outline-color-nawicon.png',
-                  iconAlt: 'Review',
+                  Icon: MessageCircle,
                   title: 'Student Stories',
                   desc: 'Real journeys from Myanmar students studying abroad.',
                 },
                 {
-                  iconSrc: 'https://img.icons8.com/stickers/100/commercial.png',
-                  iconAlt: 'Megaphone',
+                  Icon: Megaphone,
                   title: 'Program Updates',
                   desc: 'Be first to know about events, workshops, and launches.',
                 },
               ].map((item, i) => (
-                <div key={i} className="bg-white rounded-2xl p-6 shadow-sm">
-                  <img
-                    src={item.iconSrc}
-                    alt={item.iconAlt}
-                    className="w-14 h-14 object-contain mx-auto mb-3"
-                    loading="lazy"
-                  />
-                  <h3 className="font-semibold text-slate-900 mb-2">{item.title}</h3>
-                  <p className="text-slate-500 text-sm">{item.desc}</p>
+                <div key={i} className="rounded-2xl bg-white p-6 text-center shadow-sm">
+                  <div className="mb-4 flex justify-center">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-blue-600">
+                      <item.Icon className="h-7 w-7" strokeWidth={1.75} aria-hidden />
+                    </div>
+                  </div>
+                  <h3 className="mb-2 font-semibold text-slate-900">{item.title}</h3>
+                  <p className="text-sm text-slate-500">{item.desc}</p>
                 </div>
               ))}
             </div>
