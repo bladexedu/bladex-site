@@ -10,6 +10,24 @@ import {
 
 const BIO_LIMIT = 120;
 
+function UniversityDegreeList({ value }) {
+  return value.split(/\s*;\s*/).map((entry, i) => {
+    const parts = entry.split(/\s*—\s*/);
+    return (
+      <div key={i} className={i > 0 ? 'mt-2' : undefined}>
+        {parts.length > 1 ? (
+          <>
+            <p className="text-[13.5px] font-semibold text-slate-800 leading-snug">{parts[0].trim()}</p>
+            <p className="text-[12px] text-slate-500 mt-1 leading-snug">{parts.slice(1).join(' — ').trim()}</p>
+          </>
+        ) : (
+          <p className="text-[13.5px] font-semibold text-slate-800 leading-snug">{entry}</p>
+        )}
+      </div>
+    );
+  });
+}
+
 const LOCATION_MAP = {
   'htar yu nwe':               'United Kingdom',
   'htet yamin ko ko':          'Switzerland',
@@ -214,34 +232,14 @@ export default function ConsultantCard({ consultant: c, index }) {
                     <div className="rounded-[14px] p-[18px] border border-black/[0.07] bg-white">
                       <div className="w-8 h-8 rounded-[9px] flex items-center justify-center text-sm mb-3 bg-indigo-50 border border-indigo-100">🎓</div>
                       <p className="text-[10px] font-bold tracking-[1.5px] uppercase text-slate-400 mb-1.5">Studies</p>
-                      {(() => {
-                        const parts = c.current_studies.split(/\s*—\s*/);
-                        return parts.length > 1 ? (
-                          <>
-                            <p className="text-[13.5px] font-semibold text-slate-800 leading-snug">{parts[0].trim()}</p>
-                            <p className="text-[12px] text-slate-500 mt-1 leading-snug">{parts.slice(1).join(' — ').trim()}</p>
-                          </>
-                        ) : (
-                          <p className="text-[13.5px] font-semibold text-slate-800 leading-snug">{c.current_studies}</p>
-                        );
-                      })()}
+                      <UniversityDegreeList value={c.current_studies} />
                     </div>
                   )}
                   {c.current_occupation && (
                     <div className="rounded-[14px] p-[18px] border border-black/[0.07] bg-white">
                       <div className="w-8 h-8 rounded-[9px] flex items-center justify-center text-sm mb-3 bg-slate-100 border border-slate-200">💼</div>
                       <p className="text-[10px] font-bold tracking-[1.5px] uppercase text-slate-400 mb-1.5">Occupation</p>
-                      {(() => {
-                        const parts = c.current_occupation.split(/\s*—\s*/);
-                        return parts.length > 1 ? (
-                          <>
-                            <p className="text-[13.5px] font-semibold text-slate-800 leading-snug">{parts[0].trim()}</p>
-                            <p className="text-[12px] text-slate-500 mt-1 leading-snug">{parts.slice(1).join(' — ').trim()}</p>
-                          </>
-                        ) : (
-                          <p className="text-[13.5px] font-semibold text-slate-800 leading-snug">{c.current_occupation}</p>
-                        );
-                      })()}
+                      <UniversityDegreeList value={c.current_occupation} />
                     </div>
                   )}
                   {c.country_of_expertise && (
