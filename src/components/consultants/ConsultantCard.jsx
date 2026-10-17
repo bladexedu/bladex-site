@@ -35,7 +35,7 @@ const LOCATION_MAP = {
   'nang sayoon noi':          'United States',
   'wutt hmone thin kyi':      'United States · Singapore',
   'cherry soe':               'United States',
-  'thuta ye moe':             'South Korea & Australia',
+  'thuta ye moe':             'Australia',
   'win soe moe @ dennis':     'Japan',
   'yati ko ko':               'Hungary',
   'shin lin let':             'United Kingdom · Malaysia',

@@ -241,6 +241,155 @@ const ADVISORY_BOARD_MEMBERS = [
   },
 ];
 
+const TEAM_MEMBERS = [
+  {
+    name: 'Myat Min Htet',
+    department: 'Operations',
+    role: 'Operations Lead & Data Analyst',
+    university: 'High School Graduate',
+    degree: 'GED & SAT',
+    photo:
+      'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/sign/Team/myat-min-htet.jpg?token=eyJraWQiOiI4ZWY5ZjAzNS00OWY3LTQ4MDUtYmRmZi02N2IxYzU3NWY5ZmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJUZWFtL215YXQtbWluLWh0ZXQuanBnIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc5MjI1NjI2MSwiZXhwIjoyMTA3NjE2MjYxfQ.xEw2cFi3hkstyh9XSO-HMiSMiyAON2MmTewyS94LnEI',
+    photoPosition: 'object-[center_30%]',
+  },
+  {
+    name: 'Thin Thiri San',
+    department: 'Operations',
+    role: 'Operations Lead & Market Research Analyst',
+    university: 'Yangon University of Economics',
+    degree: 'B.A. Business Administration',
+    photo:
+      'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/sign/Team/thin-thiri-san.jpg?token=eyJraWQiOiI4ZWY5ZjAzNS00OWY3LTQ4MDUtYmRmZi02N2IxYzU3NWY5ZmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJUZWFtL3RoaW4tdGhpcmktc2FuLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODg4MTI0NTQsImV4cCI6MjEwNDE3MjQ1NH0.zaNSYcksCY9a_d51cLJbFoMphAh_lkWuT9TKydQqK2w',
+  },
+  {
+    name: 'Myint Zu Linn',
+    department: 'Research',
+    role: 'Research & Operation Associate',
+    university: 'Yangon University of Economics',
+    degree: 'B.A. Economics',
+    photo:
+      'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/sign/Team/myint-zu-linn.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84ZWY5ZjAzNS00OWY3LTQ4MDUtYmRmZi02N2IxYzU3NWY5ZmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJUZWFtL215aW50LXp1LWxpbm4ucG5nIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NjIzOTIxOCwiZXhwIjoyMTAxNTk5MjE4fQ.lXrNoPWH9fOnR0NO7mImrhYjd3r3P-ZKZLf6nJnJedU',
+  },
+  {
+    name: 'Poe Pearl Thwe',
+    department: 'Strategy',
+    role: 'Strategy & Operations Associate',
+    university: 'UC Berkeley',
+    degree: 'Undergraduate, Economics',
+    photo:
+      'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/sign/Team/poe-pearl-thwe.jpg?token=eyJraWQiOiI4ZWY5ZjAzNS00OWY3LTQ4MDUtYmRmZi02N2IxYzU3NWY5ZmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJUZWFtL3BvZS1wZWFybC10aHdlLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3OTIyNTYyNjIsImV4cCI6MjEwNzYxNjI2Mn0.Wad3i2CeAU8dmvbew2jaU0eAilM3Q3yQg6QipSUyYms',
+    photoPosition: 'object-[center_20%]',
+  },
+  {
+    name: 'Thuriya Kyaw',
+    department: 'Research',
+    role: 'Operations & Research Associate',
+    university: 'University of Bristol',
+    degree: 'BEng(Hons) Mechanical Engineering',
+    photo:
+      'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/sign/Team/thuriya-kyaw.jpg?token=eyJraWQiOiI4ZWY5ZjAzNS00OWY3LTQ4MDUtYmRmZi02N2IxYzU3NWY5ZmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJUZWFtL3RodXJpeWEta3lhdy5qcGciLCJzY29wZSI6ImRvd25sb2FkIiwiaWF0IjoxNzkyMjU2MjY0LCJleHAiOjIxMDc2MTYyNjR9.ZjynJ83OVn0xl5Tt-EwuJPQva452mhEwMv7u9qAw7sg',
+    photoPosition: 'object-[center_42%]',
+  },
+  {
+    name: 'Nang Wah Wah Soe',
+    department: 'Operations',
+    role: 'Operations & Data Associate',
+    university: 'YAIS',
+    degree: 'Senior, graduating June 2027',
+    photo:
+      'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/sign/Team/nang-nang.jpg?token=eyJraWQiOiI4ZWY5ZjAzNS00OWY3LTQ4MDUtYmRmZi02N2IxYzU3NWY5ZmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJUZWFtL25hbmctbmFuZy5qcGciLCJzY29wZSI6ImRvd25sb2FkIiwiaWF0IjoxNzkyMjU2MjY2LCJleHAiOjIxMDc2MTYyNjZ9.HmCj4LCt6jhwIIdGm_H-swcA-MkVWI88e1i8_JSmj8U',
+    photoPosition: 'object-[center_18%]',
+  },
+  {
+    name: 'Myat Thadda Thaw',
+    department: 'Operations',
+    role: 'Operations & Analytics Associate',
+    university: 'Sunway College',
+    degree: 'Completed A-Levels',
+    photo:
+      'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/sign/Team/felix.jpg?token=eyJraWQiOiI4ZWY5ZjAzNS00OWY3LTQ4MDUtYmRmZi02N2IxYzU3NWY5ZmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJUZWFtL2ZlbGl4LmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3OTIyNTYyNjcsImV4cCI6MjEwNzYxNjI2N30.9BMAUQWohqSr-CceuFpBFyCVfQ6zBGpfoh_W_0GUjpk',
+    photoPosition: 'object-[center_22%]',
+  },
+  {
+    name: 'Chan Myae Nay Chi',
+    department: 'Operations',
+    role: 'Operations & Research Associate',
+    university: 'YUFL',
+    degree: 'Diploma in English Communication Skills',
+    photo:
+      'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/sign/Team/nay-chi.jpg?token=eyJraWQiOiI4ZWY5ZjAzNS00OWY3LTQ4MDUtYmRmZi02N2IxYzU3NWY5ZmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJUZWFtL25heS1jaGkuanBnIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc5MjI1NjM4NiwiZXhwIjoyMTA3NjE2Mzg2fQ.jkdKG-PSEErODE9M8roSttpzbP7x4RiXKwbUM4Ulyfc',
+    photoPosition: 'object-[center_30%]',
+  },
+];
+
+function studyEntries(member) {
+  if (member.studies?.length) return member.studies;
+  if (!member.university && !member.degree) return [];
+  return [{ school: member.university, detail: member.degree }];
+}
+
+function TeamMemberCard({ member, delay = 0 }) {
+  const studies = studyEntries(member);
+  const department = member.department || 'Department';
+  const role = member.role || 'Role';
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.28, ease: 'easeOut', delay }}
+      className="relative flex w-full flex-col items-center rounded-3xl border border-black/[0.06] bg-[#fdfcfa] px-5 pb-6 pt-9 text-center shadow-[0_10px_28px_-20px_rgba(15,23,42,0.45)] sm:w-[calc(50%-0.625rem)] sm:max-w-[16rem] md:w-[calc(33.333%-0.85rem)]"
+    >
+      <span
+        className={`absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full px-3.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] ${
+          member.department ? 'bg-[#1e3a8a] text-white' : 'bg-slate-200 text-slate-500'
+        }`}
+      >
+        {department}
+      </span>
+      {member.photo ? (
+        <img
+          src={member.photo}
+          alt=""
+          className={`h-16 w-16 rounded-full object-cover ring-1 ring-slate-200 ${member.photoPosition || 'object-center'}`}
+        />
+      ) : (
+        <div
+          aria-hidden
+          className="flex h-16 w-16 items-center justify-center rounded-full bg-[#1d4ed8] text-xl font-bold text-white"
+        >
+          {member.name.charAt(0)}
+        </div>
+      )}
+      <h3 className="mt-4 text-[15px] font-bold leading-tight text-slate-900">{member.name}</h3>
+      <p
+        className={`mt-1 max-w-[16rem] text-sm font-medium leading-snug ${
+          member.role ? 'text-blue-600' : 'text-slate-400'
+        }`}
+      >
+        {role}
+      </p>
+      {studies.length ? (
+        <>
+          <div className="my-4 h-px w-full bg-slate-200" aria-hidden />
+          <GraduationCap className="h-4 w-4 text-slate-400" aria-hidden />
+          <div className="mt-2 space-y-2.5">
+            {studies.map((entry) => (
+              <div key={`${entry.school || ''}-${entry.detail || ''}`}>
+                {entry.school ? (
+                  <p className="text-sm font-semibold leading-snug text-slate-800">{entry.school}</p>
+                ) : null}
+                {entry.detail ? <p className="mt-0.5 text-sm leading-snug text-slate-500">{entry.detail}</p> : null}
+              </div>
+            ))}
+          </div>
+        </>
+      ) : null}
+    </motion.article>
+  );
+}
+
 function ProfileTiltCard({ p, delay = 0 }) {
   return (
     <motion.div
@@ -410,63 +559,25 @@ export default function About() {
               Advisory Board Members
             </span>
           </div>
-          <motion.div className="grid md:grid-cols-3 gap-6 mb-14">
+          <motion.div className="grid md:grid-cols-3 gap-6">
             {ADVISORY_BOARD_MEMBERS.map((p, i) => (
               <ProfileTiltCard key={p.name} p={p} delay={i * 0.03} />
             ))}
           </motion.div>
+        </div>
+      </section>
 
-          {/* Team members */}
-          <div className="text-center mb-8">
-            <span className="text-sm font-extrabold uppercase tracking-widest text-slate-500">Meet Our Team Members</span>
-          </div>
-          <div className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
-            {[
-              { name: 'Myat Min Htet', role: 'Operations Lead & Data Analyst' },
-              {
-                name: 'Thin Thiri San',
-                role: 'Operations Lead & Market Research Analyst',
-                photo:
-                  'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/sign/Team/thin-thiri-san.jpg?token=eyJraWQiOiI4ZWY5ZjAzNS00OWY3LTQ4MDUtYmRmZi02N2IxYzU3NWY5ZmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJUZWFtL3RoaW4tdGhpcmktc2FuLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODg4MTI0NTQsImV4cCI6MjEwNDE3MjQ1NH0.zaNSYcksCY9a_d51cLJbFoMphAh_lkWuT9TKydQqK2w',
-              },
-              {
-                name: 'Myint Zu Linn',
-                role: 'Research & Operation Associate',
-                photo:
-                  'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/sign/Team/myint-zu-linn.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84ZWY5ZjAzNS00OWY3LTQ4MDUtYmRmZi02N2IxYzU3NWY5ZmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJUZWFtL215aW50LXp1LWxpbm4ucG5nIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NjIzOTIxOCwiZXhwIjoyMTAxNTk5MjE4fQ.lXrNoPWH9fOnR0NO7mImrhYjd3r3P-ZKZLf6nJnJedU',
-              },
-              { name: 'Poe Pearl Thwe', role: 'Strategy & Operations Associate' },
-              { name: 'Thuriya Kyaw', role: 'Operations & Research Associate' },
-            ].map((m, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.92 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                whileHover={{ scale: 1.02, transition: { duration: 0.2, ease: 'easeOut' } }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.28, ease: 'easeOut', delay: i * 0.03 }}
-                className="bg-white rounded-2xl p-5 text-center shadow-sm border border-slate-100 cursor-default w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.67rem)]"
-              >
-                {m.photo ? (
-                  <div className="w-12 h-12 rounded-full overflow-hidden mx-auto mb-3 ring-2 ring-slate-100">
-                    <img
-                      src={m.photo}
-                      alt={m.name}
-                      className="w-full h-full object-cover object-center"
-                    />
-                  </div>
-                ) : (
-                  <div className="w-12 h-12 rounded-full bg-blue-900 text-white font-bold text-lg flex items-center justify-center mx-auto mb-3">
-                    {m.name.charAt(0)}
-                  </div>
-                )}
-                <p className="font-bold text-slate-900 text-sm leading-tight">{m.name}</p>
-                <p className="text-blue-500 text-xs mt-1 leading-snug font-medium">{m.role}</p>
-              </motion.div>
+      <section className="bg-white pb-24 pt-4">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 className="mb-8 text-center text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
+            Meet Our Team Members
+          </h2>
+          <div className="mx-auto flex flex-wrap justify-center gap-x-5 gap-y-7 pt-3">
+            {TEAM_MEMBERS.map((member, i) => (
+              <TeamMemberCard key={member.name} member={member} delay={i * 0.03} />
             ))}
           </div>
         </div>
-
       </section>
 
       {/* CTA */}
