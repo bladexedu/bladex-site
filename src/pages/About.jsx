@@ -323,7 +323,6 @@ const TEAM_MEMBERS = [
 ];
 
 function TeamMemberCard({ member, delay = 0 }) {
-  const department = member.department || 'Department';
   const role = member.role || 'Role';
 
   return (
@@ -332,15 +331,8 @@ function TeamMemberCard({ member, delay = 0 }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.28, ease: 'easeOut', delay }}
-      className="relative flex w-full flex-col items-center rounded-3xl border border-black/[0.06] bg-[#fdfcfa] px-5 pb-6 pt-9 text-center shadow-[0_10px_28px_-20px_rgba(15,23,42,0.45)] sm:w-[calc(50%-0.625rem)] sm:max-w-[16rem] md:w-[calc(33.333%-0.85rem)]"
+      className="relative flex w-full flex-col items-center rounded-3xl border border-black/[0.06] bg-[#fdfcfa] px-5 pb-6 pt-6 text-center shadow-[0_10px_28px_-20px_rgba(15,23,42,0.45)] sm:w-[calc(50%-0.625rem)] sm:max-w-[16rem] md:w-[calc(33.333%-0.85rem)]"
     >
-      <span
-        className={`absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full px-3.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] ${
-          member.department ? 'bg-[#1e3a8a] text-white' : 'bg-slate-200 text-slate-500'
-        }`}
-      >
-        {department}
-      </span>
       {member.photo ? (
         <img
           src={member.photo}
@@ -549,7 +541,7 @@ export default function About() {
           <h2 className="mb-8 text-center text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
             Meet Our Team Members
           </h2>
-          <div className="mx-auto flex flex-wrap justify-center gap-x-5 gap-y-7 pt-3">
+          <div className="mx-auto flex flex-wrap justify-center gap-x-5 gap-y-7">
             {TEAM_MEMBERS.map((member, i) => (
               <TeamMemberCard key={member.name} member={member} delay={i * 0.03} />
             ))}
