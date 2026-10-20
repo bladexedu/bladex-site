@@ -322,14 +322,7 @@ const TEAM_MEMBERS = [
   },
 ];
 
-function studyEntries(member) {
-  if (member.studies?.length) return member.studies;
-  if (!member.university && !member.degree) return [];
-  return [{ school: member.university, detail: member.degree }];
-}
-
 function TeamMemberCard({ member, delay = 0 }) {
-  const studies = studyEntries(member);
   const department = member.department || 'Department';
   const role = member.role || 'Role';
 
@@ -370,22 +363,6 @@ function TeamMemberCard({ member, delay = 0 }) {
       >
         {role}
       </p>
-      {studies.length ? (
-        <>
-          <div className="my-4 h-px w-full bg-slate-200" aria-hidden />
-          <GraduationCap className="h-4 w-4 text-slate-400" aria-hidden />
-          <div className="mt-2 space-y-2.5">
-            {studies.map((entry) => (
-              <div key={`${entry.school || ''}-${entry.detail || ''}`}>
-                {entry.school ? (
-                  <p className="text-sm font-semibold leading-snug text-slate-800">{entry.school}</p>
-                ) : null}
-                {entry.detail ? <p className="mt-0.5 text-sm leading-snug text-slate-500">{entry.detail}</p> : null}
-              </div>
-            ))}
-          </div>
-        </>
-      ) : null}
     </motion.article>
   );
 }
