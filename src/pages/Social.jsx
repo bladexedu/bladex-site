@@ -138,7 +138,7 @@ export default function Social() {
               </div>
               <div style={{ overflow: 'hidden', height: '640px' }}>
                 <iframe
-                  src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100064021474119&tabs=timeline&width=500&height=800&small_header=true&adapt_container_width=false&hide_cover=true&show_facepile=false&appId=920970834041656"
+                  src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fbladexedu&show_posts=true&width=500&height=800&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=false"
                   width="500"
                   height="800"
                   style={{ border: 'none', display: 'block', marginTop: '-70px' }}
