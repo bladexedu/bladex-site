@@ -256,8 +256,8 @@ const TEAM_MEMBERS = [
     name: 'Thin Thiri San',
     department: 'Operations',
     role: 'Operations Lead & Market Research Analyst',
-    university: 'Yangon University of Economics',
-    degree: 'B.A. Business Administration',
+    university: 'High School Graduate',
+    degree: 'GED & SAT',
     photo:
       'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/sign/Team/thin-thiri-san.jpg?token=eyJraWQiOiI4ZWY5ZjAzNS00OWY3LTQ4MDUtYmRmZi02N2IxYzU3NWY5ZmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJUZWFtL3RoaW4tdGhpcmktc2FuLmpwZyIsInNjb3BlIjoiZG93bmxvYWQiLCJpYXQiOjE3ODg4MTI0NTQsImV4cCI6MjEwNDE3MjQ1NH0.zaNSYcksCY9a_d51cLJbFoMphAh_lkWuT9TKydQqK2w',
   },
@@ -265,8 +265,8 @@ const TEAM_MEMBERS = [
     name: 'Myint Zu Linn',
     department: 'Research',
     role: 'Research & Operation Associate',
-    university: 'Yangon University of Economics',
-    degree: 'B.A. Economics',
+    university: 'Pearson Edexcel',
+    degree: 'International Advanced Level (IAL)',
     photo:
       'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/sign/Team/myint-zu-linn.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV84ZWY5ZjAzNS00OWY3LTQ4MDUtYmRmZi02N2IxYzU3NWY5ZmEiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJUZWFtL215aW50LXp1LWxpbm4ucG5nIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc4NjIzOTIxOCwiZXhwIjoyMTAxNTk5MjE4fQ.lXrNoPWH9fOnR0NO7mImrhYjd3r3P-ZKZLf6nJnJedU',
   },
@@ -283,7 +283,7 @@ const TEAM_MEMBERS = [
   {
     name: 'Thuriya Kyaw',
     department: 'Research',
-    role: 'Operations & Research Associate',
+    role: 'Strategy & Business Development Associate',
     university: 'University of Bristol',
     degree: 'BEng(Hons) Mechanical Engineering',
     photo:
@@ -322,7 +322,13 @@ const TEAM_MEMBERS = [
   },
 ];
 
+function studyEntries(member) {
+  if (!member.university && !member.degree) return [];
+  return [{ school: member.university, detail: member.degree }];
+}
+
 function TeamMemberCard({ member, delay = 0 }) {
+  const studies = studyEntries(member);
   const role = member.role || 'Role';
 
   return (
@@ -349,12 +355,27 @@ function TeamMemberCard({ member, delay = 0 }) {
       )}
       <h3 className="mt-4 text-[15px] font-bold leading-tight text-slate-900">{member.name}</h3>
       <p
-        className={`mt-1 max-w-[16rem] text-sm font-medium leading-snug ${
+        className={`mt-1 flex min-h-10 max-w-[16rem] items-start justify-center text-sm font-medium leading-snug ${
           member.role ? 'text-blue-600' : 'text-slate-400'
         }`}
       >
         {role}
       </p>
+      {studies.length ? (
+        <div className="mt-4 flex h-28 w-full flex-col items-center border-t border-slate-200 pt-4">
+          <GraduationCap className="h-4 w-4 shrink-0 text-slate-400" aria-hidden />
+          <div className="mt-2 w-full flex-1">
+            {studies.map((entry) => (
+              <div key={`${entry.school || ''}-${entry.detail || ''}`}>
+                {entry.school ? (
+                  <p className="text-sm font-semibold leading-snug text-slate-800">{entry.school}</p>
+                ) : null}
+                {entry.detail ? <p className="mt-0.5 text-sm leading-snug text-slate-500">{entry.detail}</p> : null}
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : null}
     </motion.article>
   );
 }
