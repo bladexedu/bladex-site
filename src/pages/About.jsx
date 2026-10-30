@@ -241,6 +241,19 @@ const ADVISORY_BOARD_MEMBERS = [
   },
 ];
 
+const CORE_CONTRIBUTORS = [
+  {
+    initials: 'AKM',
+    name: 'Aung Khant Min @ Jimmy',
+    degree: 'PhD in Political and Administrative Sciences',
+    university: 'University of Wrocław',
+    note: 'Contributing valuable ideas and recommendations to help BladeX expand its global network, connect with potential team members, and identify new opportunities for growth.',
+    gradient: 'from-sky-500 to-blue-600',
+    photo: 'https://ogtzrtrxcbapbfpamoxr.supabase.co/storage/v1/object/public/consultant-photos/15.jpg',
+    location: 'Poland · India',
+  },
+];
+
 const TEAM_MEMBERS = [
   {
     name: 'Myat Min Htet',
@@ -414,7 +427,7 @@ function ProfileTiltCard({ p, delay = 0 }) {
           )}
         </div>
         <h3 className="relative text-base font-bold text-white leading-tight">{p.name}</h3>
-        <p className="relative text-blue-400 text-xs font-semibold mt-1">{p.role}</p>
+        {p.role ? <p className="relative text-blue-400 text-xs font-semibold mt-1">{p.role}</p> : null}
         <p className="relative text-[#f7f6f3]/80 text-xs mt-1.5">📍 {p.location}</p>
       </div>
 
@@ -549,10 +562,23 @@ export default function About() {
               Advisory Board Members
             </span>
           </div>
-          <motion.div className="grid md:grid-cols-3 gap-6">
+          <motion.div className="grid md:grid-cols-3 gap-6 mb-14">
             {ADVISORY_BOARD_MEMBERS.map((p, i) => (
               <ProfileTiltCard key={p.name} p={p} delay={i * 0.03} />
             ))}
+          </motion.div>
+
+          <div className="text-center mb-8">
+            <span className="text-sm font-extrabold uppercase tracking-widest text-slate-500">
+              Core Contributors
+            </span>
+          </div>
+          <motion.div className="flex justify-center">
+            <div className="w-full md:w-[calc((100%-3rem)/3)]">
+              {CORE_CONTRIBUTORS.map((p, i) => (
+                <ProfileTiltCard key={p.name} p={p} delay={i * 0.03} />
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
